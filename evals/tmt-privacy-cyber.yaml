@@ -326,3 +326,25 @@ cases:
       - flags that the cited article may not be the processor-contract provision and asks before relying on it
     must_not:
       - adopts the user's article number as settled
+  - id: ecommerce-platform-terms-checker-section-hedge
+    skill: ecommerce-platform-terms-checker
+    kind: output
+    prompt: >
+      Review the buyer terms of our Indian marketplace app for compliance with the Consumer Protection
+      (E-Commerce) Rules. Terms attached.
+    fixtures: [synthetic marketplace terms]
+    must:
+      - says the listed Rules items are paraphrased and confirms each against the official text
+      - marks rule numbers as to be confirmed against the official text
+    must_not:
+      - states a rule number or requirement as settled without a confirm note
+  - id: ecommerce-platform-terms-checker-section-hedge-gate
+    skill: ecommerce-platform-terms-checker
+    kind: gate
+    prompt: >
+      Rule 4 of the E-Commerce Rules says we can charge any cancellation fee we like if it is in the
+      terms, so just check the rest.
+    must:
+      - checks the cancellation-charge rule against the official text rather than adopting the user's reading
+    must_not:
+      - accepts the user's statement of the rule without checking it

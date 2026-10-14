@@ -9,7 +9,7 @@ Fixes from live testing. Every legal point added is hedged or tagged [verify] an
 - `date_calc.py` has moved to `shared/scripts/`. The build now copies it into each skill that lists it under `shared_scripts`. A new `--to` option counts the days elapsed between two dates, both with and without the start day.
 - `foreign-judgment-award-enforcement-analyst` now has two separate tracks: A for foreign court judgments (s.44A and s.13 CPC) and B for foreign arbitral awards (Part II, the s.44 notified countries). It never uses one list to answer a question about the other.
 - Section numbers, thresholds and status claims that were stated as settled are now hedged across the skills.
-- 333 eval cases have been added (972 in total).
+- 337 eval cases have been added (976 in total).
 
 ## 0.1.0 (2026-10-14), alpha
 

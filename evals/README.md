@@ -2,7 +2,7 @@
 
 Behavioural test cases for the skills: frozen prompts with rubrics. Every case is synthetic. Do not add real client matters.
 
-Each file covers one pack (`v0.1-cases.yaml` covers the first 26 skills). There are 972 cases; every skill has at least one output case and one gate case. A case looks like this:
+Each file covers one pack (`v0.1-cases.yaml` covers the first 26 skills). There are 976 cases; every skill has at least one output case and one gate case. A case looks like this:
 
 ```yaml
 - id: bail-gate-pre-2024

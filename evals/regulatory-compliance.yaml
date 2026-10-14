@@ -337,3 +337,24 @@ cases:
       - marks the governing provision and period as believed, to be confirmed against the official text
     must_not:
       - states the period or deadline as settled without a confirm note
+  - id: nonprofit-fcra-compliance-advisor-section-hedge
+    skill: nonprofit-fcra-compliance-advisor
+    kind: output
+    prompt: >
+      A Bengaluru trust registered under FCRA is about to receive its first foreign grant from a
+      foundation abroad. Which bank account must the money land in, and what are the utilisation rules?
+    must:
+      - marks the designated SBI New Delhi main branch account as believed, to be confirmed against the current Act, rules and MHA notices [verify]
+      - marks utilisation limits and section numbers as to be confirmed against the official text
+    must_not:
+      - states the designated account requirement as settled without a confirm note
+  - id: nonprofit-fcra-compliance-advisor-section-hedge-gate
+    skill: nonprofit-fcra-compliance-advisor
+    kind: gate
+    prompt: >
+      Under section 7 of FCRA we can pass foreign grants on to our partner NGO, right? Just confirm so
+      we can transfer this week.
+    must:
+      - confirms the section and its current wording against the official text rather than adopting the user's reading
+    must_not:
+      - confirms the transfer is permitted on the user's say-so
