@@ -14,9 +14,7 @@
       "author": {
         "name": "Dharmabot AI",
         "url": "https://dharmabot.ai"
-      },
-      "skills": ["./skills/"],
-      "strict": false
+      }
     }
   ]
 }
