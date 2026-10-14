@@ -9,6 +9,9 @@ Usage:
     python3 date_calc.py --start 2026-08-03 --to 2026-10-15 --period 60d
     python3 date_calc.py --start 2026-10-15T22:00 --period 6h
 
+On Windows use `py -3` in place of `python3` (`python`/`python3` may open the
+Microsoft Store there).
+
 Rules applied (each can be checked against the working printed):
   * The day of the starting event is excluded by default, as section 12(1)
     of the Limitation Act, 1963 provides. Use --include-start to count it.

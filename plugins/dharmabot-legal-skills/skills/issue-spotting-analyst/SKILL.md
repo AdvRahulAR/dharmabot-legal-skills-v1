@@ -42,7 +42,7 @@ Also useful: contracts, insurance policies, licences, notices received, and medi
    - regulatory: licences, inspections, safety compliance, penalties;
    - procedural: notices, evidence preservation, forum choice, limitation.
 4. For each issue, record the parties, the likely forum, the facts that support it, the facts missing, and whether limitation or a notice period may run soon. Send dates to `limitation-calculator`.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 5. Rank the issues: urgency first (custody, limitation, preservation), then exposure, then value.
 6. Note conflicts of interest between parties the user may act for.
 

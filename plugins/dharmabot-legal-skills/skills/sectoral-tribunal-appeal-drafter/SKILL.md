@@ -32,7 +32,7 @@ Mark as **blocking**:
 
 1. Retrieve the current official text of the parent Act, the tribunal's procedure rules and practice directions, its fee schedule and its e-filing guidance. Record the source and date.
 2. Compute limitation from receipt of the order with `limitation-calculator`. Check the tribunal's power to condone delay and its outer limit, and draft a condonation application if needed.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 3. Check whether a pre-deposit or deposit of penalty is required as a condition of appeal or stay under the parent Act.
 4. Build the memorandum in the tribunal's format: details of the order, facts, questions of law, grounds and reliefs. Ground each point in the record.
 5. Typical grounds: lack of jurisdiction, breach of natural justice, findings without evidence, wrong reading of the regulation, disproportionate penalty, and parity with others.

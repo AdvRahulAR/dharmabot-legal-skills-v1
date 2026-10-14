@@ -31,7 +31,7 @@ The PIT Regulations have been amended often (including on trading plans and the 
 1. Retrieve the current official text of the PIT Regulations, their schedules and the current SEBI circulars and FAQs on PIT from sebi.gov.in. Record the version and date.
 2. Decide whether the information was UPSI at the trade date: price-sensitive, not generally available, and within the categories listed. Build a timeline: UPSI created, entered in the database, trading window closed, information published.
 3. Test the trade:
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
    - Was the window closed? Was pre-clearance required and obtained?
    - Was it under an approved, disclosed trading plan?
    - Is there a contra-trade within the prohibited period?

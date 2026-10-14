@@ -64,3 +64,4 @@ If the profile is absent, ask only what is needed (State, forum, client side) an
 - Never skip the redaction step the profile requires, or the final `pre-filing-verification-checker` on a drafting chain.
 - Never start a long chain without the lawyer's confirmation.
 - Business requests inside a company go to `in-house-request-triage-screener`.
+- Once the lawyer approves a multi-skill plan and wants it run end to end, with a ledger and checkpoints, hand it to `legal-workflow-orchestrator`.

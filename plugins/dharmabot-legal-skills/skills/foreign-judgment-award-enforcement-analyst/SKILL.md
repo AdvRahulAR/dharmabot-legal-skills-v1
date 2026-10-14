@@ -60,7 +60,7 @@ Also useful: the underlying contract, proof of service in the original proceedin
 
 ### Common steps
 
-10. **Dates.** Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+10. **Dates.** Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 11. **Indian judgment or award abroad.** Outline the likely route in the target country, mark every point for local counsel, and list the documents to prepare. These usually include certified and legalised copies (hand off to `document-legalisation-planner`), translations (hand off to `legal-translation-verifier`), proof of service, and proof of finality.
 12. **Interim protection.** Consider attachment before judgment, or s.9 relief for foreign-seated international commercial arbitrations under the proviso to s.2(2) (believed to be the provisions; confirm against the official text), unless the parties excluded it. Check current authority where both parties are Indian [verify].
 

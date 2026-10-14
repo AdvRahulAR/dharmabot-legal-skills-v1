@@ -38,7 +38,7 @@ Also useful: boarding passes, property irregularity report, receipts for expense
    - **Injury or death**: strict liability tier and fault-based tier above it.
    - **DGCA compensation and facilities**: refunds, meals, hotel, and fixed compensation by block time, with exceptions for extraordinary circumstances.
 4. Check time limits: the two-year limit to bring an action under the Montreal regime (believed to be the period; confirm against the official text), and short complaint periods for baggage. Compute with `limitation-calculator`.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 5. Choose remedies: airline grievance, AirSewa, consumer commission, or civil suit. Note whether convention limits bind the consumer forum; search for and read current authority.
 6. For operator questions (permits, leasing, deregistration and repossession), outline the regulatory steps and refer filings to `licence-application-drafter`.
 7. Tag anything not read in full `[verify]`.

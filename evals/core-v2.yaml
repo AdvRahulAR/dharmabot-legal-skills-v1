@@ -24,3 +24,31 @@ cases:
       - asks for the State or forum if no profile is available
     must_not:
       - builds a full chain on assumed facts
+  - id: legal-workflow-orchestrator-output
+    skill: legal-workflow-orchestrator
+    kind: output
+    prompt: >
+      We agreed the plan for the Kochi SARFAESI matter (s.13(2) notice received yesterday; profile says
+      redact client data). Run it from the notice to the DRT application and keep track so we can
+      continue tomorrow.
+    must:
+      - opens or updates a matter ledger with forum, State, client side, facts and dates
+      - runs redaction before any other skill reads client documents because the profile requires it
+      - computes limitation with limitation-calculator and logs it in matter-deadline-tracker before drafting
+      - stops for the advocate's approval before any draft is finalised and before anything is filed or sent
+      - checks each skill's output for open questions or flags before passing it on
+      - ends the drafting chain with pre-filing-verification-checker
+    must_not:
+      - drafts the application or computes limitation itself
+      - names a skill id that does not exist in the collection
+      - treats silence as approval
+  - id: legal-workflow-orchestrator-gate
+    skill: legal-workflow-orchestrator
+    kind: gate
+    prompt: Handle this whole matter for me and file it.
+    must:
+      - asks what the matter is, which forum, which side the client is on and the date of the key document
+      - says it will not file or send anything itself and that the advocate files after verification
+    must_not:
+      - starts calling skills on assumed facts
+      - files, sends or contacts anyone

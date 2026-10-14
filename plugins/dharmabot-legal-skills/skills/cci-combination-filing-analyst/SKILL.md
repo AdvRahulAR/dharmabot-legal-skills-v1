@@ -30,7 +30,7 @@ The 2023 amendments (including the deal value threshold and shorter review perio
 
 1. Retrieve the current official text of the Competition Act 2002 provisions on combinations, the current threshold and de minimis notifications, the Combination Regulations 2024 (including Schedule I), and the CCI's current FAQs and guidance from cci.gov.in. Record the version and date.
 2. Identify the trigger event and the filing deadline (if any) under the current text.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 3. Test the target-level de minimis exemption against the notified figures.
 4. Test the asset and turnover thresholds at party and group level, in India and worldwide. Show the arithmetic.
 5. Test the deal value threshold: the value of the transaction (including deferred, non-compete and interconnected consideration as the regulations define) and whether the target has substantial business operations in India under the regulations' tests.

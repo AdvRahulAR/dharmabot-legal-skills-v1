@@ -29,7 +29,7 @@ Also useful: orders on cognizance and commitment, co-accused positions, and any 
 
 1. Retrieve the current official text of the BNSS discharge provisions for each trial type (Sessions discharge believed to be s.250; warrant case on police report believed to be s.262; confirm), the offences, and any State amendment. Record source and date.
 2. Check timing. If a time limit applies, compute it with `limitation-calculator` and flag delay.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 3. List each offence and its ingredients. For each accused, list what the record says he did, citing page and paragraph.
 4. Apply the test from Union of India v. Prafulla Kumar Samal (Supreme Court, 1979) and Sajjan Kumar v. CBI (Supreme Court, 2010): grave suspicion versus mere suspicion, taking the record at face value. Confirm current treatment.
 5. Identify gaps: an ingredient with no material; statements that do not name the accused; documents that do not support the allegation; missing sanction; offences added without basis.

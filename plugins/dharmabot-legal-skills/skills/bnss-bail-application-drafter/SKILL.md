@@ -42,8 +42,10 @@ Also useful: the applicant's age, occupation, residence and family; criminal ant
       python3 scripts/date_calc.py --start <first remand date> --to <today> --period 60d
       ```
 
+      On Windows, use `py -3` in place of `python3`.
+
       Use `--period 90d` where the 90-day limit is in play. Run it both with and without `--include-start` and show both results, since whether the remand day itself counts is a point to confirm [verify]. Do not pass `--holidays` or `--weekends-closed` (they apply the Limitation Act holiday rule); if the advocate thinks a holiday rule applies, flag it [verify]. Paste the script's working into the output.
-   d. **Check the user's count.** Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. For example, "40 days in custody" against remand dates that give about 73 days must be flagged, not relied on.
+   d. **Check the user's count.** Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. For example, "40 days in custody" against remand dates that give about 73 days must be flagged, not relied on. Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
    e. **Limit passed, no charge sheet.** If the limit has passed and the charge sheet (police report) has not been filed, put a prominent **DEFAULT BAIL MAY HAVE ACCRUED** flag at the very top of the output, above any draft. Explain that the right is generally treated as lost once the charge sheet is filed before the application is made [verify], so the application should be made immediately. Hand off to `undertrial-release-screener`, and to `arrest-rights-advisor` where the arrest or remand itself is in question.
    f. **Limit close.** If the limit has not yet passed, state the date on which it will run out (each candidate date, where the period or the counting rule is open).
 3. Classify each offence from the statute: bailable or non-bailable, maximum punishment, triable by which court. Check whether the application is premature or barred (for example a pending application elsewhere).

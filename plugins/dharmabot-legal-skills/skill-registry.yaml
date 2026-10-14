@@ -4001,6 +4001,29 @@ skills:
     - legal-research-planner
     - limitation-calculator
     - pre-filing-verification-checker
+  - id: legal-workflow-orchestrator
+    display_name: Legal Workflow Orchestrator
+    short: Run an approved multi-skill matter end to end, with a ledger, STOP checkpoints, re-planning and resume
+    pack: core
+    jurisdiction: in
+    practice_area: practice-management
+    category: planning
+    language:
+    - en
+    shared_scripts: [date_calc.py]
+    default_prompt: Take this SARFAESI matter from the s.13(2) notice to the DRT application. Follow the plan we agreed, stop
+      for my approval at each draft, and keep a ledger so we can resume tomorrow.
+    hands_off_to:
+    - legal-task-router
+    - matter-plan-builder
+    - client-intake-conflict-screener
+    - client-data-redaction-checker
+    - limitation-calculator
+    - matter-deadline-tracker
+    - citation-verifier
+    - court-ai-policy-checker
+    - pre-filing-verification-checker
+    - client-status-update-drafter
   - id: efiling-bundle-defect-checker
     display_name: E-Filing Bundle and Defect Checker
     short: Compile the e-filing paper book and cure registry objections before refiling

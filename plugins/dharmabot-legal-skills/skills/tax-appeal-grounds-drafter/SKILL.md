@@ -33,7 +33,7 @@ Also useful: the assessment record, evidence filed below, and earlier appellate 
 
 1. Retrieve the current official text of the appeal provisions, rules, forms, fee schedule and pre-deposit rules for the forum, and any CBDT or CBIC instruction on stay. Record versions and dates. Do not state pre-deposit percentages or fees from memory.
 2. Compute limitation with `limitation-calculator`. If late, draft a condonation application with documented reasons.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 3. Choose the route: appeal, revision, rectification, writ, or a dispute-resolution scheme. Explain why in a short table.
 4. Draft a neutral statement of facts.
 5. Draft grounds: concise, numbered, one issue each, with general and alternative grounds. Cover jurisdiction, limitation, natural justice, merits, and interest and penalty.

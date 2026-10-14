@@ -33,7 +33,7 @@ Also useful: earlier correspondence, audit reports, and the supplier's registrat
 
 1. Retrieve the current official text of the CGST Act, the CGST Rules, the State GST Act, the relevant notifications and CBIC circulars, and record versions and dates. Do not state rates, limitation periods or penalty amounts from memory.
 2. Check procedure: pre-show-cause consultation where required, the correct form, DIN, signature, service, and the time limit for the order.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 3. Check jurisdiction and whether the extended period is properly invoked. Fraud, wilful misstatement or suppression must be specifically alleged and supported.
 4. Answer each allegation with documents. For ITC denial, cover receipt of goods or services, payment, tax paid by supplier, and reflection in returns. Raise bona fide purchaser and supplier default arguments only where the record supports them, and search for current authority.
 5. Check the tax computation line by line against the client's records. Do not accept or add figures that the documents do not support.

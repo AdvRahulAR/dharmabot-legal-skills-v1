@@ -31,7 +31,7 @@ Produce resolutions, notices and minutes that match the company's articles, the 
    - matters needing an ordinary or special resolution;
    - matters reserved for investors under the SHA and AOA.
 3. Check the board mechanics: notice period and mode, quorum (including interested directors who cannot count), video-conferencing rules, and the chair's role.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 4. For general meetings, draft the notice with the explanatory statement (believed to be section 102; confirm). Disclose each director's and KMP's interest and the material facts. For a preferential allotment, include the disclosures required by the private placement and preferential issue rules.
 5. Draft resolutions in operative form ("RESOLVED THAT ... RESOLVED FURTHER THAT ..."), with authority to named officers to file forms and sign documents.
 6. Draft minutes from the inputs only. Follow SS-1 or SS-2 on contents, signing and the time for entry. Mark any gap `[input needed]`.

@@ -37,7 +37,7 @@ Mark as **blocking**:
 5. Section 12A: either mediation was exhausted (attach the report), or the plaint genuinely seeks urgent interim relief. Test urgency on the facts. Courts look through artificial urgency. For example, see Patil Automation Pvt Ltd v Rakheja Engineers Pvt Ltd (Supreme Court, 2022) on the mandatory nature of section 12A; confirm current treatment and later authority.
 6. Pleading checks: statement of truth in the prescribed form; documents disclosure affidavit; list of documents in power and possession; verification; Order VII particulars.
 7. Court fee and limitation: confirm with `state-court-fee-calculator` and `limitation-calculator`.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 8. Practice directions: e-filing format, page limits, case management hearing preparation, and any High Court-specific annexures.
 
 ## Output

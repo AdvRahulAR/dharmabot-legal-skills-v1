@@ -34,7 +34,7 @@ Also useful: correspondence on disputes, interest terms, and related-party infor
 1. Retrieve the current official text of the IBC, the relevant regulations and the prescribed claim forms, and IBBI circulars on claims. Record versions and dates.
 2. Identify the correct form for the category. Do not rely on a remembered form letter.
 3. Compute the claim to the insolvency commencement date. Show principal, contractual or statutory interest, and deductions such as advances and set-off. Hand off complex interest to `damages-interest-calculator`.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 4. Identify security interest held and attach proof of creation and registration.
 5. Build the annexure index and the affidavit or verification.
 6. For verification: check each claim against books and documents; classify as financial, operational or other; flag related parties (who are excluded from CoC voting); mark contingent or disputed parts; and record admitted, rejected and pending amounts with reasons.

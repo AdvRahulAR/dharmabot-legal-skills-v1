@@ -35,7 +35,7 @@ Also useful: the guideline, ready-reckoner or fair value notified for the proper
 5. Apply the rate and show the arithmetic. Apply a concession only if every condition is met, and say which fact meets each condition.
 6. Compute the registration fee and any surcharge, cess or metro levy the State charges.
 7. For an instrument executed outside the State or outside India, retrieve the time limit for stamping after it is received in the State, and any authentication needed before registration. Hand off foreign execution formalities to `document-legalisation-planner`.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 8. State the consequences of under-stamping (impounding, penalty) in general terms, citing the provisions retrieved.
 
 ## Output

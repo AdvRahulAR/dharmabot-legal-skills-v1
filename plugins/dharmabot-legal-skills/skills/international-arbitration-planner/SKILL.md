@@ -39,7 +39,7 @@ Also useful: the client's preferences on cost, speed, confidentiality, language 
    - Whether an emergency arbitrator's order from a foreign seat is enforceable in India. Current authority supports enforcing it for India-seated arbitrations; foreign-seated orders generally need a fresh s.9 application. Do not rely on draft amendment Bills (such as a proposed emergency-arbitrator provision) unless enacted.
 5. **Draft or review the clause.** Cover the institution and rules, seat (distinct from venue), number and appointment of arbitrators, language, governing law of the contract and of the arbitration agreement, confidentiality, interim relief carve-out, and multi-contract or multi-party wording. Remove pathological wording, such as mixing up seat and venue, naming an institution that no longer exists, or giving the parties an "option" to arbitrate.
 6. **Timeline.** For a live dispute, set out notice, constitution, statements, hearing and award, with limitation checks via `limitation-calculator`.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 
 ## Output
 

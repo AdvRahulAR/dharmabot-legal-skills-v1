@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- New `legal-workflow-orchestrator` (core pack) runs an approved multi-skill plan end to end: matter ledger, STOP checkpoints, hand-off checks after each skill, parallel steps where inputs are independent, re-planning and resume. `legal-task-router` now hands approved plans to it. `-orchestrator` is a new allowed role suffix.
+
 ## 0.1.1 (2026-10-15), alpha
 
 Fixes from live testing. Every legal point added is hedged or tagged [verify] and needs review by an enrolled advocate.

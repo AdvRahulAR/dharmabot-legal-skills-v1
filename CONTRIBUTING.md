@@ -12,7 +12,7 @@ Thank you for helping. This project is most useful when practising advocates che
 
 ## Writing or editing a skill
 
-1. Create `plugins/dharmabot-legal-skills/skills/<name>/SKILL.md`. Use lowercase-hyphen names ending in a role: `-drafter`, `-reviewer`, `-analyst`, `-calculator`, `-checker`, `-planner`, `-formatter`, `-screener`, `-verifier`, `-mapper`, `-coder`, `-builder`, `-tracker`, `-summariser`, `-advisor` or `-router`.
+1. Create `plugins/dharmabot-legal-skills/skills/<name>/SKILL.md`. Use lowercase-hyphen names ending in a role: `-drafter`, `-reviewer`, `-analyst`, `-calculator`, `-checker`, `-planner`, `-formatter`, `-screener`, `-verifier`, `-mapper`, `-coder`, `-builder`, `-tracker`, `-summariser`, `-advisor`, `-router` or `-orchestrator`.
 2. Frontmatter has only `name` and `description`. The description has three parts: what the skill does; when to use it, in the words a lawyer would type; and "Do not use ..." with the skill to use instead. Keep it under about 600 characters.
 3. Body sections in this order: draft notice line, `## Purpose`, `## Jurisdiction gate`, `## Temporal gate` (criminal and procedure skills), `## Required inputs` (mark **blocking** inputs), `## Method` (step 1 retrieves the current official text), `## Output`, `## Verification` (optional), and `## Guardrails` (or `## Guardrails and hand-offs`).
 4. Never put rates, fees, income ceilings or section numbers in a skill as settled facts. If you mention a number to help orientation, say "believed to be ... confirm from the source".
@@ -28,7 +28,7 @@ Thank you for helping. This project is most useful when practising advocates che
    python3 -m unittest discover tests
    ```
 
-9. Add at least one output case and one gate case to `evals/` (the validator checks this).
+9. Add at least one output case and one gate case to `evals/` (the validator checks this). You can run your cases with `scripts/run_evals.py` (see `evals/README.md`); that tool calls Claude, but skill scripts themselves stay standard-library only with no network.
 
 ## Rules
 

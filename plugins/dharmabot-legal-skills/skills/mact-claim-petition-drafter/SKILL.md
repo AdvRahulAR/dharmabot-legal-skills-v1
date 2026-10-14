@@ -33,7 +33,7 @@ Also useful: insurance policy, driving licence, permit, eyewitness details, sala
 
 1. Retrieve the current official text of the Motor Vehicles Act, the State MV rules, the central rules on the Detailed Accident Report, and any Supreme Court directions on the claims process. Record versions and dates.
 2. Check limitation. The 2019 amendment is believed to set six months from the accident; confirm the text and current authority on its application. Compute with `limitation-calculator`.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 3. Build the facts from the record. Identify the owner, driver and insurer as respondents.
 4. Compute compensation in a table:
    - income from proof only;

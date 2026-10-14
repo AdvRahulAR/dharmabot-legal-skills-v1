@@ -89,7 +89,7 @@ def main():
                 err(skill, f"mentions {ref} but the file does not exist")
         for other in re.findall(r"`([a-z0-9]+(?:-[a-z0-9]+){2,})`", body):
             if other.endswith(("-drafter", "-analyst", "-calculator", "-checker", "-reviewer", "-formatter",
-                               "-screener", "-verifier", "-planner", "-mapper", "-coder")) and not (SKILLS / other).is_dir():
+                               "-screener", "-verifier", "-planner", "-mapper", "-coder", "-orchestrator")) and not (SKILLS / other).is_dir():
                 err(skill, f"hands off to unknown skill {other}")
         if name not in reg_ids:
             err(skill, "not listed in skill-registry.yaml")
@@ -131,7 +131,7 @@ def main():
         for ref in re.findall(r"`([a-z0-9]+(?:-[a-z0-9]+)+)`", wf.read_text(encoding="utf-8")):
             if ref.endswith(("-drafter", "-analyst", "-calculator", "-checker", "-reviewer", "-formatter", "-screener",
                              "-verifier", "-planner", "-mapper", "-coder", "-builder", "-tracker", "-summariser",
-                             "-advisor", "-router")) and not (SKILLS / ref).is_dir():
+                             "-advisor", "-router", "-orchestrator")) and not (SKILLS / ref).is_dir():
                 err(wf, f"names unknown skill {ref}")
     for img in ["banner", "pack-map", "skill-anatomy", "workflow-civil-suit", "install"]:
         if not (ROOT / "docs" / "images" / f"{img}.png").exists():

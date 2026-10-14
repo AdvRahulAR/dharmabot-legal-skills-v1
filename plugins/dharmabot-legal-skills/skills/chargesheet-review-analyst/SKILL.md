@@ -32,7 +32,7 @@ Also useful: the FIR, case diary extracts supplied, earlier bail orders and the 
 3. Build an ingredient matrix: each offence, each ingredient, the evidence for it, and its page.
 4. Build a witness table: each witness, what they saw, when their statement was recorded, and contradictions with others and with documents.
 5. Check investigation steps: delay in FIR or statements; independent witnesses at seizure; mandatory videography where required; sealing and forwarding to the laboratory; chain of custody; test identification; site plan; arrest compliance.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 6. Check legal preconditions: sanction for prosecution, special-statute approvals, and limitation for taking cognizance where applicable.
 7. Check electronic evidence: what device, who extracted it, hash and certificate status. Hand off certificate issues to `bsa-electronic-evidence-certificate-drafter`.
 8. Check missing documents the accused is entitled to, and plan an application for them.

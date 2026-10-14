@@ -32,7 +32,7 @@ Mark as **blocking**:
 1. Retrieve the current official text of the Consumer Protection Act, 2019 provisions on appeals, revision, review and enforcement, and the procedure regulations of the State and National Commissions. Record the version and date.
 2. Choose the remedy and state why it fits. Revision is usually limited to jurisdictional error or material irregularity. Review is limited to an error apparent on the record.
 3. Compute limitation from the receipt of the order with `limitation-calculator`. If late, draft a condonation application with a dated explanation.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 4. Pre-deposit: an opposite party appealing against an award must deposit a statutory share of the amount ordered (believed to be 50 percent under the 2019 Act, without the monetary caps the 1986 Act had; confirm the current text for each forum). Show the computation.
 5. Draft grounds tied to the order and the record. Flag any point not raised below; new facts usually need an application for additional evidence.
 6. Draft a stay application with reasons and an offer of terms.

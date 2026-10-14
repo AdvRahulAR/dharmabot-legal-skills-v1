@@ -32,7 +32,7 @@ Also useful: known dates (next hearing, filing deadlines), fee model and budget 
 2. Break each stage into tasks with a deliverable, an owner and an effort estimate.
 3. Mark dependencies (for example no written statement before receipt of documents) and identify the critical path.
 4. Add dates only where they are given or computed by `limitation-calculator`. Otherwise show durations, not dates.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 5. Build the cost estimate stage by stage: professional fees, counsel fees, court fees (from `state-court-fee-calculator`), stamp duty, expert, travel and translation. Give a range and state the assumptions behind it.
 6. Build the RAID log:
    - Risks: event, likelihood, impact, mitigation, owner.

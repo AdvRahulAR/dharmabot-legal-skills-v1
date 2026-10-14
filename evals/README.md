@@ -30,4 +30,15 @@ v0.1 evals are run by hand before each release. For each case:
 2. Start a fresh session, paste the `prompt` and attach any `fixtures`.
 3. Mark each `must` and `must_not` line as pass or fail, and record the results in the release notes.
 
-An automated runner (headless Claude Code and Codex CLI with a grader model, plus exact checks for numbers) is planned for v0.5. Contributions are welcome.
+## Automated runner
+
+`scripts/run_evals.py` runs cases through headless Claude Code with the local plugin loaded, then grades each one. It checks that the expected skill fired (a `trigger` case may set `should_trigger: false` for a near-miss) and uses a second model call to mark every `must` and `must_not` line pass or fail with a reason. The grader is a model, so spot-check its verdicts.
+
+```bash
+python3 scripts/run_evals.py --dry-run --pack criminal-bnss      # list cases and a rough cost
+python3 scripts/run_evals.py --pack criminal-bnss --pack cross-border
+python3 scripts/run_evals.py --case bail-date-mismatch --workers 1
+python3 scripts/run_evals.py --out eval-results/run1 --resume --pack core
+```
+
+On Windows use `py -3` in place of `python3`. Results (transcripts, `results.json`, `report.md`) go to `eval-results/`, which is not committed. Each case costs API usage, roughly $0.15 to $0.60. Codex is not yet supported by the runner.

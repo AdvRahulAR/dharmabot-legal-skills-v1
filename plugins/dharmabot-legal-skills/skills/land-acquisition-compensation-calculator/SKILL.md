@@ -32,7 +32,7 @@ Also useful: sale deeds of comparable lands, the State guideline value, crops, t
 3. Apply the multiplier for rural land as notified by the State (the Act allows a range; confirm). Urban land is believed to use a factor of one (confirm against the official text and the State notification).
 4. Add the value of assets attached: buildings, trees, crops, wells.
 5. Add solatium (believed to be 100% of the total under the 2013 Act; confirm) and additional amount or interest for the period stated in the Act.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 6. Compute R&R entitlements under the Act's schedules or the State scheme.
 7. For National Highways and other special statutes, apply that statute's own procedure, including the arbitrator appointed by the Central Government for disputed amounts, and note the extent to which the 2013 Act's compensation principles now apply to it (confirm current notification and authority).
 8. Show every step as a table with the source of each number. Mark assumptions.

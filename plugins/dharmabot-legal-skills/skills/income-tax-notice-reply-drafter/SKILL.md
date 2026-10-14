@@ -33,7 +33,7 @@ Also useful: earlier assessment orders, books of account, bank statements, and c
 
 1. Retrieve the current official text of the applicable Act, rules, CBDT notifications and instructions, and the faceless scheme. Record versions and dates. Hand off section mapping to `income-tax-act-2025-concordance-mapper`.
 2. Check validity: DIN, correct authority, service, time limit, approval or sanction from the right authority, and the pre-notice inquiry and opportunity where required.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 3. For reassessment, test whether the information relied on meets the statutory standard, and whether the monetary and time conditions for older years are met.
 4. Decide whether a writ is stronger than a reply (for example notice barred by limitation, or no valid sanction). Search for and read current Supreme Court and jurisdictional High Court authority; tag unread authority `[verify]`.
 5. Draft the reply: preliminary objections, then point-wise answers with documents.

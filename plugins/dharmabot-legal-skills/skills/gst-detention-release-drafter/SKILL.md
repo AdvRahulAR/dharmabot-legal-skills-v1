@@ -29,7 +29,7 @@ Also useful: GSTR-1 and books showing the supply was reported, transporter's exp
 
 1. Retrieve the current official text of the CGST Act provisions on detention and confiscation, the e-way bill rule, the MOV forms, and CBIC circulars on interception and on minor discrepancies. Record versions and dates.
 2. Check procedure first: was physical verification recorded in the right form, within time; was the detention order served; was the notice issued within time; was a hearing given. Note each lapse.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 3. Classify the defect: technical or clerical (for example a minor error in pin code or vehicle number, an expiry by a short time due to breakdown) versus no document or goods not matching.
 4. Collect CBIC guidance treating certain discrepancies as minor, and current High Court authority on bona fide lapses and intention to evade. Read before citing; tag unread items `[verify]`.
 5. Draft the reply to the notice: facts, chronology, defect explained, evidence that tax was not evaded, procedural objections, and prayer.

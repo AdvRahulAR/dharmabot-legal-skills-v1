@@ -36,7 +36,7 @@ Mark as **blocking**:
 4. Prepare the affidavit of assets and liabilities in the format the Supreme Court prescribed in Rajnesh v. Neha, adapted to the forum.
 5. Quantum model: start from net income after statutory deductions, list each dependant's reasonable needs, consider the standard of living during marriage and the claimant's own income. Show two or three scenarios with the arithmetic. Label it a negotiating and pleading aid only.
 6. Enforcement: arrears, distress warrants and sentence for wilful default, attachment of salary; check the limitation for recovering arrears with `limitation-calculator`.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 7. Search for and read current authority on quantum and earning spouses; tag anything not read `[verify]`.
 
 ## Output

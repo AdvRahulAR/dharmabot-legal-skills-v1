@@ -38,7 +38,7 @@ Also useful: last year's filings, auditor's observations, and the owner for each
 2. Build the obligation universe by domain: corporate and secretarial; direct tax; GST; labour and payroll; sector regulator; environment and pollution consents; State licences and renewals; data protection and cyber; contracts and insurance renewals.
 3. Keep only obligations confirmed for this entity's activities, size and States. Note why each applies.
 4. For each, record: trigger, frequency, due-date rule, form, portal, owner, approver, evidence of compliance, and penalty exposure (to confirm from the text).
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 5. Add event-driven items: change of directors or address, allotments, related party transactions, charge creation, new State, new licence.
 6. Mark dates that depend on notifications, extensions or yet-to-be-notified rules.
 7. Adjust for holidays and portal practice; set internal deadlines before statutory ones.

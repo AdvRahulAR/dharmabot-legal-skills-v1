@@ -1,6 +1,6 @@
 ---
 name: limitation-calculator
-description: Calculates limitation periods and procedural deadlines for Indian proceedings under the Limitation Act, 1963 and special statutes, using a bundled date-arithmetic script that excludes the first day, applies excluded periods (such as time to obtain certified copies) and moves a last day that falls on a court holiday. Use when an advocate asks "what is the last date to file", "is this appeal in time", or needs a deadline table for a matter. Do not use to decide which limitation article applies when that is disputed; flag it for the advocate.
+description: Calculates limitation periods and procedural deadlines for Indian proceedings under the Limitation Act, 1963 and special statutes, using a bundled date-arithmetic script that excludes the first day, applies excluded periods (such as time to obtain certified copies) and moves a last day that falls on a court holiday. Use when an advocate asks "what is the last date to file", "is this appeal in time", "is this within time", "when must we reply", "how many days have passed since", or gives a deadline in hours (for example a reply due within 48 hours), or needs a deadline table for a matter. Do not use to decide which limitation article applies when that is disputed; flag it for the advocate.
 ---
 
 # Limitation Calculator
@@ -32,6 +32,8 @@ Also useful: the date of applying for a certified copy and the date the copy was
        --exclude 2026-03-12:2026-03-30 --holidays holidays.txt --json
    ```
 
+   On Windows, use `py -3` in place of `python3`.
+
    - `--period` takes `30d`, `3m` or `1y`, or `6h` for a period in hours (then `--start` needs a time, such as `2026-10-15T14:30`).
    - The start date is excluded by default (`--include-start` to change).
    - `--exclude` (repeatable) adds excluded spans, inclusive, such as time taken to obtain copies.
@@ -39,7 +41,7 @@ Also useful: the date of applying for a certified copy and the date the copy was
    - Section 4 extends only the prescribed period. Do not use it to extend a condonation window or a period a special statute treats differently (for example the further 30 days believed to be under section 34(3) of the Arbitration and Conciliation Act, 1996; confirm against the official text). Check current authority for the statute in question.
    - `--to` counts the days elapsed between `--start` and that date, both with the start day excluded and with it counted.
    - The script prints its working. Paste the working into the output.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 
 4. Check conditions on any extension or exclusion relied on (for example whether a copy application was made within time).
 5. State whether delay condonation is available for this proceeding and on what test, citing the provision retrieved, if the date has passed.

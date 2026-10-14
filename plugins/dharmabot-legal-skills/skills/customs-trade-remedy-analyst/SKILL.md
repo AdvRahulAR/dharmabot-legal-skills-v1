@@ -33,7 +33,7 @@ Also useful: the bill of entry, earlier assessments, test reports and advance ru
 4. Test valuation: transaction value, related-party influence, and additions such as royalties and assists.
 5. For FTA claims, test the origin criterion (wholly obtained, value content, change in tariff heading or product-specific rule), direct consignment and documents, and the importer's duties under CAROTAR to hold origin information.
 6. Check whether anti-dumping, countervailing or safeguard duty applies to the product and origin, and its period.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 7. For a show-cause notice, test limitation, the extended period, confiscation and penalty, and draft the reply. Consider an advance ruling for future imports.
 8. For DGTR matters, outline participation steps and submissions on injury, causation and dumping margin, with data from the client.
 9. Note DGFT schemes (for example duty remission or export promotion) that may apply. Search for and read authority; tag unread authority `[verify]`.

@@ -26,7 +26,7 @@ Mark as **blocking**:
 ## Method
 
 1. Retrieve the current official text of the governing provision, any High Court amendment, and the relevant rules. Record the version and date. Confirm every section, order and rule number used in this skill against that text.
-2. Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+2. Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 3. Identify the test and apply only the record. Typical tests:
    - **Rejection of plaint:** read the plaint and its documents only; no defence material. Bars include no cause of action, undervaluation, insufficient stamp and bar by law (including limitation on the plaint's own averments).
    - **Amendment:** necessary for the real controversy; after trial starts, show due diligence (believed to be the proviso to Order VI Rule 17; confirm). Check whether a time-barred claim is being introduced.

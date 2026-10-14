@@ -389,3 +389,41 @@ cases:
     - computes the period with scripts/date_calc.py
     must_not:
     - accepts the stated count
+  - id: data-breach-trigger-within-time
+    skill: data-breach-response-planner
+    kind: trigger
+    should_trigger: true
+    prompt: Our SOC flagged a breach at 02:10 and we told CERT-In at 09:40. Were we within time?
+    must:
+    - uses data-breach-response-planner
+    - computes the gap with scripts/date_calc.py
+    must_not:
+    - states the CERT-In period as settled without a confirm note
+  - id: data-breach-trigger-near-miss
+    skill: data-breach-response-planner
+    kind: trigger
+    should_trigger: false
+    prompt: Draft a privacy notice for our new food-delivery app under the DPDP Act.
+    must:
+    - handles it as a privacy-notice task
+    must_not:
+    - uses data-breach-response-planner
+  - id: it-rules-trigger-takedown-deadline
+    skill: it-rules-intermediary-compliance-checker
+    kind: trigger
+    should_trigger: true
+    prompt: We got a takedown order from MeitY at 18:20. How long do we have to take the post down?
+    must:
+    - uses it-rules-intermediary-compliance-checker
+    - computes the deadline with scripts/date_calc.py
+    must_not:
+    - states the takedown period as settled without a confirm note
+  - id: it-rules-trigger-near-miss
+    skill: it-rules-intermediary-compliance-checker
+    kind: trigger
+    should_trigger: false
+    prompt: Review our SaaS master services agreement with a US vendor for the limitation of liability clause.
+    must:
+    - handles it as a contract review
+    must_not:
+    - uses it-rules-intermediary-compliance-checker

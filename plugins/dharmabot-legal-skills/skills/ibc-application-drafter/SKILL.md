@@ -34,7 +34,7 @@ Also useful: information utility records, the debtor's master data, earlier reco
 1. Retrieve the current official text of the IBC, the Insolvency (Application to Adjudicating Authority) Rules, the relevant forms, the default threshold notification and the NCLT Rules. Record versions and dates. Section numbers are orientation only.
 2. Confirm the debt is financial or operational debt as defined, and that default exceeds the notified threshold.
 3. Compute limitation from the date of default with `limitation-calculator`, counting acknowledgments in the balance sheet or otherwise only where documented.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 4. Operational creditor: test for a pre-existing dispute under Mobilox Innovations v. Kirusa Software (Supreme Court, 2017; confirm current treatment). If a real dispute exists, advise against IBC.
 5. Draft the demand notice (or invoice route) and track service and the debtor's reply period.
 6. Draft the application in the prescribed form, with the default record (from an information utility where available), the proposed IRP's consent, and fee proof.

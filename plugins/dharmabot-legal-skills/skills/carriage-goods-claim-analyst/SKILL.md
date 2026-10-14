@@ -35,7 +35,7 @@ Also useful: survey report, photos, the carrier's contract and terms, insurance 
    - **Multimodal**: operator liability, limits, notice period and the time to bring a suit or arbitration.
    - **Warehousing**: bailee's duty of care and contract limits.
 4. Time bars: notice periods can extinguish a claim. Compute each with `limitation-calculator`, from the date of delivery or expected delivery.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 5. Subrogation: if the insurer paid, check the letter of subrogation and whose name the claim proceeds in.
 6. Choose the forum: Railway Claims Tribunal (believed to have exclusive jurisdiction over railway claims; confirm against the official text), civil court, commercial court (by value), consumer commission (if the claimant is a consumer), or arbitration under the contract.
 7. Search for and read current authority on disputed points. Tag anything not read in full `[verify]`.

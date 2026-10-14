@@ -30,7 +30,7 @@ Also useful: the employee's prior record, any internal investigation report, and
 1. Retrieve the current official text of the applicable standing orders (or the model standing orders under the IR Code), the IR Code provisions on suspension and subsistence allowance, and State rules. Record the version and date.
 2. Check that the alleged conduct matches a defined act of misconduct.
 3. Draft the show-cause notice: specific facts, the rule breached, documents enclosed, and time to reply.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 4. If a reply is unsatisfactory, draft the charge-sheet: separate, precise charges; list of documents and witnesses; date of inquiry.
 5. If suspension is needed, draft the order with the subsistence allowance as required by the Code or standing orders. Confirm the rates and the time limit for concluding the inquiry.
 6. Draft the order appointing an independent inquiry officer and a presenting officer. Allow a co-worker defence representative as the rules permit.

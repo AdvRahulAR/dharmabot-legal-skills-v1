@@ -18,13 +18,13 @@ The collection covers the work of an Indian law practice end to end:
 
 <!-- CATALOGUE:START -->
 
-**317 skills in 39 packs.** The full list with one line per skill is in [docs/CATALOGUE.md](docs/CATALOGUE.md).
+**318 skills in 39 packs.** The full list with one line per skill is in [docs/CATALOGUE.md](docs/CATALOGUE.md).
 
 | Pack | Skills | Install with |
 | --- | --- | --- |
 | [Practice management](docs/CATALOGUE.md#practice-management) | 12 | `--pack practice-management` |
 | [Legal research and writing](docs/CATALOGUE.md#legal-research-and-writing) | 8 | `--pack legal-research-writing` |
-| [Core tools](docs/CATALOGUE.md#core-tools) | 3 | `--pack core` |
+| [Core tools](docs/CATALOGUE.md#core-tools) | 4 | `--pack core` |
 | [AI practice safeguards](docs/CATALOGUE.md#ai-practice-safeguards) | 4 | `--pack ai-practice-safeguards` |
 | [Review and analysis](docs/CATALOGUE.md#review-and-analysis) | 5 | `--pack review-analysis` |
 | [Civil and commercial litigation](docs/CATALOGUE.md#civil-and-commercial-litigation) | 17 | `--pack civil-litigation` |
@@ -98,7 +98,7 @@ Ten recipes in [`workflows/`](workflows/) chain skills for common matters, with 
 - employee termination and dispute;
 - cross-border dispute and enforcement.
 
-The `legal-task-router` skill picks the right skills, or the right recipe, for a request.
+The `legal-task-router` skill picks the right skills, or the right recipe, for a request. The `legal-workflow-orchestrator` skill then runs the approved plan end to end: it keeps a matter ledger, enforces the STOP checkpoints, re-plans when facts change and resumes in a later session.
 
 <p align="center">
   <img src="docs/images/workflow-civil-suit.png" alt="Workflow from intake to the first hearing of a civil suit: skills in six phases, with advocate STOP checkpoints, ending with pre-filing verification and the hearing-day brief." width="100%">
@@ -134,25 +134,29 @@ Or copy the skills into your user folder:
 
 ```bash
 git clone https://github.com/AdvRahulAR/dharmabot-legal-skills-v1
-cd dharmabot-legal-skills-v1 && ./scripts/install.sh --codex
+cd dharmabot-legal-skills-v1 && python3 scripts/install.py --codex
 ```
 
 ### Google Antigravity
 
 ```bash
 git clone https://github.com/AdvRahulAR/dharmabot-legal-skills-v1
-cd dharmabot-legal-skills-v1 && ./scripts/install.sh --antigravity
+cd dharmabot-legal-skills-v1 && python3 scripts/install.py --antigravity
 ```
 
-For one project only, use `./scripts/install.sh --project /path/to/project`. This installs into `.claude/skills/` and `.agents/skills/` in that project; Codex and Antigravity both read `.agents/skills/`.
+**Windows:** use `py -3` in place of `python3` (for example `py -3 scripts\install.py --antigravity`). The installer is plain Python and needs no Git Bash. The older `scripts/install.sh` still works and simply calls `install.py`.
+
+The separate Antigravity command-line tool is reported to read `~/.gemini/antigravity-cli/skills/`. `install.py --antigravity-cli` installs there, but that path comes from third-party sources, so check it against the CLI's own documentation.
+
+For one project only, use `python3 scripts/install.py --project /path/to/project`. This installs into `.claude/skills/` and `.agents/skills/` in that project; Codex and Antigravity both read `.agents/skills/`.
 
 ### Install only the packs you use (recommended)
 
 ```bash
-./scripts/install.sh --all --pack court-craft --pack civil-litigation --pack ai-practice-safeguards --pack core
+python3 scripts/install.py --all --pack court-craft --pack civil-litigation --pack ai-practice-safeguards --pack core
 ```
 
-With all 317 skills installed, some agents shorten skill descriptions to fit them in, which makes it harder to pick the right skill. Always include `core` and `ai-practice-safeguards`.
+With all 318 skills installed, some agents shorten skill descriptions to fit them in, which makes it harder to pick the right skill. Always include `core` and `ai-practice-safeguards`.
 
 ## Using the skills
 

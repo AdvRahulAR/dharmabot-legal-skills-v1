@@ -25,7 +25,7 @@ Also useful: complaints and adverse event reports, the company's recall SOP, dis
 
 1. Retrieve the current official text of the applicable recall regulation, rules, guidelines and forms (FSSAI, CDSCO, MoRTH or CCPA websites and eGazette). Record versions and dates.
 2. Decide whether the recall is mandatory or voluntary, and who must be told and by when. Confirm every timeline from the current text.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 3. Classify the hazard (recall class or level) using the regulator's criteria, with reasons.
 4. Set the recall depth: consumer, retail, or wholesale level.
 5. Draft notices:

@@ -32,7 +32,7 @@ Mark as **blocking**:
 5. Draft reliefs the tribunal may grant (setting aside allotments, restoring directorship, regulating affairs, buy-out, investigation). Keep them specific.
 6. Draft an interim application: status quo on shareholding, restraint on further allotment or asset sale, and inspection.
 7. Check limitation and delay. Whether the Limitation Act applies and how is a live point; search for current authority and tag unread cases `[verify]`.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 8. For a respondent, draft the reply and maintainability objections: threshold, delay, arbitration, legitimate business decisions, and the petitioner's own conduct.
 
 ## Output

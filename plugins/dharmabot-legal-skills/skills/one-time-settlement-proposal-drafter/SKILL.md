@@ -35,7 +35,7 @@ Also useful: the lender's published OTS scheme, security valuation, MSME registr
 3. Explain the cause of default factually. Do not make admissions beyond what is necessary and true.
 4. Ask for withdrawal or suspension of recovery steps on acceptance, release of security and guarantors, and a no-dues certificate. Note credit bureau reporting.
 5. For a wilful defaulter or fraud notice, check the process the directions and current Supreme Court authority require (for example State Bank of India v. Rajesh Agarwal, Supreme Court, 2023, on the right to be heard before fraud classification; confirm current treatment). Ask for documents relied on, including any forensic audit, and a personal hearing.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 6. Answer each allegation with documents. Distinguish inability to pay from wilful refusal and diversion.
 7. Search for and read current authority on any contested point; tag unread authority `[verify]`.
 

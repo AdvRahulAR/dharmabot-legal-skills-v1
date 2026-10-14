@@ -27,7 +27,7 @@ Mark as **blocking**:
 
 1. Retrieve the current official text of the governing Act and State Family Court rules. Record the version and date.
 2. First motion petition: marriage, separation, inability to live together, free consent, no collusion, settlement terms, and prayer.
-   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
 3. Settlement agreement:
    - permanent alimony: amount, instalments tied to the first and second motions, mode of payment, and full and final wording;
    - stridhan and gifts: list and return;

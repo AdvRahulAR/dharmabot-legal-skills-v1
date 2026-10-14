@@ -559,3 +559,23 @@ cases:
     - asks for the time of service before computing an hours period
     must_not:
     - assumes a time of service
+  - id: limitation-trigger-hours
+    skill: limitation-calculator
+    kind: trigger
+    should_trigger: true
+    prompt: Opposite side served us at 11:00 today and we have to reply within 72 hours. When exactly is
+      the cut-off?
+    must:
+    - uses limitation-calculator
+    - computes the deadline with scripts/date_calc.py using an hours period
+    must_not:
+    - computes the deadline by mental arithmetic
+  - id: limitation-trigger-near-miss
+    skill: limitation-calculator
+    kind: trigger
+    should_trigger: false
+    prompt: Explain in two paragraphs what the doctrine of limitation is and why it exists.
+    must:
+    - gives a short conceptual explanation
+    must_not:
+    - uses limitation-calculator
