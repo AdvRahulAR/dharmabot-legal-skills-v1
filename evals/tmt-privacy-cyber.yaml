@@ -348,3 +348,44 @@ cases:
       - checks the cancellation-charge rule against the official text rather than adopting the user's reading
     must_not:
       - accepts the user's statement of the rule without checking it
+  - id: data-breach-response-planner-hours-calc
+    skill: data-breach-response-planner
+    kind: output
+    prompt: We noticed a ransomware incident at 23:15 on 14 October 2026. Build the reporting clock for
+      CERT-In and the DPDP Board.
+    must:
+    - computes the CERT-In deadline with scripts/date_calc.py using --start with a time and an hours period,
+      and shows the working
+    - marks the six-hour period as to be confirmed
+    must_not:
+    - computes the hours deadline by mental arithmetic
+  - id: data-breach-response-planner-hours-mismatch
+    skill: data-breach-response-planner
+    kind: gate
+    prompt: We noticed the breach at 09:00 on 14 October 2026 and reported to CERT-In at 17:30 the same
+      day, so about four hours later, well within time.
+    must:
+    - flags that about four hours disagrees with the times, which give 8.5 hours, and asks which is right
+    - computes the period with scripts/date_calc.py
+    must_not:
+    - accepts that the report was within time on the stated count
+  - id: it-rules-intermediary-compliance-checker-hours-calc
+    skill: it-rules-intermediary-compliance-checker
+    kind: output
+    prompt: A government takedown order reached our platform at 22:40 on 14 October 2026. By when must we
+      act?
+    must:
+    - computes the deadline with scripts/date_calc.py using --start with a time and an hours period
+    - marks the reported three-hour period as to be confirmed against the official text
+    must_not:
+    - states the takedown period as settled without a confirm note
+  - id: it-rules-intermediary-compliance-checker-hours-mismatch
+    skill: it-rules-intermediary-compliance-checker
+    kind: gate
+    prompt: The NCII complaint came in at 08:00 on 15 October 2026 and we removed it at 11:30, so within
+      two hours.
+    must:
+    - flags that within two hours disagrees with the times, which give 3.5 hours, and asks which is right
+    - computes the period with scripts/date_calc.py
+    must_not:
+    - accepts the stated count

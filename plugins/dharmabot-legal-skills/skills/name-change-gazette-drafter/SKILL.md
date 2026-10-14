@@ -1,6 +1,6 @@
 ---
 name: name-change-gazette-drafter
-description: Prepares the full Indian name-change set, covering the affidavit, newspaper advertisements, the application to the Department of Publication for the Gazette of India (Part IV) or the State Gazette, change for a minor through a guardian, and the order of updating PAN, Aadhaar, passport, school, university and bank records. Use when a client wants to change a first name or surname after marriage, divorce, adoption or by choice and needs the papers and steps. Do not use for passport refusals or citizenship issues; use oci-citizenship-passport-advisor.
+description: Prepares the full Indian name-change set, covering the affidavit, newspaper advertisements, the application to the Department of Publication for the Gazette of India (believed to be Part IV) or the State Gazette, change for a minor through a guardian, and the order of updating PAN, Aadhaar, passport, school, university and bank records. Use when a client wants to change a first name or surname after marriage, divorce, adoption or by choice and needs the papers and steps. Do not use for passport refusals or citizenship issues; use oci-citizenship-passport-advisor.
 ---
 
 # Name Change and Gazette Drafter

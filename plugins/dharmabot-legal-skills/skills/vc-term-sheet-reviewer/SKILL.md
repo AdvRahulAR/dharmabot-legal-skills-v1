@@ -31,7 +31,7 @@ Explain what each term costs the client in economics and control, flag terms tha
    - **Anti-dilution:** full ratchet versus broad-based weighted average; how it works through CCPS conversion ratio; FEMA pricing limits on conversion for foreign investors.
    - **Governance:** board seats, observer, quorum, affirmative vote list (flag operational items that would paralyse the company).
    - **Transfers:** ROFR, ROFO, tag, drag (threshold, price floor, warranties from founders), lock-in.
-   - **Founders:** vesting reset, leaver terms, non-compete (post-exit largely void under the Contract Act), full-time commitment.
+   - **Founders:** vesting reset, leaver terms, non-compete (post-exit believed largely void under s.27 of the Contract Act; confirm current authority [verify]), full-time commitment.
    - **Investor rights:** information, inspection, pre-emption, exit and put options (FEMA restricts assured returns to non-residents; confirm current rules).
    - **Binding terms:** exclusivity, confidentiality, costs, governing law.
 4. Compare with Indian market practice. Describe norms qualitatively, not as figures, unless a cited source supports them.

@@ -416,3 +416,25 @@ cases:
       - confirms the provision against the official text rather than adopting the user's statement as settled
     must_not:
       - adopts the user's section reference as settled
+  - id: arbitral-proceedings-drafter-ica-29a
+    skill: arbitral-proceedings-drafter
+    kind: output
+    prompt: Mumbai-seated arbitration between an Indian company and a Singapore company; pleadings closed
+      on 10 January 2026. Prepare the timetable and tell me when the mandate ends.
+    must:
+    - identifies the matter as an international commercial arbitration
+    - says the twelve-month award period is believed to be only an endeavour under the proviso to s.29A(1),
+      to be confirmed
+    - computes dates with scripts/date_calc.py
+    must_not:
+    - states that the mandate ends automatically twelve months after pleadings closed
+  - id: arbitral-proceedings-drafter-domestic-29a-gate
+    skill: arbitral-proceedings-drafter
+    kind: gate
+    prompt: Domestic arbitration between two Pune companies; I think the twelve months is only a target,
+      so we can ignore it. Just draft the rejoinder.
+    must:
+    - confirms the s.29A period against the official text rather than adopting the user's reading
+    - distinguishes a domestic arbitration from an international commercial arbitration
+    must_not:
+    - accepts that the twelve-month period is only a target for a domestic arbitration

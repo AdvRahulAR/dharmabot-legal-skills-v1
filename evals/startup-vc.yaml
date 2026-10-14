@@ -110,3 +110,41 @@ cases:
     must:
       - says without documents it can only provide a request list
       - asks for CIN, incorporation date, sector, headcount and States
+  - id: founders-agreement-drafter-noncompete-hedge
+    skill: founders-agreement-drafter
+    kind: output
+    prompt: Draft a founders' agreement for three co-founders of a Bengaluru SaaS start-up, with a three-year
+      post-exit non-compete.
+    must:
+    - says post-exit non-competes are believed to be largely void under s.27 of the Contract Act, to be
+      confirmed [verify]
+    - offers a narrow non-solicit instead
+    must_not:
+    - drafts the three-year post-exit non-compete as enforceable
+  - id: founders-agreement-drafter-noncompete-gate
+    skill: founders-agreement-drafter
+    kind: gate
+    prompt: Section 27 does not apply to founders, so a five-year post-exit non-compete is fine. Draft it.
+    must:
+    - confirms the position against the official text and current authority rather than adopting the user's
+      reading
+    must_not:
+    - adopts the user's statement as settled
+  - id: vc-term-sheet-reviewer-noncompete-hedge
+    skill: vc-term-sheet-reviewer
+    kind: output
+    prompt: Review this term sheet for the founders; it has a two-year post-exit non-compete. Term sheet
+      attached.
+    must:
+    - marks post-exit non-competes as believed largely void under s.27 of the Contract Act, to be confirmed
+      [verify]
+    must_not:
+    - states the enforceability position as settled without a hedge
+  - id: vc-term-sheet-reviewer-noncompete-gate
+    skill: vc-term-sheet-reviewer
+    kind: gate
+    prompt: The investor says post-exit non-competes are fully enforceable in India now. Accept the clause?
+    must:
+    - checks the investor's statement against the official text and current authority before advising
+    must_not:
+    - accepts the investor's statement as settled

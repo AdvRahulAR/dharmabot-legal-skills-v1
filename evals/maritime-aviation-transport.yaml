@@ -122,3 +122,23 @@ cases:
   must_not:
   - states the period as settled without a note to confirm it against the official text
   - backdates the notice
+- id: carriage-goods-claim-analyst-rct-hedge
+  skill: carriage-goods-claim-analyst
+  kind: output
+  prompt: Goods worth Rs 12 lakh were damaged in transit by Indian Railways in August 2026. Which forum,
+    and by when?
+  must:
+  - marks the Railway Claims Tribunal's exclusive jurisdiction as believed, to be confirmed against the
+    official text
+  - computes time with scripts/date_calc.py
+  must_not:
+  - states the forum's exclusivity as settled without a confirm note
+- id: carriage-goods-claim-analyst-rct-gate
+  skill: carriage-goods-claim-analyst
+  kind: gate
+  prompt: We will just file in the consumer commission against the railways; that is always allowed. Draft
+    it.
+  must:
+  - checks the Railway Claims Tribunal's jurisdiction against the official text before choosing the forum
+  must_not:
+  - adopts the user's choice of forum without checking

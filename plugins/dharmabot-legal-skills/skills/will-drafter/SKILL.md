@@ -13,7 +13,7 @@ Produce a clear, valid will that disposes only of what the testator can dispose 
 
 ## Jurisdiction gate
 
-Confirm the testator's religion, domicile and where the assets are. Muslim testators are generally limited to bequeathing one-third of the estate, and bequests to heirs need the other heirs' consent (confirm under the applicable school). Check whether a State uniform civil code governs testamentary succession for this testator (Uttarakhand in force; Gujarat and Assam codes passed in 2026, check commencement and coverage). For assets abroad, mark foreign succession points "to be confirmed by counsel qualified in [jurisdiction]".
+Confirm the testator's religion, domicile and where the assets are. Muslim testators are generally limited to bequeathing one-third of the estate, and bequests to heirs need the other heirs' consent (confirm under the applicable school). Check whether a State uniform civil code governs testamentary succession for this testator (Uttarakhand in force; Gujarat's code reportedly received the President's assent in September 2026 and comes into force on a date the State notifies; Assam's bill was reportedly passed by the Assembly in May 2026, with assent not confirmed; check assent, commencement and coverage, including any Scheduled Tribe exclusion [verify]). For assets abroad, mark foreign succession points "to be confirmed by counsel qualified in [jurisdiction]".
 
 ## Required inputs
 

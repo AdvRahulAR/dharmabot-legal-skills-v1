@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "dharmabot-legal-skills",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "source": "./plugins/dharmabot-legal-skills",
       "description": "317 skills for Indian lawyers across 39 packs: court craft, tribunals, litigation, criminal (BNS/BNSS/BSA), arbitration, contracts, corporate, startups, banking and insolvency, tax, property, family, employment, IP, technology and privacy, regulatory, public law, investigations, sector work, practice management, research, legal aid, students, all States and UTs, Indian languages and cross-border work.",
       "author": {

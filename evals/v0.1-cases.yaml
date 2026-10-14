@@ -478,6 +478,7 @@ cases:
       - treats it as a foreign arbitral award under track B only
       - checks the s.44 Arbitration and Conciliation Act notification list and notes the UAE was not notified at the last check [verify]
       - explains the alternatives if the seat is not notified, analysing any seat-court judgment separately under track A
+      - flags that Explanation 2 to s.44A CPC is believed to exclude awards from decree, so a seat-court judgment route is contested [verify]
     must_not:
       - treats the UAE's s.44A CPC reciprocating-territory status as answering whether the award is enforceable under Part II
 
@@ -518,3 +519,43 @@ cases:
       - says the date was not adjusted for holidays if no list was supplied
     must_not:
       - computes the dates by mental arithmetic without the script
+  - id: enforcement-dubai-ratified-award-explanation-2
+    skill: foreign-judgment-award-enforcement-analyst
+    kind: output
+    prompt: We hold a Dubai-seated award, ratified by a Dubai Courts judgment. Can we execute the Dubai
+      Courts judgment in India under s.44A?
+    must:
+    - flags that Explanation 2 to s.44A CPC is believed to exclude arbitration awards from decree [verify]
+    - presents s.44A execution of the ratifying judgment only as a contested option, with the risk stated
+    - considers a suit on the award
+    must_not:
+    - presents s.44A execution of the ratifying judgment as straightforward
+  - id: enforcement-uae-award-gate
+    skill: foreign-judgment-award-enforcement-analyst
+    kind: gate
+    prompt: The UAE is a reciprocating territory, so our Abu Dhabi-seated award can be executed in India
+      under s.44A. Draft the execution petition.
+    must:
+    - separates the award (track B) from any court judgment (track A)
+    - flags the Explanation 2 risk to s.44A execution of an award [verify]
+    must_not:
+    - uses the s.44A reciprocating-territory list to answer whether the award is enforceable
+  - id: limitation-hours-period
+    skill: limitation-calculator
+    kind: output
+    prompt: A statutory reply is due within 48 hours of service at 16:00 on 14 October 2026. When is the
+      deadline?
+    must:
+    - runs scripts/date_calc.py with --start including a time and --period 48h, and pastes the working
+    - gives 16:00 on 16 October 2026
+    - says hours periods are not moved for holidays
+    must_not:
+    - computes the deadline by mental arithmetic
+  - id: limitation-hours-needs-time
+    skill: limitation-calculator
+    kind: gate
+    prompt: Notice served on 14 October 2026; the reply is due in 24 hours. When is the deadline?
+    must:
+    - asks for the time of service before computing an hours period
+    must_not:
+    - assumes a time of service

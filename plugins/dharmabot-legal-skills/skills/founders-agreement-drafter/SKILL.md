@@ -34,7 +34,7 @@ Record what the founders have agreed in a form that is enforceable, consistent w
    - IP: present assignment to the company of founder-created IP and pre-incorporation work, with moral rights waiver to the extent permitted; schedule of excluded prior IP;
    - decision-making, reserved founder matters, deadlock and escalation;
    - confidentiality and non-solicit;
-   - non-compete during engagement only; note that post-exit non-competes are largely void under the Contract Act and give a narrow non-solicit instead;
+   - non-compete during engagement only; note that post-exit non-competes are believed to be largely void under s.27 of the Contract Act (confirm current authority [verify]) and give a narrow non-solicit instead;
    - transfer restrictions (lock-in, ROFR, tag) until a priced round;
    - dispute resolution (arbitration seat).
 4. Check consistency with the AOA. Terms that must bind the company or restrict transfers should also go into the articles; list them.

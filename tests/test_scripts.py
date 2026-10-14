@@ -111,6 +111,37 @@ class DateCalcTests(unittest.TestCase):
             date_calc.main(["--start", "2026-03-10", "--period", "90d", "--json"])
         self.assertEqual(json.loads(buf.getvalue())["last_day"], "2026-06-08")
 
+    def test_hours_period(self):
+        r = date_calc.compute(dt.datetime(2026, 10, 15, 14, 30), "6h")
+        self.assertEqual(r["last_day"], "2026-10-15T20:30")
+
+    def test_hours_cross_midnight(self):
+        r = date_calc.compute(dt.datetime(2026, 10, 15, 22, 0), "6h")
+        self.assertEqual(r["last_day"], "2026-10-16T04:00")
+        self.assertTrue(any("not moved for holidays" in s for s in r["working"]))
+
+    def test_hours_needs_time(self):
+        with self.assertRaises(ValueError):
+            date_calc.compute(D(2026, 10, 15), "6h")
+
+    def test_hours_reject_holidays(self):
+        with self.assertRaises(ValueError):
+            date_calc.compute(dt.datetime(2026, 10, 15, 9, 0), "2h", holidays=[D(2026, 10, 15)])
+
+    def test_days_with_time_start_unchanged(self):
+        self.assertEqual(self.last(dt.datetime(2026, 3, 10, 18, 0), "90d"), "2026-06-08")
+
+    def test_elapsed_hours(self):
+        r = date_calc.elapsed(dt.datetime(2026, 10, 15, 22, 0), dt.datetime(2026, 10, 16, 4, 30))
+        self.assertEqual(r["hours_elapsed"], 6.5)
+
+    def test_elapsed_mixed_rejected(self):
+        with self.assertRaises(ValueError):
+            date_calc.elapsed(dt.datetime(2026, 10, 15, 22, 0), D(2026, 10, 16))
+
+    def test_parse_date_with_time(self):
+        self.assertEqual(date_calc.parse_date("2026-10-15T14:30"), dt.datetime(2026, 10, 15, 14, 30))
+
 
 class SharedScriptCopyTests(unittest.TestCase):
     """Copies made by scripts/build.py must match shared/scripts apart from the generated-copy line."""

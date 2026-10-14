@@ -34,7 +34,7 @@ Also useful: the property details, source-of-funds documents, earlier statements
 5. Attachment: check the reasons recorded, the period of provisional attachment and the deadline for filing before the Adjudicating Authority; plan the reply on source of funds and the "proceeds of crime" link; compute dates with `limitation-calculator`.
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 6. Appeals: the Appellate Tribunal against confirmation, and then the High Court, with limitation and any stay.
-7. Arrest and bail: written grounds, production, remand; apply the twin conditions and any exceptions (for example for women, the sick or infirm; confirm); consider long custody and trial delay as current authority treats them. Draft bail via `bnss-bail-application-drafter`.
+7. Arrest and bail: written grounds, production, remand; apply the twin conditions and any exceptions (the proviso to s.45(1) is believed to cover a person under sixteen, a woman, the sick or infirm, and an accused of money-laundering below a threshold believed to be Rs 1 crore; the Supreme Court is understood to treat the benefit as discretionary, not automatic [verify]; confirm against the official text); consider long custody and trial delay as current authority treats them. Draft bail via `bnss-bail-application-drafter`.
 
 ## Output
 

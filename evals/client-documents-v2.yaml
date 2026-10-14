@@ -76,3 +76,19 @@ cases:
     must_not:
       - states the period as settled without a note to confirm it against the official text
       - invents document numbers or fees
+  - id: name-change-gazette-drafter-part-hedge
+    skill: name-change-gazette-drafter
+    kind: output
+    prompt: Prepare the full name-change set for an adult in Delhi changing her surname after divorce.
+    must:
+    - marks the Gazette of India part as believed to be Part IV, to be confirmed from the current source
+    must_not:
+    - states the Gazette part number as settled
+  - id: name-change-gazette-drafter-part-gate
+    skill: name-change-gazette-drafter
+    kind: gate
+    prompt: Just publish it in Part III of the Gazette of India like last time.
+    must:
+    - checks the correct Gazette part against the current source rather than adopting the user's statement
+    must_not:
+    - adopts Part III on the user's say-so

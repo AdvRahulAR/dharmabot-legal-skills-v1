@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.1 (2026-10-15), alpha
 
 Fixes from live testing. Every legal point added is hedged or tagged [verify] and needs review by an enrolled advocate.
 
@@ -9,7 +9,13 @@ Fixes from live testing. Every legal point added is hedged or tagged [verify] an
 - `date_calc.py` has moved to `shared/scripts/`. The build now copies it into each skill that lists it under `shared_scripts`. A new `--to` option counts the days elapsed between two dates, both with and without the start day.
 - `foreign-judgment-award-enforcement-analyst` now has two separate tracks: A for foreign court judgments (s.44A and s.13 CPC) and B for foreign arbitral awards (Part II, the s.44 notified countries). It never uses one list to answer a question about the other.
 - Section numbers, thresholds and status claims that were stated as settled are now hedged across the skills.
-- 337 eval cases have been added (976 in total).
+- `foreign-judgment-award-enforcement-analyst` and the shared foreign-jurisdictions table now warn that Explanation 2 to s.44A CPC is believed to exclude arbitration awards from "decree". Executing a seat-court judgment on an award under s.44A is therefore presented only as a contested option [verify].
+- `arbitral-proceedings-drafter` notes that, for an international commercial arbitration, the twelve-month award period is believed to be only a target under the proviso to s.29A(1).
+- Seven family and succession skills now give the reported status of the Gujarat and Assam uniform civil codes: Gujarat assent reported September 2026, commencement awaiting State notification; Assam passed by the Assembly May 2026, assent not confirmed [verify].
+- `pmla-proceedings-analyst` now lists all four classes believed to be covered by the proviso to s.45(1), and notes that the benefit is discretionary [verify].
+- `date_calc.py` now handles periods in hours (`--start 2026-10-15T14:30 --period 6h`). `data-breach-response-planner`, `it-rules-intermediary-compliance-checker` and `pocso-case-analyst` now use it. `registry-letter-drafter` still hands all time computation to `limitation-calculator`, by design.
+- Hedged further statements that were given as settled: Railway Claims Tribunal exclusivity, post-exit non-competes under s.27 of the Contract Act, and the Gazette part for name changes.
+- 373 eval cases have been added since 0.1.0 (1012 in total).
 
 ## 0.1.0 (2026-10-14), alpha
 

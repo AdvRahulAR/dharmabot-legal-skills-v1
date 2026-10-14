@@ -5,7 +5,7 @@
 # and the catalogue in README.md.
 # SKILL.md frontmatter stays name + description only.
 version: 1
-release: 0.1.0
+release: 0.1.1
 law_as_of: 2026-10-14
 packs:
 - id: practice-management
@@ -1041,6 +1041,7 @@ skills:
     category: analysis
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Analyse this POCSO chargesheet; the age of the victim is disputed and the statement was recorded late.
     hands_off_to:
     - chargesheet-review-analyst
@@ -2710,6 +2711,7 @@ skills:
     category: planning
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: We found ransomware on a server holding customer KYC data last night. What must we report, to whom, and
       by when?
     hands_off_to:
@@ -2725,6 +2727,7 @@ skills:
     category: compliance
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: We run a social video app. Check our IT Rules compliance, including the new labelling rules for AI-generated
       content.
     hands_off_to:

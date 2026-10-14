@@ -32,7 +32,7 @@ Also useful: the date of applying for a certified copy and the date the copy was
        --exclude 2026-03-12:2026-03-30 --holidays holidays.txt --json
    ```
 
-   - `--period` takes `30d`, `3m` or `1y`.
+   - `--period` takes `30d`, `3m` or `1y`, or `6h` for a period in hours (then `--start` needs a time, such as `2026-10-15T14:30`).
    - The start date is excluded by default (`--include-start` to change).
    - `--exclude` (repeatable) adds excluded spans, inclusive, such as time taken to obtain copies.
    - `--holidays` is a file of `YYYY-MM-DD` dates when the court is closed, taken from that court's published calendar. If the last day falls on one, the date moves to the next open day. Use `--weekends-closed` only if that court does not sit on any Saturday or Sunday; many courts sit on some Saturdays, so prefer the court's own calendar.

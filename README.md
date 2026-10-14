@@ -12,7 +12,7 @@ The collection covers the work of an Indian law practice end to end:
 - **Who it serves:** practice management, legal aid and law students.
 - **Where it applies:** all 36 States and Union Territories, Indian languages, and cross-border work for clients and firms in the US, UK, UAE, EU, Singapore and elsewhere.
 
-> **Status: v0.1.0 alpha.** Every skill was reviewed for legal accuracy after drafting, but none has yet been signed off by an enrolled advocate. Every output is a draft for an advocate to check. Read the [disclaimer](DISCLAIMER.md).
+> **Status: v0.1.1 alpha.** Every skill was reviewed for legal accuracy after drafting, but none has yet been signed off by an enrolled advocate. Every output is a draft for an advocate to check. Read the [disclaimer](DISCLAIMER.md).
 
 ## What's inside
 

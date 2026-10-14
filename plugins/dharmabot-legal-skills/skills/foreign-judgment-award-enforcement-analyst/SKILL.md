@@ -55,7 +55,7 @@ Also useful: the underlying contract, proof of service in the original proceedin
    - The UAE was not a notified s.44 seat at the last check [verify]. Retrieve the current notifications before relying on this.
 8. **Route.**
    - **Notified seat:** apply under Part II, in the High Court with jurisdiction, and test the s.48 grounds for refusal narrowly (sections believed to be as stated; confirm against the official text).
-   - **Seat not notified:** explain the alternatives: a seat-court judgment on the award enforced under s.44A, or a suit [verify]. If a seat-court judgment is pursued, analyse that judgment separately under track A.
+   - **Seat not notified:** the award cannot be enforced under Part II. Explain the alternatives, chiefly a suit on the award [verify]. Explanation 2 to s.44A CPC is believed to exclude an arbitration award from "decree" even where the award is enforceable as a decree [verify], so whether a seat-court judgment that confirms or incorporates the award can be executed under s.44A is doubtful [verify]. Present that only as a contested option, with the risk stated, and analyse any such judgment separately under track A.
 9. **Limitation for track B.** Retrieve the applicable article and current authority on the time to apply for enforcement of a foreign award, and compute with `limitation-calculator`.
 
 ### Common steps

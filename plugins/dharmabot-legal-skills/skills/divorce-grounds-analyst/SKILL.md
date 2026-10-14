@@ -13,7 +13,7 @@ Tell the advocate which law governs, which grounds the facts support, what bars 
 
 ## Jurisdiction gate
 
-Ask, never assume: each spouse's religion at marriage and now, the form and place of marriage, whether it was registered and under which Act, and the parties' domicile and residence. Check whether a State uniform civil code applies: Uttarakhand's code is in force; Gujarat and Assam passed codes in 2026 (check assent, commencement and coverage); Goa has its own civil law. If either spouse lives abroad or a foreign decree exists, hand off to `nri-matrimonial-dispute-analyst`.
+Ask, never assume: each spouse's religion at marriage and now, the form and place of marriage, whether it was registered and under which Act, and the parties' domicile and residence. Check whether a State uniform civil code applies: Uttarakhand's code is in force; Gujarat's code reportedly received the President's assent in September 2026 and comes into force on a date the State notifies, and Assam's bill was reportedly passed by the Assembly in May 2026, with assent not confirmed (check assent, commencement and coverage, including any Scheduled Tribe exclusion) [verify]; Goa has its own civil law. If either spouse lives abroad or a foreign decree exists, hand off to `nri-matrimonial-dispute-analyst`.
 
 ## Temporal gate
 

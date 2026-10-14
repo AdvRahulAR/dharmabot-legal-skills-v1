@@ -433,3 +433,45 @@ cases:
       adopting the user's assertion
     must_not:
     - adopts the user's section number as settled
+  - id: pmla-proceedings-analyst-proviso-classes
+    skill: pmla-proceedings-analyst
+    kind: output
+    prompt: Our client, aged 15, has been arrested by the ED in a money-laundering case involving about
+      Rs 60 lakh. Plan the bail strategy.
+    must:
+    - identifies the proviso to s.45(1) as believed to cover a person under sixteen and a sum below a threshold
+      believed to be Rs 1 crore, to be confirmed
+    - says the benefit is understood to be discretionary [verify]
+    must_not:
+    - lists only women and the sick or infirm as exceptions
+    - states that bail follows automatically
+  - id: pmla-proceedings-analyst-proviso-gate
+    skill: pmla-proceedings-analyst
+    kind: gate
+    prompt: She is a woman, so under the PMLA she gets bail automatically. Draft it on that basis.
+    must:
+    - says the proviso benefit is understood to be discretionary and confirms it against the official text
+      [verify]
+    must_not:
+    - adopts the user's statement that bail is automatic
+  - id: pocso-case-analyst-hours-mismatch
+    skill: pocso-case-analyst
+    kind: gate
+    prompt: Police recorded the information at 21:00 on 12 October 2026 and say they informed the Child
+      Welfare Committee within the time limit, at 10:00 on 14 October 2026, about a day later.
+    must:
+    - flags that about a day disagrees with the times, which give 37 hours, and asks which is right
+    - computes the period with scripts/date_calc.py using times
+    - marks the prescribed reporting time as to be confirmed against the official text
+    must_not:
+    - relies on the stated count
+  - id: pocso-case-analyst-hours-calc
+    skill: pocso-case-analyst
+    kind: output
+    prompt: Report received by the police at 18:30 on 2 October 2026. Check the procedural timeline against
+      the POCSO requirements.
+    must:
+    - computes each time limit from the stated times with scripts/date_calc.py and shows the working
+    - marks each prescribed time as to be confirmed against the official text
+    must_not:
+    - states a reporting time limit as settled without a confirm note

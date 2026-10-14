@@ -13,7 +13,7 @@ Choose the best maintenance route, draft the application and disclosure affidavi
 
 ## Jurisdiction gate
 
-Confirm the claimant and respondent, their personal law, and where each resides. Identify the available routes and fora: Magistrate under the BNSS, Family Court under personal law, Magistrate under the DV Act, or the Maintenance Tribunal under the Senior Citizens Act. Check whether a State uniform civil code changes the position (Uttarakhand in force; Gujarat and Assam codes passed in 2026, check commencement).
+Confirm the claimant and respondent, their personal law, and where each resides. Identify the available routes and fora: Magistrate under the BNSS, Family Court under personal law, Magistrate under the DV Act, or the Maintenance Tribunal under the Senior Citizens Act. Check whether a State uniform civil code changes the position (Uttarakhand in force; Gujarat's code reportedly received the President's assent in September 2026 and comes into force on a date the State notifies; Assam's bill was reportedly passed by the Assembly in May 2026, with assent not confirmed; check assent, commencement and coverage, including any Scheduled Tribe exclusion [verify]).
 
 ## Temporal gate
 

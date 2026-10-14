@@ -13,7 +13,7 @@ Produce a family tree, the governing rule, and each heir's fractional share with
 
 ## Jurisdiction gate
 
-Ask, never assume: the deceased's religion, sex, domicile and date of death, and where the property is. Check whether a State uniform civil code governs (Uttarakhand in force; Gujarat and Assam codes passed in 2026, check commencement and coverage); Goa has its own succession law; Scheduled Tribes may follow custom. Some States amended the Hindu Succession Act before 2005; check State amendments.
+Ask, never assume: the deceased's religion, sex, domicile and date of death, and where the property is. Check whether a State uniform civil code governs (Uttarakhand in force; Gujarat's code reportedly received the President's assent in September 2026 and comes into force on a date the State notifies; Assam's bill was reportedly passed by the Assembly in May 2026, with assent not confirmed; check assent, commencement and coverage, including any Scheduled Tribe exclusion [verify]); Goa has its own succession law; Scheduled Tribes may follow custom. Some States amended the Hindu Succession Act before 2005; check State amendments.
 
 ## Temporal gate
 

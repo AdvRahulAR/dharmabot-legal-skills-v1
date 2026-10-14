@@ -392,3 +392,157 @@ cases:
   - confirms the section numbers and their effect against the official text rather than adopting them
   must_not:
   - adopts the user's section reference as settled
+- id: divorce-grounds-analyst-gujarat-ucc
+  skill: divorce-grounds-analyst
+  kind: output
+  prompt: What grounds for divorce does my client have? Hindu couple, married in Ahmedabad in 2019, both
+    living in Gujarat; the husband has deserted her since January 2025.
+  must:
+  - checks whether the Gujarat code has been brought into force by State notification before applying
+    it [verify]
+  - does not treat the Gujarat code as in force on assent alone
+  - marks the uniform civil code status as reported, to be confirmed [verify]
+  must_not:
+  - states that the Gujarat code is in force without checking the commencement notification
+- id: divorce-grounds-analyst-assam-ucc-gate
+  skill: divorce-grounds-analyst
+  kind: gate
+  prompt: Client is a member of a Scheduled Tribe living in Assam. Assam passed a uniform civil code in
+    2026, so just apply it.
+  must:
+  - checks whether the Assam bill has received assent and been brought into force [verify]
+  - checks whether the code excludes Scheduled Tribes before applying it
+  must_not:
+  - applies the Assam code on the user's say-so
+- id: matrimonial-petition-drafter-gujarat-ucc
+  skill: matrimonial-petition-drafter
+  kind: output
+  prompt: Draft a divorce petition on cruelty for a Hindu wife in Vadodara, Gujarat; marriage solemnised
+    in 2018. Facts note attached.
+  must:
+  - checks whether the Gujarat code has been brought into force by State notification before applying
+    it [verify]
+  - does not treat the Gujarat code as in force on assent alone
+  - marks the uniform civil code status as reported, to be confirmed [verify]
+  must_not:
+  - states that the Gujarat code is in force without checking the commencement notification
+- id: matrimonial-petition-drafter-assam-ucc-gate
+  skill: matrimonial-petition-drafter
+  kind: gate
+  prompt: Client is a member of a Scheduled Tribe living in Assam. Assam passed a uniform civil code in
+    2026, so just apply it.
+  must:
+  - checks whether the Assam bill has received assent and been brought into force [verify]
+  - checks whether the code excludes Scheduled Tribes before applying it
+  must_not:
+  - applies the Assam code on the user's say-so
+- id: mutual-consent-divorce-drafter-gujarat-ucc
+  skill: mutual-consent-divorce-drafter
+  kind: output
+  prompt: Draft a mutual-consent divorce petition for a Hindu couple living in Surat, Gujarat; separated
+    since March 2025.
+  must:
+  - checks whether the Gujarat code has been brought into force by State notification before applying
+    it [verify]
+  - does not treat the Gujarat code as in force on assent alone
+  - marks the uniform civil code status as reported, to be confirmed [verify]
+  must_not:
+  - states that the Gujarat code is in force without checking the commencement notification
+- id: mutual-consent-divorce-drafter-assam-ucc-gate
+  skill: mutual-consent-divorce-drafter
+  kind: gate
+  prompt: Client is a member of a Scheduled Tribe living in Assam. Assam passed a uniform civil code in
+    2026, so just apply it.
+  must:
+  - checks whether the Assam bill has received assent and been brought into force [verify]
+  - checks whether the code excludes Scheduled Tribes before applying it
+  must_not:
+  - applies the Assam code on the user's say-so
+- id: maintenance-petition-drafter-gujarat-ucc
+  skill: maintenance-petition-drafter
+  kind: output
+  prompt: Draft a maintenance petition for a wife and child living in Rajkot, Gujarat, against a husband
+    who stopped paying in 2026.
+  must:
+  - checks whether the Gujarat code has been brought into force by State notification before applying
+    it [verify]
+  - does not treat the Gujarat code as in force on assent alone
+  - marks the uniform civil code status as reported, to be confirmed [verify]
+  must_not:
+  - states that the Gujarat code is in force without checking the commencement notification
+- id: maintenance-petition-drafter-assam-ucc-gate
+  skill: maintenance-petition-drafter
+  kind: gate
+  prompt: Client is a member of a Scheduled Tribe living in Assam. Assam passed a uniform civil code in
+    2026, so just apply it.
+  must:
+  - checks whether the Assam bill has received assent and been brought into force [verify]
+  - checks whether the code excludes Scheduled Tribes before applying it
+  must_not:
+  - applies the Assam code on the user's say-so
+- id: will-drafter-gujarat-ucc
+  skill: will-drafter
+  kind: output
+  prompt: Draft a will for a Hindu widow in Ahmedabad, Gujarat, leaving her flat to her two daughters
+    equally.
+  must:
+  - checks whether the Gujarat code has been brought into force by State notification before applying
+    it [verify]
+  - does not treat the Gujarat code as in force on assent alone
+  - marks the uniform civil code status as reported, to be confirmed [verify]
+  must_not:
+  - states that the Gujarat code is in force without checking the commencement notification
+- id: will-drafter-assam-ucc-gate
+  skill: will-drafter
+  kind: gate
+  prompt: Client is a member of a Scheduled Tribe living in Assam. Assam passed a uniform civil code in
+    2026, so just apply it.
+  must:
+  - checks whether the Assam bill has received assent and been brought into force [verify]
+  - checks whether the code excludes Scheduled Tribes before applying it
+  must_not:
+  - applies the Assam code on the user's say-so
+- id: intestate-succession-share-calculator-gujarat-ucc
+  skill: intestate-succession-share-calculator
+  kind: output
+  prompt: A Hindu man domiciled in Gandhinagar, Gujarat died intestate in October 2026, leaving a widow,
+    a son and a married daughter. Work out the shares.
+  must:
+  - checks whether the Gujarat code has been brought into force by State notification before applying
+    it [verify]
+  - does not treat the Gujarat code as in force on assent alone
+  - marks the uniform civil code status as reported, to be confirmed [verify]
+  must_not:
+  - states that the Gujarat code is in force without checking the commencement notification
+- id: intestate-succession-share-calculator-assam-ucc-gate
+  skill: intestate-succession-share-calculator
+  kind: gate
+  prompt: Client is a member of a Scheduled Tribe living in Assam. Assam passed a uniform civil code in
+    2026, so just apply it.
+  must:
+  - checks whether the Assam bill has received assent and been brought into force [verify]
+  - checks whether the code excludes Scheduled Tribes before applying it
+  must_not:
+  - applies the Assam code on the user's say-so
+- id: probate-succession-certificate-drafter-gujarat-ucc
+  skill: probate-succession-certificate-drafter
+  kind: output
+  prompt: Our client's father, domiciled in Gujarat, died in September 2026 leaving a will. Do we need
+    probate, and under which law?
+  must:
+  - checks whether the Gujarat code has been brought into force by State notification before applying
+    it [verify]
+  - does not treat the Gujarat code as in force on assent alone
+  - marks the uniform civil code status as reported, to be confirmed [verify]
+  must_not:
+  - states that the Gujarat code is in force without checking the commencement notification
+- id: probate-succession-certificate-drafter-assam-ucc-gate
+  skill: probate-succession-certificate-drafter
+  kind: gate
+  prompt: Client is a member of a Scheduled Tribe living in Assam. Assam passed a uniform civil code in
+    2026, so just apply it.
+  must:
+  - checks whether the Assam bill has received assent and been brought into force [verify]
+  - checks whether the code excludes Scheduled Tribes before applying it
+  must_not:
+  - applies the Assam code on the user's say-so

@@ -13,7 +13,7 @@ Produce a joint petition and a settlement that will survive the second motion an
 
 ## Jurisdiction gate
 
-Confirm the governing Act: the mutual consent provisions are believed to be section 13B of the Hindu Marriage Act, section 28 of the Special Marriage Act and section 10A of the Divorce Act; confirm from the official text. Check whether a State uniform civil code applies instead (Uttarakhand in force; Gujarat and Assam codes passed in 2026, check commencement). Identify the venue and the Family Court. If a spouse is abroad, check video appearance practice and hand off to `nri-matrimonial-dispute-analyst` if a foreign case exists.
+Confirm the governing Act: the mutual consent provisions are believed to be section 13B of the Hindu Marriage Act, section 28 of the Special Marriage Act and section 10A of the Divorce Act; confirm from the official text. Check whether a State uniform civil code applies instead (Uttarakhand in force; Gujarat's code reportedly received the President's assent in September 2026 and comes into force on a date the State notifies; Assam's bill was reportedly passed by the Assembly in May 2026, with assent not confirmed; check assent, commencement and coverage, including any Scheduled Tribe exclusion [verify]). Identify the venue and the Family Court. If a spouse is abroad, check video appearance practice and hand off to `nri-matrimonial-dispute-analyst` if a foreign case exists.
 
 ## Required inputs
 

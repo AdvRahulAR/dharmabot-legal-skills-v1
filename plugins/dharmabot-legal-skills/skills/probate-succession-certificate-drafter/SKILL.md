@@ -13,7 +13,7 @@ Prepare a petition that the court will register and notice, in the right court, 
 
 ## Jurisdiction gate
 
-Confirm the deceased's religion, last residence and where the assets are. Identify the court: the District Judge, or a High Court exercising original testamentary jurisdiction (for example Bombay, Calcutta, Madras and Delhi, subject to pecuniary limits; confirm). Check whether a State uniform civil code changes the procedure for this deceased (Uttarakhand in force; Gujarat and Assam codes passed in 2026, check commencement).
+Confirm the deceased's religion, last residence and where the assets are. Identify the court: the District Judge, or a High Court exercising original testamentary jurisdiction (for example Bombay, Calcutta, Madras and Delhi, subject to pecuniary limits; confirm). Check whether a State uniform civil code changes the procedure for this deceased (Uttarakhand in force; Gujarat's code reportedly received the President's assent in September 2026 and comes into force on a date the State notifies; Assam's bill was reportedly passed by the Assembly in May 2026, with assent not confirmed; check assent, commencement and coverage, including any Scheduled Tribe exclusion [verify]).
 
 ## Temporal gate
 

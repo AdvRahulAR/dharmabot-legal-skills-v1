@@ -13,7 +13,7 @@ Produce a petition or written statement with specific, dated particulars, filed 
 
 ## Jurisdiction gate
 
-Confirm the governing Act (run `divorce-grounds-analyst` if unclear). Check whether a State uniform civil code applies (Uttarakhand in force; Gujarat and Assam codes passed in 2026, check commencement). Identify the venue: the Act usually allows filing where the marriage was solemnised, where the respondent resides, where the parties last resided together, or where the wife resides, but confirm the exact wording of the governing Act. Confirm whether a Family Court has been set up for that area.
+Confirm the governing Act (run `divorce-grounds-analyst` if unclear). Check whether a State uniform civil code applies (Uttarakhand in force; Gujarat's code reportedly received the President's assent in September 2026 and comes into force on a date the State notifies; Assam's bill was reportedly passed by the Assembly in May 2026, with assent not confirmed; check assent, commencement and coverage, including any Scheduled Tribe exclusion [verify]). Identify the venue: the Act usually allows filing where the marriage was solemnised, where the respondent resides, where the parties last resided together, or where the wife resides, but confirm the exact wording of the governing Act. Confirm whether a Family Court has been set up for that area.
 
 ## Required inputs
 
