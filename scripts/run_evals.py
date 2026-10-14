@@ -19,7 +19,8 @@ Usage (on Windows use `py -3` in place of `python3`):
     python3 scripts/run_evals.py --case bail-date-mismatch --workers 1
     python3 scripts/run_evals.py --out eval-results/run1 --resume --pack core
 
-Needs Claude Code on PATH, signed in. Each case costs API usage (roughly
+Runs use --setting-sources project, so your own user-level plugins and settings are not loaded and
+cannot compete with these skills. Needs Claude Code on PATH, signed in. Each case costs API usage (roughly
 $0.15-0.60 per case plus a few cents to grade); use --dry-run first.
 This is a developer tool and uses the network; skill scripts do not.
 """
@@ -178,7 +179,8 @@ def run_case(case, out, model=None, budget=None, timeout=1200):
     transcript = out / f"{case['id']}.jsonl"
     prompt = " ".join(str(case["prompt"]).split())
     cmd = [claude_bin(), "-p", "--plugin-dir", str(PLUGIN), "--output-format", "stream-json", "--verbose",
-           "--no-session-persistence", "--permission-prompts", "none", "--allowedTools", *ALLOWED_TOOLS]
+           "--no-session-persistence", "--permission-prompts", "none", "--setting-sources", "project",
+           "--allowedTools", *ALLOWED_TOOLS]
     if model:
         cmd += ["--model", model]
     if budget:

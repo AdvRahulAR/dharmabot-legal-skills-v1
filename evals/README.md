@@ -41,4 +41,4 @@ python3 scripts/run_evals.py --case bail-date-mismatch --workers 1
 python3 scripts/run_evals.py --out eval-results/run1 --resume --pack core
 ```
 
-On Windows use `py -3` in place of `python3`. Results (transcripts, `results.json`, `report.md`) go to `eval-results/`, which is not committed. Each case costs API usage, roughly $0.15 to $0.60. Codex is not yet supported by the runner.
+Runs load only this plugin: the runner passes `--setting-sources project`, so personal plugins such as other legal skill packs cannot compete with these skills. (Without it, a run on a machine with other plugins loaded sees hundreds of extra skills.) On Windows use `py -3` in place of `python3`. Results (transcripts, `results.json`, `report.md`) go to `eval-results/`, which is not committed. Each case costs API usage, roughly $0.15 to $0.60. Codex is not yet supported by the runner.
