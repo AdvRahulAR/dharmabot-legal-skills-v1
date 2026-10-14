@@ -33,6 +33,7 @@ Also useful: correspondence, earlier notices, bank guarantees, invoices and the 
 4. Screen each claim against the clause scope and any exclusions (for example "excepted matters" in government contracts, or engineer's decisions declared final). List excluded claims separately.
 5. Check limitation for each claim. Hand off computation to `limitation-calculator` and state that the notice date is believed to be the commencement date under section 21; confirm from the text and current authority.
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 6. Draft the notice or request:
    - parties and capacity;
    - the contract and arbitration agreement quoted in full;

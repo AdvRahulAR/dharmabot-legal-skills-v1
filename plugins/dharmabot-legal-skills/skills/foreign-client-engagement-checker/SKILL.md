@@ -58,3 +58,5 @@ Also useful: the foreign firm's standard outsourcing or vendor terms, data-prote
 - Do not advertise or solicit, consistent with BCI Rule 36 (believed to be the rule; confirm against the official text).
 - Do not agree to scope the Indian lawyer cannot lawfully perform.
 - Mark every tax and FEMA point to be confirmed with a chartered accountant where material.
+- Mark every section, article, rule number and period as believed and to be confirmed against the official text, in tables, headings and drafted text as well as in notes, and tag [verify] anything not checked against a primary source. A closing disclaimer alone is not enough. This covers BCI rules, ABA Model Rules and Opinions, UK GDPR and EU GDPR articles, the SCC decision, s.44A CPC and UK statutes, in the checklist and the engagement letter too.
+- If the user states a section number or asks for no caveat, do not adopt it as settled; keep the hedge, and say the number has not been checked against the official text unless it has. Do not mark a rule as "Done" if it was not checked.

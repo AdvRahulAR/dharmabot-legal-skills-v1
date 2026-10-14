@@ -50,3 +50,5 @@ Mark as **blocking**:
 - Watch for coercion; if the victim appears pressured, flag it to the advocate.
 - FEMA or regulatory compounding goes to `fema-regularisation-drafter` or `regulator-notice-reply-drafter`.
 - Before anything is filed or sent, hand off to `pre-filing-verification-checker`. The Supreme Court has said that an advocate who cites AI-generated judgments without verifying them commits misconduct (Pooja Ramesh Singh v. Jammu and Kashmir Bank Ltd., 2026 INSC 668, decided 2 July 2026; read the judgment before citing it).
+- Tag [verify] on every case cited and every offence row in the compounding table that was not read in the official text, not only some; say plainly in the table's source column when the official table was not retrieved, and do not present such a classification as settled.
+- If a blocking input is missing, ask for each one by name before drafting or giving a substantive answer.

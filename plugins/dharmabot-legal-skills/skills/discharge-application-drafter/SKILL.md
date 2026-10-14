@@ -30,6 +30,7 @@ Also useful: orders on cognizance and commitment, co-accused positions, and any 
 1. Retrieve the current official text of the BNSS discharge provisions for each trial type (Sessions discharge believed to be s.250; warrant case on police report believed to be s.262; confirm), the offences, and any State amendment. Record source and date.
 2. Check timing. If a time limit applies, compute it with `limitation-calculator` and flag delay.
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 3. List each offence and its ingredients. For each accused, list what the record says he did, citing page and paragraph.
 4. Apply the test from Union of India v. Prafulla Kumar Samal (Supreme Court, 1979) and Sajjan Kumar v. CBI (Supreme Court, 2010): grave suspicion versus mere suspicion, taking the record at face value. Confirm current treatment.
 5. Identify gaps: an ingredient with no material; statements that do not name the accused; documents that do not support the allegation; missing sanction; offences added without basis.
@@ -44,6 +45,8 @@ Also useful: orders on cognizance and commitment, co-accused positions, and any 
 
 ## Guardrails and hand-offs
 
+- Mark every section, article, rule number, period and last date as believed and to be confirmed against the official text, in tables, headlines and bold lines as well as in notes, and tag [verify] anything not checked against a primary source. A closing disclaimer alone is not enough.
+- When the code governing procedure is in question, name `crpc-bnss-transition-analyst` in the response and route the point to it before drafting.
 - Rely only on the prosecution record. Do not cite defence documents unless the law allows them at this stage; flag them for trial instead.
 - Never invent page references or statements.
 - Never promise discharge.

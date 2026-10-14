@@ -51,3 +51,5 @@ Also useful: loss amounts with proof, any civil proceedings on the same facts, p
 - Protect the identity of victims of sexual offences and children.
 - For a translation, hand off to `regional-language-legal-drafter`.
 - Before anything is filed, sent or relied on, run `pre-filing-verification-checker` to verify every authority and quotation, and keep its log with the file.
+- Plead only the offences and facts in the user's instructions. Do not add offences, even conditionally, and do not add facts, documents, project names, findings or amounts the user did not give; list possible further offences or missing facts only as questions to the advocate in the note, outside the complaint text.
+- Cite no case unless you have read it. Never supply a case name, year or reporter citation from memory; a [verify] tag does not make an unread or uncitable authority acceptable in the draft. Leave the authority out, or list it in the advocate's note as a lead to research.

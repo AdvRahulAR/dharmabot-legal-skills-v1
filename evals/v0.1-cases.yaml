@@ -51,27 +51,31 @@ cases:
   - id: bail-special-statute
     skill: bnss-bail-application-drafter
     kind: output
-    prompt: >
-      Bail for an accused arrested on 2 August 2025 under the NDPS Act for a
-      commercial quantity. FIR attached. Sessions Court, Thrissur.
-    fixtures: [synthetic FIR text]
+    prompt: 'Bail for an accused arrested on 2 August 2025 under the NDPS Act for a commercial quantity.
+      FIR attached. Sessions Court, Thrissur.
+
+      '
+    fixtures:
+    - synthetic FIR text
     must:
-      - flags the special bail conditions under the NDPS Act at the top
-      - never states bail will be granted
+    - flags the special bail conditions under the NDPS Act at the top
+    - never states bail will be granted
     must_not:
-      - cites invented judgments
+    - cites invented judgments
 
   - id: fir-ingredients-quote
     skill: fir-ingredients-analyst
     kind: output
+    requires_files: true
     prompt: Do the facts in this FIR make out cheating and criminal breach of trust?
-    fixtures: [synthetic FIR describing an unpaid loan between friends]
+    fixtures:
+    - synthetic FIR describing an unpaid loan between friends
     must:
-      - splits each offence into numbered ingredients
-      - quotes the FIR words for each ingredient or says "no allegation"
-      - notes the civil-dispute character only from the record
+    - splits each offence into numbered ingredients
+    - quotes the FIR words for each ingredient or says "no allegation"
+    - notes the civil-dispute character only from the record
     must_not:
-      - adds facts not in the FIR
+    - adds facts not in the FIR
 
   - id: bsa-no-invented-hash
     skill: bsa-electronic-evidence-certificate-drafter
@@ -396,24 +400,25 @@ cases:
   - id: bail-default-bail-accrued
     skill: bnss-bail-application-drafter
     kind: output
-    prompt: >
-      Draft a regular bail application before the Sessions Court, Kozhikode. My client was
-      arrested on 3 August 2026 and first remanded to judicial custody on 4 August 2026 for
-      cheating under the BNS. Today is 15 October 2026. The charge sheet has not been filed.
-      FIR attached.
-    fixtures: [synthetic FIR text]
+    prompt: 'Draft a regular bail application before the Sessions Court, Kozhikode. My client was arrested
+      on 3 August 2026 and first remanded to judicial custody on 4 August 2026 for cheating under the BNS.
+      Today is 15 October 2026. The charge sheet has not been filed. FIR attached.
+
+      '
+    fixtures:
+    - synthetic FIR text
     must:
-      - leads with a DEFAULT BAIL MAY HAVE ACCRUED flag above any draft
-      - counts custody from the first remand order and asks the user to confirm the start date
-      - computes the days with scripts/date_calc.py and shows the working, with and without the start day
-      - takes the limit from s.187(3) BNSS marked as believed and to be confirmed, with [verify]
-      - says the right is generally treated as lost once the charge sheet is filed, so apply immediately
-      - hands off to undertrial-release-screener
-      - hands off to pre-filing-verification-checker
+    - leads with a DEFAULT BAIL MAY HAVE ACCRUED flag above any draft
+    - counts custody from the first remand order and asks the user to confirm the start date
+    - computes the days with scripts/date_calc.py and shows the working, with and without the start day
+    - takes the limit from s.187(3) BNSS marked as believed and to be confirmed, with [verify]
+    - says the right is generally treated as lost once the charge sheet is filed, so apply immediately
+    - hands off to undertrial-release-screener
+    - hands off to pre-filing-verification-checker
     must_not:
-      - drafts regular-bail grounds before running the default-bail gate
-      - states the 60-day or 90-day period as settled without a confirm note
-      - states that bail will be granted
+    - drafts regular-bail grounds before running the default-bail gate
+    - states the 60-day or 90-day period as settled without a confirm note
+    - states that bail will be granted
 
   - id: bail-default-bail-close
     skill: bnss-bail-application-drafter
@@ -447,11 +452,12 @@ cases:
     kind: gate
     prompt: Draft regular bail for my client in judicial custody in Chennai for an NDPS offence. FIR attached.
     must:
-      - asks for the date of the first remand order
-      - asks whether the charge sheet has been filed and when
-      - asks for the maximum punishment of each offence and checks whether the NDPS Act extends the period [verify]
+    - asks for the date of the first remand order
+    - asks whether the charge sheet has been filed and when
+    - asks for the maximum punishment of each offence and checks whether the NDPS Act extends the period
+      [verify]
     must_not:
-      - assumes a custody start date
+    - assumes a custody start date
 
   - id: enforcement-difc-judgment-track-a
     skill: foreign-judgment-award-enforcement-analyst
@@ -471,16 +477,22 @@ cases:
   - id: enforcement-dubai-award-track-b
     skill: foreign-judgment-award-enforcement-analyst
     kind: output
-    prompt: >
-      We won an arbitral award in an arbitration seated in Dubai against an Indian company with
-      assets in Mumbai. Can we enforce the award in India as a foreign award?
+    prompt: 'We won an arbitral award in an arbitration seated in Dubai against an Indian company with assets
+      in Mumbai. Can we enforce the award in India as a foreign award?
+
+      '
     must:
-      - treats it as a foreign arbitral award under track B only
-      - checks the s.44 Arbitration and Conciliation Act notification list and notes the UAE was not notified at the last check [verify]
-      - explains the alternatives if the seat is not notified, analysing any seat-court judgment separately under track A
-      - flags that Explanation 2 to s.44A CPC is believed to exclude awards from decree, so a seat-court judgment route is contested [verify]
+    - analyses the award under track B (Part II) and keeps any seat-court judgment route separate, analysed
+      under track A and flagged as contested
+    - checks the s.44 Arbitration and Conciliation Act notification list and notes the UAE was not notified
+      at the last check [verify]
+    - explains the alternatives if the seat is not notified, analysing any seat-court judgment separately
+      under track A
+    - flags that Explanation 2 to s.44A CPC is believed to exclude awards from decree, so a seat-court judgment
+      route is contested [verify]
     must_not:
-      - treats the UAE's s.44A CPC reciprocating-territory status as answering whether the award is enforceable under Part II
+    - treats the UAE's s.44A CPC reciprocating-territory status as answering whether the award is enforceable
+      under Part II
 
   - id: enforcement-date-mismatch
     skill: foreign-judgment-award-enforcement-analyst

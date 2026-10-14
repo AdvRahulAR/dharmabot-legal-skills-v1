@@ -32,6 +32,7 @@ Also useful: the company's FIRMS entity master status, FCRS/FIRMS screenshots, v
 1. Retrieve the current official text of FEMA, the Compounding Proceedings Rules 2024, the relevant Master Direction on reporting or compounding, and the LSF provisions from the Gazette and rbi.org.in. Record versions and dates.
 2. List every lapse separately: transaction, regulation, due date, actual date, delay.
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 3. Classify each lapse:
    - reporting delay only, where LSF is available and the filing can still be made;
    - delay beyond the LSF window, or a substantive contravention (pricing, sectoral cap, approval route, wrong instrument), which needs compounding.

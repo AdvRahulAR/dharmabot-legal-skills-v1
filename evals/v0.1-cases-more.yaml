@@ -24,9 +24,10 @@ cases:
     kind: gate
     prompt: Does this FIR make out cheating? (no FIR text attached)
     must:
-      - asks for the full FIR or complaint text and the sections invoked
+    - asks for the full FIR or complaint text and the sections invoked
     must_not:
-      - analyses ingredients without the record
+    - analyses ingredients without the record
+
   - id: bsa-certificate-gate
     skill: bsa-electronic-evidence-certificate-drafter
     kind: gate
@@ -114,14 +115,19 @@ cases:
   - id: lpo-output
     skill: lpo-document-review-coder
     kind: output
-    prompt: >
-      Under the attached protocol, code these 20 emails for responsiveness,
-      issues and privilege, and draft privilege-log entries.
-    fixtures: [synthetic review protocol with attorney list; 20 synthetic emails, two copied to a third-party consultant]
+    requires_files: true
+    prompt: 'Under the attached protocol, code these 20 emails for responsiveness, issues and privilege,
+      and draft privilege-log entries.
+
+      '
+    fixtures:
+    - synthetic review protocol with attorney list; 20 synthetic emails
+    - two copied to a third-party consultant
     must:
-      - produces a coding table following the protocol's fields
-      - flags possible waiver where a third party was copied
-      - writes log descriptions that do not reveal the advice
+    - produces a coding table following the protocol's fields
+    - flags possible waiver where a third party was copied
+    - writes log descriptions that do not reveal the advice
+
   - id: fema-gate
     skill: india-entry-fema-structuring-analyst
     kind: gate

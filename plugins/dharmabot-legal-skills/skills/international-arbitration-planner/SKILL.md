@@ -20,7 +20,7 @@ Identify the parties' jurisdictions, the seat (or proposed seat), the institutio
 Mark as **blocking**:
 - the existing clause, or the deal for which a clause is needed;
 - where each party's assets are;
-- the likely type and size of dispute.
+- the likely type of dispute, and its size.
 
 Also useful: the client's preferences on cost, speed, confidentiality, language and number of arbitrators, and whether emergency relief may be needed.
 
@@ -40,6 +40,7 @@ Also useful: the client's preferences on cost, speed, confidentiality, language 
 5. **Draft or review the clause.** Cover the institution and rules, seat (distinct from venue), number and appointment of arbitrators, language, governing law of the contract and of the arbitration agreement, confidentiality, interim relief carve-out, and multi-contract or multi-party wording. Remove pathological wording, such as mixing up seat and venue, naming an institution that no longer exists, or giving the parties an "option" to arbitrate.
 6. **Timeline.** For a live dispute, set out notice, constitution, statements, hearing and award, with limitation checks via `limitation-calculator`.
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 
 ## Output
 
@@ -53,3 +54,5 @@ Also useful: the client's preferences on cost, speed, confidentiality, language 
 - Confirm every institution rule and India notification from current official sources.
 - Do not describe an institution or rule set without checking that it still exists.
 - Mark foreign seat-law points for local counsel.
+- If a blocking input is missing, ask for each one by name (where each party's assets are, the likely type of dispute) before drafting or giving a substantive answer; do not produce a draft with blanks first.
+- Treat limitation periods and sections (for example the Limitation Act 1980 and the Arbitration Act 1996) like the rule numbers: believed and to be confirmed, beside each one in tables.

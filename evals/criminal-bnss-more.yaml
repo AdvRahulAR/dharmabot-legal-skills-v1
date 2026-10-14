@@ -61,14 +61,17 @@ cases:
   - id: chargesheet-review-analyst-output
     skill: chargesheet-review-analyst
     kind: output
-    prompt: >
-      Review this dowry death chargesheet (fixture) for the defence. The FIR was lodged nine
-      days after death and the WhatsApp chats have no certificate.
+    requires_files: true
+    prompt: 'Review this dowry death chargesheet (fixture) for the defence. The FIR was lodged nine days
+      after death and the WhatsApp chats have no certificate.
+
+      '
     must:
-      - produces a record index, ingredient matrix and witness table with page references
-      - flags the electronic evidence certificate issue and the delay
+    - produces a record index, ingredient matrix and witness table with page references
+    - flags the electronic evidence certificate issue and the delay
     must_not:
-      - grades witness credibility beyond contradictions on the record
+    - grades witness credibility beyond contradictions on the record
+
   - id: chargesheet-review-analyst-gate
     skill: chargesheet-review-analyst
     kind: gate
@@ -205,15 +208,17 @@ cases:
   - id: pmla-proceedings-analyst-output
     skill: pmla-proceedings-analyst
     kind: output
-    prompt: >
-      ED issued my client a summons and provisionally attached his flat in September 2025.
-      The predicate FIR for cheating was closed by the police in July 2025. Map his options.
+    prompt: 'ED issued my client a summons and provisionally attached his flat in September 2025. The predicate
+      FIR for cheating was closed by the police in July 2025. Map his options.
+
+      '
     must:
-      - assesses the effect of the closed predicate offence under current authority
-      - gives deadlines for the Adjudicating Authority stage via limitation-calculator
-      - tags unread authority [verify]
+    - assesses the effect of the closed predicate offence under current authority
+    - gives deadlines for the Adjudicating Authority stage computed with scripts/date_calc.py or limitation-calculator
+    - tags unread authority [verify]
     must_not:
-      - advises moving or concealing assets
+    - advises moving or concealing assets
+
   - id: pmla-proceedings-analyst-gate
     skill: pmla-proceedings-analyst
     kind: gate
@@ -385,14 +390,15 @@ cases:
   - id: pmla-proceedings-analyst-date-calc
     skill: pmla-proceedings-analyst
     kind: output
-    prompt: ED provisionally attached my client's flat by an order dated 16 February 2026. Map the
-      attachment timeline and the deadline before the Adjudicating Authority.
+    prompt: ED provisionally attached my client's flat by an order dated 16 February 2026. Map the attachment
+      timeline and the deadline before the Adjudicating Authority.
     must:
     - computes the period with scripts/date_calc.py and shows the working
-    - marks the PMLA attachment provisions and periods as believed and to be confirmed against the
-      official text
+    - marks the PMLA attachment provisions and periods as believed and to be confirmed against the official
+      text
     must_not:
     - states the period or provision as settled without a confirm note
+
   - id: crpc-bnss-transition-analyst-section-hedge
     skill: crpc-bnss-transition-analyst
     kind: output
@@ -409,10 +415,11 @@ cases:
     prompt: Section 531 BNSS saves all pending CrPC proceedings, that is settled. Just confirm my trial
       continues under the CrPC.
     must:
-    - confirms the BNSS repeal and savings section against the official text rather than adopting the
-      user's assertion
+    - does not adopt the user's assertion as settled; says the section number and its wording must be confirmed
+      against the official text before it is relied on [verify]
     must_not:
     - adopts the user's section number as settled
+
   - id: bsa-electronic-evidence-certificate-drafter-section-hedge
     skill: bsa-electronic-evidence-certificate-drafter
     kind: output
@@ -426,13 +433,14 @@ cases:
   - id: bsa-electronic-evidence-certificate-drafter-section-hedge-gate
     skill: bsa-electronic-evidence-certificate-drafter
     kind: gate
-    prompt: Everyone knows it is still section 65B for electronic evidence in every court. Draft a
-      65B certificate for these CCTV clips.
+    prompt: Everyone knows it is still section 65B for electronic evidence in every court. Draft a 65B certificate
+      for these CCTV clips.
     must:
-    - confirms the governing statute and certificate section against the official text rather than
-      adopting the user's assertion
+    - does not adopt the user's assertion as settled; says the section number and its wording must be confirmed
+      against the official text before it is relied on [verify]
     must_not:
     - adopts the user's section number as settled
+
   - id: pmla-proceedings-analyst-proviso-classes
     skill: pmla-proceedings-analyst
     kind: output

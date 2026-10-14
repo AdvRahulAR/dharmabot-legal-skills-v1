@@ -51,3 +51,5 @@ Also useful: existing agreements, any security certifications, and sector (banki
 - Never state that a country has adequacy, or that a regulation is in force, without checking the current official source.
 - Mark foreign-law conclusions for local counsel confirmation.
 - Do not handle real personal data in examples; use placeholders.
+- Mark every section, article, rule number and period as believed and to be confirmed against the official text, in tables, headings and drafted text as well as in notes, and tag [verify] anything not checked against a primary source. A closing disclaimer alone is not enough. This covers DPDP sections, GDPR articles, SPDI rules, IT Act sections and notification periods such as 72 hours.
+- If the user states a section number or asks for no caveat, do not adopt it as settled; keep the hedge, and say the number has not been checked against the official text unless it has.

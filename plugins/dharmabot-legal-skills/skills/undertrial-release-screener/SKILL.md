@@ -35,6 +35,7 @@ If custody dates are unverified, mark the prisoner "unverified" and do not decid
 2. For each offence, find the maximum punishment from the statute, not from memory. Exclude offences punishable with death or life imprisonment.
 3. Compute custody against one-half of the maximum, and one-third for first-time offenders. Show the arithmetic.
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 4. Apply the bar on multiple pending cases, and read the current authority on its scope. Tag unread authority `[verify]`.
 5. Screen other routes: default bail where the charge sheet was late, plea bargaining, compounding, and bailable offences where the prisoner cannot furnish surety.
 6. Sort prisoners into: eligible, likely eligible pending verification, not eligible, and other route.
@@ -49,6 +50,8 @@ If custody dates are unverified, mark the prisoner "unverified" and do not decid
 
 ## Guardrails and hand-offs
 
+- Mark every section, article, rule number, period and last date as believed and to be confirmed against the official text, in tables, headlines and bold lines as well as in notes, and tag [verify] anything not checked against a primary source. A closing disclaimer alone is not enough.
+- If a blocking input is missing, ask for each one by name before giving a substantive answer; do not produce an analysis or draft with blanks first. If no prisoner list or custody dates are supplied, ask for them and screen no one.
 - Never compute eligibility on unverified custody dates.
 - Keep prisoners' data confidential; use only what the clinic needs.
 - Bail applications go to `bnss-bail-application-drafter`; file tracking to `ladcs-case-file-tracker`; eligibility for free legal aid to `legal-aid-eligibility-screener`.

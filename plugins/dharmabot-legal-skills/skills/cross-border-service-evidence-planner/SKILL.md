@@ -52,4 +52,4 @@ Also useful: whether the person will accept service voluntarily, and the contrac
 
 - Confirm treaty status and declarations from the HCCH and Ministry sources before relying on them.
 - Do not suggest a service method that the destination country prohibits.
-- Criminal matters: say that mutual legal assistance treaties and the Ministry of Home Affairs route apply instead, and stop.
+- Criminal matters: say that mutual legal assistance treaties and the Ministry of Home Affairs route apply instead, and stop. Do not give a civil route, document list, timeline or fallbacks; at most offer `extradition-mutual-legal-assistance-analyst`.

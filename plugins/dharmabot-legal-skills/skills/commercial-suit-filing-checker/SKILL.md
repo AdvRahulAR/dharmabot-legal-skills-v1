@@ -38,6 +38,7 @@ Mark as **blocking**:
 6. Pleading checks: statement of truth in the prescribed form; documents disclosure affidavit; list of documents in power and possession; verification; Order VII particulars.
 7. Court fee and limitation: confirm with `state-court-fee-calculator` and `limitation-calculator`.
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 8. Practice directions: e-filing format, page limits, case management hearing preparation, and any High Court-specific annexures.
 
 ## Output

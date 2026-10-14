@@ -42,6 +42,7 @@ Also useful: the date of applying for a certified copy and the date the copy was
    - `--to` counts the days elapsed between `--start` and that date, both with the start day excluded and with it counted.
    - The script prints its working. Paste the working into the output.
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 
 4. Check conditions on any extension or exclusion relied on (for example whether a copy application was made within time).
 5. State whether delay condonation is available for this proceeding and on what test, citing the provision retrieved, if the date has passed.

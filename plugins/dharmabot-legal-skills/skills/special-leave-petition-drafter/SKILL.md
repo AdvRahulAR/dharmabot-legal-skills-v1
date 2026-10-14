@@ -29,6 +29,7 @@ Mark as **blocking**:
 2. Check maintainability: is an alternative remedy pending or available? Is the order final or interlocutory? Explain the choice.
 3. Compute limitation with `limitation-calculator`. If late, draft an application for condonation of delay with day-by-day reasons from the client.
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 4. Build the synopsis and list of dates with `litigation-chronology-builder`. Keep it neutral and sourced.
 5. Frame questions of law that are general and important, not just re-arguments of fact.
 6. Draft grounds, each tied to the impugned findings and the record.

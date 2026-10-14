@@ -35,6 +35,7 @@ Also useful: startup recognition or MSME registration (for the fee category), tr
 5. For a user claim, draft the user affidavit stating the date of first use with supporting evidence (invoices, advertisements, website archives). Flag gaps between the claimed date and the evidence.
 6. Record priority details and check that the priority period has not expired; confirm the period from the Act.
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 7. Draft the authorisation of agent (TM-48 or the current form) where an agent files.
 8. Note follow-up: examination, advertisement, opposition window and renewal.
 

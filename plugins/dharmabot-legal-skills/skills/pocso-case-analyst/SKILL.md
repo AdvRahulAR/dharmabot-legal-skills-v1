@@ -21,7 +21,7 @@ Record the dates of the alleged acts, report and statements. Punishments for som
 
 ## Required inputs
 
-**Blocking**: the FIR and police report or complaint; whom the user acts for; the alleged acts and their dates; and the age documents on record (school records, birth certificate, medical age estimation).
+**Blocking**: the FIR and police report or complaint; whom the user acts for; the alleged acts and their dates; the age documents on record (school records, birth certificate, medical age estimation); and the chargesheet.
 
 Also useful: statements recorded by police and Magistrate, medical examination report, forensic reports, Child Welfare Committee orders and the Special Court's orders.
 
@@ -32,6 +32,7 @@ Also useful: statements recorded by police and Magistrate, medical examination r
 3. Age: apply the JJ Act order of documents (school certificate, birth certificate, then medical estimation) as confirmed from the text. Note the margin of error debates and current Supreme Court treatment; read before citing.
 4. Procedure: who reported and when; police recording by a woman officer at the child's place where required; Magistrate statement; medical examination by the prescribed doctor; support person; information to the Child Welfare Committee and Special Court within the prescribed times.
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates. Run the script even for a period in hours: do not add hours by hand. For a period in hours, give `--start` with a time, for example `--start 2026-10-15T14:30 --period 6h`.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 5. Trial safeguards: in-camera proceedings, no aggressive questioning, questions through the court, no disclosure of identity, and time limits for evidence and disposal.
 6. Presumptions: identify which statutory presumptions apply (believed ss.29 and 30; confirm), when the foundational facts must first be proved, and what rebuttal standard current authority applies.
 7. Compensation: interim and final compensation under the rules and scheme.
@@ -45,6 +46,9 @@ Also useful: statements recorded by police and Magistrate, medical examination r
 
 ## Guardrails and hand-offs
 
+- If a blocking input is missing, ask for each one by name before giving a substantive answer; do not produce an analysis or draft with blanks first. Ask for the age documents and the chargesheet by name.
+- Mark every section, article, rule number, period and last date as believed and to be confirmed against the official text, in tables, headlines and bold lines as well as in notes, and tag [verify] anything not checked against a primary source. A closing disclaimer alone is not enough. This covers every prescribed reporting and other time limit, including the 24-hour reporting period.
+- If the user's stated count and the dates disagree, put the question "which is right?" to the user in plain words, and show both results as conditional until they reply.
 - Never name the child or include details that could identify the child, family, school or locality in any output. Use initials or "the child".
 - Never suggest pressure on the child or family, or out-of-court settlement of a POCSO offence.
 - Never comment on the child's character or past.

@@ -35,6 +35,7 @@ Also useful: antecedents, family, health, employment, conduct in custody or on b
 6. In capital-eligible cases, flag the need for mitigation investigation and expert reports, following Supreme Court guidance (for example Bachan Singh v. State of Punjab, 1980; confirm current treatment and later directions).
 7. Compute set-off of detention against any term from the custody dates given.
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 8. Propose compensation to the victim where it may weigh in mitigation, but never as a price for a lower sentence.
 9. Search for current Supreme Court sentencing guidance for this offence. Read it; tag anything unread `[verify]`.
 

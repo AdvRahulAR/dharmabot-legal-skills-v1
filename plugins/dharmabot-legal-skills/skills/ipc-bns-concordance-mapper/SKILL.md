@@ -43,3 +43,5 @@ A table with columns: old provision · new provision · subject · what changed 
 - Do not advise which statute applies to a particular offence date. Hand off to `crpc-bnss-transition-analyst`.
 - Do not analyse whether the facts satisfy an offence. Hand off to `fir-ingredients-analyst`.
 - Do not present an unofficial concordance table as authoritative.
+- If a blocking input is missing, ask for each one by name before drafting or giving a substantive answer; do not produce a draft with blanks first. Ask both which section or offence to map and in which direction (old to new, or new to old); do not assume IPC to BNS.
+- Mark every section, article, rule number and period as believed and to be confirmed against the official text, in tables, headings and drafted letters as well as in notes, and tag [verify] anything not checked against a primary source. A closing disclaimer alone is not enough. This covers BNSS, CrPC and BSA references in notes and headlines as well as table rows.

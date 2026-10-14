@@ -37,6 +37,7 @@ Also useful: email addresses and phone numbers given in the pleadings, the clien
 5. If ordinary service has genuinely failed, draft an application for substituted service with an affidavit of the attempts made and why the party is avoiding service. Propose the mode (paper publication in a named local newspaper, affixture, email, messaging service) that the court may accept.
 6. Track process fee, steps and deadlines set by the court. Hand dates to `matter-deadline-tracker`.
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 
 ## Output
 

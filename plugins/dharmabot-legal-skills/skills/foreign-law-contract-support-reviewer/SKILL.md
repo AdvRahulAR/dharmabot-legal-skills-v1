@@ -20,7 +20,7 @@ Record the governing law of each contract (US state, England and Wales, Singapor
 Mark as **blocking**:
 - the contracts, in readable form;
 - the client's playbook or review instructions (positions, fallbacks, escalation triggers);
-- the name of the supervising lawyer and the output format wanted;
+- the name of the supervising lawyer, asked for as a separate question, and the output format wanted;
 - confirmation that an engagement and confidentiality terms are in place.
 
 Also useful: the client's role (buyer, vendor, licensor), deal values, templates, and prior reviews.
@@ -49,3 +49,5 @@ Also useful: the client's role (buyer, vendor, licensor), deal values, templates
 - For large-volume coding, hand off to `lpo-document-review-coder`.
 - For short summaries, hand off to `contract-summariser`.
 - For research on a foreign-law point, hand off to `foreign-law-research-memo-drafter`.
+- If a blocking input is missing, ask for each one by name before drafting or giving a substantive answer; do not produce a draft with blanks first.
+- For an Indian-party contract, say in the response that it is routed to `cross-border-contract-reviewer`, and do not run Indian-law checks here.

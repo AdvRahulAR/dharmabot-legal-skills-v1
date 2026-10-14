@@ -42,7 +42,7 @@ Also useful: where the assets, performance and evidence are; any proceedings alr
 
    Retrieve the current text of each.
 6. Flag urgent points: limitation in each jurisdiction, interim relief, asset dissipation, sanctions exposure.
-7. Recommend the next skills and the order to run them in.
+7. Recommend the next skills and the order to run them in, naming each by exact folder id in backticks in the response.
 
 ## Output
 

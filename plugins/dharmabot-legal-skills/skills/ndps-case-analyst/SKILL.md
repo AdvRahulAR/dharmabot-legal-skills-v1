@@ -34,6 +34,7 @@ Also useful: the information recorded before the search, any report to a superio
 5. Arrest: grounds of arrest given in writing; information to relatives; production.
 6. Bail: apply the twin conditions where commercial quantity is involved. Assess delay in trial and long custody as current authority treats them. Check default bail time limits and any extension procedure; compute dates with `limitation-calculator`.
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 7. Search for and read current Supreme Court authority on each safeguard. Tag anything unread `[verify]`.
 
 ## Output
@@ -44,6 +45,8 @@ Also useful: the information recorded before the search, any report to a superio
 
 ## Guardrails and hand-offs
 
+- Mark every section, article, rule number, period and last date as believed and to be confirmed against the official text, in tables, headlines and bold lines as well as in notes, and tag [verify] anything not checked against a primary source. A closing disclaimer alone is not enough.
+- If the user's stated count and the dates disagree, put the question "which is right?" to the user in plain words, and show both results as conditional until they reply.
 - Never advise on concealing, transporting or evading detection of any substance.
 - Never invent weights, times or record entries.
 - Never promise bail.

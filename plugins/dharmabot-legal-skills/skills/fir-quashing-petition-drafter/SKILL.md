@@ -49,3 +49,5 @@ For settlement: the compromise deed, affidavits of the complainant and the offen
 - Never promise a stay or quashing.
 - Hand off layout to `court-pleading-formatter`.
 - Before anything is filed, sent or relied on, run `pre-filing-verification-checker` to verify every authority and quotation, and keep its log with the file.
+- Tag [verify] on every case cited that was not read in full, not only some; if no case was read, tag all of them, including Bhajan Lal and Gian Singh, and do not cite from memory without the tag.
+- Mark every section, article, rule number and period as believed and to be confirmed against the official text, in tables, headings and drafted letters as well as in notes, and tag [verify] anything not checked against a primary source. A closing disclaimer alone is not enough.

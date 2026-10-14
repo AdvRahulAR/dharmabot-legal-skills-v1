@@ -108,9 +108,11 @@ def load_cases(evals_dir=EVALS):
     return cases
 
 
-def select_cases(cases, pack_map, packs=(), skills=(), ids=(), files=()):
+def select_cases(cases, pack_map, packs=(), skills=(), ids=(), files=(), include_file_cases=False):
     out = []
     for c in cases:
+        if c.get("requires_files") and not include_file_cases and not ids:
+            continue
         if packs and pack_map.get(c.get("skill")) not in packs:
             continue
         if skills and c.get("skill") not in skills:
@@ -240,12 +242,13 @@ def evaluate(case, out, pack_map, args):
     expect = should_trigger(case)
     trigger_ok = fired == expect
     items, grade_cost = grade(case, info, grader_model=args.grader_model)
-    passed = trigger_ok and info["status"] == 0 and all(i.get("pass") for i in items)
+    rubric_ok = info["status"] == 0 and all(i.get("pass") for i in items)
+    passed = trigger_ok and rubric_ok
     result = {
         "id": case["id"], "file": case["file"], "skill": case.get("skill"), "pack": pack_map.get(case.get("skill")),
         "kind": case.get("kind"), "expected_trigger": expect, "skills_used": info["skills"], "trigger_ok": trigger_ok,
         "status": info["status"], "seconds": info["seconds"], "turns": info["turns"], "commands": info["commands"],
-        "tool_errors": len(info["errors"]), "items": items, "passed": passed,
+        "tool_errors": len(info["errors"]), "items": items, "passed": passed, "passed_rubric": rubric_ok,
         "cost_run": info["cost"] or 0.0, "cost_grade": grade_cost,
     }
     result_path.write_text(json.dumps(result, indent=2), encoding="utf-8")
@@ -255,6 +258,7 @@ def evaluate(case, out, pack_map, args):
 def summarise(results):
     total = len(results)
     passed = sum(1 for r in results if r["passed"])
+    passed_rubric = sum(1 for r in results if r.get("passed_rubric", r["passed"]))
     by = {}
     for key in ("pack", "skill", "kind"):
         groups = {}
@@ -264,7 +268,7 @@ def summarise(results):
             g[1] += 1 if r["passed"] else 0
         by[key] = groups
     return {
-        "total": total, "passed": passed, "failed": total - passed,
+        "total": total, "passed": passed, "failed": total - passed, "passed_rubric": passed_rubric,
         "trigger_failures": sum(1 for r in results if not r["trigger_ok"]),
         "cost": round(sum((r.get("cost_run") or 0) + (r.get("cost_grade") or 0) for r in results), 2),
         "by": by,
@@ -277,10 +281,12 @@ def report_md(results, summary, meta):
         "# Eval report", "",
         f"Run {meta['started']} · Claude Code {meta['claude_version']} · run model {meta['model'] or 'default'} · "
         f"grader {meta['grader_model']}", "",
-        f"**{summary['passed']} of {summary['total']} cases passed ({pct:.0f}%).** "
+        f"**{summary['passed']} of {summary['total']} cases passed ({pct:.0f}%)** on the strict test, and "
+        f"{summary['passed_rubric']} of {summary['total']} on the rubric alone. "
         f"Skill-trigger failures: {summary['trigger_failures']}. Cost: ${summary['cost']}.", "",
-        "A case passes only if the expected skill fired (or did not, for negative trigger cases) and a model grader "
-        "marked every `must` and `must_not` line as met. The grader is a model; its verdicts should be spot-checked.", "",
+        "The strict test needs the expected skill to fire (or not, for negative trigger cases) and a model grader to mark every "
+        "`must` and `must_not` line as met. The rubric-only figure ignores whether a skill fired. "
+        "The grader is a model; its verdicts should be spot-checked.", "",
         "## By pack", "", "| Pack | Passed | Total |", "| --- | --- | --- |",
     ]
     lines += [f"| {k} | {v[1]} | {v[0]} |" for k, v in sorted(summary["by"]["pack"].items())]
@@ -320,6 +326,8 @@ def main(argv=None):
     p.add_argument("--budget-usd", type=float, help="per-case spending cap passed to claude --max-budget-usd")
     p.add_argument("--out", help="output folder (default eval-results/<timestamp>)")
     p.add_argument("--resume", action="store_true", help="skip cases that already have a result in --out")
+    p.add_argument("--include-file-cases", action="store_true",
+                   help="also run cases marked requires_files (they need attachments the runner cannot supply)")
     p.add_argument("--dry-run", action="store_true", help="list the selected cases and an estimated cost, then stop")
     args = p.parse_args(argv)
 
@@ -327,7 +335,8 @@ def main(argv=None):
     unknown = set(args.pack) - set(pack_map.values())
     if unknown:
         p.error(f"unknown pack(s): {sorted(unknown)}")
-    cases = select_cases(load_cases(), pack_map, set(args.pack), set(args.skill), set(args.case), set(args.file))
+    cases = select_cases(load_cases(), pack_map, set(args.pack), set(args.skill), set(args.case), set(args.file),
+                         include_file_cases=args.include_file_cases)
     if not cases:
         p.error("no cases selected")
     if args.dry_run:

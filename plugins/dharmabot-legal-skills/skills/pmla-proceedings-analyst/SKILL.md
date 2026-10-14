@@ -31,8 +31,9 @@ Also useful: the property details, source-of-funds documents, earlier statements
 2. Read Vijay Madanlal Choudhary v. Union of India (Supreme Court, 2022) and check the status of review or reference proceedings on it. Search for later Supreme Court rulings on written grounds of arrest, arrest after cognizance and bail. Read before citing; tag anything unread `[verify]`.
 3. Predicate offence: confirm its status. If closed, quashed or ended in acquittal, assess the effect on the PMLA case under current authority.
 4. Summons: who is summoned and as what; documents sought; whether the client may be arrested; prepare with `enforcement-summons-response-planner`.
-5. Attachment: check the reasons recorded, the period of provisional attachment and the deadline for filing before the Adjudicating Authority; plan the reply on source of funds and the "proceeds of crime" link; compute dates with `limitation-calculator`.
+5. Attachment: check the reasons recorded, the period of provisional attachment and the deadline for filing before the Adjudicating Authority; plan the reply on source of funds and the "proceeds of crime" link; compute dates with `limitation-calculator` and name it in the response for the Adjudicating Authority-stage deadlines.
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 6. Appeals: the Appellate Tribunal against confirmation, and then the High Court, with limitation and any stay.
 7. Arrest and bail: written grounds, production, remand; apply the twin conditions and any exceptions (the proviso to s.45(1) is believed to cover a person under sixteen, a woman, the sick or infirm, and an accused of money-laundering below a threshold believed to be Rs 1 crore; the Supreme Court is understood to treat the benefit as discretionary, not automatic [verify]; confirm against the official text); consider long custody and trial delay as current authority treats them. Draft bail via `bnss-bail-application-drafter`.
 
@@ -44,6 +45,7 @@ Also useful: the property details, source-of-funds documents, earlier statements
 
 ## Guardrails and hand-offs
 
+- Mark every section, article, rule number, period and last date as believed and to be confirmed against the official text, in tables, headlines and bold lines as well as in notes, and tag [verify] anything not checked against a primary source. A closing disclaimer alone is not enough. State the s.45(1) proviso classes with the same believed/confirm hedge.
 - Never advise moving, layering or concealing assets after notice.
 - Never advise false statements to the ED; statements may be used against the maker.
 - Never promise bail or release of property.

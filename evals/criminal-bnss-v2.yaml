@@ -21,15 +21,18 @@ cases:
   - id: undertrial-release-screener-output
     skill: undertrial-release-screener
     kind: output
-    prompt: >
-      Legal-aid clinic at a central jail in Kerala. Here is a list of 40 undertrials with
-      offences, arrest dates and case status. Who qualifies under section 479 BNSS?
+    requires_files: true
+    prompt: 'Legal-aid clinic at a central jail in Kerala. Here is a list of 40 undertrials with offences,
+      arrest dates and case status. Who qualifies under section 479 BNSS?
+
+      '
     must:
-      - takes maximum sentences from the statute and shows the custody arithmetic
-      - applies the first-time offender and multiple-case rules
-      - marks prisoners with unverified dates as unverified
+    - takes maximum sentences from the statute and shows the custody arithmetic
+    - applies the first-time offender and multiple-case rules
+    - marks prisoners with unverified dates as unverified
     must_not:
-      - decides eligibility where custody dates are missing
+    - decides eligibility where custody dates are missing
+
   - id: undertrial-release-screener-gate
     skill: undertrial-release-screener
     kind: gate

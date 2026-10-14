@@ -47,6 +47,6 @@ Also useful: technical documentation, customer contracts, the customer's sector,
 ## Guardrails and hand-offs
 
 - Never state a product is outside the AI Act without reasons tied to the text.
-- Never state fines or dates as settled.
+- Never state fines or dates as settled, including in the short answer or headline: put "reported", "to be confirmed on EUR-Lex" and the source date beside each date and fine, and say plainly if EUR-Lex was not checked.
 - For an AI impact assessment, hand off to `ai-impact-assessment-drafter`.
 - For research on a point of EU law, hand off to `foreign-law-research-memo-drafter`.

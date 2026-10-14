@@ -19,7 +19,8 @@ Identify the country where the document is signed, the country where it will be 
 
 Mark as **blocking**:
 - the document type (power of attorney, affidavit, degree, company document, court document, contract);
-- where it will be signed and where it will be used;
+- who issued it (and in which State, for an Indian document);
+- where it will be signed, and separately where it will be used;
 - who will use it, and for what.
 
 Also useful: the receiving authority's written requirements, deadlines, and the signer's identity documents.
@@ -29,7 +30,7 @@ Also useful: the receiving authority's written requirements, deadlines, and the 
 1. Retrieve the current requirements from official sources: the Ministry of External Affairs (apostille and attestation, including which documents need prior attestation by a State authority), the foreign country's mission in India or foreign ministry, and the HCCH status table.
 2. **Indian document for use abroad.**
    - **Apostille country:** notarisation or issuing-authority attestation, then any required State-level attestation, then the MEA apostille.
-   - **UAE:** notarisation, then MEA attestation, then UAE Embassy attestation in India, then UAE Ministry of Foreign Affairs attestation in the UAE. Add certified Arabic translation where the authority requires it.
+   - **UAE:** state that the UAE is believed not to be an Apostille Convention party (confirm on the HCCH status table), so the attestation chain applies, not an apostille: notarisation, then MEA attestation, then UAE Embassy attestation in India, then UAE Ministry of Foreign Affairs attestation in the UAE. Add certified Arabic translation where the authority requires it.
 3. **Foreign document for use in India.**
    - From an Apostille country: notarise and apostille there.
    - From the UAE: notarise, then UAE MOFA, then the Indian Mission.
@@ -48,3 +49,6 @@ Also useful: the receiving authority's written requirements, deadlines, and the 
 
 - Do not state fees or processing times unless taken from a current official page, with the date.
 - Do not suggest bypassing attestation or using unofficial agents for official steps.
+- If a blocking input is missing, ask for each one by name (document type, issuer, place of signing, place of use) before drafting or giving a substantive answer; do not produce a draft with blanks first.
+- Mark every section, article, rule number and period as believed and to be confirmed against the official text, in tables, headings and drafted text as well as in notes, and tag [verify] anything not checked against a primary source. A closing disclaimer alone is not enough. This includes s.33(1)(c) and s.32A of the Registration Act and the income-tax provision on withholding.
+- If the user states a section number or asks for no caveat, do not adopt it as settled; keep the hedge, and say the number has not been checked against the official text unless it has.

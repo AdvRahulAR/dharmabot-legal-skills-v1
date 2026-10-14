@@ -33,6 +33,7 @@ Also useful: the FIR, case diary extracts supplied, earlier bail orders and the 
 4. Build a witness table: each witness, what they saw, when their statement was recorded, and contradictions with others and with documents.
 5. Check investigation steps: delay in FIR or statements; independent witnesses at seizure; mandatory videography where required; sealing and forwarding to the laboratory; chain of custody; test identification; site plan; arrest compliance.
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 6. Check legal preconditions: sanction for prosecution, special-statute approvals, and limitation for taking cognizance where applicable.
 7. Check electronic evidence: what device, who extracted it, hash and certificate status. Hand off certificate issues to `bsa-electronic-evidence-certificate-drafter`.
 8. Check missing documents the accused is entitled to, and plan an application for them.
@@ -51,3 +52,6 @@ Also useful: the FIR, case diary extracts supplied, earlier bail orders and the 
 - Never invent a page, statement or report finding.
 - Mark the client's own account separately from the record.
 - Next steps go to `discharge-application-drafter` or `criminal-trial-readiness-checker`.
+- If a blocking input is missing, ask for each one by name before drafting or giving a substantive answer; do not produce a draft with blanks first. Ask first for the full police report (chargesheet) with all annexures and the list of documents relied on; the FIR alone is not enough.
+- Mark every section, article, rule number and period as believed and to be confirmed against the official text, in tables, headings and drafted letters as well as in notes, and tag [verify] anything not checked against a primary source. A closing disclaimer alone is not enough. This covers the BNSS limitation-for-cognizance provisions and any period computed.
+- Where the user's count and the dates disagree, do not assert your own figure as correct; ask which is right and show both as conditional.

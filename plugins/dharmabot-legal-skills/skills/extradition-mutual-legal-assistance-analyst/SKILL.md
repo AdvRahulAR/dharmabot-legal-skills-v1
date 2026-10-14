@@ -46,6 +46,7 @@ Also useful: the treaty text, charge-sheet, court orders, prison conditions evid
 
 ## Guardrails and hand-offs
 
+- If the FIR, offence or request predates 1 July 2024, run `crpc-bnss-transition-analyst` in the same response and report its result; do not merely offer to run it later.
 - Never advise a person on evading arrest, travel restrictions or lawful process.
 - Never predict the outcome of an extradition hearing.
 - For money-laundering proceedings, hand off to `pmla-proceedings-analyst`.

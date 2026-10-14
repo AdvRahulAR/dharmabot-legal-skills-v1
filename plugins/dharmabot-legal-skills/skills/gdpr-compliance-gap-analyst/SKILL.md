@@ -53,3 +53,6 @@ Also useful: privacy notices, cookie banner, DPAs, sub-processor list, records o
 - Never quote fines or thresholds from memory.
 - For DPIAs and notices, hand off to `gdpr-dpia-support-drafter`.
 - For transfer mechanisms, hand off to `cross-border-data-transfer-analyst`.
+- Mark every section, article, rule number and period as believed and to be confirmed against the official text, in tables, headings and drafted text as well as in notes, and tag [verify] anything not checked against a primary source. A closing disclaimer alone is not enough. This covers GDPR articles (for example Arts 3(2), 27, 28, 30, 33, 82) and DPDP sections.
+- If the user states a section number or asks for no caveat, do not adopt it as settled; keep the hedge, and say the number has not been checked against the official text unless it has.
+- Do not state breach-reporting periods, user-count thresholds or fines from memory; if mentioned, mark them believed, to be confirmed, [verify].

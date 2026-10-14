@@ -34,6 +34,7 @@ Mark as **blocking**:
 3. Map the forum: Waqf Tribunal, Waqf Board, Collector or designated officer (under the amended law), endowments authority, civil court with leave under section 92, or a writ. Check bars on civil courts.
 4. Check limitation for challenging a survey or listing, and whether the Limitation Act now applies to wakf claims under the amended law. Use `limitation-calculator`.
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 5. Test the wakf or endowment claim against the record: dedication, user, grant, revenue entries and the survey process.
 6. Search for and read current Supreme Court and High Court authority. Tag anything unread `[verify]`.
 

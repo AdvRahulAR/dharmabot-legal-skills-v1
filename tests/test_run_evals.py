@@ -70,6 +70,12 @@ class SelectionTests(unittest.TestCase):
         picked = run_evals.select_cases(self.cases, self.pack_map, ids={"bail-date-mismatch"})
         self.assertEqual([c["id"] for c in picked], ["bail-date-mismatch"])
 
+    def test_file_cases_skipped_unless_asked(self):
+        cases = [{"id": "a", "skill": "s", "requires_files": True}, {"id": "b", "skill": "s"}]
+        self.assertEqual([c["id"] for c in run_evals.select_cases(cases, {"s": "p"})], ["b"])
+        self.assertEqual(len(run_evals.select_cases(cases, {"s": "p"}, include_file_cases=True)), 2)
+        self.assertEqual([c["id"] for c in run_evals.select_cases(cases, {"s": "p"}, ids={"a"})], ["a"])
+
     def test_should_trigger_defaults(self):
         self.assertTrue(run_evals.should_trigger({"skill": "a-b-checker", "must_not": []}))
         self.assertFalse(run_evals.should_trigger({"skill": "a-b-checker", "should_trigger": False}))

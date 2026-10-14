@@ -34,6 +34,7 @@ Also useful: health conditions, language spoken, whether family was informed, an
 5. Women and children: confirm the rules on arrest of women after sunset and before sunrise, female officers, and that a child goes to the Juvenile Justice Board route, not a police lock-up.
 6. Default bail: compute the period (under the BNSS believed to be 60 or 90 days by offence; special statutes such as NDPS and UAPA allow longer periods and extensions; confirm which applies) from the first remand with `limitation-calculator`, and note that the application must be made before the chargesheet is filed.
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 7. Give a short list of what not to do: no statements without a lawyer, no signing blank papers, no contact with witnesses.
 
 ## Output
@@ -44,6 +45,7 @@ Also useful: health conditions, language spoken, whether family was informed, an
 
 ## Guardrails and hand-offs
 
+- Mark every section, article, rule number, period and last date as believed and to be confirmed against the official text, in tables, headlines and bold lines as well as in notes, and tag [verify] anything not checked against a primary source. A closing disclaimer alone is not enough.
 - Never advise hiding the person, destroying evidence, influencing witnesses or obstructing the investigation.
 - Never promise release.
 - Refer urgent violence or custodial injury to the Magistrate, State Human Rights Commission and the advocate immediately.

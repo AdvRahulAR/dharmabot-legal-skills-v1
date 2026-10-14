@@ -38,6 +38,7 @@ Also useful: historical records, publications and archives proving reputation; p
 6. **Authorised users.** Draft one application per producer in the prescribed form, with the producer's statement and the applicant body's consent. Make a batch tracker for large groups.
 7. **Opposition.** Where needed, draft a notice of opposition or counter-statement with grounds and evidence; check the time limit with `limitation-calculator`.
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 8. **Renewal and labels.** Calendar renewal; advise on correct use of the GI name and logo on packaging.
 
 ## Output

@@ -37,9 +37,9 @@ Also useful: the client's playbook or fallback positions, and deal size.
    Flag clauses that leave the client with an unenforceable win.
 4. **Indian mandatory and public-policy limits.** Check restraints of trade and non-competes (Indian Contract Act, 1872, s.27), clauses restricting legal proceedings (s.28), stated damages and penalty clauses (under s.74, a court awards reasonable compensation up to the stated sum, rather than drawing the English penalty distinction), specific performance, and consumer or employment protections where relevant. Retrieve current text and authority, and confirm each section number against the official text.
 5. **FEMA.** Check pricing and payment terms, guarantees, deferred payments, advance payments, foreign-currency accounts, and any equity or debt features. Hand off structuring to `india-entry-fema-structuring-analyst`.
-6. **Tax.** Check withholding on payments to non-residents under the Indian income-tax law now in force, the treaty position, grossing-up clauses, GST (import of services and reverse charge, export of services), and permanent-establishment risk. Mark these for chartered-accountant confirmation.
+6. **Tax.** Check withholding on payments to non-residents under the Indian income-tax law now in force, the treaty position, grossing-up clauses, GST (import of services and reverse charge, export of services), and permanent-establishment risk. Mark these for chartered-accountant confirmation, and name withholding tax and cross-border data transfer in the response as points for the tax adviser and the data-protection specialist.
 7. **Stamp duty.** Instruments executed abroad and later brought into India may be dutiable within a time limit after receipt. Use `state-stamp-duty-calculator`.
-8. **Data and IP.** Check personal data flows (hand off to `cross-border-data-transfer-analyst`), IP ownership and assignment formalities, and licences.
+8. **Data and IP.** Check personal data flows (hand off to `cross-border-data-transfer-analyst`, and name it in the response), IP ownership and assignment formalities, and licences.
 9. **Sanctions, export control and anti-bribery.** Check for US, UK, EU and UN sanctions and export-control clauses, and anti-corruption clauses such as the FCPA and UK Bribery Act.
 10. **Boilerplate that crosses borders.** Check language, notices and service of process agent, currency and exchange-rate risk, force majeure, and the time-zone of deadlines.
 11. Rank the issues, and propose replacement wording for the top issues.
@@ -56,3 +56,6 @@ Also useful: the client's playbook or fallback positions, and deal size.
 - Mark foreign-law conclusions as needing local counsel confirmation.
 - Never state a tax rate or treaty rate without the current source.
 - Keep commercial choices for the client; explain trade-offs rather than deciding.
+- Mark every section, article, rule number and period as believed and to be confirmed against the official text, in tables, headings and drafted text as well as in notes, and tag [verify] anything not checked against a primary source. A closing disclaimer alone is not enough.
+- If the user states a section number or asks for no caveat, do not adopt it as settled; keep the hedge, and say the number has not been checked against the official text unless it has.
+- This includes ss.27, 28 and 74 of the Contract Act and ss.13 and 44A CPC: show each as believed and to be confirmed in the risk table and redlines, not only in notes.

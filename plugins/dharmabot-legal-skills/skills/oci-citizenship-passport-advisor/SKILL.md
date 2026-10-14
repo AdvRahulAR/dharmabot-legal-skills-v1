@@ -36,6 +36,7 @@ Also useful: the OCI card or passport details (not to be stored), social media o
 4. Check limits on review. Courts give weight to the executive in citizenship and security matters; explain this plainly.
 5. Map remedies: a representation or review to the authority, a statutory appeal where one exists, and a writ petition in the High Court. Compute deadlines with `limitation-calculator`.
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 6. For renunciation or surrender certificates, list documents and the consequences of late surrender.
 7. Draft the representation or appeal from the record only. Tag anything not read in full `[verify]`.
 

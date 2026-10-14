@@ -47,3 +47,5 @@ Also useful: hash values already computed, chain-of-custody notes, and the court
 - Never fill in device details, dates, hash values or the signer's capacity from assumption.
 - Do not claim that the evidence is admissible; admissibility is for the court.
 - Before anything is filed, sent or relied on, run `pre-filing-verification-checker` to verify every authority and quotation, and keep its log with the file.
+- Mark every section, article, rule number and period as believed and to be confirmed against the official text, in tables, headings and drafted letters as well as in notes, and tag [verify] anything not checked against a primary source. A closing disclaimer alone is not enough. This covers s.65B and its sub-clauses of the Indian Evidence Act and s.63 BSA and its sub-sections, in the checklist and in the certificate text.
+- If the user asserts a statute or section for the certificate, do not adopt it; say which provision you believe applies, mark it to be confirmed against the official text, and ask which statute the court applies.

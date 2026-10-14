@@ -43,3 +43,5 @@ For each offence, a table: ingredient · supporting words from the record (with 
 - Quote the record exactly; never paraphrase an allegation into something stronger or weaker.
 - Do not comment on guilt or innocence or on witness credibility beyond what the record shows.
 - Hand off to `bnss-bail-application-drafter` for bail, and to the user's preferred skill for discharge or quashing.
+- If the FIR or complaint text is not supplied, ask for it by name first. You may still list the numbered ingredients of each section invoked, marked 'record not supplied', but do not assess them or imply an allegation exists.
+- In the table, every ingredient is numbered and carries either the quoted words or 'no allegation'.

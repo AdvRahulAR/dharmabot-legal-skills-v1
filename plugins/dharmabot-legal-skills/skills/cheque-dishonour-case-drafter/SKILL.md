@@ -21,7 +21,7 @@ Each step runs from the previous one: cheque validity, return memo, notice, serv
 
 ## Required inputs
 
-**Blocking**: the cheque (date, amount, drawer, account); the return memo with date and reason; date the payee received the memo; the debt or liability the cheque was for, with documents; and the drawer's addresses.
+**Blocking**: the cheque (date, amount, drawer, account); the return memo with date and reason; date the payee received the memo; the date the notice was sent and the date it was served; the debt or liability the cheque was for, with documents; and the drawer's addresses.
 
 For a company drawer: the directors and officers in charge, and their roles. For a reply: the notice received and the client's account.
 
@@ -30,6 +30,7 @@ For a company drawer: the directors and officers in charge, and their roles. For
 1. Retrieve the current official text of NI Act ss.138 to 148, s.25 of the Payment and Settlement Systems Act, 2007 (believed to be the relevant sections; confirm each number against the official text), any Supreme Court practice directions on s.138 trials, and the relevant court's rules. Record source and date.
 2. Check the ingredients: legally enforceable debt, presentation within validity, dishonour for a covered reason, notice within the statutory period from receiving information of return (believed 30 days; confirm), failure to pay within the payment window (believed 15 days from receipt of notice; confirm).
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 3. Draft the notice: cheque details, return reason, demand for the cheque amount, addresses for all drawers and company officers, and modes of service with proof.
 4. Compute the complaint deadline (believed one month from the cause of action; confirm) and flag any delay needing condonation.
 5. For companies, plead the role of each director under s.141 (believed to be the section; confirm against the official text) specifically. Do not array non-executive or independent directors without material.
@@ -51,3 +52,6 @@ For a company drawer: the directors and officers in charge, and their roles. For
 - Never promise conviction or recovery. For parallel civil recovery, use `summary-suit-order-xxxvii-drafter`.
 - For a version in an Indian language, use `regional-language-legal-drafter`; for layout, `court-pleading-formatter`.
 - Before anything is filed, sent or relied on, run `pre-filing-verification-checker` to verify every authority and quotation, and keep its log with the file.
+- If a blocking input is missing, ask for each one by name before drafting or giving a substantive answer; do not produce a draft with blanks first. Ask first for the return memo date, the notice date and the date the notice was served (with proof of service); do not draft the notice or complaint with blanks for these.
+- Mark every section, article, rule number and period as believed and to be confirmed against the official text, in tables, headings and drafted letters as well as in notes, and tag [verify] anything not checked against a primary source. A closing disclaimer alone is not enough. This covers the notice, payment-window and complaint periods and ss.138, 141, 142, 143A and 148 NI Act, including every row of the date chart. Do not state a step as 'missed', 'out of time' or 'passed' as settled; word it as conditional on the confirmed dates and rules, and point the advocate to the official text and `limitation-calculator`.
+- Where the user's count and the dates disagree, do not assert your own figure as correct; ask which is right and show both as conditional.

@@ -40,6 +40,7 @@ Also useful: attesting witnesses' availability, any caveat or known objection, a
 6. List heirs to be cited, with addresses for service; plan publication if the court requires it.
 7. Court fee: hand off to `state-court-fee-calculator`; limitation where relevant to `limitation-calculator`.
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 8. Caveat: if a caveat is filed, the matter becomes contentious and is tried as a suit; prepare for that.
 
 ## Output

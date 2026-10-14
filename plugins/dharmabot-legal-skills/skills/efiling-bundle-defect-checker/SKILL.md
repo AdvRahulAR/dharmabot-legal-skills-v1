@@ -32,6 +32,7 @@ Also useful: the diary or filing number, the date of first filing, the court-fee
 4. Map each objection to the exact fix, the page affected and who does it. Do not alter the text of the pleading.
 5. Find the refiling deadline in the court's rules for curing defects, and flag if a delay in refiling needs a condonation application. Confirm the period from the rules; do not assume it.
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 6. Hand court-fee objections to `state-court-fee-calculator` and cause-title or layout objections to `court-pleading-formatter`.
 7. Run a final pass on the corrected bundle: index against pagination, bookmarks open the right page, every annexure is referred to in the pleading, and affidavits are attested and dated.
 

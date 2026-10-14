@@ -39,6 +39,7 @@ Also useful: implementing agency details, impact assessment reports, and sustain
 5. Projects: check each against Schedule VII (believed to be the schedule; confirm against the official text) and excluded activities, implementing agency eligibility and CSR-1 registration, and administrative overhead limits.
 6. Unspent amounts: ongoing project versus other, the transfer deadlines and destination, and penalties (confirm).
    - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+   - Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 7. Impact assessment: whether required for this company and project size.
 8. Reporting: annual report on CSR, and board report disclosures.
 9. BRSR: check applicability, BRSR Core indicators, assurance or assessment requirements, and value-chain disclosures for the reporting year.

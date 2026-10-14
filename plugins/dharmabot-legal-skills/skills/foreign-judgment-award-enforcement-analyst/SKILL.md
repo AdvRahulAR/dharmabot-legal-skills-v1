@@ -28,13 +28,13 @@ Also useful: the underlying contract, proof of service in the original proceedin
 ## Method
 
 1. Read `references/foreign-jurisdictions.md`, then retrieve the current official text of the provisions used below and the current Gazette notifications. Every section number in this skill is believed to be correct but must be confirmed against the official text.
-2. **Classify the instrument, then use one track only.** Decide whether the client holds a foreign court judgment (track A) or a foreign arbitral award (track B). If the client holds both (for example an award and a seat-court judgment on it), analyse each in its own track and keep the conclusions separate. The s.44A CPC reciprocating-territory list and the s.44 Arbitration Act New York Convention notification list are different. Never use one to answer a question about the other.
+2. **Classify the instrument, then use one track only.** Decide whether the client holds a foreign court judgment (track A) or a foreign arbitral award (track B). If the client holds both (for example an award and a seat-court judgment on it), analyse each in its own track and keep the conclusions separate. The s.44A CPC reciprocating-territory list and the s.44 Arbitration Act New York Convention notification list are different. Never use one to answer a question about the other. Within a track, do not discuss the other track's list or routes unless the client also holds that other kind of instrument.
 
 ### A. Foreign court judgments (CPC s.44A / s.13)
 
 3. **Reciprocating-territory check (s.44A CPC list only).** Retrieve the current s.44A notifications and check that the specific court that gave the judgment is covered, not just the country.
    - UAE courts, believed to include the DIFC Courts and ADGM Courts, were notified as a reciprocating territory under s.44A (believed January 2020) [verify]. Whether the UAE is a notified seat under s.44 of the Arbitration Act is irrelevant to a UAE court judgment.
-   - s.44A covers money decrees only, not sums payable for taxes, fines or penalties [verify]. Check that the judgment is for a sum of money of the kind covered.
+   - s.44A covers money decrees only, not sums payable for taxes, fines or penalties [verify] (always tag this [verify] in the response). Check that the judgment is for a sum of money of the kind covered.
 4. **Route.**
    - **Reciprocating territory** (for example the UK, Singapore, the UAE): execution as if an Indian decree under s.44A CPC, by filing a certified copy in a District Court, subject to the exceptions in s.13 CPC (sections believed to be as stated; confirm against the official text).
    - **Not a reciprocating territory** (for example the US and EU member States): file a suit on the judgment, or on the original cause of action. The judgment is conclusive only if none of the s.13 exceptions applies.
@@ -47,7 +47,7 @@ Also useful: the underlying contract, proof of service in the original proceedin
    - breach of Indian law.
 
    Search for and read current Supreme Court authority on each test that is in play. Tag anything not read in full `[verify]`.
-6. **Limitation for track A.** Retrieve the applicable article for execution or for a suit on the judgment and current authority, and compute with `limitation-calculator`.
+6. **Limitation for track A.** Do not choose the limitation article yourself. Hand the period to `limitation-calculator` (naming it in the response), and give only the dates computed with `scripts/date_calc.py` and the options for the advocate to confirm.
 
 ### B. Foreign arbitral awards (Arbitration and Conciliation Act Part II, s.44 notified countries)
 
@@ -55,12 +55,12 @@ Also useful: the underlying contract, proof of service in the original proceedin
    - The UAE was not a notified s.44 seat at the last check [verify]. Retrieve the current notifications before relying on this.
 8. **Route.**
    - **Notified seat:** apply under Part II, in the High Court with jurisdiction, and test the s.48 grounds for refusal narrowly (sections believed to be as stated; confirm against the official text).
-   - **Seat not notified:** the award cannot be enforced under Part II. Explain the alternatives, chiefly a suit on the award [verify]. Explanation 2 to s.44A CPC is believed to exclude an arbitration award from "decree" even where the award is enforceable as a decree [verify], so whether a seat-court judgment that confirms or incorporates the award can be executed under s.44A is doubtful [verify]. Present that only as a contested option, with the risk stated, and analyse any such judgment separately under track A.
-9. **Limitation for track B.** Retrieve the applicable article and current authority on the time to apply for enforcement of a foreign award, and compute with `limitation-calculator`.
+   - **Seat not notified:** the award cannot be enforced under Part II. Explain the alternatives, chiefly a suit on the award [verify]. Explanation 2 to s.44A CPC is believed to exclude an arbitration award from "decree" even where the award is enforceable as a decree [verify]. Always write this as believed and tag it [verify] wherever it appears in the response, so whether a seat-court judgment that confirms or incorporates the award can be executed under s.44A is doubtful [verify]. Present that only as a contested option, with the risk stated, and analyse any such judgment separately under track A.
+9. **Limitation for track B.** Do not choose the limitation article yourself. Hand the period to `limitation-calculator` (naming it in the response), and give only the dates computed with `scripts/date_calc.py` and the options for the advocate to confirm.
 
 ### Common steps
 
-10. **Dates.** Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead.
+10. **Dates.** Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.) Run it with `python3`, or with `py -3` on Windows, where `python`/`python3` may open the Microsoft Store instead. Show the script's commands and output in your response. Present every period, last date and section number as believed and to be confirmed against the official text, in tables and headlines as well as in notes, and tag [verify] where it was not checked against a primary source. If the user's stated count and the dates disagree, show each result as conditional on the user's answer, and do not draft on, or rely on, either figure until they reply.
 11. **Indian judgment or award abroad.** Outline the likely route in the target country, mark every point for local counsel, and list the documents to prepare. These usually include certified and legalised copies (hand off to `document-legalisation-planner`), translations (hand off to `legal-translation-verifier`), proof of service, and proof of finality.
 12. **Interim protection.** Consider attachment before judgment, or s.9 relief for foreign-seated international commercial arbitrations under the proviso to s.2(2) (believed to be the provisions; confirm against the official text), unless the parties excluded it. Check current authority where both parties are Indian [verify].
 
@@ -73,7 +73,9 @@ Also useful: the underlying contract, proof of service in the original proceedin
 
 ## Guardrails
 
+- If a blocking input is missing, ask for each one by name (the judgment or award, court or seat, country, finality and where the debtor's assets are) before giving a substantive answer.
 - Confirm the reciprocating-territory and New York Convention lists from the Gazette before relying on them.
+- Mark every section number and period as believed and to be confirmed against the official text, in tables and headings as well as notes.
 - Never use the s.44A CPC reciprocating-territory list to answer a question about an arbitral award, or the s.44 Arbitration Act notification list to answer a question about a court judgment.
 - Never cite a judgment you have not read; tag uncertain authority `[verify]`.
 - Do not advise on foreign law as if qualified there.
