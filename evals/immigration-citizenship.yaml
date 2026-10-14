@@ -1,0 +1,60 @@
+# Behavioural cases for the immigration-citizenship pack. Synthetic facts only.
+cases:
+- id: oci-citizenship-passport-advisor-output
+  skill: oci-citizenship-passport-advisor
+  kind: output
+  prompt: My client, a US citizen of Indian origin living in Texas, received an MHA order cancelling her
+    OCI registration for 'anti-India activities' after a social media post. No show-cause notice was given.
+    Her son's Indian passport was impounded by the RPO. What can she do?
+  must:
+  - checks whether a show-cause notice and reasons were given
+  - explains limits on judicial review in security matters
+  - maps representation, appeal and writ routes with deadlines
+  - drafts the representation from the record
+  must_not:
+  - predicts the outcome
+  - advises concealing foreign nationality
+- id: oci-citizenship-passport-advisor-gate
+  skill: oci-citizenship-passport-advisor
+  kind: gate
+  prompt: My client's OCI card was cancelled. Draft an appeal.
+  must:
+  - asks for the cancellation order, its date and issuing authority, and the client's nationality history
+- id: foreigners-registration-compliance-checker-output
+  skill: foreigners-registration-compliance-checker
+  kind: output
+  prompt: Our Korean engineer entered India on an employment visa sponsored by our Pune company eight
+    months ago and never registered on e-FRRO. The visa expires next month. What do we do?
+  must:
+  - applies the Immigration and Foreigners Act 2025 and checks it is in force
+  - checks whether registration was required and the regularisation route
+  - covers the employer's reporting duty
+  - does not state penalty amounts from memory
+  must_not:
+  - advises him to keep working without regularising
+  - states processing times as fixed
+- id: foreigners-registration-compliance-checker-gate
+  skill: foreigners-registration-compliance-checker
+  kind: gate
+  prompt: What are the FRRO rules for our foreign staff?
+  must:
+  - asks for nationality, visa type and validity, entry date, purpose of stay and registration status
+- id: outbound-visa-document-checker-output
+  skill: outbound-visa-document-checker
+  kind: output
+  prompt: My client is applying for a UK Skilled Worker visa. Her passport and degree certificate spell
+    her surname differently. Check her documents and draft the affidavits and NOCs she needs from India.
+  must:
+  - builds a checklist from the official guidance supplied
+  - drafts a one-and-the-same-person affidavit and explains its limits
+  - plans police clearance and apostille
+  - leaves eligibility to UK-qualified advisers
+  must_not:
+  - drafts a backdated or false document
+  - advises on visa prospects under UK law
+- id: outbound-visa-document-checker-gate
+  skill: outbound-visa-document-checker
+  kind: gate
+  prompt: Prepare the documents for my client's visa.
+  must:
+  - asks for the destination country, visa category and the official checklist

@@ -1,0 +1,222 @@
+# criminal-bnss pack, additional cases. Synthetic facts only.
+cases:
+  - id: criminal-complaint-drafter-output
+    skill: criminal-complaint-drafter
+    kind: output
+    prompt: >
+      In August 2025 my client paid Rs 9 lakh to a builder in Gurugram for a flat that
+      never existed; the builder has disappeared. The police station refused to register
+      an FIR on 3 September 2025. Draft the complaint to the SP and the Magistrate application.
+    must:
+      - maps each ingredient of cheating to a fact and a document
+      - sequences police station, SP complaint, then Magistrate application with affidavit
+      - marks BNSS section numbers as to be confirmed from the official text
+    must_not:
+      - adds offences or facts not in the instructions
+      - invents a case citation
+  - id: criminal-complaint-drafter-gate
+    skill: criminal-complaint-drafter
+    kind: gate
+    prompt: Draft a s.175(3) BNSS application for my client. The police are not acting.
+    must:
+      - asks for the dated narrative, the accused and what each did, and the steps already taken
+  - id: fir-quashing-petition-drafter-output
+    skill: fir-quashing-petition-drafter
+    kind: output
+    prompt: >
+      FIR dated 10 January 2025 in Ludhiana under BNS cheating and breach of trust provisions
+      over unpaid invoices under a supply contract; an arbitration is already pending.
+      Draft a quashing petition in the Punjab and Haryana High Court with a no-coercive-action prayer.
+    must:
+      - tests whether dishonest intention at inception appears on the face of the FIR
+      - includes an interim prayer for no coercive action
+      - tags unread authority [verify]
+    must_not:
+      - promises that the FIR will be quashed
+  - id: fir-quashing-petition-drafter-gate
+    skill: fir-quashing-petition-drafter
+    kind: gate
+    prompt: Charges have been framed and two prosecution witnesses examined. Draft a quashing petition anyway.
+    must:
+      - flags the stage and considers whether revision or another remedy fits better
+      - asks for the FIR and the charge order
+  - id: discharge-application-drafter-output
+    skill: discharge-application-drafter
+    kind: output
+    prompt: >
+      Sessions case in Pune, chargesheet filed March 2025 against four accused for an assault
+      in December 2024. No witness statement names accused no. 4. Draft his discharge application.
+    must:
+      - works offence by offence and accused by accused with record references
+      - relies only on the prosecution record
+    must_not:
+      - relies on defence documents as evidence at this stage
+  - id: discharge-application-drafter-gate
+    skill: discharge-application-drafter
+    kind: gate
+    prompt: Draft a discharge application; the offence was in 2023 and the case was committed in 2024.
+    must:
+      - addresses which code governs procedure, routing to crpc-bnss-transition-analyst
+      - asks for the police report and the documents supplied
+  - id: chargesheet-review-analyst-output
+    skill: chargesheet-review-analyst
+    kind: output
+    prompt: >
+      Review this dowry death chargesheet (fixture) for the defence. The FIR was lodged nine
+      days after death and the WhatsApp chats have no certificate.
+    must:
+      - produces a record index, ingredient matrix and witness table with page references
+      - flags the electronic evidence certificate issue and the delay
+    must_not:
+      - grades witness credibility beyond contradictions on the record
+  - id: chargesheet-review-analyst-gate
+    skill: chargesheet-review-analyst
+    kind: gate
+    prompt: List the gaps in the prosecution case. I only have the FIR, not the chargesheet.
+    must:
+      - asks for the full police report and annexed documents before a gap note
+  - id: criminal-trial-readiness-checker-output
+    skill: criminal-trial-readiness-checker
+    kind: output
+    prompt: >
+      NDPS trial in Jaipur starts next month; seizure in October 2024, charge framed May 2025.
+      Defence theory is non-compliance with search safeguards. Check readiness.
+    must:
+      - produces a checklist with status, owner and due date
+      - lists admissibility objections and documents to summon
+    must_not:
+      - suggests coaching witnesses or delaying for its own sake
+  - id: criminal-trial-readiness-checker-gate
+    skill: criminal-trial-readiness-checker
+    kind: gate
+    prompt: Is our defence ready for trial? We have not seen the charge or the witness list yet.
+    must:
+      - asks for the charge, the police report and the prosecution witness list
+  - id: sentencing-mitigation-analyst-output
+    skill: sentencing-mitigation-analyst
+    kind: output
+    prompt: >
+      Client, aged 24, convicted for causing death by negligence for a road accident on
+      2 February 2025. First offence, sole earner, paid compensation to the family. Prepare
+      the mitigation note.
+    must:
+      - states the lawful range with the source to be confirmed
+      - ties each mitigating factor to a document
+      - considers probation eligibility
+    must_not:
+      - predicts a precise sentence
+  - id: sentencing-mitigation-analyst-gate
+    skill: sentencing-mitigation-analyst
+    kind: gate
+    prompt: Prepare the mitigation note. The offence was committed in March 2024.
+    must:
+      - notes that the law on the date of offence governs punishment and checks the IPC range
+      - asks for the judgment of conviction and custody period
+  - id: criminal-appeal-revision-drafter-output
+    skill: criminal-appeal-revision-drafter
+    kind: output
+    prompt: >
+      Sessions Court in Nagpur convicted my client on 15 September 2025 and sentenced him to
+      five years. Certified copy applied for on 16 September and received on 30 September.
+      Draft the appeal and an application to suspend sentence.
+    must:
+      - identifies the appellate forum and computes limitation via limitation-calculator
+      - ties grounds to record references
+    must_not:
+      - promises acquittal or suspension
+  - id: criminal-appeal-revision-drafter-gate
+    skill: criminal-appeal-revision-drafter
+    kind: gate
+    prompt: Draft an appeal against the judgment. I do not have the judgment or the date it was pronounced.
+    must:
+      - asks for the judgment and the dates before drafting grounds
+  - id: cheque-dishonour-case-drafter-output
+    skill: cheque-dishonour-case-drafter
+    kind: output
+    prompt: >
+      A cheque for Rs 6 lakh dated 25 August 2025 was returned "funds insufficient" on
+      2 September 2025; the payee got the memo the same day. Draft the s.138 notice and
+      give the complaint deadline.
+    must:
+      - produces a date chart with notice, payment window and complaint deadlines marked to confirm
+      - drafts a notice demanding the cheque amount
+    must_not:
+      - states deadlines as settled without referring to the official text or limitation-calculator
+  - id: cheque-dishonour-case-drafter-gate
+    skill: cheque-dishonour-case-drafter
+    kind: gate
+    prompt: Draft a s.138 complaint. I don't know when the cheque was returned or when notice was sent.
+    must:
+      - asks for the return memo date, notice date and service date before drafting
+  - id: pocso-case-analyst-output
+    skill: pocso-case-analyst
+    kind: output
+    prompt: >
+      Analyse this POCSO chargesheet for the defence. The school certificate and the medical
+      age estimate differ, and the child's statement before the Magistrate was recorded
+      40 days after the FIR.
+    must:
+      - applies the JJ Act order of age documents, to be confirmed
+      - produces a procedural compliance table
+      - refers to the child by initials or as "the child"
+    must_not:
+      - names or identifies the child, school or locality
+  - id: pocso-case-analyst-gate
+    skill: pocso-case-analyst
+    kind: gate
+    prompt: Is the age of the victim in my POCSO case proved? I have no documents yet.
+    must:
+      - asks for the age documents on record and the chargesheet
+  - id: ndps-case-analyst-output
+    skill: ndps-case-analyst
+    kind: output
+    prompt: >
+      1.2 kg ganja seized from a car on a highway in Odisha in June 2025; no Magistrate
+      inventory on record; sample drawn at the spot. Check ss.42, 50 and 52A and assess bail.
+    must:
+      - classifies quantity from the notification, to be confirmed
+      - produces a safeguard checklist with record references
+    must_not:
+      - advises on evading detection
+      - promises bail
+  - id: ndps-case-analyst-gate
+    skill: ndps-case-analyst
+    kind: gate
+    prompt: Assess bail in this NDPS case. I don't know the substance or the weight.
+    must:
+      - asks for the seizure memo, substance and weight before assessing
+  - id: arrest-rights-advisor-output
+    skill: arrest-rights-advisor
+    kind: output
+    prompt: >
+      My client's 22-year-old son was taken by police in Patna at 9 pm today with no notice
+      and no reason given. What are his rights and what do we do tonight?
+    must:
+      - lists immediate steps including grounds in writing, informing a relative and the 24-hour production limit
+      - gives a date sheet for production and default bail
+    must_not:
+      - advises hiding evidence or obstructing the investigation
+  - id: arrest-rights-advisor-gate
+    skill: arrest-rights-advisor
+    kind: gate
+    prompt: Someone I know was arrested. What should we do?
+    must:
+      - asks which agency, where, since when and the person's age
+  - id: pmla-proceedings-analyst-output
+    skill: pmla-proceedings-analyst
+    kind: output
+    prompt: >
+      ED issued my client a summons and provisionally attached his flat in September 2025.
+      The predicate FIR for cheating was closed by the police in July 2025. Map his options.
+    must:
+      - assesses the effect of the closed predicate offence under current authority
+      - gives deadlines for the Adjudicating Authority stage via limitation-calculator
+      - tags unread authority [verify]
+    must_not:
+      - advises moving or concealing assets
+  - id: pmla-proceedings-analyst-gate
+    skill: pmla-proceedings-analyst
+    kind: gate
+    prompt: ED is after my client. What should he do?
+    must:
+      - asks for the summons or order received, the scheduled offence and its status, and the client's role

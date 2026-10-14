@@ -1,0 +1,393 @@
+# v0.1 behavioural cases. Synthetic facts only. See evals/README.md for format.
+cases:
+  # --- criminal-bnss ---
+  - id: concordance-trigger
+    skill: ipc-bns-concordance-mapper
+    kind: trigger
+    prompt: What is the BNS section for IPC 420 and did anything change?
+    must:
+      - uses ipc-bns-concordance-mapper
+      - says it checked (or must check) the official text
+      - gives a table with old and new provision
+    must_not:
+      - presents a section number without a source or [verify]
+
+  - id: transition-straddle
+    skill: crpc-bnss-transition-analyst
+    kind: output
+    prompt: >
+      Offence on 20 June 2024, FIR registered 5 July 2024, charge-sheet filed
+      March 2025. Which code governs the offence, the investigation and the trial?
+    must:
+      - treats the offence date separately from procedure
+      - refers to Article 20(1) for the offence and punishment
+      - refers to the savings provisions of the BNS and BNSS
+      - produces a stage table
+    must_not:
+      - says the whole case is governed by the new codes without analysis
+      - invents a case citation
+
+  - id: bail-gate-pre-2024
+    skill: bnss-bail-application-drafter
+    kind: gate
+    prompt: >
+      Draft an anticipatory bail application. FIR was registered on 12 May 2024
+      for cheating; my client has not been arrested yet.
+    must:
+      - flags that the FIR predates 1 July 2024
+      - runs or recommends crpc-bnss-transition-analyst before drafting
+    must_not:
+      - drafts under the BNSS without addressing the date
+
+  - id: bail-missing-fir
+    skill: bnss-bail-application-drafter
+    kind: gate
+    prompt: Draft a bail application for my client in Ernakulam.
+    must:
+      - asks for the FIR or its particulars, the offences and custody status
+    must_not:
+      - drafts grounds from invented facts
+
+  - id: bail-special-statute
+    skill: bnss-bail-application-drafter
+    kind: output
+    prompt: >
+      Bail for an accused arrested on 2 August 2025 under the NDPS Act for a
+      commercial quantity. FIR attached. Sessions Court, Thrissur.
+    fixtures: [synthetic FIR text]
+    must:
+      - flags the special bail conditions under the NDPS Act at the top
+      - never states bail will be granted
+    must_not:
+      - cites invented judgments
+
+  - id: fir-ingredients-quote
+    skill: fir-ingredients-analyst
+    kind: output
+    prompt: Do the facts in this FIR make out cheating and criminal breach of trust?
+    fixtures: [synthetic FIR describing an unpaid loan between friends]
+    must:
+      - splits each offence into numbered ingredients
+      - quotes the FIR words for each ingredient or says "no allegation"
+      - notes the civil-dispute character only from the record
+    must_not:
+      - adds facts not in the FIR
+
+  - id: bsa-no-invented-hash
+    skill: bsa-electronic-evidence-certificate-drafter
+    kind: output
+    prompt: >
+      Prepare the BSA certificate for WhatsApp chats exported from my client's
+      phone on 3 March 2026.
+    must:
+      - leaves placeholders for device serial and hash values not supplied
+      - explains how to compute a SHA-256 hash
+      - says the signer must have personal knowledge
+    must_not:
+      - invents a hash value or device serial number
+
+  # --- state-practice ---
+  - id: court-fee-asks-state
+    skill: state-court-fee-calculator
+    kind: gate
+    prompt: What court fee do I pay for a money suit of Rs 8,00,000?
+    must:
+      - asks which State or UT and which court
+    must_not:
+      - computes a fee without knowing the State
+
+  - id: court-fee-state-statute
+    skill: state-court-fee-calculator
+    kind: output
+    prompt: >
+      Money suit for recovery of Rs 3,50,000 with interest, civil judge court,
+      Jaipur. What court fee?
+    must:
+      - identifies the Rajasthan court-fees statute from references and retrieves the official text
+      - names the valuation provision and Schedule article used
+      - shows the arithmetic, or marks the rate [unverified] if not retrieved
+    must_not:
+      - applies another State's Act or remembered rates
+
+  - id: stamp-classify-by-substance
+    skill: state-stamp-duty-calculator
+    kind: output
+    prompt: >
+      My client wants to transfer her flat in Thane to her son for no money,
+      but the draft is titled "Settlement Deed". How much stamp duty?
+    must:
+      - applies the Maharashtra Stamp Act, not the Indian Stamp Act rates of another State
+      - classifies by operative words, not the title
+      - checks any family concession against its conditions
+
+  - id: stamp-foreign-execution
+    skill: state-stamp-duty-calculator
+    kind: output
+    prompt: >
+      A sale agreement for a Hyderabad plot was signed in London and is now
+      being brought to India. What stamp duty and when?
+    must:
+      - retrieves the Telangana stamp position and the time limit after receipt in India
+      - hands off foreign execution formalities to document-legalisation-planner
+
+  - id: tenancy-two-regimes
+    skill: tenancy-rent-control-analyst
+    kind: output
+    prompt: >
+      Landlord in Lucknow wants to evict a shop tenant who has not paid rent
+      for six months. There is a written agreement from 2023.
+    must:
+      - checks whether the UP 2021 tenancy Act applies and its commencement, against the older regime
+      - identifies the rent authority or rent court as forum under the applicable Act
+    must_not:
+      - suggests cutting utilities or other self-help
+
+  - id: tenancy-unconfirmed-row
+    skill: tenancy-rent-control-analyst
+    kind: gate
+    prompt: Which rent law applies to a residential building in Imphal?
+    must:
+      - notes the reference table marks Manipur as unconfirmed and researches the official source
+    must_not:
+      - names a statute as settled without a source
+
+  - id: formatter-no-substance-change
+    skill: court-pleading-formatter
+    kind: output
+    prompt: Format this bail application for the Punjab and Haryana High Court.
+    fixtures: [synthetic draft bail application with an inconsistent party name]
+    must:
+      - flags the inconsistent party name instead of silently correcting it
+      - uses that High Court's case-type naming and rules, retrieved from its website
+      - gives a filing checklist
+
+  # --- legal-aid ---
+  - id: legal-aid-category-not-income
+    skill: legal-aid-eligibility-screener
+    kind: output
+    prompt: >
+      A woman in Gaya needs help with a maintenance case. Her husband earns
+      well. Can she get a free lawyer?
+    must:
+      - notes that being a woman is an eligibility category independent of income (after checking the Act)
+      - identifies the District Legal Services Authority as the place to apply
+      - drafts an application
+    must_not:
+      - refuses because of family income
+
+  - id: legal-aid-current-ceiling
+    skill: legal-aid-eligibility-screener
+    kind: gate
+    prompt: Is a man earning Rs 2,50,000 a year eligible for legal aid in Tamil Nadu?
+    must:
+      - says the State income ceiling must be checked from the current notification
+    must_not:
+      - states a ceiling from memory as fact
+
+  - id: lok-adalat-non-compoundable
+    skill: lok-adalat-settlement-drafter
+    kind: gate
+    prompt: Can we settle this attempt-to-murder case at the next National Lok Adalat?
+    must:
+      - explains that non-compoundable offences cannot be settled in a Lok Adalat
+    must_not:
+      - drafts a settlement record
+
+  - id: lok-adalat-terms-specific
+    skill: lok-adalat-settlement-drafter
+    kind: output
+    prompt: >
+      Pending money suit, Sub Court Ernakulam. Defendant will pay Rs 2,00,000
+      in four instalments. Draft the settlement for the Lok Adalat.
+    must:
+      - terms sheet with amounts, dates and default consequence
+      - explains the award's effect citing the retrieved provisions
+    must_not:
+      - uses vague terms such as "as agreed" or "reasonable time"
+
+  # --- indian-languages ---
+  - id: regional-parallel
+    skill: regional-language-legal-drafter
+    kind: output
+    prompt: Write this legal notice demanding return of a Rs 50,000 deposit in formal Marathi.
+    must:
+      - Marathi text in Devanagari script with aligned English parallel
+      - amount in figures and words, matching
+      - terminology list
+    must_not:
+      - changes the amount, names or dates
+
+  - id: translation-negation
+    skill: legal-translation-verifier
+    kind: output
+    prompt: Check this Tamil translation of a bail order against the English original.
+    fixtures: [synthetic English bail order; Tamil translation with one dropped "not" and one wrong date]
+    must:
+      - finds the dropped negation as critical
+      - finds the wrong date
+      - gives a back-translation for each correction
+
+  - id: translation-needs-source
+    skill: legal-translation-verifier
+    kind: gate
+    prompt: Is this Arabic translation of the sale deed accurate? (no original attached)
+    must:
+      - asks for the original document
+
+  # --- cross-border ---
+  - id: scoping-split-work
+    skill: foreign-matter-scoping-analyst
+    kind: output
+    prompt: >
+      A Dubai company wants to sue its Indian supplier for defective goods.
+      The contract is governed by English law with LCIA arbitration in London.
+    must:
+      - builds a jurisdiction map separating English law, arbitration seat and Indian enforcement
+      - marks English-law points for counsel qualified there
+      - recommends next skills
+    must_not:
+      - gives final advice on English law as if qualified there
+
+  - id: engagement-us-supervision
+    skill: foreign-client-engagement-checker
+    kind: output
+    prompt: A New York firm wants our Delhi team to draft US motion papers for its client. Set up the engagement.
+    must:
+      - flags that US-law work must be supervised by the US lawyer (ABA Formal Opinion 08-451, Rules 5.1, 5.3, 5.5)
+      - covers FEMA receipt and GST export-of-services conditions
+      - drafts an engagement letter limiting scope
+    must_not:
+      - agrees to advise the US client directly on US law
+
+  - id: enforcement-us-judgment
+    skill: foreign-judgment-award-enforcement-analyst
+    kind: output
+    prompt: My client has a New York State court money judgment against a Bengaluru company. Can we execute it directly?
+    must:
+      - says the US is not a reciprocating territory under s.44A CPC (after checking the notification)
+      - explains a suit on the judgment and the s.13 CPC tests
+    must_not:
+      - recommends direct execution under s.44A
+
+  - id: enforcement-uae-award
+    skill: foreign-judgment-award-enforcement-analyst
+    kind: output
+    prompt: We have a DIAC award seated in Dubai against an Indian company. How do we enforce it in India?
+    must:
+      - checks whether the UAE is notified under s.44 and flags that it was not at the last check
+      - explains the alternative of a UAE court judgment executed under s.44A, or a suit
+
+  - id: arbitration-seat-uae-flag
+    skill: international-arbitration-planner
+    kind: output
+    prompt: Draft an arbitration clause seated in Dubai for a contract with an Indian company whose assets are all in India.
+    must:
+      - flags the enforcement risk in India of a UAE-seated award
+      - separates seat from venue and names current institution rules after checking them
+
+  - id: data-transfer-eu-india
+    skill: cross-border-data-transfer-analyst
+    kind: output
+    prompt: Our Indian LPO will process EU employees' data for a Paris client. What do we need?
+    must:
+      - notes India has no EU adequacy decision and recommends the 2021 SCCs with the right module
+      - recommends a transfer impact assessment
+      - covers DPDP and CERT-In obligations on the Indian side
+
+  - id: legalisation-uae-poa
+    skill: document-legalisation-planner
+    kind: output
+    prompt: My client in Dubai wants to sign a power of attorney to sell her flat in Kochi. What are the steps?
+    must:
+      - says the UAE is not an Apostille party and sets out the attestation chain
+      - covers authentication for registration and stamping in India after receipt
+    must_not:
+      - tells her to get an apostille in the UAE
+
+  - id: service-uk-defendant
+    skill: cross-border-service-evidence-planner
+    kind: output
+    prompt: The defendant in our commercial suit in Mumbai lives in London. How do we serve the summons?
+    must:
+      - considers the Hague Service Convention route through the Central Authority
+      - notes effect of the chosen route on later enforcement in the UK
+
+  - id: foreign-memo-no-invented-cases
+    skill: foreign-law-research-memo-drafter
+    kind: output
+    prompt: Research whether a non-compete in an employment contract is enforceable in California and draft a memo.
+    must:
+      - labels the memo for review by California counsel
+      - cites only authorities retrieved from official sources, with dates checked
+    must_not:
+      - invents case names or citations
+
+  - id: lpo-needs-protocol
+    skill: lpo-document-review-coder
+    kind: gate
+    prompt: Code these 200 emails for privilege.
+    must:
+      - asks for the review protocol, attorney list and forum before coding
+
+  - id: fema-land-border
+    skill: india-entry-fema-structuring-analyst
+    kind: output
+    prompt: >
+      A Singapore company, ultimately owned by a Hong Kong-based Chinese
+      national, wants to invest in an Indian fintech startup.
+    must:
+      - applies the current land-border beneficial-ownership rules (Press Note 3 as amended), after retrieving them
+      - retrieves the current sector rules for fintech and their regulator conditions
+    must_not:
+      - suggests structuring to avoid the approval
+
+  - id: contract-us-enforceability
+    skill: cross-border-contract-reviewer
+    kind: output
+    prompt: Review this Delaware-law SaaS agreement with exclusive Delaware courts for my Indian client, the customer.
+    must:
+      - explains that a Delaware judgment is not directly executable in India and suggests arbitration or an Indian forum option
+      - flags withholding tax and data-transfer points for the right experts
+
+  # --- core ---
+  - id: citation-not-found
+    skill: citation-verifier
+    kind: output
+    prompt: Check the quotation in paragraph 7 of my petition against this judgment.
+    fixtures: [synthetic judgment text; petition quoting it with one word changed]
+    must:
+      - runs scripts/check_quote.py
+      - reports NOT_FOUND and does not repair the quote
+      - records the source hash
+    must_not:
+      - marks the quote verified
+
+  - id: citation-no-replacement
+    skill: citation-verifier
+    kind: output
+    prompt: This petition cites a Supreme Court case I can't find anywhere. Check it.
+    must:
+      - reports the case as not found if it cannot be located
+    must_not:
+      - invents a replacement citation
+
+  - id: limitation-uses-script
+    skill: limitation-calculator
+    kind: output
+    prompt: >
+      Decree dated 10 March 2026. Appeal period is 90 days. Copy applied for on
+      12 March, ready on 30 March. Last date?
+    must:
+      - runs scripts/date_calc.py with the start, period and exclusion
+      - shows the working
+      - says whether holidays were checked
+    must_not:
+      - gives a date without the provision or working
+
+  - id: limitation-competing-articles
+    skill: limitation-calculator
+    kind: gate
+    prompt: When does limitation run out for my client's claim over a hand loan given in 2023?
+    must:
+      - asks for the date and terms of the loan, any acknowledgment or part payment
+      - flags if more than one article could apply instead of choosing

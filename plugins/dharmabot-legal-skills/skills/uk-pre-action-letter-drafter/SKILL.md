@@ -1,0 +1,50 @@
+---
+name: uk-pre-action-letter-drafter
+description: Drafts English letters before claim and responses that follow the Practice Direction on Pre-Action Conduct and any relevant pre-action protocol under the Civil Procedure Rules, without-prejudice settlement letters and claim summaries for UK solicitors, with notes on enforcing an English judgment back in India under s.44A CPC. Use when an Indian client is owed money by, or is in dispute with, an English or Welsh party and its UK solicitors want a first draft. Do not use for enforcement analysis itself; use foreign-judgment-award-enforcement-analyst.
+---
+
+# UK Pre Action Letter Drafter
+
+Every output is a draft for an authorised UK lawyer to review, adopt and send. It is not advice on English law.
+
+## Purpose
+
+Give the UK solicitor a well-organised first draft that tracks the pre-action rules and the client's evidence, saving time without taking their judgement.
+
+## Jurisdiction gate
+
+Confirm the dispute will be pursued in England and Wales (Scotland and Northern Ireland have separate systems). Check the contract's governing-law and jurisdiction clauses; if they point to arbitration or another court, stop and flag. Mark every English-law point "to be confirmed by counsel qualified in [jurisdiction]". Indian law governs the enforcement-in-India note.
+
+## Required inputs
+
+Mark as **blocking**:
+- the parties, with the debtor's correct legal name and status (company, LLP, sole trader or individual);
+- the contract and invoices, or the basis of the claim;
+- the amount claimed and how it is calculated;
+- the name of the UK solicitor who will review and send.
+
+Also useful: correspondence, acknowledgements of debt, any dispute raised by the debtor, and earlier without-prejudice offers.
+
+## Method
+
+1. Retrieve the current official text of the Practice Direction on Pre-Action Conduct and Protocols, any specific protocol that may apply, the relevant CPR parts, and, for interest, the Late Payment of Commercial Debts (Interest) Act 1998 and current base rate. Record versions and dates. Open `references/foreign-jurisdictions.md` for UK sources and the India enforcement position.
+2. Choose the protocol. The Pre-Action Protocol for Debt Claims is believed to apply where the debtor is an individual (including a sole trader); for a company debtor, the general Practice Direction usually applies. The solicitor confirms.
+3. Draft the letter before claim: parties; the basis of the claim; a clear summary of facts; what is claimed and how it is calculated (principal, contractual or statutory interest, compensation); key documents enclosed or offered; a reasonable response period; the ADR invitation; and the consequences of non-response.
+4. For a response, address each allegation: admitted, denied with reasons, or not known, and list documents relied on.
+5. Draft any without-prejudice letter separately, clearly marked, so it is not mixed with open correspondence.
+6. Add a one-page claim summary for the solicitor: chronology, evidence, limitation (to be confirmed), likely defences, and enforcement options.
+7. Add an India note: the United Kingdom is a reciprocating territory, so an English superior court money judgment may be executed in India under s.44A CPC, subject to s.13 CPC. Hand off detail to `foreign-judgment-award-enforcement-analyst`.
+
+## Output
+
+1. The draft letter before claim or response.
+2. A separate without-prejudice letter, if asked.
+3. The claim summary and India enforcement note.
+
+## Guardrails and hand-offs
+
+- Never send the letter or address the debtor directly.
+- Never threaten consequences the rules do not support.
+- For service of English proceedings on a party in India, hand off to `cross-border-service-evidence-planner`.
+- For a research point on English law, hand off to `foreign-law-research-memo-drafter`.
+- Before anything is filed, sent or relied on, run `pre-filing-verification-checker` to verify every authority and quotation, and keep its log with the file.

@@ -1,0 +1,29 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - name: Generated files are up to date
+        run: |
+          python3 scripts/build.py
+          git diff --exit-code
+      - name: Skill standard
+        run: python3 scripts/validate.py
+      - name: Script unit tests
+        run: python3 -m unittest discover tests -v
+      - name: Install script smoke test
+        run: |
+          HOME="$RUNNER_TEMP/home" ./scripts/install.sh --all --pack core
+          test -f "$RUNNER_TEMP/home/.agents/skills/citation-verifier/SKILL.md"
+          test -f "$RUNNER_TEMP/home/.gemini/config/skills/limitation-calculator/SKILL.md"
+          test -f "$RUNNER_TEMP/home/.claude/skills/citation-verifier/scripts/check_quote.py"

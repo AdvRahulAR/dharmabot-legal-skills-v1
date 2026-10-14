@@ -1,0 +1,4722 @@
+# Source of truth for skill metadata. Edit here, then run:
+#   python3 scripts/build.py
+# which regenerates each skill's skill.meta.yaml, agents/openai.yaml and
+# references/ copies of shared files, and the catalogue in README.md.
+# SKILL.md frontmatter stays name + description only.
+version: 1
+release: 0.1.0
+law_as_of: 2026-10-14
+packs:
+- id: practice-management
+  title: Practice management
+- id: legal-research-writing
+  title: Legal research and writing
+- id: core
+  title: Core tools
+- id: ai-practice-safeguards
+  title: AI practice safeguards
+- id: review-analysis
+  title: Review and analysis
+- id: civil-litigation
+  title: Civil and commercial litigation
+- id: court-craft
+  title: Court craft (daily court and registry practice)
+- id: tribunal-practice
+  title: Tribunal practice
+- id: criminal-bnss
+  title: New criminal codes and criminal practice
+- id: arbitration-adr
+  title: Arbitration, mediation and ADR
+- id: contracts-commercial
+  title: Contracts and commercial
+- id: corporate-securities
+  title: Corporate and securities
+- id: startup-vc
+  title: Startups and venture capital
+- id: competition
+  title: Competition law
+- id: banking-finance-insolvency
+  title: Banking, finance and insolvency
+- id: tax
+  title: Tax
+- id: real-estate-property
+  title: Real estate and property
+- id: state-practice
+  title: State practice (all States and Union Territories)
+- id: family-succession
+  title: Family and succession
+- id: legal-aid
+  title: Legal aid and Lok Adalat
+- id: client-documents
+  title: Client documents
+- id: employment-labour
+  title: Employment and labour
+- id: intellectual-property
+  title: Intellectual property
+- id: tmt-privacy-cyber
+  title: Technology, privacy and cyber
+- id: regulatory-compliance
+  title: Regulatory and compliance
+- id: sectoral-regulatory
+  title: Sectoral regulatory
+- id: emerging-tech-climate
+  title: Emerging technology and climate
+- id: consumer
+  title: Consumer protection
+- id: public-law
+  title: Public, constitutional and administrative law
+- id: investigations
+  title: Investigations and white collar
+- id: environment-energy-infra
+  title: Environment, energy and infrastructure
+- id: insurance
+  title: Insurance and motor accident claims
+- id: healthcare-pharma
+  title: Healthcare and life sciences
+- id: media-entertainment-sports
+  title: Media, entertainment and sports
+- id: maritime-aviation-transport
+  title: Maritime, aviation and transport
+- id: immigration-citizenship
+  title: Immigration and citizenship
+- id: indian-languages
+  title: Indian languages and translation
+- id: cross-border
+  title: Cross-border work (US, UK, UAE, EU, Singapore and others)
+- id: students-education
+  title: Law students and legal education
+defaults:
+  status: draft            # draft -> reviewed once an enrolled advocate signs off
+  reviewed_by: pending
+  verified_on: null
+skills:
+  # ---------------- criminal-bnss ----------------
+  - id: ipc-bns-concordance-mapper
+    display_name: IPC–BNS Concordance Mapper
+    short: Map IPC, CrPC and Evidence Act sections to BNS, BNSS and BSA
+    pack: criminal-bnss
+    jurisdiction: in
+    practice_area: criminal
+    category: research
+    language: [en]
+    default_prompt: Map these IPC and CrPC sections to the BNS and BNSS and note what changed.
+    hands_off_to: [crpc-bnss-transition-analyst, fir-ingredients-analyst]
+  - id: crpc-bnss-transition-analyst
+    display_name: CrPC–BNSS Transition Analyst
+    short: Decide whether old or new criminal codes govern each stage
+    pack: criminal-bnss
+    jurisdiction: in
+    practice_area: criminal
+    category: analysis
+    language: [en]
+    default_prompt: Work out whether the CrPC or BNSS governs each stage of this case from these dates.
+    hands_off_to: [bnss-bail-application-drafter, fir-ingredients-analyst, bsa-electronic-evidence-certificate-drafter]
+  - id: bnss-bail-application-drafter
+    display_name: BNSS Bail Application Drafter
+    short: Draft regular or anticipatory bail applications under the BNSS
+    pack: criminal-bnss
+    jurisdiction: in
+    practice_area: criminal
+    category: drafting
+    language: [en]
+    default_prompt: Draft an anticipatory bail application from this FIR for the Sessions Court.
+    hands_off_to: [court-pleading-formatter, regional-language-legal-drafter, citation-verifier, pre-filing-verification-checker]
+  - id: fir-ingredients-analyst
+    display_name: FIR Ingredients Analyst
+    short: Test FIR allegations against each offence's ingredients
+    pack: criminal-bnss
+    jurisdiction: in
+    practice_area: criminal
+    category: analysis
+    language: [en]
+    default_prompt: Check whether the facts in this FIR make out each offence charged.
+    hands_off_to: [bnss-bail-application-drafter]
+  - id: bsa-electronic-evidence-certificate-drafter
+    display_name: BSA Electronic Evidence Certificate Drafter
+    short: Prepare the electronic-record certificate under the BSA
+    pack: criminal-bnss
+    jurisdiction: in
+    practice_area: evidence
+    category: drafting
+    language: [en]
+    default_prompt: Prepare the BSA certificate for these WhatsApp chats exported from my client's phone.
+    hands_off_to: [pre-filing-verification-checker]
+  # ---------------- state-practice ----------------
+  - id: state-court-fee-calculator
+    display_name: State Court Fee Calculator
+    short: Value a suit and compute court fee in any State or UT, with arithmetic
+    pack: state-practice
+    jurisdiction: in-states
+    practice_area: civil
+    category: calculation
+    language: [en]
+    shared_refs: [india-state-statutes.md]
+    default_prompt: Compute the court fee and valuation for this partition suit in a civil court in Pune.
+    hands_off_to: [court-pleading-formatter]
+  - id: state-stamp-duty-calculator
+    display_name: State Stamp Duty Calculator
+    short: Classify an instrument and compute stamp duty and registration fee in any State
+    pack: state-practice
+    jurisdiction: in-states
+    practice_area: property
+    category: calculation
+    language: [en]
+    shared_refs: [india-state-statutes.md]
+    default_prompt: How much stamp duty and registration fee for this gift deed for a flat in Bengaluru?
+    hands_off_to: [document-legalisation-planner]
+  - id: tenancy-rent-control-analyst
+    display_name: Tenancy and Rent Control Analyst
+    short: Eviction, rent and deposit disputes under each State's rent or tenancy law
+    pack: state-practice
+    jurisdiction: in-states
+    practice_area: property
+    category: analysis
+    language: [en]
+    shared_refs: [india-state-statutes.md]
+    default_prompt: Can my client evict this tenant in Lucknow for bona fide own use? Here is the agreement and the facts.
+    hands_off_to: [court-pleading-formatter, regional-language-legal-drafter, limitation-calculator, state-court-fee-calculator]
+  - id: court-pleading-formatter
+    display_name: Court Pleading Formatter
+    short: Put a draft into the format of any Indian court, with a filing checklist
+    pack: state-practice
+    jurisdiction: in-states
+    practice_area: procedure
+    category: formatting
+    language: [en]
+    shared_refs: [india-state-statutes.md]
+    default_prompt: Format this draft as a writ petition for the Delhi High Court and give me a filing checklist.
+    hands_off_to: [state-court-fee-calculator]
+  # ---------------- legal-aid ----------------
+  - id: legal-aid-eligibility-screener
+    display_name: Legal Aid Eligibility Screener
+    short: Check eligibility for free legal aid and draft the application
+    pack: legal-aid
+    jurisdiction: in
+    practice_area: access-to-justice
+    category: intake
+    language: [en]
+    default_prompt: Check whether this person can get free legal aid in Patna and draft the application.
+    hands_off_to: [regional-language-legal-drafter]
+  - id: lok-adalat-settlement-drafter
+    display_name: Lok Adalat Settlement Drafter
+    short: Refer a matter to Lok Adalat and draft the settlement record
+    pack: legal-aid
+    jurisdiction: in
+    practice_area: access-to-justice
+    category: drafting
+    language: [en]
+    default_prompt: Draft a Lok Adalat referral and settlement terms for this pending money suit.
+    hands_off_to: [regional-language-legal-drafter, pre-filing-verification-checker]
+  # ---------------- indian-languages ----------------
+  - id: regional-language-legal-drafter
+    display_name: Regional Language Legal Drafter
+    short: Draft legal documents in any Indian language with an English parallel
+    pack: indian-languages
+    jurisdiction: in-states
+    practice_area: drafting
+    category: drafting
+    language: [hi, bn, mr, te, ta, gu, ur, kn, or, ml, pa, as, en]
+    shared_refs: [india-state-statutes.md]
+    default_prompt: Write this legal notice in formal Hindi with an English parallel.
+    hands_off_to: [legal-translation-verifier, pre-filing-verification-checker]
+  - id: legal-translation-verifier
+    display_name: Legal Translation Verifier
+    short: Check a legal translation (Indian or foreign language) for meaning errors
+    pack: indian-languages
+    jurisdiction: neutral
+    practice_area: drafting
+    category: review
+    language: [en, hi, bn, mr, te, ta, gu, ur, kn, or, ml, pa, as, ar]
+    default_prompt: Check this Marathi translation of the judgment against the English original.
+    hands_off_to: []
+  # ---------------- cross-border ----------------
+  - id: foreign-matter-scoping-analyst
+    display_name: Foreign Matter Scoping Analyst
+    short: Map laws, forums and who can advise on a cross-border matter
+    pack: cross-border
+    jurisdiction: cross-border
+    practice_area: cross-border
+    category: intake
+    language: [en]
+    shared_refs: [foreign-jurisdictions.md]
+    default_prompt: A Dubai company wants to sue an Indian supplier under an English-law contract. Scope this matter.
+    hands_off_to: [foreign-client-engagement-checker, cross-border-contract-reviewer, foreign-judgment-award-enforcement-analyst, international-arbitration-planner]
+  - id: foreign-client-engagement-checker
+    display_name: Foreign Client Engagement Checker
+    short: Conflicts, permissions, FEMA, GST and engagement letter for foreign clients
+    pack: cross-border
+    jurisdiction: cross-border
+    practice_area: practice-management
+    category: compliance
+    language: [en]
+    shared_refs: [foreign-jurisdictions.md]
+    default_prompt: A London law firm wants us to do document review for a US case. Check the engagement and draft the letter.
+    hands_off_to: [cross-border-data-transfer-analyst]
+  - id: cross-border-contract-reviewer
+    display_name: Cross-Border Contract Reviewer
+    short: Review contracts with foreign parties for enforceability, FEMA, tax and data risks
+    pack: cross-border
+    jurisdiction: cross-border
+    practice_area: contracts
+    category: review
+    language: [en]
+    shared_refs: [foreign-jurisdictions.md]
+    default_prompt: Review this Delaware-law SaaS agreement for my Indian client, the customer.
+    hands_off_to: [international-arbitration-planner, cross-border-data-transfer-analyst, india-entry-fema-structuring-analyst, state-stamp-duty-calculator]
+  - id: foreign-judgment-award-enforcement-analyst
+    display_name: Foreign Judgment and Award Enforcement Analyst
+    short: Enforce foreign judgments and awards in India, or Indian ones abroad
+    pack: cross-border
+    jurisdiction: cross-border
+    practice_area: disputes
+    category: analysis
+    language: [en]
+    shared_refs: [foreign-jurisdictions.md]
+    default_prompt: My client has an English High Court money judgment against a Mumbai company. How do we enforce it?
+    hands_off_to: [limitation-calculator, document-legalisation-planner, legal-translation-verifier]
+  - id: international-arbitration-planner
+    display_name: International Arbitration Planner
+    short: Choose seat and institution, draft the clause, plan interim relief and enforcement
+    pack: cross-border
+    jurisdiction: cross-border
+    practice_area: disputes
+    category: advice
+    language: [en]
+    shared_refs: [foreign-jurisdictions.md]
+    default_prompt: Draft an arbitration clause for a supply contract between a Pune manufacturer and a German buyer.
+    hands_off_to: [limitation-calculator]
+  - id: cross-border-data-transfer-analyst
+    display_name: Cross-Border Data Transfer Analyst
+    short: Map personal data flows and transfer mechanisms under DPDP, GDPR, UAE and other laws
+    pack: cross-border
+    jurisdiction: cross-border
+    practice_area: privacy
+    category: compliance
+    language: [en]
+    shared_refs: [foreign-jurisdictions.md]
+    default_prompt: Our Indian LPO will process EU employee data for a Paris client. What transfer mechanism and clauses do we need?
+    hands_off_to: []
+  - id: document-legalisation-planner
+    display_name: Document Legalisation Planner
+    short: Notarisation, apostille or UAE attestation, translation and stamping steps
+    pack: cross-border
+    jurisdiction: cross-border
+    practice_area: procedure
+    category: planning
+    language: [en]
+    shared_refs: [foreign-jurisdictions.md]
+    default_prompt: My client in Dubai wants to sign a power of attorney to sell her flat in Kochi. What are the steps?
+    hands_off_to: [state-stamp-duty-calculator, legal-translation-verifier]
+  - id: cross-border-service-evidence-planner
+    display_name: Cross-Border Service and Evidence Planner
+    short: Serve documents and take evidence abroad, or for foreign courts in India
+    pack: cross-border
+    jurisdiction: cross-border
+    practice_area: disputes
+    category: planning
+    language: [en]
+    shared_refs: [foreign-jurisdictions.md]
+    default_prompt: The defendant in our commercial suit lives in London. How do we serve the summons?
+    hands_off_to: [legal-translation-verifier, foreign-judgment-award-enforcement-analyst]
+  - id: foreign-law-research-memo-drafter
+    display_name: Foreign Law Research Memo Drafter
+    short: Sourced research memo on US, UK, EU, UAE or Singapore law for qualified counsel
+    pack: cross-border
+    jurisdiction: cross-border
+    practice_area: research
+    category: research
+    language: [en]
+    shared_refs: [foreign-jurisdictions.md]
+    default_prompt: Research whether a non-compete in an employment contract is enforceable in California and draft a memo.
+    hands_off_to: [citation-verifier]
+  - id: lpo-document-review-coder
+    display_name: LPO Document Review Coder
+    short: Code documents for responsiveness, issues and privilege under a foreign firm's protocol
+    pack: cross-border
+    jurisdiction: cross-border
+    practice_area: lpo
+    category: review
+    language: [en]
+    default_prompt: Code this batch of emails under the attached review protocol and draft privilege-log entries.
+    hands_off_to: [legal-translation-verifier]
+  - id: india-entry-fema-structuring-analyst
+    display_name: India Entry and FEMA Structuring Analyst
+    short: FDI and ODI structuring, approvals, pricing and FEMA filings
+    pack: cross-border
+    jurisdiction: cross-border
+    practice_area: corporate
+    category: advice
+    language: [en]
+    default_prompt: A Singapore company wants to set up an Indian subsidiary for software development. What structure and approvals?
+    hands_off_to: [foreign-client-engagement-checker]
+  # ---------------- core ----------------
+  - id: citation-verifier
+    display_name: Citation Verifier
+    short: Check every citation and quotation against the source text
+    pack: core
+    jurisdiction: neutral
+    practice_area: research
+    category: review
+    language: [en]
+    default_prompt: Check every citation and quotation in this petition before I file it.
+    hands_off_to: [ipc-bns-concordance-mapper]
+  - id: limitation-calculator
+    display_name: Limitation Calculator
+    short: Compute limitation and filing deadlines with working shown
+    pack: core
+    jurisdiction: in
+    practice_area: procedure
+    category: calculation
+    language: [en]
+    default_prompt: What is the last date to file an appeal against this decree dated 10 March 2026?
+    hands_off_to: []
+  # ---------------- added in the full-coverage build ----------------
+  - id: client-intake-conflict-screener
+    display_name: Client Intake and Conflict Screener
+    short: Turn a client's story into an intake note and run a conflict check
+    pack: practice-management
+    jurisdiction: in
+    practice_area: practice-management
+    category: intake
+    language:
+    - en
+    default_prompt: A new client called about a dispute with her builder in Thane. Here are my call notes; prepare the intake
+      note and conflict list.
+    hands_off_to:
+    - engagement-letter-drafter
+    - matter-plan-builder
+    - legal-aid-eligibility-screener
+  - id: engagement-letter-drafter
+    display_name: Engagement Letter Drafter
+    short: Draft a domestic engagement letter with scope, fees and BCI-compliant terms
+    pack: practice-management
+    jurisdiction: in
+    practice_area: practice-management
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft an engagement letter for a Bengaluru startup retaining us for its seed round, fixed fee plus hourly
+      for extra work.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - foreign-client-engagement-checker
+    - matter-plan-builder
+    - time-billing-narrative-drafter
+  - id: matter-plan-builder
+    display_name: Matter Plan Builder
+    short: Build a matter plan with workstreams, owners, budget and risks
+    pack: practice-management
+    jurisdiction: neutral
+    practice_area: practice-management
+    category: planning
+    language:
+    - en
+    default_prompt: Build a matter plan for defending this commercial suit in the Delhi High Court, with stages, owners and
+      a cost estimate.
+    hands_off_to:
+    - matter-deadline-tracker
+    - litigation-strategy-planner
+    - client-status-update-drafter
+  - id: matter-deadline-tracker
+    display_name: Matter Deadline Tracker
+    short: Track hearing dates, filing deadlines and court-order compliance across matters
+    pack: practice-management
+    jurisdiction: in
+    practice_area: practice-management
+    category: tracking
+    language:
+    - en
+    default_prompt: Update my case diary from these cause lists and orders and tell me what is due in the next two weeks.
+    hands_off_to:
+    - limitation-calculator
+    - client-status-update-drafter
+  - id: client-status-update-drafter
+    display_name: Client Status Update Drafter
+    short: Draft plain, honest client updates and matter closure reports
+    pack: practice-management
+    jurisdiction: neutral
+    practice_area: practice-management
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a WhatsApp-length and an email update for my client on what happened at today's hearing and what comes
+      next.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - plain-language-explanation-drafter
+    - matter-deadline-tracker
+  - id: time-billing-narrative-drafter
+    display_name: Time and Billing Narrative Drafter
+    short: Write time entries and invoices, and review outside counsel bills
+    pack: practice-management
+    jurisdiction: neutral
+    practice_area: practice-management
+    category: drafting
+    language:
+    - en
+    default_prompt: Turn my diary notes for March into time entries for the client, and check this invoice from our Chennai
+      counsel.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - engagement-letter-drafter
+  - id: legal-knowledge-bank-builder
+    display_name: Legal Knowledge Bank Builder
+    short: Build a firm's precedent bank, clause library and practice notes
+    pack: practice-management
+    jurisdiction: neutral
+    practice_area: practice-management
+    category: planning
+    language:
+    - en
+    default_prompt: Build a clause library from our last 30 NDAs and MSAs, with a preferred and a fallback for each clause.
+    hands_off_to:
+    - playbook-contract-reviewer
+    - nda-triage-reviewer
+  - id: professional-conduct-advisor
+    display_name: Professional Conduct Advisor
+    short: Check a step against the Advocates Act, BCI Rules and AI-use confidentiality
+    pack: practice-management
+    jurisdiction: in
+    practice_area: practice-management
+    category: advice
+    language:
+    - en
+    default_prompt: Can I put client logos and case wins on our website and LinkedIn? Also, can we paste client documents into
+      an AI tool?
+    hands_off_to:
+    - client-intake-conflict-screener
+  - id: in-house-request-triage-screener
+    display_name: In-house Request Triage Screener
+    short: Triage business legal requests with a risk rating and a quick answer
+    pack: practice-management
+    jurisdiction: in
+    practice_area: in-house
+    category: intake
+    language:
+    - en
+    default_prompt: Sales wants to give a customer 180-day payment terms and uncapped liability. Is this a problem?
+    hands_off_to:
+    - playbook-contract-reviewer
+    - product-launch-legal-reviewer
+    - regulatory-applicability-analyst
+  - id: product-launch-legal-reviewer
+    display_name: Product Launch Legal Reviewer
+    short: Review a product or feature launch against Indian legal and regulatory risks
+    pack: practice-management
+    jurisdiction: in
+    practice_area: in-house
+    category: review
+    language:
+    - en
+    default_prompt: We are launching a buy-now-pay-later option in our app next month. Run a legal launch review.
+    hands_off_to:
+    - dpdp-compliance-gap-analyst
+    - financial-services-licensing-analyst
+    - advertising-claims-reviewer
+    - ecommerce-platform-terms-checker
+  - id: legal-research-planner
+    display_name: Legal Research Planner
+    short: Turn a legal question into a sourced research plan
+    pack: legal-research-writing
+    jurisdiction: in
+    practice_area: research
+    category: research
+    language:
+    - en
+    default_prompt: Plan research on whether an arbitration clause in an unstamped agreement can be acted on at the s.11 stage.
+    hands_off_to:
+    - research-memo-drafter
+    - statutory-interpretation-analyst
+    - citation-verifier
+  - id: research-memo-drafter
+    display_name: Research Memo Drafter
+    short: Draft an objective research memo or policy note with verified citations
+    pack: legal-research-writing
+    jurisdiction: in
+    practice_area: research
+    category: research
+    language:
+    - en
+    default_prompt: Write a memo on whether a landlord can recover arrears under a leave and licence agreement through an Order
+      XXXVII suit.
+    hands_off_to:
+    - citation-verifier
+    - adversarial-draft-reviewer
+    - legal-opinion-drafter
+  - id: legal-opinion-drafter
+    display_name: Legal Opinion Drafter
+    short: Draft a formal legal opinion for a client or lender
+    pack: legal-research-writing
+    jurisdiction: in
+    practice_area: research
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a legal opinion on whether this Indian company can lawfully give a corporate guarantee for its Singapore
+      subsidiary's loan.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - research-memo-drafter
+    - citation-verifier
+    - india-entry-fema-structuring-analyst
+  - id: issue-spotting-analyst
+    display_name: Issue Spotting Analyst
+    short: Spot every legal issue in a fact pattern and rank them
+    pack: legal-research-writing
+    jurisdiction: in
+    practice_area: research
+    category: analysis
+    language:
+    - en
+    default_prompt: Here are the facts of a shop fire in Indore that injured an employee and damaged a neighbour's stock. What
+      are all the legal issues?
+    hands_off_to:
+    - legal-research-planner
+    - litigation-strategy-planner
+  - id: adversarial-draft-reviewer
+    display_name: Adversarial Draft Reviewer
+    short: Attack a draft as opposing counsel or the bench would, and check consistency
+    pack: legal-research-writing
+    jurisdiction: neutral
+    practice_area: research
+    category: review
+    language:
+    - en
+    default_prompt: Act as opposing counsel and the judge and tear apart this written statement before I file it.
+    hands_off_to:
+    - citation-verifier
+    - written-submissions-drafter
+  - id: plain-language-explanation-drafter
+    display_name: Plain Language Explanation Drafter
+    short: Explain a law, judgment or contract in plain language
+    pack: legal-research-writing
+    jurisdiction: in
+    practice_area: research
+    category: drafting
+    language:
+    - en
+    default_prompt: Explain this Supreme Court judgment on tenant eviction to my client, a retired school teacher, in simple
+      English and Hindi.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - regional-language-legal-drafter
+    - client-status-update-drafter
+  - id: judgment-case-note-summariser
+    display_name: Judgment Case Note Summariser
+    short: Summarise a judgment into a case note, or map the authorities on one point
+    pack: legal-research-writing
+    jurisdiction: in
+    practice_area: research
+    category: summarising
+    language:
+    - en
+    default_prompt: 'Prepare a case note on this High Court judgment: facts, issues, ratio, obiter and whether it has been followed.'
+    hands_off_to:
+    - citation-verifier
+    - research-memo-drafter
+  - id: statutory-interpretation-analyst
+    display_name: Statutory Interpretation Analyst
+    short: Interpret a provision with text, context, history and canons
+    pack: legal-research-writing
+    jurisdiction: in
+    practice_area: research
+    category: analysis
+    language:
+    - en
+    default_prompt: How should 'commercial dispute' in s.2(1)(c) of the Commercial Courts Act be read for a dispute about a
+      hotel lease?
+    hands_off_to:
+    - legal-research-planner
+    - research-memo-drafter
+  - id: legal-notice-drafter
+    display_name: Legal Notice Drafter
+    short: Draft a legal or demand notice, or a reply to one received
+    pack: civil-litigation
+    jurisdiction: in
+    practice_area: civil
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a legal notice to a distributor in Jaipur demanding Rs 18 lakh in unpaid invoices with 18% interest.
+      Also tell me how to reply to his counter-notice.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - plaint-drafter
+    - limitation-calculator
+    - regional-language-legal-drafter
+  - id: plaint-drafter
+    display_name: Plaint Drafter
+    short: Draft a civil or commercial plaint from verified facts
+    pack: civil-litigation
+    jurisdiction: in
+    practice_area: civil
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a plaint for recovery of Rs 42 lakh and interest against a supplier in the Commercial Court, Pune.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - commercial-suit-filing-checker
+    - state-court-fee-calculator
+    - court-pleading-formatter
+    - damages-interest-calculator
+  - id: written-statement-drafter
+    display_name: Written Statement Drafter
+    short: Draft a written statement with preliminary objections, set-off or counterclaim
+    pack: civil-litigation
+    jurisdiction: in
+    practice_area: civil
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft the written statement for my client sued for specific performance of an agreement to sell in Ludhiana.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - civil-interlocutory-application-drafter
+    - court-pleading-formatter
+    - adversarial-draft-reviewer
+  - id: commercial-suit-filing-checker
+    display_name: Commercial Suit Filing Checker
+    short: Check a commercial suit for specified value, s.12A mediation and filing rules
+    pack: civil-litigation
+    jurisdiction: in
+    practice_area: civil
+    category: compliance
+    language:
+    - en
+    default_prompt: Is this dispute a commercial dispute, and is my plaint ready to file in the Commercial Court in Bengaluru?
+    hands_off_to:
+    - pre-institution-mediation-advisor
+    - plaint-drafter
+    - state-court-fee-calculator
+  - id: summary-suit-order-xxxvii-drafter
+    display_name: Summary Suit (Order XXXVII) Drafter
+    short: Draft an Order XXXVII summary suit or leave-to-defend application
+    pack: civil-litigation
+    jurisdiction: in
+    practice_area: civil
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft an Order XXXVII summary suit on these dishonoured invoices and an acknowledged ledger, in the Bombay
+      High Court.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - plaint-drafter
+    - limitation-calculator
+    - court-pleading-formatter
+  - id: interim-injunction-application-drafter
+    display_name: Interim Injunction Application Drafter
+    short: Draft injunction, receiver and attachment-before-judgment applications
+    pack: civil-litigation
+    jurisdiction: in
+    practice_area: civil
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft an application for a temporary injunction restraining the developer from creating third-party rights
+      in the flats.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - plaint-drafter
+    - evidence-affidavit-drafter
+    - court-pleading-formatter
+  - id: civil-interlocutory-application-drafter
+    display_name: Civil Interlocutory Application Drafter
+    short: Draft O.VII R.11, amendment, condonation, caveat, transfer and other applications
+    pack: civil-litigation
+    jurisdiction: in
+    practice_area: civil
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft an Order VII Rule 11 application to reject this plaint as barred by limitation, and a caveat in the
+      High Court.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - limitation-calculator
+    - court-pleading-formatter
+    - special-leave-petition-drafter
+  - id: evidence-affidavit-drafter
+    display_name: Evidence Affidavit Drafter
+    short: Draft examination-in-chief affidavits and witness statements
+    pack: civil-litigation
+    jurisdiction: in
+    practice_area: civil
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft the evidence affidavit of our plaintiff's accounts manager proving these 14 invoices and the ledger.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - bsa-electronic-evidence-certificate-drafter
+    - cross-examination-planner
+  - id: cross-examination-planner
+    display_name: Cross Examination Planner
+    short: Plan an issue-led cross-examination from pleadings and evidence
+    pack: civil-litigation
+    jurisdiction: in
+    practice_area: civil
+    category: planning
+    language:
+    - en
+    default_prompt: Plan my cross-examination of the defendant's site engineer using his affidavit and the measurement books.
+    hands_off_to:
+    - evidence-affidavit-drafter
+    - litigation-chronology-builder
+  - id: litigation-chronology-builder
+    display_name: Litigation Chronology Builder
+    short: Build a source-linked list of dates and events
+    pack: civil-litigation
+    jurisdiction: neutral
+    practice_area: civil
+    category: planning
+    language:
+    - en
+    default_prompt: Prepare a list of dates and events from these 300 pages of correspondence for the SLP.
+    hands_off_to:
+    - written-submissions-drafter
+    - special-leave-petition-drafter
+  - id: written-submissions-drafter
+    display_name: Written Submissions Drafter
+    short: Draft written submissions, synopsis or notes for arguing counsel
+    pack: civil-litigation
+    jurisdiction: in
+    practice_area: civil
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft written submissions for final arguments in this partition suit, issue by issue, with the evidence
+      references.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - citation-verifier
+    - adversarial-draft-reviewer
+    - litigation-chronology-builder
+  - id: civil-appeal-revision-drafter
+    display_name: Civil Appeal and Revision Drafter
+    short: Draft first and second appeals, revisions and review petitions
+    pack: civil-litigation
+    jurisdiction: in
+    practice_area: civil
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a first appeal under s.96 CPC against this money decree, with grounds and a stay application.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - limitation-calculator
+    - state-court-fee-calculator
+    - court-pleading-formatter
+  - id: execution-contempt-petition-drafter
+    display_name: Execution and Contempt Petition Drafter
+    short: Draft execution petitions and civil contempt petitions to enforce orders
+    pack: civil-litigation
+    jurisdiction: in
+    practice_area: civil
+    category: drafting
+    language:
+    - en
+    default_prompt: The decree-holder has a money decree against a Kochi company. Draft the execution petition and attach its
+      bank accounts.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - limitation-calculator
+    - court-pleading-formatter
+  - id: special-leave-petition-drafter
+    display_name: Special Leave Petition Drafter
+    short: Draft a Supreme Court SLP under Article 136 with list of dates
+    pack: civil-litigation
+    jurisdiction: in
+    practice_area: civil
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft an SLP against this Allahabad High Court judgment dismissing our second appeal.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - litigation-chronology-builder
+    - limitation-calculator
+    - citation-verifier
+    - court-pleading-formatter
+  - id: litigation-strategy-planner
+    display_name: Litigation Strategy Planner
+    short: Assess whether to sue, defend or settle, and pick the route
+    pack: civil-litigation
+    jurisdiction: in
+    practice_area: civil
+    category: planning
+    language:
+    - en
+    default_prompt: My client is owed Rs 75 lakh by a Hyderabad company. Compare a suit, Order XXXVII, s.138, IBC and MSME routes.
+    hands_off_to:
+    - damages-interest-calculator
+    - settlement-strategy-planner
+    - ibc-application-drafter
+    - msme-delayed-payment-claim-drafter
+  - id: damages-interest-calculator
+    display_name: Damages Interest Calculator
+    short: Quantify damages, interest and mesne profits head by head
+    pack: civil-litigation
+    jurisdiction: in
+    practice_area: civil
+    category: calculation
+    language:
+    - en
+    default_prompt: Compute the damages, pre-suit interest at 12% and pendente lite interest for this terminated supply contract.
+    hands_off_to:
+    - plaint-drafter
+    - limitation-calculator
+  - id: msme-delayed-payment-claim-drafter
+    display_name: MSME Delayed Payment Claim Drafter
+    short: Draft an MSME Facilitation Council reference for delayed payments
+    pack: civil-litigation
+    jurisdiction: in
+    practice_area: civil
+    category: drafting
+    language:
+    - en
+    default_prompt: My client is a registered micro enterprise in Coimbatore. Draft its claim against a buyer for unpaid invoices
+      with MSMED interest.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - damages-interest-calculator
+    - section-34-37-award-challenge-drafter
+  - id: criminal-complaint-drafter
+    display_name: Criminal Complaint Drafter
+    short: Draft police and Magistrate complaints, s.175(3) and victim compensation applications
+    pack: criminal-bnss
+    jurisdiction: in
+    practice_area: criminal
+    category: drafting
+    language:
+    - en
+    default_prompt: Police in Gurugram refuse to register an FIR for my client's cheating complaint. Draft the complaint to
+      the SP and a s.175(3) BNSS application.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - fir-ingredients-analyst
+    - ipc-bns-concordance-mapper
+    - regional-language-legal-drafter
+  - id: fir-quashing-petition-drafter
+    display_name: FIR Quashing Petition Drafter
+    short: Draft a petition to quash an FIR or proceedings under s.528 BNSS or Article 226
+    pack: criminal-bnss
+    jurisdiction: in
+    practice_area: criminal
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a petition in the Punjab and Haryana High Court to quash this FIR under ss.316 and 318 BNS, which
+      is really a civil dispute.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - fir-ingredients-analyst
+    - court-pleading-formatter
+    - citation-verifier
+  - id: discharge-application-drafter
+    display_name: Discharge Application Drafter
+    short: Draft a discharge application at the charge stage
+    pack: criminal-bnss
+    jurisdiction: in
+    practice_area: criminal
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a discharge application for my client in this Sessions case; the chargesheet does not show any act
+      by him.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - chargesheet-review-analyst
+    - fir-ingredients-analyst
+  - id: chargesheet-review-analyst
+    display_name: Chargesheet Review Analyst
+    short: Analyse a police report or chargesheet for gaps, defects and defence points
+    pack: criminal-bnss
+    jurisdiction: in
+    practice_area: criminal
+    category: analysis
+    language:
+    - en
+    default_prompt: Go through this 600-page chargesheet in a dowry death case and list the gaps in the prosecution case.
+    hands_off_to:
+    - discharge-application-drafter
+    - criminal-trial-readiness-checker
+    - bsa-electronic-evidence-certificate-drafter
+  - id: criminal-trial-readiness-checker
+    display_name: Criminal Trial Readiness Checker
+    short: Check a criminal trial for evidence, witnesses and defence readiness
+    pack: criminal-bnss
+    jurisdiction: in
+    practice_area: criminal
+    category: compliance
+    language:
+    - en
+    default_prompt: Trial starts next month in this NDPS case. Check whether the defence is ready.
+    hands_off_to:
+    - cross-examination-planner
+    - chargesheet-review-analyst
+    - sentencing-mitigation-analyst
+  - id: sentencing-mitigation-analyst
+    display_name: Sentencing Mitigation Analyst
+    short: Analyse sentencing range, mitigation, probation and plea bargaining
+    pack: criminal-bnss
+    jurisdiction: in
+    practice_area: criminal
+    category: analysis
+    language:
+    - en
+    default_prompt: My client has been convicted of causing death by negligence under s.106(1) BNS. Prepare the mitigation note
+      for the hearing on sentence.
+    hands_off_to:
+    - criminal-appeal-revision-drafter
+    - ipc-bns-concordance-mapper
+  - id: criminal-appeal-revision-drafter
+    display_name: Criminal Appeal and Revision Drafter
+    short: Draft criminal appeals, revisions and suspension-of-sentence applications
+    pack: criminal-bnss
+    jurisdiction: in
+    practice_area: criminal
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft an appeal against this conviction by the Sessions Court in Nagpur and an application to suspend sentence.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - limitation-calculator
+    - sentencing-mitigation-analyst
+    - court-pleading-formatter
+  - id: cheque-dishonour-case-drafter
+    display_name: Cheque Dishonour Case Drafter
+    short: Draft the s.138 NI Act notice, complaint and s.143A interim compensation application
+    pack: criminal-bnss
+    jurisdiction: in
+    practice_area: criminal
+    category: drafting
+    language:
+    - en
+    default_prompt: The cheque for Rs 6 lakh bounced on 2 September with 'funds insufficient'. Draft the s.138 notice and tell
+      me the complaint deadline.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - limitation-calculator
+    - regional-language-legal-drafter
+    - court-pleading-formatter
+  - id: pocso-case-analyst
+    display_name: POCSO Case Analyst
+    short: Analyse a POCSO case for procedure, age, presumptions and victim safeguards
+    pack: criminal-bnss
+    jurisdiction: in
+    practice_area: criminal
+    category: analysis
+    language:
+    - en
+    default_prompt: Analyse this POCSO chargesheet; the age of the victim is disputed and the statement was recorded late.
+    hands_off_to:
+    - chargesheet-review-analyst
+    - bnss-bail-application-drafter
+    - criminal-trial-readiness-checker
+  - id: ndps-case-analyst
+    display_name: NDPS Case Analyst
+    short: Analyse an NDPS case for quantity, search and seizure compliance and s.37 bail
+    pack: criminal-bnss
+    jurisdiction: in
+    practice_area: criminal
+    category: analysis
+    language:
+    - en
+    default_prompt: Check this NDPS seizure of 1.2 kg ganja for compliance with ss.42, 50 and 52A and assess bail.
+    hands_off_to:
+    - bnss-bail-application-drafter
+    - chargesheet-review-analyst
+  - id: arrest-rights-advisor
+    display_name: Arrest Rights Advisor
+    short: Explain a person's rights on summons, arrest, remand and default bail
+    pack: criminal-bnss
+    jurisdiction: in
+    practice_area: criminal
+    category: advice
+    language:
+    - en
+    default_prompt: My client's son has been picked up by the police in Patna without any notice. What are his rights and what
+      do we do tonight?
+    hands_off_to:
+    - bnss-bail-application-drafter
+    - legal-aid-eligibility-screener
+    - regional-language-legal-drafter
+  - id: pmla-proceedings-analyst
+    display_name: PMLA Proceedings Analyst
+    short: Analyse ED summons, ECIR, attachment and PMLA bail
+    pack: criminal-bnss
+    jurisdiction: in
+    practice_area: white-collar
+    category: analysis
+    language:
+    - en
+    default_prompt: ED has issued my client a s.50 PMLA summons and provisionally attached his flat. Map his options.
+    hands_off_to:
+    - enforcement-summons-response-planner
+    - bnss-bail-application-drafter
+    - aml-sanctions-compliance-checker
+  - id: arbitration-clause-reviewer
+    display_name: Arbitration Clause Reviewer
+    short: Review a domestic arbitration clause for validity, seat, scope and stamping
+    pack: arbitration-adr
+    jurisdiction: in
+    practice_area: disputes
+    category: review
+    language:
+    - en
+    default_prompt: 'Review the arbitration clause in this franchise agreement: it says ''venue Delhi'' and two arbitrators.'
+    hands_off_to:
+    - international-arbitration-planner
+    - contract-execution-stamping-checker
+  - id: arbitration-invocation-notice-drafter
+    display_name: Arbitration Invocation Notice Drafter
+    short: Draft a s.21 notice invoking arbitration with a proposed arbitrator
+    pack: arbitration-adr
+    jurisdiction: in
+    practice_area: disputes
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a notice invoking arbitration against the contractor for delay damages under clause 25 of the EPC
+      contract.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - section-11-appointment-petition-drafter
+    - limitation-calculator
+  - id: section-9-interim-relief-drafter
+    display_name: Section 9 Interim Relief Drafter
+    short: Draft s.9 court or s.17 tribunal applications for interim relief
+    pack: arbitration-adr
+    jurisdiction: in
+    practice_area: disputes
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a s.9 petition in the Bombay High Court to stop the buyer from encashing our bank guarantee before
+      arbitration starts.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - arbitration-invocation-notice-drafter
+    - court-pleading-formatter
+  - id: section-11-appointment-petition-drafter
+    display_name: Section 11 Appointment Petition Drafter
+    short: Draft a s.11 petition for appointment of an arbitrator
+    pack: arbitration-adr
+    jurisdiction: in
+    practice_area: disputes
+    category: drafting
+    language:
+    - en
+    default_prompt: The respondent ignored our s.21 notice for 45 days. Draft the s.11 petition in the Karnataka High Court.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - arbitration-clause-reviewer
+    - limitation-calculator
+  - id: arbitral-proceedings-drafter
+    display_name: Arbitral Proceedings Drafter
+    short: Draft statements of claim and defence, procedural orders and s.29A applications
+    pack: arbitration-adr
+    jurisdiction: in
+    practice_area: disputes
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft our statement of claim in this DIAC arbitration on unpaid running bills and escalation.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - damages-interest-calculator
+    - evidence-affidavit-drafter
+    - litigation-chronology-builder
+  - id: section-34-37-award-challenge-drafter
+    display_name: Section 34 and 37 Award Challenge Drafter
+    short: Draft or resist a s.34 challenge or s.37 appeal against an arbitral award
+    pack: arbitration-adr
+    jurisdiction: in
+    practice_area: disputes
+    category: drafting
+    language:
+    - en
+    default_prompt: We lost a domestic award against a PSU. Assess grounds and draft a s.34 petition; the award was received
+      70 days ago.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - limitation-calculator
+    - execution-contempt-petition-drafter
+    - foreign-judgment-award-enforcement-analyst
+  - id: pre-institution-mediation-advisor
+    display_name: Pre Institution Mediation Advisor
+    short: Run s.12A pre-institution mediation and decide when urgent relief allows skipping it
+    pack: arbitration-adr
+    jurisdiction: in
+    practice_area: disputes
+    category: advice
+    language:
+    - en
+    default_prompt: We want to file a commercial suit for Rs 1.2 crore in Chennai. Do we need pre-institution mediation and
+      how do we start it?
+    hands_off_to:
+    - commercial-suit-filing-checker
+    - mediation-brief-drafter
+  - id: mediation-brief-drafter
+    display_name: Mediation Brief Drafter
+    short: Draft a mediation brief, opening statement and caucus plan
+    pack: arbitration-adr
+    jurisdiction: in
+    practice_area: disputes
+    category: drafting
+    language:
+    - en
+    default_prompt: Prepare our confidential brief to the mediator and an opening statement for the court-annexed mediation
+      in this partnership dispute.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - settlement-strategy-planner
+    - mediated-settlement-agreement-drafter
+  - id: mediated-settlement-agreement-drafter
+    display_name: Mediated Settlement Agreement Drafter
+    short: Draft a mediated settlement or conciliation agreement that is enforceable
+    pack: arbitration-adr
+    jurisdiction: in
+    practice_area: disputes
+    category: drafting
+    language:
+    - en
+    default_prompt: We settled the commercial dispute in mediation. Draft the mediated settlement agreement and tell me how
+      it is enforced.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - execution-contempt-petition-drafter
+    - lok-adalat-settlement-drafter
+    - state-stamp-duty-calculator
+  - id: settlement-strategy-planner
+    display_name: Settlement Strategy Planner
+    short: Plan settlement positions and test an offer against litigation outcomes
+    pack: arbitration-adr
+    jurisdiction: neutral
+    practice_area: disputes
+    category: planning
+    language:
+    - en
+    default_prompt: The other side offered Rs 40 lakh to settle our Rs 1 crore claim. Should we take it? Build our negotiation
+      plan.
+    hands_off_to:
+    - damages-interest-calculator
+    - mediation-brief-drafter
+    - litigation-strategy-planner
+  - id: nda-drafter
+    display_name: NDA Drafter
+    short: Draft a mutual or one-way NDA under Indian law
+    pack: contracts-commercial
+    jurisdiction: in
+    practice_area: contracts
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a mutual NDA between my client, a Pune EV startup, and a Japanese component maker evaluating a supply
+      deal.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - nda-triage-reviewer
+    - cross-border-contract-reviewer
+    - contract-execution-stamping-checker
+  - id: nda-triage-reviewer
+    display_name: NDA Triage Reviewer
+    short: Triage an incoming NDA into sign, negotiate or escalate
+    pack: contracts-commercial
+    jurisdiction: in
+    practice_area: contracts
+    category: review
+    language:
+    - en
+    default_prompt: Triage this NDA from a prospective vendor; we just need to know if we can sign it today.
+    hands_off_to:
+    - nda-drafter
+    - playbook-contract-reviewer
+  - id: playbook-contract-reviewer
+    display_name: Playbook Contract Reviewer
+    short: Review a contract against a playbook and propose redlines
+    pack: contracts-commercial
+    jurisdiction: in
+    practice_area: contracts
+    category: review
+    language:
+    - en
+    default_prompt: Review this customer MSA against our playbook and give me a redline and an issues list.
+    hands_off_to:
+    - contract-negotiation-planner
+    - contract-execution-stamping-checker
+    - cross-border-contract-reviewer
+  - id: msa-sow-drafter
+    display_name: MSA and SOW Drafter
+    short: Draft a master services agreement with SOW and SLA schedules
+    pack: contracts-commercial
+    jurisdiction: in
+    practice_area: contracts
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft an MSA and first SOW for our Noida IT services company supplying support to a retail chain.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - playbook-contract-reviewer
+    - data-processing-agreement-reviewer
+    - ip-assignment-licence-drafter
+  - id: vendor-saas-agreement-reviewer
+    display_name: Vendor and SaaS Agreement Reviewer
+    short: Review a vendor, SaaS or cloud subscription agreement as the customer
+    pack: contracts-commercial
+    jurisdiction: in
+    practice_area: contracts
+    category: review
+    language:
+    - en
+    default_prompt: Review this SaaS subscription agreement for our HR software; we are the customer in India.
+    hands_off_to:
+    - data-processing-agreement-reviewer
+    - ai-vendor-contract-reviewer
+    - cross-border-contract-reviewer
+  - id: distribution-franchise-agreement-drafter
+    display_name: Distribution and Franchise Agreement Drafter
+    short: Draft or review distribution, agency, reseller, supply and franchise agreements
+    pack: contracts-commercial
+    jurisdiction: in
+    practice_area: contracts
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a franchise agreement for a Kerala café chain franchising to operators in Tamil Nadu.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - anti-competitive-conduct-analyst
+    - ip-assignment-licence-drafter
+    - playbook-contract-reviewer
+  - id: loi-term-sheet-reviewer
+    display_name: LOI and Term Sheet Reviewer
+    short: Draft or review an LOI, MOU or commercial term sheet
+    pack: contracts-commercial
+    jurisdiction: in
+    practice_area: contracts
+    category: review
+    language:
+    - en
+    default_prompt: Review this MOU for a joint bid with a Gujarat EPC firm and tell me which parts are binding.
+    hands_off_to:
+    - playbook-contract-reviewer
+    - contract-execution-stamping-checker
+  - id: contract-summariser
+    display_name: Contract Summariser
+    short: Summarise one contract or abstract many into a table
+    pack: contracts-commercial
+    jurisdiction: neutral
+    practice_area: contracts
+    category: summarising
+    language:
+    - en
+    default_prompt: 'Summarise these 40 leases into a table: parties, rent, escalation, lock-in, renewal and termination notice.'
+    hands_off_to:
+    - contract-obligations-tracker
+    - playbook-contract-reviewer
+  - id: contract-obligations-tracker
+    display_name: Contract Obligations Tracker
+    short: Extract obligations, deadlines and renewals into a tracker
+    pack: contracts-commercial
+    jurisdiction: neutral
+    practice_area: contracts
+    category: tracking
+    language:
+    - en
+    default_prompt: Extract every obligation, payment date, notice period and renewal deadline from this distribution agreement
+      into a tracker.
+    hands_off_to:
+    - contract-summariser
+    - matter-deadline-tracker
+  - id: contract-negotiation-planner
+    display_name: Contract Negotiation Planner
+    short: Plan a contract negotiation with positions, fallbacks and trade-offs
+    pack: contracts-commercial
+    jurisdiction: neutral
+    practice_area: contracts
+    category: planning
+    language:
+    - en
+    default_prompt: Plan our negotiation on the liability and IP clauses with this large bank customer.
+    hands_off_to:
+    - playbook-contract-reviewer
+    - settlement-strategy-planner
+  - id: contract-amendment-drafter
+    display_name: Contract Amendment Drafter
+    short: Draft amendments, addenda, novations, assignments and consolidated histories
+    pack: contracts-commercial
+    jurisdiction: in
+    practice_area: contracts
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft an addendum extending this services agreement by two years and changing the fee schedule, and show
+      how the contract has changed over time.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - contract-execution-stamping-checker
+    - contract-summariser
+  - id: contract-termination-analyst
+    display_name: Contract Termination Analyst
+    short: Analyse termination rights, force majeure, frustration and exit steps
+    pack: contracts-commercial
+    jurisdiction: in
+    practice_area: contracts
+    category: analysis
+    language:
+    - en
+    default_prompt: Can my client terminate this supply contract because of the new export ban? What notice and consequences?
+    hands_off_to:
+    - legal-notice-drafter
+    - damages-interest-calculator
+  - id: contract-execution-stamping-checker
+    display_name: Contract Execution Stamping Checker
+    short: Check execution, e-signing, stamping and registration before signing
+    pack: contracts-commercial
+    jurisdiction: in-states
+    practice_area: contracts
+    category: compliance
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: This agreement will be e-signed by parties in Bengaluru and Delhi. Check execution, e-stamping and registration.
+    hands_off_to:
+    - state-stamp-duty-calculator
+    - document-legalisation-planner
+  - id: company-incorporation-planner
+    display_name: Company Incorporation Planner
+    short: Choose the entity and prepare incorporation documents for a company or LLP
+    pack: corporate-securities
+    jurisdiction: in
+    practice_area: corporate
+    category: planning
+    language:
+    - en
+    default_prompt: Two founders in Hyderabad want to start a D2C brand. Company, LLP or partnership? Then prepare the incorporation
+      set.
+    hands_off_to:
+    - founders-agreement-drafter
+    - board-meeting-documents-drafter
+    - india-entry-fema-structuring-analyst
+  - id: board-meeting-documents-drafter
+    display_name: Board Meeting Documents Drafter
+    short: Draft board and shareholder resolutions, notices and minutes
+    pack: corporate-securities
+    jurisdiction: in
+    practice_area: corporate
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft the board resolution, EGM notice with explanatory statement, and minutes for a preferential allotment.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - roc-secretarial-compliance-checker
+    - securities-issuance-compliance-checker
+  - id: roc-secretarial-compliance-checker
+    display_name: ROC and Secretarial Compliance Checker
+    short: Check annual and event-based ROC and secretarial compliance
+    pack: corporate-securities
+    jurisdiction: in
+    practice_area: corporate
+    category: compliance
+    language:
+    - en
+    default_prompt: List every ROC filing and register this private company must complete for FY 2025-26, and what is overdue.
+    hands_off_to:
+    - board-meeting-documents-drafter
+    - compliance-calendar-builder
+  - id: related-party-transaction-analyst
+    display_name: Related Party Transaction Analyst
+    short: Identify related parties and approvals for a related-party transaction
+    pack: corporate-securities
+    jurisdiction: in
+    practice_area: corporate
+    category: analysis
+    language:
+    - en
+    default_prompt: Our listed client wants to lease office space from the promoter's company. Which approvals apply?
+    hands_off_to:
+    - board-meeting-documents-drafter
+    - sebi-lodr-disclosure-checker
+  - id: sebi-lodr-disclosure-checker
+    display_name: SEBI LODR Disclosure Checker
+    short: Check listed-company disclosure and governance obligations under SEBI LODR
+    pack: corporate-securities
+    jurisdiction: in
+    practice_area: corporate
+    category: compliance
+    language:
+    - en
+    default_prompt: Our listed client received a large order and a tax demand on the same day. What must be disclosed to the
+      exchanges and by when?
+    hands_off_to:
+    - insider-trading-pit-checker
+    - related-party-transaction-analyst
+  - id: insider-trading-pit-checker
+    display_name: Insider Trading PIT Checker
+    short: 'Check insider trading compliance: UPSI, trading window and code of conduct'
+    pack: corporate-securities
+    jurisdiction: in
+    practice_area: corporate
+    category: compliance
+    language:
+    - en
+    default_prompt: An employee traded two days before results. Check whether this breaches the PIT Regulations and what we
+      must do.
+    hands_off_to:
+    - sebi-lodr-disclosure-checker
+    - internal-investigation-planner
+  - id: takeover-code-trigger-analyst
+    display_name: Takeover Code Trigger Analyst
+    short: Test whether an acquisition triggers an open offer under the SAST Regulations
+    pack: corporate-securities
+    jurisdiction: in
+    practice_area: corporate
+    category: analysis
+    language:
+    - en
+    default_prompt: Our client will cross 26% in a listed company after this preferential allotment. Is an open offer triggered
+      and is any exemption available?
+    hands_off_to:
+    - securities-issuance-compliance-checker
+    - cci-combination-filing-analyst
+  - id: securities-issuance-compliance-checker
+    display_name: Securities Issuance Compliance Checker
+    short: Check a private placement, rights or preferential issue for compliance
+    pack: corporate-securities
+    jurisdiction: in
+    practice_area: corporate
+    category: compliance
+    language:
+    - en
+    default_prompt: Check the steps and documents for a private placement of CCPS by our unlisted company to 12 investors.
+    hands_off_to:
+    - board-meeting-documents-drafter
+    - convertible-instrument-analyst
+    - india-entry-fema-structuring-analyst
+  - id: ma-due-diligence-analyst
+    display_name: M&A Due Diligence Analyst
+    short: Plan legal due diligence, review the data room and write the red-flag report
+    pack: corporate-securities
+    jurisdiction: in
+    practice_area: corporate
+    category: analysis
+    language:
+    - en
+    default_prompt: Prepare a legal due diligence request list for acquiring a Chennai logistics company and a red-flag report
+      from the VDR.
+    hands_off_to:
+    - share-purchase-agreement-reviewer
+    - contract-summariser
+    - property-title-diligence-analyst
+  - id: share-purchase-agreement-reviewer
+    display_name: Share Purchase Agreement Reviewer
+    short: Draft or review an SPA, BTA or slump-sale agreement
+    pack: corporate-securities
+    jurisdiction: in
+    practice_area: corporate
+    category: review
+    language:
+    - en
+    default_prompt: 'Review the SPA for our client''s purchase of 100% of a Pune engineering company: warranties, indemnities
+      and escrow.'
+    hands_off_to:
+    - ma-due-diligence-analyst
+    - closing-checklist-builder
+    - takeover-code-trigger-analyst
+  - id: closing-checklist-builder
+    display_name: Closing Checklist Builder
+    short: Build and run a closing and post-closing checklist
+    pack: corporate-securities
+    jurisdiction: neutral
+    practice_area: corporate
+    category: tracking
+    language:
+    - en
+    default_prompt: Build the closing checklist for this acquisition and show what is still blocking signing and closing.
+    hands_off_to:
+    - share-purchase-agreement-reviewer
+    - board-meeting-documents-drafter
+  - id: esop-scheme-drafter
+    display_name: ESOP Scheme Drafter
+    short: Draft an ESOP scheme, grant letters and approvals
+    pack: corporate-securities
+    jurisdiction: in
+    practice_area: corporate
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft an ESOP scheme with a 10% pool, 4-year vesting and 1-year cliff for our private company, plus the
+      grant letter.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - board-meeting-documents-drafter
+    - cap-table-calculator
+  - id: scheme-of-arrangement-planner
+    display_name: Scheme of Arrangement Planner
+    short: Plan a merger, demerger or capital reduction through NCLT or fast-track
+    pack: corporate-securities
+    jurisdiction: in
+    practice_area: corporate
+    category: planning
+    language:
+    - en
+    default_prompt: Plan a merger of two wholly owned subsidiaries into the parent. Can we use the fast-track route?
+    hands_off_to:
+    - board-meeting-documents-drafter
+    - nclt-nclat-appeal-drafter
+    - cci-combination-filing-analyst
+  - id: founders-agreement-drafter
+    display_name: Founders Agreement Drafter
+    short: Draft a founders' agreement with equity, vesting, roles and exits
+    pack: startup-vc
+    jurisdiction: in
+    practice_area: startup
+    category: drafting
+    language:
+    - en
+    default_prompt: 'Draft a founders'' agreement for three co-founders of a Kochi fintech: 50:30:20 split, four-year reverse
+      vesting.'
+    hands_off_to:
+    - pre-filing-verification-checker
+    - company-incorporation-planner
+    - ip-assignment-licence-drafter
+    - cap-table-calculator
+  - id: vc-term-sheet-reviewer
+    display_name: VC Term Sheet Reviewer
+    short: Review a venture term sheet for economics and control
+    pack: startup-vc
+    jurisdiction: in
+    practice_area: startup
+    category: review
+    language:
+    - en
+    default_prompt: 'Review this seed term sheet from a Singapore VC: 1x participating preference, full ratchet and two board
+      seats.'
+    hands_off_to:
+    - shareholders-agreement-drafter
+    - cap-table-calculator
+    - convertible-instrument-analyst
+  - id: shareholders-agreement-drafter
+    display_name: Shareholders Agreement Drafter
+    short: Draft or review an SHA, SSA or joint venture agreement
+    pack: startup-vc
+    jurisdiction: in
+    practice_area: startup
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft the SSA and SHA for a Rs 15 crore Series A led by a domestic AIF, with ESOP top-up.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - vc-term-sheet-reviewer
+    - securities-issuance-compliance-checker
+    - india-entry-fema-structuring-analyst
+  - id: convertible-instrument-analyst
+    display_name: Convertible Instrument Analyst
+    short: Structure CCPS, CCDs, iSAFE notes and convertible notes
+    pack: startup-vc
+    jurisdiction: in
+    practice_area: startup
+    category: analysis
+    language:
+    - en
+    default_prompt: Should our seed round use CCPS, CCDs, iSAFE or a convertible note, given we have a US angel and Indian angels?
+    hands_off_to:
+    - securities-issuance-compliance-checker
+    - india-entry-fema-structuring-analyst
+    - cap-table-calculator
+  - id: cap-table-calculator
+    display_name: Cap Table Calculator
+    short: Model cap table dilution, ESOP pools, conversions and exit waterfalls
+    pack: startup-vc
+    jurisdiction: neutral
+    practice_area: startup
+    category: calculation
+    language:
+    - en
+    default_prompt: Model our cap table after a Rs 10 crore pre-money seed with a 10% post-money ESOP pool and a CCD converting
+      at a 20% discount.
+    hands_off_to:
+    - vc-term-sheet-reviewer
+    - esop-scheme-drafter
+  - id: startup-legal-health-checker
+    display_name: Startup Legal Health Checker
+    short: Run a startup legal health check, including DPIIT recognition and tax benefits
+    pack: startup-vc
+    jurisdiction: in
+    practice_area: startup
+    category: compliance
+    language:
+    - en
+    default_prompt: Run a legal health check for our 18-month-old SaaS startup before we approach investors.
+    hands_off_to:
+    - roc-secretarial-compliance-checker
+    - ip-portfolio-tracker
+    - dpdp-compliance-gap-analyst
+    - labour-codes-compliance-checker
+  - id: facility-agreement-reviewer
+    display_name: Facility Agreement Reviewer
+    short: Draft or review a loan or facility agreement and its covenants
+    pack: banking-finance-insolvency
+    jurisdiction: in
+    practice_area: finance
+    category: review
+    language:
+    - en
+    default_prompt: Review this term loan agreement from an NBFC for our client, the borrower, especially the events of default
+      and covenants.
+    hands_off_to:
+    - security-guarantee-document-drafter
+    - financial-services-licensing-analyst
+  - id: security-guarantee-document-drafter
+    display_name: Security and Guarantee Document Drafter
+    short: Draft mortgages, hypothecation, pledges and guarantees, with perfection steps
+    pack: banking-finance-insolvency
+    jurisdiction: in-states
+    practice_area: finance
+    category: drafting
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: Draft the hypothecation deed, the mortgage by deposit of title deeds and the personal guarantee for this
+      working capital facility in Gujarat.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - state-stamp-duty-calculator
+    - roc-secretarial-compliance-checker
+    - facility-agreement-reviewer
+  - id: sarfaesi-enforcement-planner
+    display_name: SARFAESI Enforcement Planner
+    short: Plan or defend SARFAESI enforcement from s.13(2) notice to auction
+    pack: banking-finance-insolvency
+    jurisdiction: in
+    practice_area: finance
+    category: planning
+    language:
+    - en
+    default_prompt: The bank has issued a s.13(2) notice to my client for a Rs 3 crore NPA. What are our options and the timeline?
+    hands_off_to:
+    - drt-application-drafter
+    - one-time-settlement-proposal-drafter
+    - limitation-calculator
+  - id: drt-application-drafter
+    display_name: DRT Application Drafter
+    short: Draft DRT original applications, SARFAESI s.17 applications and DRAT appeals
+    pack: banking-finance-insolvency
+    jurisdiction: in
+    practice_area: finance
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a s.17 SARFAESI application to the DRT Chennai challenging the possession notice; the auction is in
+      three weeks.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - sarfaesi-enforcement-planner
+    - limitation-calculator
+    - court-pleading-formatter
+  - id: one-time-settlement-proposal-drafter
+    display_name: One Time Settlement Proposal Drafter
+    short: Draft a one-time settlement proposal or wilful defaulter reply to a lender
+    pack: banking-finance-insolvency
+    jurisdiction: in
+    practice_area: finance
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft an OTS proposal to the bank for our MSME client's Rs 1.8 crore NPA, with a 12-month payment plan.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - sarfaesi-enforcement-planner
+    - settlement-strategy-planner
+  - id: ibc-application-drafter
+    display_name: IBC Application Drafter
+    short: Draft IBC s.7, s.8, s.9, s.10 and personal guarantor applications
+    pack: banking-finance-insolvency
+    jurisdiction: in
+    practice_area: finance
+    category: drafting
+    language:
+    - en
+    default_prompt: Our client supplied steel worth Rs 1.4 crore and was not paid. Draft the s.8 demand notice and then the
+      s.9 application.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - limitation-calculator
+    - litigation-strategy-planner
+    - cirp-ppirp-timeline-checker
+  - id: cirp-ppirp-timeline-checker
+    display_name: CIRP and PPIRP Timeline Checker
+    short: Build and audit a CIRP or PPIRP timeline, including moratorium effects
+    pack: banking-finance-insolvency
+    jurisdiction: in
+    practice_area: finance
+    category: compliance
+    language:
+    - en
+    default_prompt: We are the IRP in a CIRP admitted on 3 June 2026. Build the regulation-wise timeline and flag missed steps.
+    hands_off_to:
+    - insolvency-claim-drafter
+    - resolution-plan-reviewer
+    - nclt-nclat-appeal-drafter
+  - id: insolvency-claim-drafter
+    display_name: Insolvency Claim Drafter
+    short: Prepare a creditor's claim, or verify claims as IRP or liquidator
+    pack: banking-finance-insolvency
+    jurisdiction: in
+    practice_area: finance
+    category: drafting
+    language:
+    - en
+    default_prompt: Prepare our Form B claim in this CIRP for unpaid invoices plus interest, with the supporting documents.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - cirp-ppirp-timeline-checker
+    - damages-interest-calculator
+  - id: resolution-plan-reviewer
+    display_name: Resolution Plan Reviewer
+    short: Review a resolution plan for s.29A eligibility, s.30(2) compliance and CoC voting
+    pack: banking-finance-insolvency
+    jurisdiction: in
+    practice_area: finance
+    category: review
+    language:
+    - en
+    default_prompt: Review this resolution plan for compliance before it goes to the CoC vote, and flag s.29A risks for the
+      applicant.
+    hands_off_to:
+    - cirp-ppirp-timeline-checker
+    - liquidation-waterfall-calculator
+    - nclt-nclat-appeal-drafter
+  - id: avoidance-transaction-analyst
+    display_name: Avoidance Transaction Analyst
+    short: Analyse preferential, undervalued, fraudulent and extortionate transactions
+    pack: banking-finance-insolvency
+    jurisdiction: in
+    practice_area: finance
+    category: analysis
+    language:
+    - en
+    default_prompt: As RP, review these 18 months of bank statements and related-party payments for avoidance transactions.
+    hands_off_to:
+    - fraud-funds-flow-analyst
+    - nclt-nclat-appeal-drafter
+  - id: liquidation-waterfall-calculator
+    display_name: Liquidation Waterfall Calculator
+    short: Compute the s.53 liquidation waterfall and plan the liquidation steps
+    pack: banking-finance-insolvency
+    jurisdiction: in
+    practice_area: finance
+    category: calculation
+    language:
+    - en
+    default_prompt: Compute distribution of Rs 42 crore of liquidation proceeds among these creditors under s.53 IBC.
+    hands_off_to:
+    - resolution-plan-reviewer
+    - insolvency-claim-drafter
+  - id: nclt-nclat-appeal-drafter
+    display_name: NCLT NCLAT Appeal Drafter
+    short: Draft NCLT applications and NCLAT appeals under the IBC and Companies Act
+    pack: banking-finance-insolvency
+    jurisdiction: in
+    practice_area: finance
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft an appeal to the NCLAT under s.61 IBC against this admission order; it was pronounced 20 days ago.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - limitation-calculator
+    - court-pleading-formatter
+  - id: property-title-diligence-analyst
+    display_name: Property Title Diligence Analyst
+    short: Trace 30-year title and write a title report
+    pack: real-estate-property
+    jurisdiction: in-states
+    practice_area: property
+    category: analysis
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: Prepare a 30-year title report for this agricultural land in Mysuru being bought for a warehouse.
+    hands_off_to:
+    - encumbrance-certificate-analyst
+    - land-records-mutation-advisor
+    - sale-deed-drafter
+  - id: encumbrance-certificate-analyst
+    display_name: Encumbrance Certificate Analyst
+    short: Read an encumbrance certificate and reconcile it with the title chain
+    pack: real-estate-property
+    jurisdiction: in-states
+    practice_area: property
+    category: analysis
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: Read this EC for 2004-2026 for a flat in Chennai and tell me whether it matches the title documents.
+    hands_off_to:
+    - property-title-diligence-analyst
+  - id: sale-deed-drafter
+    display_name: Sale Deed Drafter
+    short: Draft an agreement to sell and a sale deed for immovable property
+    pack: real-estate-property
+    jurisdiction: in-states
+    practice_area: property
+    category: drafting
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: Draft an agreement to sell and the sale deed for a flat in Kolkata; part of the price is through a bank
+      loan.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - state-stamp-duty-calculator
+    - property-title-diligence-analyst
+    - regional-language-legal-drafter
+  - id: family-conveyance-deed-drafter
+    display_name: Family Conveyance Deed Drafter
+    short: Draft gift, release, relinquishment, partition and family settlement deeds
+    pack: real-estate-property
+    jurisdiction: in-states
+    practice_area: property
+    category: drafting
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: Draft a release deed by my client's two sisters in her favour for their father's house in Thrissur, and
+      a gift deed of a flat to her son.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - state-stamp-duty-calculator
+    - intestate-succession-share-calculator
+    - property-title-diligence-analyst
+  - id: lease-licence-agreement-drafter
+    display_name: Lease Licence Agreement Drafter
+    short: Draft or review a lease, rent or leave-and-licence agreement
+    pack: real-estate-property
+    jurisdiction: in-states
+    practice_area: property
+    category: drafting
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: Draft a 9-year commercial lease for a showroom in Mumbai, and tell me if a leave and licence is better.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - tenancy-rent-control-analyst
+    - state-stamp-duty-calculator
+  - id: power-of-attorney-drafter
+    display_name: Power of Attorney Drafter
+    short: Draft a general or special power of attorney for property or litigation
+    pack: real-estate-property
+    jurisdiction: in-states
+    practice_area: property
+    category: drafting
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: Draft a specific power of attorney for my NRI client in Canada to let her brother sell her plot in Hyderabad.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - document-legalisation-planner
+    - state-stamp-duty-calculator
+  - id: rera-complaint-drafter
+    display_name: RERA Complaint Drafter
+    short: Draft a RERA complaint for refund, interest or possession
+    pack: real-estate-property
+    jurisdiction: in-states
+    practice_area: property
+    category: drafting
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: The builder in Noida has delayed possession by three years. Draft a RERA complaint for interest or refund.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - builder-buyer-agreement-reviewer
+    - limitation-calculator
+    - consumer-complaint-drafter
+  - id: rera-project-compliance-checker
+    display_name: RERA Project Compliance Checker
+    short: Check a promoter's RERA registration and disclosure obligations
+    pack: real-estate-property
+    jurisdiction: in-states
+    practice_area: property
+    category: compliance
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: Check RERA compliance for our client's new residential project in Pune before launch.
+    hands_off_to:
+    - builder-buyer-agreement-reviewer
+    - compliance-calendar-builder
+  - id: builder-buyer-agreement-reviewer
+    display_name: Builder Buyer Agreement Reviewer
+    short: Review a builder-buyer agreement or allotment letter for the buyer
+    pack: real-estate-property
+    jurisdiction: in-states
+    practice_area: property
+    category: review
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: Review this builder-buyer agreement for a flat in Gurugram before my client pays 30%.
+    hands_off_to:
+    - rera-complaint-drafter
+    - property-title-diligence-analyst
+  - id: joint-development-agreement-reviewer
+    display_name: Joint Development Agreement Reviewer
+    short: Draft or review a joint development or development agreement
+    pack: real-estate-property
+    jurisdiction: in-states
+    practice_area: property
+    category: review
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: 'Review this JDA for my landowner client in Bengaluru: 60:40 area sharing with a GPA to the developer.'
+    hands_off_to:
+    - power-of-attorney-drafter
+    - state-stamp-duty-calculator
+    - rera-project-compliance-checker
+  - id: land-records-mutation-advisor
+    display_name: Land Records and Mutation Advisor
+    short: Advise on mutation, revenue records, land-use conversion and land restrictions
+    pack: real-estate-property
+    jurisdiction: in-states
+    practice_area: property
+    category: advice
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: My client inherited farmland in Maharashtra. How do we mutate the 7/12 extract and convert it to non-agricultural
+      use?
+    hands_off_to:
+    - property-title-diligence-analyst
+    - intestate-succession-share-calculator
+  - id: land-acquisition-compensation-calculator
+    display_name: Land Acquisition Compensation Calculator
+    short: Compute land acquisition compensation and plan objections
+    pack: real-estate-property
+    jurisdiction: in-states
+    practice_area: property
+    category: calculation
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: The State is acquiring 2 acres of my client's land near Nashik for a highway. Compute the compensation and
+      our objections.
+    hands_off_to:
+    - limitation-calculator
+    - writ-petition-drafter
+  - id: nri-property-transaction-checker
+    display_name: NRI Property Transaction Checker
+    short: Check FEMA, tax and document steps when an NRI or OCI buys, sells or inherits property
+    pack: real-estate-property
+    jurisdiction: cross-border
+    practice_area: property
+    category: compliance
+    language:
+    - en
+    shared_refs:
+    - foreign-jurisdictions.md
+    default_prompt: My client, an OCI in the US, wants to sell her inherited flat in Delhi and repatriate the money. What are
+      the steps?
+    hands_off_to:
+    - power-of-attorney-drafter
+    - document-legalisation-planner
+    - dtaa-withholding-analyst
+  - id: divorce-grounds-analyst
+    display_name: Divorce Grounds Analyst
+    short: Assess divorce, judicial separation or nullity under the applicable personal law
+    pack: family-succession
+    jurisdiction: in
+    practice_area: family
+    category: analysis
+    language:
+    - en
+    default_prompt: My client, married under the Special Marriage Act in 2019, wants a divorce on grounds of cruelty. Assess
+      her case.
+    hands_off_to:
+    - matrimonial-petition-drafter
+    - mutual-consent-divorce-drafter
+    - maintenance-petition-drafter
+  - id: matrimonial-petition-drafter
+    display_name: Matrimonial Petition Drafter
+    short: Draft a divorce, restitution, separation or nullity petition and reply
+    pack: family-succession
+    jurisdiction: in
+    practice_area: family
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a divorce petition under s.13(1)(ia) HMA for the Family Court, Bengaluru, from these facts.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - court-pleading-formatter
+    - civil-interlocutory-application-drafter
+    - regional-language-legal-drafter
+  - id: mutual-consent-divorce-drafter
+    display_name: Mutual Consent Divorce Drafter
+    short: Draft a mutual consent divorce petition and settlement terms
+    pack: family-succession
+    jurisdiction: in
+    practice_area: family
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft the s.13B petition, the settlement terms on alimony and custody, and the waiver application for the
+      six-month period.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - child-custody-planner
+    - maintenance-petition-drafter
+    - state-stamp-duty-calculator
+  - id: maintenance-petition-drafter
+    display_name: Maintenance Petition Drafter
+    short: Draft maintenance claims for spouses, children and parents, with quantum worked out
+    pack: family-succession
+    jurisdiction: in
+    practice_area: family
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a maintenance application under s.144 BNSS for my client and her child, and work out a fair amount
+      from the husband's salary slips.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - divorce-grounds-analyst
+    - regional-language-legal-drafter
+  - id: child-custody-planner
+    display_name: Child Custody Planner
+    short: Plan a custody, access and parenting position centred on the child's welfare
+    pack: family-succession
+    jurisdiction: in
+    practice_area: family
+    category: planning
+    language:
+    - en
+    default_prompt: My client lives in Pune, the mother has moved with the child to Bhopal. Plan our custody and visitation
+      application.
+    hands_off_to:
+    - matrimonial-petition-drafter
+    - nri-matrimonial-dispute-analyst
+  - id: domestic-violence-application-drafter
+    display_name: Domestic Violence Application Drafter
+    short: Draft a DV Act application for protection, residence and monetary relief
+    pack: family-succession
+    jurisdiction: in
+    practice_area: family
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft an application under s.12 of the DV Act for my client who has been thrown out of the matrimonial home
+      in Lucknow.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - maintenance-petition-drafter
+    - legal-aid-eligibility-screener
+    - criminal-complaint-drafter
+  - id: will-drafter
+    display_name: Will Drafter
+    short: Draft a will, codicil or simple estate plan with a private trust
+    pack: family-succession
+    jurisdiction: in
+    practice_area: family
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a will for my 70-year-old client in Chennai leaving his house to his daughter and investments to his
+      two sons, with an executor.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - probate-succession-certificate-drafter
+    - intestate-succession-share-calculator
+  - id: intestate-succession-share-calculator
+    display_name: Intestate Succession Share Calculator
+    short: Map legal heirs and compute shares, and draft the legal heir certificate application
+    pack: family-succession
+    jurisdiction: in
+    practice_area: family
+    category: calculation
+    language:
+    - en
+    default_prompt: My client's father, a Hindu, died without a will in 2024 leaving a widow, two sons and a married daughter.
+      Who inherits what?
+    hands_off_to:
+    - family-conveyance-deed-drafter
+    - land-records-mutation-advisor
+    - probate-succession-certificate-drafter
+  - id: probate-succession-certificate-drafter
+    display_name: Probate and Succession Certificate Drafter
+    short: Draft probate, letters of administration and succession certificate petitions
+    pack: family-succession
+    jurisdiction: in
+    practice_area: family
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a petition for probate of my client's mother's registered will in the Bombay High Court, and a succession
+      certificate for her bank deposits.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - limitation-calculator
+    - state-court-fee-calculator
+    - court-pleading-formatter
+  - id: adoption-process-advisor
+    display_name: Adoption Process Advisor
+    short: Advise on domestic, relative and inter-country adoption
+    pack: family-succession
+    jurisdiction: in
+    practice_area: family
+    category: advice
+    language:
+    - en
+    default_prompt: A couple in Ahmedabad wants to adopt their nephew. Which law applies and what is the process?
+    hands_off_to:
+    - regional-language-legal-drafter
+  - id: nri-matrimonial-dispute-analyst
+    display_name: NRI Matrimonial Dispute Analyst
+    short: Analyse cross-border matrimonial, maintenance and child removal disputes
+    pack: family-succession
+    jurisdiction: cross-border
+    practice_area: family
+    category: analysis
+    language:
+    - en
+    shared_refs:
+    - foreign-jurisdictions.md
+    default_prompt: My client's husband in the UK has filed for divorce there and wants the child back in London. She is in
+      Kochi. What are her options?
+    hands_off_to:
+    - foreign-judgment-award-enforcement-analyst
+    - child-custody-planner
+    - cross-border-service-evidence-planner
+  - id: employment-contract-drafter
+    display_name: Employment Contract Drafter
+    short: Draft employment contracts, offer letters and consultant agreements
+    pack: employment-labour
+    jurisdiction: in
+    practice_area: employment
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft an employment agreement for a senior engineer in Bengaluru with ESOPs, IP assignment and a notice
+      period of 90 days.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - restrictive-covenant-analyst
+    - ip-assignment-licence-drafter
+    - labour-codes-compliance-checker
+  - id: restrictive-covenant-analyst
+    display_name: Restrictive Covenant Analyst
+    short: Test non-compete, non-solicit and garden-leave clauses under s.27
+    pack: employment-labour
+    jurisdiction: in
+    practice_area: employment
+    category: analysis
+    language:
+    - en
+    default_prompt: Can our client stop a departing sales head from joining a competitor for a year under his non-compete?
+    hands_off_to:
+    - employment-contract-drafter
+    - interim-injunction-application-drafter
+  - id: hr-policy-handbook-drafter
+    display_name: HR Policy Handbook Drafter
+    short: Draft an employee handbook and workplace policies
+    pack: employment-labour
+    jurisdiction: in
+    practice_area: employment
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft an employee handbook for a 150-person company with offices in Delhi and Chennai, including leave,
+      code of conduct and remote work.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - posh-compliance-advisor
+    - labour-codes-compliance-checker
+    - dpdp-compliance-gap-analyst
+  - id: posh-compliance-advisor
+    display_name: POSH Compliance Advisor
+    short: 'Check POSH compliance: policy, Internal Committee, training and annual report'
+    pack: employment-labour
+    jurisdiction: in
+    practice_area: employment
+    category: advice
+    language:
+    - en
+    default_prompt: 'Set up POSH compliance for our 60-person company in Kolkata: policy, Internal Committee and annual report.'
+    hands_off_to:
+    - posh-inquiry-report-drafter
+    - hr-policy-handbook-drafter
+  - id: posh-inquiry-report-drafter
+    display_name: POSH Inquiry Report Drafter
+    short: Run a POSH inquiry and draft notices, findings and the inquiry report
+    pack: employment-labour
+    jurisdiction: in
+    practice_area: employment
+    category: drafting
+    language:
+    - en
+    default_prompt: Our Internal Committee received a complaint against a manager. Draft the notices, the inquiry plan and the
+      report format.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - posh-compliance-advisor
+    - disciplinary-inquiry-drafter
+  - id: labour-codes-compliance-checker
+    display_name: Labour Codes Compliance Checker
+    short: Map Labour Codes, PF, ESI and State labour obligations for an establishment
+    pack: employment-labour
+    jurisdiction: in-states
+    practice_area: employment
+    category: compliance
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: Map our obligations under the four Labour Codes for a 300-worker factory in Tamil Nadu and a 40-person office
+      in Pune.
+    hands_off_to:
+    - compliance-calendar-builder
+    - employee-dues-calculator
+    - gig-worker-classification-analyst
+  - id: termination-retrenchment-analyst
+    display_name: Termination Retrenchment Analyst
+    short: Analyse a termination, retrenchment or closure and plan a lawful exit
+    pack: employment-labour
+    jurisdiction: in
+    practice_area: employment
+    category: analysis
+    language:
+    - en
+    default_prompt: We want to let go of 25 people in our Noida unit. What process, notice and compensation apply, and draft
+      the separation agreements.
+    hands_off_to:
+    - employee-dues-calculator
+    - disciplinary-inquiry-drafter
+    - labour-dispute-claim-drafter
+  - id: disciplinary-inquiry-drafter
+    display_name: Disciplinary Inquiry Drafter
+    short: Draft show-cause notices, charge-sheets and domestic inquiry records
+    pack: employment-labour
+    jurisdiction: in
+    practice_area: employment
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a show-cause notice and charge-sheet for an employee accused of falsifying expense claims, and the
+      inquiry procedure.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - termination-retrenchment-analyst
+    - internal-investigation-planner
+  - id: employee-dues-calculator
+    display_name: Employee Dues Calculator
+    short: Compute gratuity, retrenchment compensation, leave encashment and full-and-final dues
+    pack: employment-labour
+    jurisdiction: in
+    practice_area: employment
+    category: calculation
+    language:
+    - en
+    default_prompt: Compute gratuity, leave encashment and notice pay for an employee leaving after 7 years 8 months on a last
+      drawn basic of Rs 62,000.
+    hands_off_to:
+    - termination-retrenchment-analyst
+  - id: gig-worker-classification-analyst
+    display_name: Gig Worker Classification Analyst
+    short: Classify workers as employee, contractor, contract labour or gig worker
+    pack: employment-labour
+    jurisdiction: in
+    practice_area: employment
+    category: analysis
+    language:
+    - en
+    default_prompt: We engage 2,000 delivery partners through an app. Are they employees, and what do we owe under the Code
+      on Social Security?
+    hands_off_to:
+    - labour-codes-compliance-checker
+    - employment-contract-drafter
+  - id: labour-dispute-claim-drafter
+    display_name: Labour Dispute Claim Drafter
+    short: Draft industrial dispute, wage claim and Labour Court pleadings
+    pack: employment-labour
+    jurisdiction: in
+    practice_area: employment
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a claim before the Labour Court for reinstatement with back wages for a machine operator terminated
+      without inquiry.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - termination-retrenchment-analyst
+    - limitation-calculator
+  - id: trademark-clearance-analyst
+    display_name: Trademark Clearance Analyst
+    short: Run a knockout trademark clearance and risk call
+    pack: intellectual-property
+    jurisdiction: in
+    practice_area: ip
+    category: analysis
+    language:
+    - en
+    default_prompt: We want to launch a snack brand called 'Crunchwala' in Classes 29 and 30. Is it clear to use and register?
+    hands_off_to:
+    - trademark-application-drafter
+    - domain-name-dispute-analyst
+  - id: trademark-application-drafter
+    display_name: Trademark Application Drafter
+    short: Draft a trademark application with classes, specification and user affidavit
+    pack: intellectual-property
+    jurisdiction: in
+    practice_area: ip
+    category: drafting
+    language:
+    - en
+    default_prompt: Prepare a TM-A application for our logo mark in Classes 9 and 42 for SaaS, with user since 2022.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - trademark-examination-reply-drafter
+    - ip-portfolio-tracker
+  - id: trademark-examination-reply-drafter
+    display_name: Trademark Examination Reply Drafter
+    short: Reply to a trademark examination report objection
+    pack: intellectual-property
+    jurisdiction: in
+    practice_area: ip
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a reply to this examination report raising s.9(1)(a) descriptiveness and a s.11 conflict with three
+      marks.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - trademark-opposition-drafter
+    - trademark-application-drafter
+  - id: trademark-opposition-drafter
+    display_name: Trademark Opposition Drafter
+    short: Draft a trademark opposition, counter-statement or rectification petition
+    pack: intellectual-property
+    jurisdiction: in
+    practice_area: ip
+    category: drafting
+    language:
+    - en
+    default_prompt: A competitor's application for 'Swiggi Foods' was advertised. Draft our notice of opposition.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - trademark-examination-reply-drafter
+    - ip-infringement-analyst
+    - limitation-calculator
+  - id: ip-infringement-analyst
+    display_name: IP Infringement Analyst
+    short: Analyse IP infringement or passing off and draft a cease-and-desist or takedown
+    pack: intellectual-property
+    jurisdiction: in
+    practice_area: ip
+    category: analysis
+    language:
+    - en
+    default_prompt: A Surat company is selling sarees with a print copied from our client's registered design and a confusingly
+      similar label. Analyse and draft a cease-and-desist.
+    hands_off_to:
+    - interim-injunction-application-drafter
+    - freedom-to-operate-analyst
+    - domain-name-dispute-analyst
+  - id: copyright-design-registration-advisor
+    display_name: Copyright and Design Registration Advisor
+    short: Advise on copyright ownership and registration, and design registration
+    pack: intellectual-property
+    jurisdiction: in
+    practice_area: ip
+    category: advice
+    language:
+    - en
+    default_prompt: Who owns the code and artwork made by our freelancers, and should we register copyright and the product
+      design?
+    hands_off_to:
+    - ip-assignment-licence-drafter
+    - trademark-application-drafter
+  - id: invention-disclosure-screener
+    display_name: Invention Disclosure Screener
+    short: Screen an invention disclosure for patentability and s.3 exclusions
+    pack: intellectual-property
+    jurisdiction: in
+    practice_area: ip
+    category: intake
+    language:
+    - en
+    default_prompt: Our engineers built an AI model that predicts crop disease from leaf images. Is it patentable in India?
+    hands_off_to:
+    - patent-specification-drafter
+    - freedom-to-operate-analyst
+  - id: patent-specification-drafter
+    display_name: Patent Specification Drafter
+    short: Support drafting a provisional or complete patent specification and forms
+    pack: intellectual-property
+    jurisdiction: in
+    practice_area: ip
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a provisional specification for this water purification process, with figures described, for filing
+      at the Chennai Patent Office.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - invention-disclosure-screener
+    - patent-fer-reply-drafter
+  - id: patent-fer-reply-drafter
+    display_name: Patent FER Reply Drafter
+    short: Draft a reply to a patent First Examination Report
+    pack: intellectual-property
+    jurisdiction: in
+    practice_area: ip
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a response to this FER citing lack of inventive step over D1 and D2 and a s.3(k) objection.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - patent-specification-drafter
+    - limitation-calculator
+  - id: freedom-to-operate-analyst
+    display_name: Freedom to Operate Analyst
+    short: Run an FTO triage and build patent claim charts
+    pack: intellectual-property
+    jurisdiction: in
+    practice_area: ip
+    category: analysis
+    language:
+    - en
+    default_prompt: Before launching our medical device in India, run an FTO triage against these five Indian patents and chart
+      claim 1 of each.
+    hands_off_to:
+    - ip-infringement-analyst
+    - invention-disclosure-screener
+  - id: ip-assignment-licence-drafter
+    display_name: IP Assignment Licence Drafter
+    short: Draft IP assignments, licences and technology transfer agreements
+    pack: intellectual-property
+    jurisdiction: in
+    practice_area: ip
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft an assignment of all IP from our founder's earlier proprietorship to the new company, and a software
+      licence to a distributor.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - ip-portfolio-tracker
+    - msa-sow-drafter
+    - india-entry-fema-structuring-analyst
+  - id: ip-portfolio-tracker
+    display_name: IP Portfolio Tracker
+    short: Track IP registrations, renewals, oppositions and ownership gaps
+    pack: intellectual-property
+    jurisdiction: in
+    practice_area: ip
+    category: tracking
+    language:
+    - en
+    default_prompt: Build a tracker of our 46 trademarks and 3 patents with renewal dates, status and ownership gaps.
+    hands_off_to:
+    - trademark-application-drafter
+    - contract-obligations-tracker
+  - id: domain-name-dispute-analyst
+    display_name: Domain Name Dispute Analyst
+    short: Assess and draft an INDRP or UDRP domain name complaint
+    pack: intellectual-property
+    jurisdiction: cross-border
+    practice_area: ip
+    category: analysis
+    language:
+    - en
+    shared_refs:
+    - foreign-jurisdictions.md
+    default_prompt: Someone registered ourbrand.in and ourbrand.com and is redirecting to a rival. Can we get them back?
+    hands_off_to:
+    - ip-infringement-analyst
+    - trademark-clearance-analyst
+  - id: dpdp-compliance-gap-analyst
+    display_name: DPDP Compliance Gap Analyst
+    short: Assess DPDP Act and Rules readiness, including children's data and SDF duties
+    pack: tmt-privacy-cyber
+    jurisdiction: in
+    practice_area: tmt
+    category: analysis
+    language:
+    - en
+    default_prompt: Run a DPDP readiness assessment for our edtech app used by school students across India.
+    hands_off_to:
+    - privacy-notice-consent-drafter
+    - data-processing-agreement-reviewer
+    - data-breach-response-planner
+    - cross-border-data-transfer-analyst
+  - id: privacy-notice-consent-drafter
+    display_name: Privacy Notice and Consent Drafter
+    short: Draft DPDP notices, consent flows, privacy policies and cookie notices
+    pack: tmt-privacy-cyber
+    jurisdiction: in
+    practice_area: tmt
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft the DPDP notice and consent text for our lending app's sign-up screen, and update our website privacy
+      policy.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - dpdp-compliance-gap-analyst
+    - ecommerce-platform-terms-checker
+    - regional-language-legal-drafter
+  - id: data-processing-agreement-reviewer
+    display_name: Data Processing Agreement Reviewer
+    short: Draft or review a data processing agreement under DPDP and GDPR
+    pack: tmt-privacy-cyber
+    jurisdiction: in
+    practice_area: tmt
+    category: review
+    language:
+    - en
+    default_prompt: Review this DPA from our cloud CRM vendor; we are the data fiduciary in India with some EU customers.
+    hands_off_to:
+    - cross-border-data-transfer-analyst
+    - vendor-saas-agreement-reviewer
+  - id: data-principal-request-drafter
+    display_name: Data Principal Request Drafter
+    short: Handle access, correction, erasure and grievance requests from data principals
+    pack: tmt-privacy-cyber
+    jurisdiction: in
+    practice_area: tmt
+    category: drafting
+    language:
+    - en
+    default_prompt: A former customer wants all her data and its deletion. Draft our response and tell us what we can keep.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - dpdp-compliance-gap-analyst
+  - id: data-breach-response-planner
+    display_name: Data Breach Response Planner
+    short: Plan breach and cyber incident response under DPDP, CERT-In and sector rules
+    pack: tmt-privacy-cyber
+    jurisdiction: in
+    practice_area: tmt
+    category: planning
+    language:
+    - en
+    default_prompt: We found ransomware on a server holding customer KYC data last night. What must we report, to whom, and
+      by when?
+    hands_off_to:
+    - cyber-crime-complaint-drafter
+    - legal-hold-preservation-planner
+    - cross-border-data-transfer-analyst
+  - id: it-rules-intermediary-compliance-checker
+    display_name: IT Rules Intermediary Compliance Checker
+    short: Check IT Act intermediary duties, safe harbour and synthetic-media rules
+    pack: tmt-privacy-cyber
+    jurisdiction: in
+    practice_area: tmt
+    category: compliance
+    language:
+    - en
+    default_prompt: We run a social video app. Check our IT Rules compliance, including the new labelling rules for AI-generated
+      content.
+    hands_off_to:
+    - online-gaming-regulatory-analyst
+    - ecommerce-platform-terms-checker
+  - id: cyber-crime-complaint-drafter
+    display_name: Cyber Crime Complaint Drafter
+    short: Draft a cyber crime complaint for fraud, hacking, impersonation or image abuse
+    pack: tmt-privacy-cyber
+    jurisdiction: in
+    practice_area: tmt
+    category: drafting
+    language:
+    - en
+    default_prompt: My client lost Rs 4.5 lakh in a fake investment app scam yesterday. Draft the cyber crime complaint and
+      the bank letter.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - criminal-complaint-drafter
+    - bsa-electronic-evidence-certificate-drafter
+    - data-breach-response-planner
+  - id: ecommerce-platform-terms-checker
+    display_name: E-commerce Platform Terms Checker
+    short: Check e-commerce rules and draft platform terms, ToS and EULAs
+    pack: tmt-privacy-cyber
+    jurisdiction: in
+    practice_area: tmt
+    category: compliance
+    language:
+    - en
+    default_prompt: Check our marketplace against the E-Commerce Rules and dark patterns guidelines, and redraft our seller
+      and buyer terms.
+    hands_off_to:
+    - privacy-notice-consent-drafter
+    - advertising-claims-reviewer
+    - it-rules-intermediary-compliance-checker
+  - id: online-gaming-regulatory-analyst
+    display_name: Online Gaming Regulatory Analyst
+    short: Analyse online gaming under the 2025 Act, State laws and platform rules
+    pack: tmt-privacy-cyber
+    jurisdiction: in
+    practice_area: tmt
+    category: analysis
+    language:
+    - en
+    default_prompt: Our app offers fantasy cricket contests with entry fees. Is it lawful now, and what can we pivot to?
+    hands_off_to:
+    - it-rules-intermediary-compliance-checker
+    - financial-services-licensing-analyst
+  - id: ai-governance-policy-drafter
+    display_name: AI Governance Policy Drafter
+    short: Draft an AI use policy and governance framework, with use-case triage
+    pack: tmt-privacy-cyber
+    jurisdiction: in
+    practice_area: tmt
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft an AI usage policy for our 400-employee company and a process to approve new AI use cases.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - ai-impact-assessment-drafter
+    - ai-vendor-contract-reviewer
+    - dpdp-compliance-gap-analyst
+  - id: ai-impact-assessment-drafter
+    display_name: AI Impact Assessment Drafter
+    short: Run an AI impact assessment for a proposed AI system or use case
+    pack: tmt-privacy-cyber
+    jurisdiction: in
+    practice_area: tmt
+    category: drafting
+    language:
+    - en
+    default_prompt: Assess the legal risks of using an AI model to shortlist job applicants in our hiring process.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - ai-governance-policy-drafter
+    - dpdp-compliance-gap-analyst
+    - eu-ai-digital-regulation-analyst
+  - id: ai-vendor-contract-reviewer
+    display_name: AI Vendor Contract Reviewer
+    short: Review AI vendor, model API and AI-feature terms
+    pack: tmt-privacy-cyber
+    jurisdiction: in
+    practice_area: tmt
+    category: review
+    language:
+    - en
+    default_prompt: Review this generative AI API agreement before our bank client sends customer data to it.
+    hands_off_to:
+    - vendor-saas-agreement-reviewer
+    - data-processing-agreement-reviewer
+    - cross-border-data-transfer-analyst
+  - id: open-source-licence-reviewer
+    display_name: Open Source Licence Reviewer
+    short: Review open-source licence obligations in a product or dependency list
+    pack: tmt-privacy-cyber
+    jurisdiction: neutral
+    practice_area: tmt
+    category: review
+    language:
+    - en
+    default_prompt: Check the licences in this dependency list for our proprietary mobile app and tell us what we must do.
+    hands_off_to:
+    - ip-assignment-licence-drafter
+  - id: gst-notice-reply-drafter
+    display_name: GST Notice Reply Drafter
+    short: Analyse a GST notice and draft the reply
+    pack: tax
+    jurisdiction: in
+    practice_area: tax
+    category: drafting
+    language:
+    - en
+    default_prompt: We received a GST show-cause notice under s.74 for FY 2020-21 alleging fake ITC. Analyse it and draft our
+      reply.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - gst-transaction-analyst
+    - tax-appeal-grounds-drafter
+    - limitation-calculator
+  - id: gst-transaction-analyst
+    display_name: GST Transaction Analyst
+    short: 'Analyse GST treatment: supply, classification, place of supply and ITC'
+    pack: tax
+    jurisdiction: in
+    practice_area: tax
+    category: analysis
+    language:
+    - en
+    default_prompt: What is the GST treatment of our software support services to a Dubai client, delivered from Kochi?
+    hands_off_to:
+    - gst-notice-reply-drafter
+    - dtaa-withholding-analyst
+  - id: income-tax-notice-reply-drafter
+    display_name: Income Tax Notice Reply Drafter
+    short: Analyse an income-tax notice and draft the reply
+    pack: tax
+    jurisdiction: in
+    practice_area: tax
+    category: drafting
+    language:
+    - en
+    default_prompt: My client received a reassessment notice for AY 2019-20. Check validity and draft the reply.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - income-tax-act-2025-concordance-mapper
+    - tax-appeal-grounds-drafter
+    - limitation-calculator
+  - id: tax-appeal-grounds-drafter
+    display_name: Tax Appeal Grounds Drafter
+    short: Draft GST and income-tax appeals with grounds, stay and pre-deposit
+    pack: tax
+    jurisdiction: in
+    practice_area: tax
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft the appeal to the CIT(A) against this assessment order adding Rs 2.3 crore as unexplained cash credit.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - limitation-calculator
+    - income-tax-notice-reply-drafter
+    - gst-notice-reply-drafter
+  - id: income-tax-act-2025-concordance-mapper
+    display_name: Income-tax Act 2025 Concordance Mapper
+    short: Map Income-tax Act 1961 provisions to the Income-tax Act 2025
+    pack: tax
+    jurisdiction: in
+    practice_area: tax
+    category: research
+    language:
+    - en
+    default_prompt: Map these sections of the 1961 Act cited in our transfer pricing order to the Income-tax Act, 2025.
+    hands_off_to:
+    - income-tax-notice-reply-drafter
+    - citation-verifier
+  - id: transfer-pricing-documentation-drafter
+    display_name: Transfer Pricing Documentation Drafter
+    short: Support transfer pricing documentation and TP dispute responses
+    pack: tax
+    jurisdiction: in
+    practice_area: tax
+    category: drafting
+    language:
+    - en
+    default_prompt: Prepare the functional analysis and documentation outline for our Indian captive providing software services
+      to its US parent.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - dtaa-withholding-analyst
+    - related-party-transaction-analyst
+  - id: dtaa-withholding-analyst
+    display_name: DTAA and Withholding Analyst
+    short: Analyse treaty relief, PE and withholding on payments to non-residents
+    pack: tax
+    jurisdiction: cross-border
+    practice_area: tax
+    category: analysis
+    language:
+    - en
+    shared_refs:
+    - foreign-jurisdictions.md
+    default_prompt: We pay a German consultant for remote services. What TDS applies, and does the India-Germany DTAA reduce
+      it?
+    hands_off_to:
+    - transfer-pricing-documentation-drafter
+    - nri-property-transaction-checker
+  - id: customs-trade-remedy-analyst
+    display_name: Customs and Trade Remedy Analyst
+    short: Analyse customs classification, valuation, origin and trade remedies
+    pack: tax
+    jurisdiction: in
+    practice_area: tax
+    category: analysis
+    language:
+    - en
+    default_prompt: Classify this imported lithium battery pack and check whether we can claim the India-ASEAN FTA rate.
+    hands_off_to:
+    - gst-transaction-analyst
+    - aml-sanctions-compliance-checker
+  - id: compliance-calendar-builder
+    display_name: Compliance Calendar Builder
+    short: Build a compliance calendar of filings, renewals and returns
+    pack: regulatory-compliance
+    jurisdiction: in-states
+    practice_area: regulatory
+    category: tracking
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: Build a 12-month compliance calendar for our NBFC with offices in Mumbai and Bengaluru.
+    hands_off_to:
+    - roc-secretarial-compliance-checker
+    - labour-codes-compliance-checker
+    - matter-deadline-tracker
+  - id: regulatory-applicability-analyst
+    display_name: Regulatory Applicability Analyst
+    short: Map which regulators, laws and licences apply to a business
+    pack: regulatory-compliance
+    jurisdiction: in-states
+    practice_area: regulatory
+    category: analysis
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: We plan to sell nutraceuticals online from a warehouse in Haryana. Which laws, regulators and licences apply?
+    hands_off_to:
+    - licence-application-drafter
+    - compliance-calendar-builder
+    - product-launch-legal-reviewer
+  - id: licence-application-drafter
+    display_name: Licence Application Drafter
+    short: Prepare regulator-facing licence, permit and registration applications
+    pack: regulatory-compliance
+    jurisdiction: in-states
+    practice_area: regulatory
+    category: drafting
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: Prepare the application and supporting documents for an FSSAI State licence and a trade licence for our
+      cloud kitchen in Hyderabad.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - regulatory-applicability-analyst
+    - compliance-calendar-builder
+  - id: regulator-notice-reply-drafter
+    display_name: Regulator Notice Reply Drafter
+    short: Reply to a regulator's show-cause notice, inspection or examination findings
+    pack: regulatory-compliance
+    jurisdiction: in
+    practice_area: regulatory
+    category: drafting
+    language:
+    - en
+    default_prompt: SEBI has issued a show-cause notice to our client, an investment adviser. Draft the reply and plan the hearing.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - regulatory-appeal-planner
+    - legal-hold-preservation-planner
+  - id: regulatory-change-impact-analyst
+    display_name: Regulatory Change Impact Analyst
+    short: Diff a new regulation against current policies and plan the changes
+    pack: regulatory-compliance
+    jurisdiction: in
+    practice_area: regulatory
+    category: analysis
+    language:
+    - en
+    default_prompt: RBI issued new digital lending directions. Diff them against our current policies and produce the gap list
+      and redlines.
+    hands_off_to:
+    - compliance-calendar-builder
+    - regulatory-applicability-analyst
+  - id: financial-services-licensing-analyst
+    display_name: Financial Services Licensing Analyst
+    short: Assess RBI, SEBI and IFSCA licensing and compliance for fintech and intermediaries
+    pack: regulatory-compliance
+    jurisdiction: in
+    practice_area: regulatory
+    category: analysis
+    language:
+    - en
+    default_prompt: Does our app need an NBFC licence or a payment aggregator authorisation if we let users pay rent with credit
+      cards?
+    hands_off_to:
+    - licence-application-drafter
+    - aml-sanctions-compliance-checker
+    - regulator-notice-reply-drafter
+  - id: food-product-labelling-compliance-checker
+    display_name: Food and Product Labelling Compliance Checker
+    short: Check FSSAI, Legal Metrology and BIS rules for products and labels
+    pack: regulatory-compliance
+    jurisdiction: in
+    practice_area: regulatory
+    category: compliance
+    language:
+    - en
+    default_prompt: Check this protein bar label and our licences under FSSAI and Legal Metrology before launch.
+    hands_off_to:
+    - licence-application-drafter
+    - advertising-claims-reviewer
+  - id: telecom-authorisation-analyst
+    display_name: Telecom Authorisation Analyst
+    short: Analyse Telecommunications Act authorisations and spectrum, OTT and satellite issues
+    pack: regulatory-compliance
+    jurisdiction: in
+    practice_area: regulatory
+    category: analysis
+    language:
+    - en
+    default_prompt: Do we need an authorisation under the Telecommunications Act, 2023 to offer a cloud calling service to Indian
+      businesses?
+    hands_off_to:
+    - regulatory-applicability-analyst
+    - data-breach-response-planner
+  - id: anti-bribery-compliance-analyst
+    display_name: Anti Bribery Compliance Analyst
+    short: Assess anti-bribery risk and adequate procedures under the PCA, FCPA and UK Bribery Act
+    pack: regulatory-compliance
+    jurisdiction: cross-border
+    practice_area: regulatory
+    category: analysis
+    language:
+    - en
+    shared_refs:
+    - foreign-jurisdictions.md
+    default_prompt: Our client's distributor paid a 'facilitation fee' to a municipal official. Assess the exposure and fix
+      the ABC programme.
+    hands_off_to:
+    - internal-investigation-planner
+    - hr-policy-handbook-drafter
+  - id: aml-sanctions-compliance-checker
+    display_name: AML and Sanctions Compliance Checker
+    short: Check PMLA KYC duties and screen for sanctions and export controls
+    pack: regulatory-compliance
+    jurisdiction: cross-border
+    practice_area: regulatory
+    category: compliance
+    language:
+    - en
+    shared_refs:
+    - foreign-jurisdictions.md
+    default_prompt: Screen this UAE counterparty and its owners for sanctions, and check our PMLA reporting duties as a VDA
+      platform.
+    hands_off_to:
+    - financial-services-licensing-analyst
+    - pmla-proceedings-analyst
+  - id: nonprofit-fcra-compliance-advisor
+    display_name: Nonprofit and FCRA Compliance Advisor
+    short: Set up trusts, societies and Section 8 companies, and check 12A, 80G and FCRA
+    pack: regulatory-compliance
+    jurisdiction: in-states
+    practice_area: regulatory
+    category: advice
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: An NGO in Odisha wants to receive grants from a US foundation. What registrations and FCRA steps are needed?
+    hands_off_to:
+    - company-incorporation-planner
+    - csr-esg-brsr-compliance-checker
+  - id: csr-esg-brsr-compliance-checker
+    display_name: CSR, ESG and BRSR Compliance Checker
+    short: Check CSR obligations and ESG and BRSR reporting
+    pack: regulatory-compliance
+    jurisdiction: in
+    practice_area: regulatory
+    category: compliance
+    language:
+    - en
+    default_prompt: Our company's net profit crossed Rs 5 crore. What are our CSR obligations and do we need to file BRSR?
+    hands_off_to:
+    - board-meeting-documents-drafter
+    - nonprofit-fcra-compliance-advisor
+  - id: cci-combination-filing-analyst
+    display_name: CCI Combination Filing Analyst
+    short: Test whether a deal needs CCI approval and plan the filing
+    pack: competition
+    jurisdiction: in
+    practice_area: competition
+    category: analysis
+    language:
+    - en
+    default_prompt: Does our client's Rs 2,400 crore acquisition of a minority stake in a SaaS company need CCI approval?
+    hands_off_to:
+    - share-purchase-agreement-reviewer
+    - takeover-code-trigger-analyst
+  - id: anti-competitive-conduct-analyst
+    display_name: Anti Competitive Conduct Analyst
+    short: Analyse cartel, vertical restraint and abuse of dominance risk, or draft a CCI complaint
+    pack: competition
+    jurisdiction: in
+    practice_area: competition
+    category: analysis
+    language:
+    - en
+    default_prompt: Our client, a small app developer, is forced to use the dominant platform's billing system. Can we file
+      before the CCI?
+    hands_off_to:
+    - distribution-franchise-agreement-drafter
+    - internal-investigation-planner
+  - id: consumer-complaint-drafter
+    display_name: Consumer Complaint Drafter
+    short: Check eligibility and draft a consumer complaint or the opposite party's reply
+    pack: consumer
+    jurisdiction: in
+    practice_area: consumer
+    category: drafting
+    language:
+    - en
+    default_prompt: My client's new car has a recurring engine defect and the dealer refuses replacement. Draft a consumer complaint.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - consumer-appeal-drafter
+    - product-liability-analyst
+    - limitation-calculator
+    - legal-aid-eligibility-screener
+  - id: consumer-appeal-drafter
+    display_name: Consumer Appeal Drafter
+    short: Draft an appeal or revision against a consumer commission order
+    pack: consumer
+    jurisdiction: in
+    practice_area: consumer
+    category: drafting
+    language:
+    - en
+    default_prompt: The District Commission awarded only Rs 50,000. Draft an appeal to the State Commission.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - limitation-calculator
+    - court-pleading-formatter
+  - id: product-liability-analyst
+    display_name: Product Liability Analyst
+    short: Assess product liability of a manufacturer, seller or service provider
+    pack: consumer
+    jurisdiction: in
+    practice_area: consumer
+    category: analysis
+    language:
+    - en
+    default_prompt: A pressure cooker exploded injuring our client. Who can be held liable and what compensation can we claim?
+    hands_off_to:
+    - consumer-complaint-drafter
+    - damages-interest-calculator
+  - id: advertising-claims-reviewer
+    display_name: Advertising Claims Reviewer
+    short: Review ads, influencer posts and marketing claims for misleading content
+    pack: consumer
+    jurisdiction: in
+    practice_area: consumer
+    category: review
+    language:
+    - en
+    default_prompt: 'Review these ad claims for our water purifier: ''kills 99.9% germs'' and ''doctor recommended''. Also our
+      influencer brief.'
+    hands_off_to:
+    - food-product-labelling-compliance-checker
+    - ecommerce-platform-terms-checker
+  - id: writ-petition-drafter
+    display_name: Writ Petition Drafter
+    short: Draft a writ petition under Article 226 or 32, with judicial review grounds
+    pack: public-law
+    jurisdiction: in
+    practice_area: public-law
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a writ petition in the Madras High Court challenging the cancellation of our client's trade licence
+      without a hearing.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - court-pleading-formatter
+    - constitutional-validity-analyst
+    - limitation-calculator
+  - id: pil-drafter
+    display_name: PIL Drafter
+    short: Assess and draft a public interest litigation or a human rights commission complaint
+    pack: public-law
+    jurisdiction: in
+    practice_area: public-law
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft a PIL in the Allahabad High Court about untreated sewage flowing into a river near Kanpur.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - writ-petition-drafter
+    - rti-application-appeal-drafter
+    - ngt-application-drafter
+  - id: constitutional-validity-analyst
+    display_name: Constitutional Validity Analyst
+    short: Analyse whether a law, rule or State action violates fundamental rights
+    pack: public-law
+    jurisdiction: in
+    practice_area: public-law
+    category: analysis
+    language:
+    - en
+    default_prompt: Does this State's new rule requiring police verification for all online sellers violate Articles 14, 19(1)(g)
+      and 21?
+    hands_off_to:
+    - writ-petition-drafter
+    - statutory-interpretation-analyst
+  - id: rti-application-appeal-drafter
+    display_name: RTI Application and Appeal Drafter
+    short: Draft RTI applications and first and second appeals
+    pack: public-law
+    jurisdiction: in
+    practice_area: public-law
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft an RTI application to the municipal corporation for the building approval file of the tower next door,
+      and a first appeal if they refuse.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - regional-language-legal-drafter
+    - limitation-calculator
+  - id: service-law-matter-analyst
+    display_name: Service Law Matter Analyst
+    short: Analyse government service disputes before CAT, AFT or High Courts
+    pack: public-law
+    jurisdiction: in
+    practice_area: public-law
+    category: analysis
+    language:
+    - en
+    default_prompt: My client, a central government employee, was denied promotion because of a sealed-cover procedure. What
+      are his remedies?
+    hands_off_to:
+    - writ-petition-drafter
+    - limitation-calculator
+    - disciplinary-inquiry-drafter
+  - id: tender-procurement-compliance-checker
+    display_name: Tender Procurement Compliance Checker
+    short: Check a government tender bid, challenge a tender, or review a government contract
+    pack: public-law
+    jurisdiction: in
+    practice_area: public-law
+    category: compliance
+    language:
+    - en
+    default_prompt: Check our bid for this State PWD tender for compliance, and tell us if we can challenge the restrictive
+      eligibility clause.
+    hands_off_to:
+    - writ-petition-drafter
+    - arbitration-clause-reviewer
+    - infrastructure-energy-contract-reviewer
+  - id: election-petition-analyst
+    display_name: Election Petition Analyst
+    short: Analyse an election petition and election-law compliance
+    pack: public-law
+    jurisdiction: in
+    practice_area: public-law
+    category: analysis
+    language:
+    - en
+    default_prompt: Our client lost the assembly election by 312 votes and suspects nomination irregularities. Can we file an
+      election petition?
+    hands_off_to:
+    - limitation-calculator
+    - court-pleading-formatter
+  - id: regulatory-appeal-planner
+    display_name: Regulatory Appeal Planner
+    short: Plan an appeal against a regulator or tribunal decision
+    pack: public-law
+    jurisdiction: in
+    practice_area: public-law
+    category: planning
+    language:
+    - en
+    default_prompt: SEBI's WTM has passed an order debarring our client for two years. Plan the appeal to SAT and the stay application.
+    hands_off_to:
+    - limitation-calculator
+    - regulator-notice-reply-drafter
+    - special-leave-petition-drafter
+  - id: internal-investigation-planner
+    display_name: Internal Investigation Planner
+    short: Open and run an internal investigation, including whistleblower complaints
+    pack: investigations
+    jurisdiction: in
+    practice_area: investigations
+    category: planning
+    language:
+    - en
+    default_prompt: We got an anonymous whistleblower complaint that our purchase head takes kickbacks. Plan the investigation.
+    hands_off_to:
+    - investigation-report-drafter
+    - legal-hold-preservation-planner
+    - fraud-funds-flow-analyst
+    - disciplinary-inquiry-drafter
+  - id: investigation-report-drafter
+    display_name: Investigation Report Drafter
+    short: Draft a neutral, evidence-led investigation report and audience summaries
+    pack: investigations
+    jurisdiction: in
+    practice_area: investigations
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft the investigation report on the procurement fraud allegations from these interview notes and documents,
+      and a board summary.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - internal-investigation-planner
+    - disciplinary-inquiry-drafter
+  - id: fraud-funds-flow-analyst
+    display_name: Fraud and Funds Flow Analyst
+    short: Test fraud hypotheses and trace funds across accounts and entities
+    pack: investigations
+    jurisdiction: in
+    practice_area: investigations
+    category: analysis
+    language:
+    - en
+    default_prompt: Trace where the Rs 3.2 crore paid to these five vendors went, using the bank statements and ROC data.
+    hands_off_to:
+    - internal-investigation-planner
+    - avoidance-transaction-analyst
+    - criminal-complaint-drafter
+  - id: legal-hold-preservation-planner
+    display_name: Legal Hold and Preservation Planner
+    short: Issue legal holds and keep a defensible chain of custody
+    pack: investigations
+    jurisdiction: in
+    practice_area: investigations
+    category: planning
+    language:
+    - en
+    default_prompt: We expect a suit from a former distributor. Draft the legal hold notice and plan data preservation for email
+      and WhatsApp.
+    hands_off_to:
+    - bsa-electronic-evidence-certificate-drafter
+    - internal-investigation-planner
+  - id: enforcement-summons-response-planner
+    display_name: Enforcement Summons Response Planner
+    short: Plan the response to police, ED, tax, SFIO or court summons to a company
+    pack: investigations
+    jurisdiction: in
+    practice_area: investigations
+    category: planning
+    language:
+    - en
+    default_prompt: The SFIO has sent a summons to our CFO and asked for five years of records. How do we respond?
+    hands_off_to:
+    - pmla-proceedings-analyst
+    - arrest-rights-advisor
+    - legal-hold-preservation-planner
+  - id: redaction-reviewer
+    display_name: Redaction Reviewer
+    short: Review redactions for privilege, personal data and confidentiality
+    pack: investigations
+    jurisdiction: neutral
+    practice_area: investigations
+    category: review
+    language:
+    - en
+    default_prompt: Check the redactions on this production set before we hand it to the other side and the court.
+    hands_off_to:
+    - lpo-document-review-coder
+    - data-principal-request-drafter
+  - id: environmental-clearance-analyst
+    display_name: Environmental Clearance Analyst
+    short: Map environmental, forest, wildlife and CRZ clearances for a project
+    pack: environment-energy-infra
+    jurisdiction: in-states
+    practice_area: environment
+    category: analysis
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: Which clearances does a 50 MW solar park on 250 acres in Rajasthan need, and in what order?
+    hands_off_to:
+    - pollution-consent-compliance-checker
+    - ngt-application-drafter
+  - id: pollution-consent-compliance-checker
+    display_name: Pollution Consent Compliance Checker
+    short: Check consent to establish and operate, waste rules and EPR obligations
+    pack: environment-energy-infra
+    jurisdiction: in-states
+    practice_area: environment
+    category: compliance
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: Check the pollution control compliance of our pharma unit in Telangana, including CTO conditions and hazardous
+      waste.
+    hands_off_to:
+    - environmental-clearance-analyst
+    - regulator-notice-reply-drafter
+  - id: ngt-application-drafter
+    display_name: NGT Application Drafter
+    short: Draft an NGT application or appeal on environmental harm or clearances
+    pack: environment-energy-infra
+    jurisdiction: in
+    practice_area: environment
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft an application to the NGT about an illegal sand mining operation damaging a river in Karnataka.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - environmental-clearance-analyst
+    - pil-drafter
+    - limitation-calculator
+  - id: infrastructure-energy-contract-reviewer
+    display_name: Infrastructure and Energy Contract Reviewer
+    short: Review PPAs, concessions and EPC contracts, and analyse delay and defect claims
+    pack: environment-energy-infra
+    jurisdiction: in
+    practice_area: environment
+    category: review
+    language:
+    - en
+    default_prompt: Review this 25-year solar PPA with a DISCOM and the EPC contract for the plant, and flag our risks.
+    hands_off_to:
+    - arbitral-proceedings-drafter
+    - tender-procurement-compliance-checker
+    - damages-interest-calculator
+  - id: mining-lease-regulatory-analyst
+    display_name: Mining Lease Regulatory Analyst
+    short: Analyse mineral concessions, auctions and mining compliance
+    pack: environment-energy-infra
+    jurisdiction: in-states
+    practice_area: environment
+    category: analysis
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: Our client won a limestone block auction in Chhattisgarh. What approvals and lease conditions follow?
+    hands_off_to:
+    - environmental-clearance-analyst
+    - licence-application-drafter
+  - id: insurance-claim-repudiation-analyst
+    display_name: Insurance Claim Repudiation Analyst
+    short: Analyse claim repudiation, review coverage and draft an Ombudsman complaint
+    pack: insurance
+    jurisdiction: in
+    practice_area: insurance
+    category: analysis
+    language:
+    - en
+    default_prompt: The insurer rejected my client's health claim for non-disclosure of diabetes. Can we fight it? Draft the
+      Ombudsman complaint.
+    hands_off_to:
+    - consumer-complaint-drafter
+    - regulator-notice-reply-drafter
+  - id: irdai-compliance-checker
+    display_name: IRDAI Compliance Checker
+    short: Check IRDAI compliance for insurers, intermediaries and insurtechs
+    pack: insurance
+    jurisdiction: in
+    practice_area: insurance
+    category: compliance
+    language:
+    - en
+    default_prompt: We want to sell embedded travel insurance in our booking app. Do we need to be a corporate agent or can
+      we be a referral partner?
+    hands_off_to:
+    - financial-services-licensing-analyst
+    - advertising-claims-reviewer
+  - id: mact-claim-petition-drafter
+    display_name: MACT Claim Petition Drafter
+    short: Draft a motor accident claim and compute compensation by multiplier method
+    pack: insurance
+    jurisdiction: in
+    practice_area: insurance
+    category: drafting
+    language:
+    - en
+    default_prompt: My client's husband, aged 38, earning Rs 45,000 a month, died in a truck accident in Nagpur. Draft the MACT
+      claim and compute compensation.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - legal-aid-eligibility-screener
+    - limitation-calculator
+    - regional-language-legal-drafter
+  - id: medical-negligence-claim-analyst
+    display_name: Medical Negligence Claim Analyst
+    short: Assess a medical negligence claim or defence
+    pack: healthcare-pharma
+    jurisdiction: in
+    practice_area: healthcare
+    category: analysis
+    language:
+    - en
+    default_prompt: My client's mother died after surgery at a Delhi private hospital. Is there a case for medical negligence?
+    hands_off_to:
+    - consumer-complaint-drafter
+    - criminal-complaint-drafter
+  - id: drugs-devices-regulatory-analyst
+    display_name: Drugs Devices Regulatory Analyst
+    short: Analyse drugs, cosmetics, medical device, clinical trial and pharma marketing rules
+    pack: healthcare-pharma
+    jurisdiction: in
+    practice_area: healthcare
+    category: analysis
+    language:
+    - en
+    default_prompt: We want to import and sell a Class B medical device and run a clinical investigation. What licences and
+      approvals do we need?
+    hands_off_to:
+    - licence-application-drafter
+    - advertising-claims-reviewer
+    - data-processing-agreement-reviewer
+  - id: healthcare-facility-compliance-checker
+    display_name: Healthcare Facility Compliance Checker
+    short: Check hospital, clinic, diagnostics and telemedicine compliance
+    pack: healthcare-pharma
+    jurisdiction: in-states
+    practice_area: healthcare
+    category: compliance
+    language:
+    - en
+    shared_refs:
+    - india-state-statutes.md
+    default_prompt: We are opening a diagnostic centre with ultrasound in Indore. Check our registrations and PCPNDT compliance.
+    hands_off_to:
+    - licence-application-drafter
+    - dpdp-compliance-gap-analyst
+  - id: media-sports-rights-agreement-drafter
+    display_name: Media and Sports Rights Agreement Drafter
+    short: Draft film, music, OTT, talent, endorsement and sponsorship agreements
+    pack: media-entertainment-sports
+    jurisdiction: in
+    practice_area: media
+    category: drafting
+    language:
+    - en
+    default_prompt: Draft an influencer endorsement agreement for a cricketer promoting our fitness app, with ASCI disclosure
+      duties.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - ip-assignment-licence-drafter
+    - advertising-claims-reviewer
+  - id: prepublication-content-reviewer
+    display_name: Prepublication Content Reviewer
+    short: Pre-publication review for defamation, privacy, contempt and content codes
+    pack: media-entertainment-sports
+    jurisdiction: in
+    practice_area: media
+    category: review
+    language:
+    - en
+    default_prompt: Review this investigative article and web series script about a real businessman before release.
+    hands_off_to:
+    - ip-infringement-analyst
+    - it-rules-intermediary-compliance-checker
+  - id: sports-law-dispute-analyst
+    display_name: Sports Law Dispute Analyst
+    short: Analyse sports governance, selection, anti-doping and contract disputes
+    pack: media-entertainment-sports
+    jurisdiction: in
+    practice_area: media
+    category: analysis
+    language:
+    - en
+    default_prompt: A State-level athlete was dropped from selection and has a pending doping charge. What are her remedies?
+    hands_off_to:
+    - writ-petition-drafter
+    - arbitration-clause-reviewer
+  - id: admiralty-shipping-claim-analyst
+    display_name: Admiralty Shipping Claim Analyst
+    short: Analyse vessel arrest, charterparty, bill of lading and cargo claims
+    pack: maritime-aviation-transport
+    jurisdiction: cross-border
+    practice_area: transport
+    category: analysis
+    language:
+    - en
+    shared_refs:
+    - foreign-jurisdictions.md
+    default_prompt: A ship carrying our client's cargo is in Kandla port and owes freight damages. Can we arrest it?
+    hands_off_to:
+    - international-arbitration-planner
+    - limitation-calculator
+    - foreign-law-research-memo-drafter
+  - id: aviation-passenger-claim-analyst
+    display_name: Aviation Passenger Claim Analyst
+    short: Analyse air passenger claims and aviation regulatory issues
+    pack: maritime-aviation-transport
+    jurisdiction: in
+    practice_area: transport
+    category: analysis
+    language:
+    - en
+    default_prompt: My client's international flight was cancelled and her baggage lost. What can she claim from the airline?
+    hands_off_to:
+    - consumer-complaint-drafter
+    - licence-application-drafter
+  - id: carriage-goods-claim-analyst
+    display_name: Carriage Goods Claim Analyst
+    short: Analyse road, rail and multimodal cargo loss and delay claims
+    pack: maritime-aviation-transport
+    jurisdiction: in
+    practice_area: transport
+    category: analysis
+    language:
+    - en
+    default_prompt: Our goods worth Rs 9 lakh were damaged in transit by the transporter from Ludhiana to Chennai. How do we
+      claim?
+    hands_off_to:
+    - legal-notice-drafter
+    - consumer-complaint-drafter
+    - insurance-claim-repudiation-analyst
+  - id: oci-citizenship-passport-advisor
+    display_name: OCI, Citizenship and Passport Advisor
+    short: Advise on OCI, citizenship, renunciation and passport matters
+    pack: immigration-citizenship
+    jurisdiction: cross-border
+    practice_area: immigration
+    category: advice
+    language:
+    - en
+    shared_refs:
+    - foreign-jurisdictions.md
+    default_prompt: My client's OCI card was cancelled for 'anti-India activities' after a social media post. What can she do?
+      Also, her son's passport was impounded.
+    hands_off_to:
+    - writ-petition-drafter
+    - document-legalisation-planner
+  - id: foreigners-registration-compliance-checker
+    display_name: Foreigners Registration Compliance Checker
+    short: Check foreigners' visas, FRRO registration, overstay and exit compliance
+    pack: immigration-citizenship
+    jurisdiction: in
+    practice_area: immigration
+    category: compliance
+    language:
+    - en
+    default_prompt: Our Korean engineer's employment visa expires next month and he did not register with the FRRO. What do
+      we do?
+    hands_off_to:
+    - india-entry-fema-structuring-analyst
+    - labour-codes-compliance-checker
+  - id: outbound-visa-document-checker
+    display_name: Outbound Visa Document Checker
+    short: Prepare document support for Indians applying for foreign visas or emigration
+    pack: immigration-citizenship
+    jurisdiction: cross-border
+    practice_area: immigration
+    category: compliance
+    language:
+    - en
+    shared_refs:
+    - foreign-jurisdictions.md
+    default_prompt: My client is applying for a UK Skilled Worker visa. Check her documents and draft the affidavits and NOCs
+      she needs from India.
+    hands_off_to:
+    - document-legalisation-planner
+    - legal-translation-verifier
+    - foreign-law-research-memo-drafter
+  - id: law-student-case-brief-summariser
+    display_name: Law Student Case Brief Summariser
+    short: Brief an Indian case for class, with drill-me questions
+    pack: students-education
+    jurisdiction: in
+    practice_area: education
+    category: education
+    language:
+    - en
+    default_prompt: Brief Kesavananda Bharati for my constitutional law class and then quiz me on it.
+    hands_off_to:
+    - judgment-case-note-summariser
+    - law-exam-study-planner
+  - id: moot-memorial-drafter
+    display_name: Moot Memorial Drafter
+    short: Structure a moot memorial and prepare for oral rounds
+    pack: students-education
+    jurisdiction: neutral
+    practice_area: education
+    category: education
+    language:
+    - en
+    default_prompt: Help me structure the respondent's memorial for this international investment law moot problem and prepare
+      for the oral rounds.
+    hands_off_to:
+    - research-memo-drafter
+    - citation-verifier
+    - academic-writing-exam-answer-reviewer
+  - id: academic-writing-exam-answer-reviewer
+    display_name: Academic Writing and Exam Answer Reviewer
+    short: Review exam answers, seminar papers and articles for structure and accuracy
+    pack: students-education
+    jurisdiction: neutral
+    practice_area: education
+    category: education
+    language:
+    - en
+    default_prompt: Grade my answer to this contract law problem question and tell me what I missed.
+    hands_off_to:
+    - law-exam-study-planner
+    - citation-verifier
+  - id: law-exam-study-planner
+    display_name: Law Exam Study Planner
+    short: Plan study for semester, AIBE, judiciary and CLAT-PG exams with practice questions
+    pack: students-education
+    jurisdiction: in
+    practice_area: education
+    category: education
+    language:
+    - en
+    default_prompt: Make me a 90-day plan for the judicial services prelims in Uttar Pradesh and give me 20 MCQs on the BNSS.
+    hands_off_to:
+    - law-student-case-brief-summariser
+    - ipc-bns-concordance-mapper
+  - id: internship-research-planner
+    display_name: Internship Research Planner
+    short: Plan internship research tasks and present findings to a senior
+    pack: students-education
+    jurisdiction: in
+    practice_area: education
+    category: education
+    language:
+    - en
+    default_prompt: I'm interning at a Delhi litigation chamber and was asked to find judgments on anticipatory bail in economic
+      offences by tomorrow. Help me plan and present it.
+    hands_off_to:
+    - legal-research-planner
+    - research-memo-drafter
+    - research-memo-drafter
+  - id: foreign-law-contract-support-reviewer
+    display_name: Foreign Law Contract Support Reviewer
+    short: First-pass review of US, UK or Singapore-law contracts for foreign counsel
+    pack: cross-border
+    jurisdiction: cross-border
+    practice_area: cross-border
+    category: review
+    language:
+    - en
+    shared_refs:
+    - foreign-jurisdictions.md
+    default_prompt: A New York firm wants a first-pass review of 60 vendor contracts governed by New York and Delaware law against
+      their playbook.
+    hands_off_to:
+    - lpo-document-review-coder
+    - foreign-law-research-memo-drafter
+    - contract-summariser
+  - id: us-discovery-support-planner
+    display_name: US Discovery Support Planner
+    short: 'Support US discovery: protocols, production QC, privilege logs, deposition outlines'
+    pack: cross-border
+    jurisdiction: cross-border
+    practice_area: cross-border
+    category: planning
+    language:
+    - en
+    shared_refs:
+    - foreign-jurisdictions.md
+    default_prompt: Build a review protocol for this US antitrust second request, QC the production set and prepare a deposition
+      outline for the sales VP.
+    hands_off_to:
+    - lpo-document-review-coder
+    - redaction-reviewer
+    - cross-border-data-transfer-analyst
+  - id: gdpr-compliance-gap-analyst
+    display_name: GDPR Compliance Gap Analyst
+    short: Assess EU or UK GDPR and US state privacy law compliance for foreign clients
+    pack: cross-border
+    jurisdiction: cross-border
+    practice_area: cross-border
+    category: compliance
+    language:
+    - en
+    shared_refs:
+    - foreign-jurisdictions.md
+    default_prompt: Our Indian SaaS client has customers in Germany and California. Map their GDPR and CCPA obligations and
+      gaps.
+    hands_off_to:
+    - gdpr-dpia-support-drafter
+    - cross-border-data-transfer-analyst
+    - dpdp-compliance-gap-analyst
+  - id: gdpr-dpia-support-drafter
+    display_name: GDPR DPIA Support Drafter
+    short: Draft GDPR DPIAs, transfer impact assessments and privacy notices for review
+    pack: cross-border
+    jurisdiction: cross-border
+    practice_area: cross-border
+    category: drafting
+    language:
+    - en
+    shared_refs:
+    - foreign-jurisdictions.md
+    default_prompt: Draft a DPIA for our UK client's new employee monitoring tool processed by our team in Pune.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - gdpr-compliance-gap-analyst
+    - cross-border-data-transfer-analyst
+  - id: eu-ai-digital-regulation-analyst
+    display_name: EU AI and Digital Regulation Analyst
+    short: Classify AI systems under the EU AI Act and map EU digital rules for Indian exporters
+    pack: cross-border
+    jurisdiction: cross-border
+    practice_area: cross-border
+    category: analysis
+    language:
+    - en
+    shared_refs:
+    - foreign-jurisdictions.md
+    default_prompt: Our Bengaluru company sells an AI resume-screening tool to EU employers. What does the EU AI Act require
+      of us?
+    hands_off_to:
+    - ai-impact-assessment-drafter
+    - gdpr-compliance-gap-analyst
+    - foreign-law-research-memo-drafter
+  - id: uk-pre-action-letter-drafter
+    display_name: UK Pre Action Letter Drafter
+    short: Draft English pre-action letters and responses for review by UK solicitors
+    pack: cross-border
+    jurisdiction: cross-border
+    practice_area: cross-border
+    category: drafting
+    language:
+    - en
+    shared_refs:
+    - foreign-jurisdictions.md
+    default_prompt: Our Indian client is owed GBP 85,000 by a Manchester company. Draft a letter before claim for the UK solicitors
+      to review.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - foreign-law-research-memo-drafter
+    - cross-border-service-evidence-planner
+    - foreign-judgment-award-enforcement-analyst
+  - id: uae-difc-adgm-law-mapper
+    display_name: UAE, DIFC and ADGM Law Mapper
+    short: Map UAE onshore, DIFC and ADGM rules for India-UAE matters
+    pack: cross-border
+    jurisdiction: cross-border
+    practice_area: cross-border
+    category: research
+    language:
+    - en
+    shared_refs:
+    - foreign-jurisdictions.md
+    default_prompt: A Dubai mainland company owes our Kochi client AED 600,000 under a DIFC-law contract. Which court, and how
+      will it enforce in India?
+    hands_off_to:
+    - foreign-judgment-award-enforcement-analyst
+    - document-legalisation-planner
+    - international-arbitration-planner
+  - id: overseas-expansion-legal-planner
+    display_name: Overseas Expansion Legal Planner
+    short: Plan legal workstreams when an Indian business hires or expands abroad
+    pack: cross-border
+    jurisdiction: cross-border
+    practice_area: cross-border
+    category: planning
+    language:
+    - en
+    shared_refs:
+    - foreign-jurisdictions.md
+    default_prompt: Our Pune SaaS company wants to hire five people in the US and open a UK office. Plan the legal workstreams.
+    hands_off_to:
+    - india-entry-fema-structuring-analyst
+    - foreign-client-engagement-checker
+    - cross-border-data-transfer-analyst
+  - id: foreign-ip-office-action-support-drafter
+    display_name: Foreign IP Office Action Support Drafter
+    short: Draft support for USPTO, UKIPO and EUIPO office action responses
+    pack: cross-border
+    jurisdiction: cross-border
+    practice_area: cross-border
+    category: drafting
+    language:
+    - en
+    shared_refs:
+    - foreign-jurisdictions.md
+    default_prompt: Our US associate wants a draft response to this USPTO office action refusing our client's mark under Section
+      2(d).
+    hands_off_to:
+    - pre-filing-verification-checker
+    - trademark-examination-reply-drafter
+    - patent-fer-reply-drafter
+    - foreign-law-research-memo-drafter
+  - id: extradition-mutual-legal-assistance-analyst
+    display_name: Extradition and Mutual Legal Assistance Analyst
+    short: Analyse extradition, MLAT requests, letters rogatory and Interpol notices
+    pack: cross-border
+    jurisdiction: cross-border
+    practice_area: cross-border
+    category: analysis
+    language:
+    - en
+    shared_refs:
+    - foreign-jurisdictions.md
+    default_prompt: Our client in London faces an Indian extradition request for bank fraud. Map the process and defences on
+      both sides.
+    hands_off_to:
+    - pmla-proceedings-analyst
+    - cross-border-service-evidence-planner
+    - foreign-law-research-memo-drafter
+  # ---------------- added after the October 2026 gap analysis ----------------
+  - id: legal-task-router
+    display_name: Legal Task Router
+    short: Read a request and the practice profile, pick the right skills and run them in order
+    pack: core
+    jurisdiction: in
+    practice_area: practice-management
+    category: planning
+    language:
+    - en
+    default_prompt: Client from Kochi got a SARFAESI s.13(2) notice yesterday and wants to stop the auction. Work out what we
+      need to do and in what order.
+    hands_off_to:
+    - client-intake-conflict-screener
+    - client-data-redaction-checker
+    - legal-research-planner
+    - limitation-calculator
+    - pre-filing-verification-checker
+  - id: efiling-bundle-defect-checker
+    display_name: E-Filing Bundle and Defect Checker
+    short: Compile the e-filing paper book and cure registry objections before refiling
+    pack: court-craft
+    jurisdiction: in
+    practice_area: civil
+    category: compliance
+    language:
+    - en
+    default_prompt: Delhi High Court registry has returned our writ with 6 objections (non-searchable annexures, bookmarks missing,
+      court fee). Here is the objection sheet and the PDF; fix list please.
+    hands_off_to:
+    - court-pleading-formatter
+    - registry-letter-drafter
+    - state-court-fee-calculator
+    - pre-filing-verification-checker
+  - id: vakalatnama-appearance-drafter
+    display_name: Vakalatnama and Appearance Drafter
+    short: Draft vakalatnama, memo of appearance, NOC and change-of-advocate papers per forum
+    pack: court-craft
+    jurisdiction: in-states
+    practice_area: civil
+    category: drafting
+    language:
+    - en
+    shared_refs: &id001
+    - india-state-statutes.md
+    default_prompt: Client wants to change advocates in a pending OS before the Ernakulam Principal Sub Court; the earlier counsel
+      won't give NOC. Prepare the papers.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - court-pleading-formatter
+    - registry-letter-drafter
+    - professional-conduct-advisor
+    - pre-filing-verification-checker
+  - id: registry-letter-drafter
+    display_name: Registry Letter and Certified Copy Drafter
+    short: Draft registry letters and certified-copy applications, logging time for s.12 exclusion
+    pack: court-craft
+    jurisdiction: in
+    practice_area: civil
+    category: drafting
+    language:
+    - en
+    default_prompt: Need an urgent certified copy of the 12 August decree from the Thane civil court to file an appeal, and
+      a letter asking the registry to tag our matter with WP 4512/2026.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - limitation-calculator
+    - efiling-bundle-defect-checker
+    - matter-deadline-tracker
+    - pre-filing-verification-checker
+  - id: adjournment-application-drafter
+    display_name: Adjournment Application Drafter
+    short: Draft adjournment applications under Order XVII CPC or BNSS with reasons and cost offers
+    pack: court-craft
+    jurisdiction: in
+    practice_area: civil
+    category: drafting
+    language:
+    - en
+    default_prompt: Our witness is admitted in hospital for the 22nd; draft an adjournment application in the commercial suit.
+      We've already taken two adjournments.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - matter-deadline-tracker
+    - client-status-update-drafter
+    - pre-filing-verification-checker
+  - id: legal-representative-substitution-drafter
+    display_name: Legal Representative Substitution Drafter
+    short: Draft Order XXII substitution, abatement and set-aside-abatement applications
+    pack: court-craft
+    jurisdiction: in
+    practice_area: civil
+    category: drafting
+    language:
+    - en
+    default_prompt: The first defendant in our partition suit died four months ago and we just learnt of it. Draft substitution
+      and setting aside abatement with delay condonation.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - limitation-calculator
+    - intestate-succession-share-calculator
+    - civil-interlocutory-application-drafter
+    - pre-filing-verification-checker
+  - id: compromise-withdrawal-petition-drafter
+    display_name: Compromise and Withdrawal Petition Drafter
+    short: Draft Order XXIII compromise petitions, decrees in terms and withdrawal with liberty
+    pack: court-craft
+    jurisdiction: in
+    practice_area: civil
+    category: drafting
+    language:
+    - en
+    default_prompt: Parties have settled the recovery suit for 18 lakh in three instalments. Draft the joint compromise petition
+      so we get a decree in terms with default clause.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - mediated-settlement-agreement-drafter
+    - state-stamp-duty-calculator
+    - execution-contempt-petition-drafter
+    - pre-filing-verification-checker
+  - id: urgent-mentioning-memo-drafter
+    display_name: Urgent Mentioning Memo Drafter
+    short: Draft urgency letters and mentioning memos for the Supreme Court and High Courts
+    pack: court-craft
+    jurisdiction: in
+    practice_area: civil
+    category: drafting
+    language:
+    - en
+    default_prompt: Demolition is scheduled for Monday 7 am. Draft the urgency letter and a mentioning memo for the Bombay High
+      Court vacation bench for our writ.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - registry-letter-drafter
+    - hearing-day-brief-builder
+    - pre-filing-verification-checker
+  - id: hearing-day-brief-builder
+    display_name: Hearing Day Brief Builder
+    short: 'One-page brief per listed matter: last order, relief today, authorities, fallback'
+    pack: court-craft
+    jurisdiction: in
+    practice_area: civil
+    category: summarising
+    language:
+    - en
+    default_prompt: Tomorrow's board has 9 of our matters in courts 3, 11 and 14. Give me one-page briefs for each from the
+      case files.
+    hands_off_to:
+    - matter-deadline-tracker
+    - written-submissions-drafter
+    - citation-verifier
+  - id: service-of-process-tracker
+    display_name: Service of Process Tracker
+    short: Track summons, process fee, electronic and substituted service, and service reports
+    pack: court-craft
+    jurisdiction: in
+    practice_area: civil
+    category: tracking
+    language:
+    - en
+    default_prompt: Summons to defendants 2 and 3 have come back 'door locked' twice. Review the service reports and draft a
+      substituted service application with the right publication.
+    hands_off_to:
+    - matter-deadline-tracker
+    - cross-border-service-evidence-planner
+    - pre-filing-verification-checker
+  - id: witness-summons-list-drafter
+    display_name: Witness Summons and List Drafter
+    short: Draft the list of witnesses, summons applications and conduct-money steps
+    pack: court-craft
+    jurisdiction: in
+    practice_area: civil
+    category: drafting
+    language:
+    - en
+    default_prompt: Issues were framed on 3 September. Draft our list of witnesses and an application to summon the bank manager
+      with the loan ledger.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - evidence-affidavit-drafter
+    - service-of-process-tracker
+    - limitation-calculator
+    - pre-filing-verification-checker
+  - id: cestat-appeal-drafter
+    display_name: CESTAT Appeal Drafter
+    short: Draft customs, excise and service tax appeals to CESTAT with pre-deposit and stay
+    pack: tribunal-practice
+    jurisdiction: in
+    practice_area: tax
+    category: drafting
+    language:
+    - en
+    default_prompt: Commissioner (Appeals) Chennai confirmed a 4.2 crore customs duty demand on classification. Draft the CESTAT
+      appeal with the pre-deposit working.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - customs-trade-remedy-analyst
+    - limitation-calculator
+    - court-pleading-formatter
+    - pre-filing-verification-checker
+  - id: sectoral-tribunal-appeal-drafter
+    display_name: Sectoral Tribunal Appeal Drafter
+    short: Draft appeals and petitions before SAT, TDSAT and APTEL
+    pack: tribunal-practice
+    jurisdiction: in
+    practice_area: regulatory
+    category: drafting
+    language:
+    - en
+    default_prompt: SEBI's WTM order debars our client for two years and imposes a 25 lakh penalty. Draft the SAT appeal and
+      the stay application.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - regulatory-appeal-planner
+    - telecom-authorisation-analyst
+    - infrastructure-energy-contract-reviewer
+    - pre-filing-verification-checker
+  - id: oppression-mismanagement-petition-drafter
+    display_name: Oppression and Mismanagement Petition Drafter
+    short: Draft NCLT petitions under ss.241-242 Companies Act, with waiver and interim relief
+    pack: tribunal-practice
+    jurisdiction: in
+    practice_area: corporate
+    category: drafting
+    language:
+    - en
+    default_prompt: My client holds 8% in a Hyderabad private company and has been removed as director and diluted. Draft an
+      oppression petition with a waiver application.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - nclt-nclat-appeal-drafter
+    - shareholders-agreement-drafter
+    - board-meeting-documents-drafter
+    - pre-filing-verification-checker
+  - id: general-affidavit-drafter
+    display_name: General Affidavit Drafter
+    short: Draft everyday affidavits with correct verification, stamp and attesting authority
+    pack: client-documents
+    jurisdiction: in-states
+    practice_area: civil
+    category: drafting
+    language:
+    - en
+    shared_refs: *id001
+    default_prompt: Client needs an affidavit for address proof and another declaring a gap year for a university admission
+      in Chennai. Draft both and tell her where to get them attested.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - name-change-gazette-drafter
+    - document-legalisation-planner
+    - regional-language-legal-drafter
+    - pre-filing-verification-checker
+  - id: name-change-gazette-drafter
+    display_name: Name Change and Gazette Drafter
+    short: Prepare name-change affidavit, newspaper notices and Gazette of India publication
+    pack: client-documents
+    jurisdiction: in
+    practice_area: civil
+    category: drafting
+    language:
+    - en
+    default_prompt: My client wants to change her surname after divorce and update her passport and PAN. Prepare the full set
+      of name-change papers.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - general-affidavit-drafter
+    - oci-citizenship-passport-advisor
+    - pre-filing-verification-checker
+  - id: lost-document-reissue-planner
+    display_name: Lost Document Reissue Planner
+    short: Plan reissue of lost title deeds, share certificates and marksheets
+    pack: client-documents
+    jurisdiction: in
+    practice_area: property
+    category: planning
+    language:
+    - en
+    default_prompt: Original sale deed from 1998 and two share certificates of an unlisted company were lost in the Chennai
+      floods. What do we do to replace them?
+    hands_off_to:
+    - general-affidavit-drafter
+    - property-title-diligence-analyst
+    - encumbrance-certificate-analyst
+  - id: digital-lending-compliance-reviewer
+    display_name: Digital Lending Compliance Reviewer
+    short: Audit a lending app or LSP arrangement against RBI's Digital Lending Directions 2025
+    pack: sectoral-regulatory
+    jurisdiction: in
+    practice_area: finance
+    category: review
+    language:
+    - en
+    default_prompt: Here's our NBFC's partnership with a lending app, the KFS template and app screenshots. Audit them against
+      the RBI digital lending rules.
+    hands_off_to:
+    - financial-services-licensing-analyst
+    - privacy-notice-consent-drafter
+    - vendor-saas-agreement-reviewer
+  - id: rbi-master-direction-mapper
+    display_name: RBI Master Direction Mapper
+    short: Map legacy RBI circular citations to the consolidated Master Directions
+    pack: sectoral-regulatory
+    jurisdiction: in
+    practice_area: finance
+    category: research
+    language:
+    - en
+    default_prompt: Our NBFC's credit policy still cites 14 RBI circulars from 2016-2023. Map each to the current consolidated
+      Master Direction paragraph.
+    hands_off_to:
+    - regulatory-change-impact-analyst
+    - financial-services-licensing-analyst
+    - citation-verifier
+  - id: fema-regularisation-drafter
+    display_name: FEMA Regularisation Drafter
+    short: Regularise delayed FEMA reporting through late submission fee or compounding
+    pack: sectoral-regulatory
+    jurisdiction: cross-border
+    practice_area: cross-border
+    category: drafting
+    language:
+    - en
+    default_prompt: We missed the FC-GPR filing for a 2023 allotment and the ODI annual return for two years. Work out LSF versus
+      compounding and draft the application.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - india-entry-fema-structuring-analyst
+    - regulator-notice-reply-drafter
+    - pre-filing-verification-checker
+  - id: aif-fund-documents-drafter
+    display_name: AIF Fund Documents Drafter
+    short: Draft AIF PPM, contribution agreement and side letters under SEBI AIF Regulations
+    pack: sectoral-regulatory
+    jurisdiction: in
+    practice_area: finance
+    category: drafting
+    language:
+    - en
+    default_prompt: We're launching a 300 crore Category II AIF from Mumbai. Draft the PPM sections on fees, waterfall and conflicts,
+      and the contribution agreement.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - financial-services-licensing-analyst
+    - convertible-instrument-analyst
+    - pre-filing-verification-checker
+  - id: product-recall-planner
+    display_name: Product Recall Planner
+    short: Plan a statutory product recall for food, drugs, devices, vehicles or consumer goods
+    pack: sectoral-regulatory
+    jurisdiction: in
+    practice_area: regulatory
+    category: planning
+    language:
+    - en
+    default_prompt: A batch of our packaged spice mix failed an FSSAI lab test for ethylene oxide. Plan the recall and the regulator
+      communications.
+    hands_off_to:
+    - food-product-labelling-compliance-checker
+    - drugs-devices-regulatory-analyst
+    - regulator-notice-reply-drafter
+    - product-liability-analyst
+  - id: state-excise-licence-advisor
+    display_name: State Excise Licence Advisor
+    short: Advise on State liquor excise licences, renewals, transfers and suspension replies
+    pack: sectoral-regulatory
+    jurisdiction: in-states
+    practice_area: regulatory
+    category: advice
+    language:
+    - en
+    shared_refs: *id001
+    default_prompt: Client wants an FL-3 bar licence for a new hotel in Bengaluru and has a pending suspension notice for its
+      Mysuru outlet. Advise.
+    hands_off_to:
+    - licence-application-drafter
+    - regulator-notice-reply-drafter
+    - regulatory-appeal-planner
+  - id: ai-incident-response-planner
+    display_name: AI Incident Response Planner
+    short: Triage harms caused by an AI system and plan notifications, fixes and evidence
+    pack: emerging-tech-climate
+    jurisdiction: in
+    practice_area: tmt
+    category: planning
+    language:
+    - en
+    default_prompt: Our customer-support chatbot told users a wrong loan interest rate and generated an abusive reply that went
+      viral. What are our legal obligations now?
+    hands_off_to:
+    - data-breach-response-planner
+    - it-rules-intermediary-compliance-checker
+    - ai-governance-policy-drafter
+    - legal-hold-preservation-planner
+  - id: carbon-credit-compliance-analyst
+    display_name: Carbon Credit Compliance Analyst
+    short: Map Carbon Credit Trading Scheme obligations and review carbon credit contracts
+    pack: emerging-tech-climate
+    jurisdiction: in
+    practice_area: environment
+    category: analysis
+    language:
+    - en
+    default_prompt: Our cement plant has been notified as an obligated entity with a GHG intensity target. What are our obligations,
+      and review this ERPA for buying offset credits.
+    hands_off_to:
+    - csr-esg-brsr-compliance-checker
+    - infrastructure-energy-contract-reviewer
+    - advertising-claims-reviewer
+  - id: vda-business-compliance-analyst
+    display_name: VDA Business Compliance Analyst
+    short: Map tax, advertising, FEMA and registration duties for crypto and VDA businesses
+    pack: emerging-tech-climate
+    jurisdiction: in
+    practice_area: tmt
+    category: analysis
+    language:
+    - en
+    default_prompt: An offshore crypto exchange wants to onboard Indian users. Map everything it needs to do in India before
+      launch.
+    hands_off_to:
+    - aml-sanctions-compliance-checker
+    - advertising-claims-reviewer
+    - income-tax-act-2025-concordance-mapper
+  - id: online-child-safety-reviewer
+    display_name: Online Child Safety Reviewer
+    short: Review a platform's age-gating, parental consent, CSAM and POCSO reporting duties
+    pack: emerging-tech-climate
+    jurisdiction: in
+    practice_area: tmt
+    category: review
+    language:
+    - en
+    default_prompt: We run a teen-focused learning and chat app. Review our sign-up flow and moderation policy for child safety
+      obligations in India.
+    hands_off_to:
+    - dpdp-compliance-gap-analyst
+    - it-rules-intermediary-compliance-checker
+    - online-gaming-regulatory-analyst
+  - id: deepfake-victim-remedy-planner
+    display_name: Deepfake Victim Remedy Planner
+    short: Plan takedown, complaint and injunction remedies for deepfake and impersonation victims
+    pack: emerging-tech-climate
+    jurisdiction: in
+    practice_area: tmt
+    category: planning
+    language:
+    - en
+    default_prompt: A morphed explicit video of my client, a Kochi schoolteacher, is circulating on Instagram and Telegram.
+      What can we do today and this week?
+    hands_off_to:
+    - cyber-crime-complaint-drafter
+    - interim-injunction-application-drafter
+    - it-rules-intermediary-compliance-checker
+  - id: drone-space-authorisation-analyst
+    display_name: Drone and Space Authorisation Analyst
+    short: Map Drone Rules permissions and IN-SPACe authorisations for drone and space activities
+    pack: emerging-tech-climate
+    jurisdiction: in
+    practice_area: transport
+    category: analysis
+    language:
+    - en
+    default_prompt: Agri-tech startup wants to run drone spraying in Punjab and later launch a small earth-observation satellite.
+      What permissions do they need?
+    hands_off_to:
+    - regulatory-applicability-analyst
+    - licence-application-drafter
+    - telecom-authorisation-analyst
+  - id: pre-filing-verification-checker
+    display_name: Pre-Filing Verification Checker
+    short: 'Mandatory gate before filing: verify authorities, facts and figures, sign a log'
+    pack: ai-practice-safeguards
+    jurisdiction: in
+    practice_area: practice-management
+    category: compliance
+    language:
+    - en
+    default_prompt: Before we file this SLP tomorrow, run the pre-filing check on the draft and give me the signed verification
+      log.
+    hands_off_to:
+    - citation-verifier
+    - adversarial-draft-reviewer
+    - court-ai-policy-checker
+    - efiling-bundle-defect-checker
+  - id: client-data-redaction-checker
+    display_name: Client Data Redaction Checker
+    short: Pseudonymise client data before AI processing and keep a local re-identification map
+    pack: ai-practice-safeguards
+    jurisdiction: in
+    practice_area: practice-management
+    category: compliance
+    language:
+    - en
+    default_prompt: I want to use AI to summarise this matrimonial case file. Strip the client identifiers first and keep the
+      key so I can restore names later.
+    hands_off_to:
+    - professional-conduct-advisor
+    - redaction-reviewer
+    - legal-ai-vendor-screener
+  - id: court-ai-policy-checker
+    display_name: Court AI Policy Checker
+    short: Check a forum's AI-use rules and disclosure duties before using AI on a matter
+    pack: ai-practice-safeguards
+    jurisdiction: in
+    practice_area: practice-management
+    category: compliance
+    language:
+    - en
+    default_prompt: We used AI to prepare the first draft of written submissions for the Kerala High Court. Is there any disclosure
+      or restriction we need to follow?
+    hands_off_to:
+    - professional-conduct-advisor
+    - pre-filing-verification-checker
+  - id: legal-ai-vendor-screener
+    display_name: Legal AI Vendor Screener
+    short: Assess a legal AI tool's confidentiality, security and data residency
+    pack: ai-practice-safeguards
+    jurisdiction: in
+    practice_area: practice-management
+    category: review
+    language:
+    - en
+    default_prompt: Our 12-lawyer firm in Pune is evaluating two legal AI research tools. Prepare a vendor questionnaire and
+      assess their terms.
+    hands_off_to:
+    - ai-vendor-contract-reviewer
+    - professional-conduct-advisor
+    - client-data-redaction-checker
+  - id: tabular-document-reviewer
+    display_name: Tabular Document Reviewer
+    short: 'Review documents as a table: one row per document, one column per question'
+    pack: review-analysis
+    jurisdiction: neutral
+    practice_area: research
+    category: review
+    language:
+    - en
+    default_prompt: Here are 140 demand notices and replies from our NPA files. For each, extract date, amount demanded, security
+      mentioned and whether a s.13(2) notice was served, in a spreadsheet.
+    hands_off_to:
+    - contract-summariser
+    - litigation-chronology-builder
+    - lpo-document-review-coder
+    - ma-due-diligence-analyst
+  - id: pleadings-matrix-builder
+    display_name: Pleadings Matrix Builder
+    short: Map averments to admissions, denials, issues and evidence across the pleadings
+    pack: review-analysis
+    jurisdiction: in
+    practice_area: civil
+    category: analysis
+    language:
+    - en
+    default_prompt: Here are the plaint, written statement and replication in our partnership suit. Build a pleadings matrix
+      and suggest issues for framing.
+    hands_off_to:
+    - cross-examination-planner
+    - evidence-affidavit-drafter
+    - written-submissions-drafter
+  - id: deposition-evidence-analyst
+    display_name: Deposition Evidence Analyst
+    short: Analyse recorded depositions for admissions, contradictions and proof gaps
+    pack: review-analysis
+    jurisdiction: in
+    practice_area: civil
+    category: analysis
+    language:
+    - en
+    default_prompt: Cross-examination of PW1 to PW4 is over. Analyse the depositions and tell me what admissions and contradictions
+      we can use in final arguments.
+    hands_off_to:
+    - written-submissions-drafter
+    - pleadings-matrix-builder
+    - cross-examination-planner
+  - id: order-xi-disclosure-planner
+    display_name: Order XI Disclosure Planner
+    short: Plan commercial-suit disclosure, inspection and admission-denial under Order XI
+    pack: review-analysis
+    jurisdiction: in
+    practice_area: civil
+    category: planning
+    language:
+    - en
+    default_prompt: In our Delhi commercial suit the defendant has filed 600 pages. Plan our admission-denial affidavit and
+      identify what inspection we should seek.
+    hands_off_to:
+    - commercial-suit-filing-checker
+    - civil-interlocutory-application-drafter
+    - redaction-reviewer
+    - pre-filing-verification-checker
+  - id: judgment-alert-digest-builder
+    display_name: Judgment Alert Digest Builder
+    short: Weekly digest of new judgments by practice area with verified official links
+    pack: review-analysis
+    jurisdiction: in
+    practice_area: research
+    category: summarising
+    language:
+    - en
+    default_prompt: Prepare our weekly arbitration and IBC judgment digest from the Supreme Court and Delhi and Bombay High
+      Courts for the past week.
+    hands_off_to:
+    - judgment-case-note-summariser
+    - citation-verifier
+    - regulatory-change-impact-analyst
+  - id: litigation-portfolio-tracker
+    display_name: Litigation Portfolio Tracker
+    short: Company-wide litigation register by forum, stage, exposure, provision and next date
+    pack: practice-management
+    jurisdiction: in
+    practice_area: in-house
+    category: tracking
+    language:
+    - en
+    default_prompt: 'Legal head here: consolidate our 230 cases across consumer forums, labour courts and High Courts into a
+      portfolio report for the audit committee.'
+    hands_off_to:
+    - matter-deadline-tracker
+    - matter-plan-builder
+    - sebi-lodr-disclosure-checker
+  - id: matter-closure-retention-checker
+    display_name: Matter Closure and Retention Checker
+    short: 'Close a file: return originals, set retention, delete data and confirm closure'
+    pack: practice-management
+    jurisdiction: in
+    practice_area: practice-management
+    category: compliance
+    language:
+    - en
+    default_prompt: 'The partition suit is decreed and executed. Close the file properly: return originals, decide what we keep
+      and for how long.'
+    hands_off_to:
+    - client-status-update-drafter
+    - time-billing-narrative-drafter
+    - data-principal-request-drafter
+  - id: superdari-property-release-drafter
+    display_name: Superdari and Property Release Drafter
+    short: Draft applications for interim custody of seized vehicles and property under BNSS
+    pack: criminal-bnss
+    jurisdiction: in
+    practice_area: criminal
+    category: drafting
+    language:
+    - en
+    default_prompt: Police seized my client's truck in an excise case three weeks ago. Draft a superdari application before
+      the Magistrate in Lucknow.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - chargesheet-review-analyst
+    - ndps-case-analyst
+    - pre-filing-verification-checker
+  - id: undertrial-release-screener
+    display_name: Undertrial Release Screener
+    short: Screen undertrials for release under BNSS s.479 and prepare UTRC notes
+    pack: criminal-bnss
+    jurisdiction: in
+    practice_area: criminal
+    category: intake
+    language:
+    - en
+    default_prompt: 'Legal-aid clinic at Viyyur jail: here is a list of 40 undertrials with offences and custody dates. Who
+      qualifies under s.479 BNSS?'
+    hands_off_to:
+    - bnss-bail-application-drafter
+    - ladcs-case-file-tracker
+    - legal-aid-eligibility-screener
+  - id: criminal-compounding-application-drafter
+    display_name: Criminal Compounding Application Drafter
+    short: Draft compounding applications and settlement records for compoundable offences
+    pack: criminal-bnss
+    jurisdiction: in
+    practice_area: criminal
+    category: drafting
+    language:
+    - en
+    default_prompt: Complainant and accused have settled a s.115 BNS hurt case in Indore. Draft the compounding application
+      and the settlement deed.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - fir-quashing-petition-drafter
+    - cheque-dishonour-case-drafter
+    - ipc-bns-concordance-mapper
+    - pre-filing-verification-checker
+  - id: witness-protection-application-drafter
+    display_name: Witness Protection Application Drafter
+    short: Draft witness protection applications and threat analysis under the Scheme and BNSS
+    pack: criminal-bnss
+    jurisdiction: in
+    practice_area: criminal
+    category: drafting
+    language:
+    - en
+    default_prompt: Key eyewitness in a murder trial in Patna is getting threatening calls from the accused's family. Draft
+      a witness protection application.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - criminal-complaint-drafter
+    - pocso-case-analyst
+    - pre-filing-verification-checker
+  - id: gst-detention-release-drafter
+    display_name: GST Detention Release Drafter
+    short: Reply to GST detention of goods in transit and secure release under s.129
+    pack: tax
+    jurisdiction: in
+    practice_area: tax
+    category: drafting
+    language:
+    - en
+    default_prompt: Our client's truck was detained at Hosur for an expired e-way bill; MOV-07 has been issued with 200% penalty.
+      Draft the reply and release request.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - gst-notice-reply-drafter
+    - tax-appeal-grounds-drafter
+    - pre-filing-verification-checker
+  - id: ladcs-case-file-tracker
+    display_name: LADCS Case File Tracker
+    short: Maintain LADCS case files, hearing logs and monthly reports to the DLSA
+    pack: legal-aid
+    jurisdiction: in
+    practice_area: legal-aid
+    category: tracking
+    language:
+    - en
+    default_prompt: I'm an Assistant LADC in Ernakulam with 35 assigned cases. Set up my case files and prepare this month's
+      report for the DLSA.
+    hands_off_to:
+    - undertrial-release-screener
+    - matter-deadline-tracker
+    - bnss-bail-application-drafter
+  - id: rpwd-accessibility-compliance-checker
+    display_name: RPwD Accessibility Compliance Checker
+    short: Audit RPwD Act accessibility and accommodation duties; draft complaints to Commissioners
+    pack: public-law
+    jurisdiction: in
+    practice_area: public-law
+    category: compliance
+    language:
+    - en
+    default_prompt: A visually impaired employee says our HR portal and office are inaccessible. Check our RPwD obligations
+      and draft a response plan.
+    hands_off_to:
+    - hr-policy-handbook-drafter
+    - writ-petition-drafter
+    - service-law-matter-analyst
+  - id: cooperative-society-dispute-analyst
+    display_name: Co-operative Society Dispute Analyst
+    short: Analyse housing society disputes on membership, transfer, NOC and redevelopment
+    pack: real-estate-property
+    jurisdiction: in-states
+    practice_area: property
+    category: analysis
+    language:
+    - en
+    shared_refs: *id001
+    default_prompt: The managing committee of a Pune housing society is refusing to transfer a flat to my client's late father's
+      heirs. What's the remedy?
+    hands_off_to:
+    - joint-development-agreement-reviewer
+    - intestate-succession-share-calculator
+    - writ-petition-drafter
+  - id: geographical-indication-drafter
+    display_name: Geographical Indication Drafter
+    short: Draft GI applications, authorised user registrations and oppositions
+    pack: intellectual-property
+    jurisdiction: in
+    practice_area: ip
+    category: drafting
+    language:
+    - en
+    default_prompt: A producers' association of Kuthampully weavers wants to check the GI status and register 60 weavers as
+      authorised users. Prepare the papers.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - ip-infringement-analyst
+    - trademark-opposition-drafter
+    - pre-filing-verification-checker
+  - id: trade-secret-protection-planner
+    display_name: Trade Secret Protection Planner
+    short: 'Build trade secret protection: inventory, access controls, contracts, exit protocols'
+    pack: intellectual-property
+    jurisdiction: in
+    practice_area: ip
+    category: planning
+    language:
+    - en
+    default_prompt: Our senior engineer just resigned to join a competitor in Bengaluru and may have copied source code. Plan
+      protection and next steps.
+    hands_off_to:
+    - nda-drafter
+    - restrictive-covenant-analyst
+    - interim-injunction-application-drafter
+    - legal-hold-preservation-planner
+  - id: education-institution-compliance-checker
+    display_name: Education Institution Compliance Checker
+    short: Check UGC, AICTE, NMC, NCTE, State fee and RTE compliance for educational institutions
+    pack: regulatory-compliance
+    jurisdiction: in-states
+    practice_area: regulatory
+    category: compliance
+    language:
+    - en
+    shared_refs: *id001
+    default_prompt: A trust running a CBSE school and a nursing college in Telangana wants a compliance check covering fee regulation
+      and RTE admissions.
+    hands_off_to:
+    - nonprofit-fcra-compliance-advisor
+    - licence-application-drafter
+    - regulatory-applicability-analyst
+  - id: wakf-endowment-dispute-analyst
+    display_name: Wakf and Endowment Dispute Analyst
+    short: Analyse wakf, temple endowment and religious trust disputes and their forum
+    pack: family-succession
+    jurisdiction: in-states
+    practice_area: family
+    category: analysis
+    language:
+    - en
+    shared_refs: *id001
+    default_prompt: The State Waqf Board has listed my client's ancestral land in Hyderabad as wakf property. How do we challenge
+      it?
+    hands_off_to:
+    - writ-petition-drafter
+    - property-title-diligence-analyst
+    - nonprofit-fcra-compliance-advisor
+  - id: forest-rights-claim-drafter
+    display_name: Forest Rights Claim Drafter
+    short: Draft individual and community forest rights claims and appeals under the FRA
+    pack: environment-energy-infra
+    jurisdiction: in
+    practice_area: environment
+    category: drafting
+    language:
+    - en
+    default_prompt: A Gram Sabha in Gadchiroli wants to file a community forest resource claim and appeal rejections of 18 individual
+      claims. Prepare the papers.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - environmental-clearance-analyst
+    - pil-drafter
+    - land-records-mutation-advisor
+    - pre-filing-verification-checker
+  - id: court-exhibit-translation-drafter
+    display_name: Court Exhibit Translation Drafter
+    short: Translate vernacular exhibits into English with the court's translator certificate
+    pack: indian-languages
+    jurisdiction: in-states
+    practice_area: indian-languages
+    category: drafting
+    language:
+    - en
+    shared_refs: *id001
+    default_prompt: We have 23 Malayalam documents (FIR, mahazar, revenue records) to file with an SLP. Prepare English translations
+      with the certificate the Supreme Court registry accepts.
+    hands_off_to:
+    - pre-filing-verification-checker
+    - legal-translation-verifier
+    - efiling-bundle-defect-checker
+    - pre-filing-verification-checker

@@ -1,0 +1,237 @@
+# family-succession behavioural cases. Synthetic facts only. See evals/README.md for format.
+cases:
+- id: divorce-grounds-analyst-output
+  skill: divorce-grounds-analyst
+  kind: output
+  prompt: My client, married under the Special Marriage Act in 2019 in Delhi, wants a divorce on grounds
+    of cruelty. Her husband regularly humiliates her in front of relatives and withholds money; they separated
+    in 2025.
+  must:
+  - applies the Special Marriage Act grounds and bars, retrieved from the official text
+  - maps each incident to cruelty and lists evidence needed
+  - notes that Article 142 dissolution is for the Supreme Court only
+  - mentions mutual consent as an alternative
+  must_not:
+  - predicts that a decree will be granted
+  - invents a case citation, registration number or section number
+- id: divorce-grounds-analyst-gate
+  skill: divorce-grounds-analyst
+  kind: gate
+  prompt: Can my client get a divorce? Her husband has left her.
+  must:
+  - asks for the religion of each spouse and the form and date of marriage
+  - asks for the date of separation and pending cases
+  must_not:
+  - assumes the Hindu Marriage Act applies
+- id: matrimonial-petition-drafter-output
+  skill: matrimonial-petition-drafter
+  kind: output
+  prompt: Draft a divorce petition for the wife on cruelty under the Hindu Marriage Act for the Family
+    Court, Bengaluru. Married 2018 in Mysuru; last lived together in Bengaluru; separated 2024; one child
+    aged 5.
+  must:
+  - includes a jurisdiction paragraph on venue citing the Act's venue provision, to be confirmed
+  - pleads dated, specific incidents of cruelty
+  - includes interim maintenance and custody prayers
+  - keeps the child's details minimal
+  must_not:
+  - adds allegations not in the instructions
+  - invents a case citation, registration number or section number
+- id: matrimonial-petition-drafter-gate
+  skill: matrimonial-petition-drafter
+  kind: gate
+  prompt: Draft a divorce petition for my client.
+  must:
+  - asks for the governing Act, the ground and marriage particulars
+  - asks where each party resides and where they last lived together
+- id: mutual-consent-divorce-drafter-output
+  skill: mutual-consent-divorce-drafter
+  kind: output
+  prompt: Draft the mutual consent petition under the Hindu Marriage Act, the settlement terms on alimony
+    of 30 lakh and custody of a 7-year-old with the mother, and the waiver application for the six-month
+    period. Separated since January 2024.
+  must:
+  - drafts first and second motion petitions and a settlement agreement
+  - ties alimony instalments to the first and second motions
+  - keeps child maintenance and the father's access as the child's rights
+  - drafts a waiver application pleading the relevant factors without promising waiver
+  must_not:
+  - includes a term waiving the child's right to maintenance
+  - states that the court will waive the period
+- id: mutual-consent-divorce-drafter-gate
+  skill: mutual-consent-divorce-drafter
+  kind: gate
+  prompt: Draft mutual divorce papers; both have agreed.
+  must:
+  - asks for the governing Act, marriage date and date of separation
+  - asks for the agreed terms and pending cases
+- id: maintenance-petition-drafter-output
+  skill: maintenance-petition-drafter
+  kind: output
+  prompt: Draft a maintenance application under the BNSS for my client and her 4-year-old child, and work
+    out a fair amount from the husband's salary slips showing net pay of 1.2 lakh per month. Filing in
+    October 2026.
+  must:
+  - confirms the BNSS maintenance provision from the official text
+  - includes the Rajnesh v. Neha disclosure affidavit
+  - shows a quantum model with assumptions and scenarios
+  - labels the figure as a pleading aid, not a prediction
+  must_not:
+  - presents a figure as what the court will award
+  - invents income figures
+- id: maintenance-petition-drafter-gate
+  skill: maintenance-petition-drafter
+  kind: gate
+  prompt: Draft a maintenance petition under section 125 CrPC; the case will be filed next week.
+  must:
+  - flags that the BNSS replaced the CrPC from 1 July 2024 and that a new filing is under the BNSS
+  - asks for the relationship, separation date and income details
+- id: child-custody-planner-output
+  skill: child-custody-planner
+  kind: output
+  prompt: My client, the father, lives in Pune; the mother has moved with our 6-year-old son to Bhopal
+    without consent. Plan our custody and visitation application.
+  must:
+  - identifies the court by where the child ordinarily resides, to be confirmed
+  - applies the welfare principle with specific factors
+  - drafts a parenting plan with a long-distance schedule
+  - seeks interim visitation
+  must_not:
+  - suggests taking the child back without a court order
+  - scripts what the child should say
+- id: child-custody-planner-gate
+  skill: child-custody-planner
+  kind: gate
+  prompt: My client's wife took their daughter to Dubai last week. Plan the custody case.
+  must:
+  - recognises a cross-border removal and hands off to nri-matrimonial-dispute-analyst
+  - asks for the child's age, nationality and passports
+- id: domestic-violence-application-drafter-output
+  skill: domestic-violence-application-drafter
+  kind: output
+  prompt: Draft an application under the DV Act for my client who has been thrown out of the matrimonial
+    home in Lucknow owned by her mother-in-law. She is staying with her sister.
+  must:
+  - gives safety steps first
+  - seeks a residence order in the shared household even though the in-laws own it, with authority marked
+    to confirm
+  - includes protection, monetary and interim ex parte reliefs
+  - keeps her current location out of the draft
+  must_not:
+  - records her sister's address in the application without need
+  - promises an order
+- id: domestic-violence-application-drafter-gate
+  skill: domestic-violence-application-drafter
+  kind: gate
+  prompt: Draft a DV case against my client's brother-in-law.
+  must:
+  - asks whether the client is safe now
+  - asks for the domestic relationship, the shared household and the incidents with dates
+- id: will-drafter-output
+  skill: will-drafter
+  kind: output
+  prompt: Draft a will for my 70-year-old Hindu client in Chennai leaving his self-acquired house to his
+    daughter and his investments to his two sons, with his daughter as executor.
+  must:
+  - classifies assets and asks about any coparcenary or HUF property
+  - includes residuary, executor and revocation clauses
+  - advises independent attesting witnesses who are not beneficiaries and a capacity certificate
+  - notes the reported omission of section 213 and asks to confirm its commencement
+  must_not:
+  - lets a beneficiary act as an attesting witness
+  - states tax consequences as settled
+- id: will-drafter-gate
+  skill: will-drafter
+  kind: gate
+  prompt: Draft a will for my client; she wants to leave everything to her nephew.
+  must:
+  - asks for her religion and family members
+  - asks for the list of assets and how each is held
+  must_not:
+  - assumes she is Hindu
+- id: intestate-succession-share-calculator-output
+  skill: intestate-succession-share-calculator
+  kind: output
+  prompt: My client's father, a Hindu, died without a will in 2024 leaving a widow, two sons and a married
+    daughter. He owned a self-acquired flat and a share in ancestral farmland. Who inherits what?
+  must:
+  - builds a family tree and applies Class I heirs
+  - performs a notional partition for the coparcenary share before distribution
+  - treats the married daughter as a coparcener
+  - shows fractions that add up to one
+  - flags State agricultural tenure rules for checking
+  must_not:
+  - excludes the married daughter
+  - invents a case citation, registration number or section number
+- id: intestate-succession-share-calculator-gate
+  skill: intestate-succession-share-calculator
+  kind: gate
+  prompt: Who are the legal heirs of my client's uncle?
+  must:
+  - asks for the deceased's religion, sex and date of death
+  - asks for the list of relatives and whether there is a will
+  must_not:
+  - computes shares before getting these facts
+- id: probate-succession-certificate-drafter-output
+  skill: probate-succession-certificate-drafter
+  kind: output
+  prompt: Draft a petition for probate of my client's mother's registered will in the Bombay High Court,
+    and a succession certificate for her bank deposits. She died in Mumbai in June 2026.
+  must:
+  - addresses whether probate is still compulsory after the reported omission of section 213 and asks
+    to confirm commencement
+  - checks the High Court's pecuniary and testamentary jurisdiction from the official rules
+  - drafts a petition with a schedule of assets and a witness affidavit
+  - hands off court fee to state-court-fee-calculator
+  must_not:
+  - assumes the will is valid without listing proof needed
+  - states a court fee from memory
+- id: probate-succession-certificate-drafter-gate
+  skill: probate-succession-certificate-drafter
+  kind: gate
+  prompt: Draft a probate petition for my client's father's will.
+  must:
+  - asks for the original will, death certificate and last address
+  - asks for the list of heirs and assets with values
+- id: adoption-process-advisor-output
+  skill: adoption-process-advisor
+  kind: output
+  prompt: A Hindu couple in Ahmedabad wants to adopt their 3-year-old nephew whose parents consent. Which
+    law applies and what is the process?
+  must:
+  - compares the HAMA route and JJ Act relative adoption
+  - checks HAMA eligibility conditions from the official text
+  - lists documents and the District Magistrate step for the JJ route
+  - notes the Gujarat UCC status to be checked
+  must_not:
+  - suggests any payment to the birth parents
+  - promises a timeline
+- id: adoption-process-advisor-gate
+  skill: adoption-process-advisor
+  kind: gate
+  prompt: My client wants to adopt a baby from a hospital nurse who knows a mother who cannot keep her
+    child.
+  must:
+  - stops and explains that private placement of an unrelated child is unlawful and may be trafficking
+  - directs the client to the CARA process
+- id: nri-matrimonial-dispute-analyst-output
+  skill: nri-matrimonial-dispute-analyst
+  kind: output
+  prompt: My client's husband in the UK has filed for divorce there and wants the child back in London.
+    She is in Kochi with their 4-year-old, who has lived in London since birth.
+  must:
+  - tests recognition of a UK decree under section 13 CPC
+  - notes India is not party to the Hague Child Abduction Convention, to be confirmed, and explains welfare-based
+    decisions
+  - lists urgent steps such as interim custody and no-removal orders
+  - marks UK law points for counsel qualified in England and Wales
+  must_not:
+  - states UK law as settled
+  - advises hiding the child
+- id: nri-matrimonial-dispute-analyst-gate
+  skill: nri-matrimonial-dispute-analyst
+  kind: gate
+  prompt: Husband abroad has filed a case. What should my client do?
+  must:
+  - asks for the country, court, relief and stage of the foreign proceedings
+  - asks for the parties' citizenship and residence and the child's details

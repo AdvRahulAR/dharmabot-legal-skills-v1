@@ -1,0 +1,159 @@
+# Legal Research and Writing pack. Synthetic facts only. See evals/README.md for format.
+cases:
+  - id: legal-research-planner-output
+    skill: legal-research-planner
+    kind: output
+    prompt: >
+      Plan research on whether an arbitration clause in an unstamped agreement can be acted on at the
+      section 11 appointment stage. The agreement is governed by Maharashtra stamp law.
+    must:
+      - splits the question into issues and sub-issues
+      - names the Arbitration and Conciliation Act, the Maharashtra Stamp Act and Supreme Court authority to search for
+      - gives search terms and a research log template
+    must_not:
+      - states a conclusion on the question
+      - lists a case citation without [verify] unless it is confirmed
+  - id: legal-research-planner-gate
+    skill: legal-research-planner
+    kind: gate
+    prompt: >
+      Plan research on whether my client can be prosecuted for cheating. The transaction was in May 2024 and the
+      complaint was filed in September 2024.
+    must:
+      - flags that the events straddle 1 July 2024 and plans research on both the IPC and the BNS
+      - mentions transition or savings provisions
+
+  - id: research-memo-drafter-output
+    skill: research-memo-drafter
+    kind: output
+    prompt: >
+      Write a memo on whether a licensor can recover arrears of licence fee under a leave and licence agreement
+      in Mumbai through an Order XXXVII summary suit. Sources attached.
+    must:
+      - uses question, short answer, facts, analysis and conclusion structure
+      - deals with contrary arguments and research gaps
+      - includes a table of authorities with a read-in-full column
+    must_not:
+      - cites a judgment not supplied or verified without [verify]
+  - id: research-memo-drafter-gate
+    skill: research-memo-drafter
+    kind: gate
+    prompt: Write me a memo on the law.
+    must:
+      - asks for the question, facts and the purpose and reader of the memo
+
+  - id: legal-opinion-drafter-output
+    skill: legal-opinion-drafter
+    kind: output
+    prompt: >
+      Draft a legal opinion for a bank on whether Example Industries Ltd, an Indian listed company, can lawfully
+      give a corporate guarantee for its Singapore subsidiary's loan. Board resolution and financials attached.
+    must:
+      - lists documents reviewed, assumptions and qualifications
+      - analyses corporate authority and FEMA overseas investment rules from retrieved texts
+      - states that no view is given on Singapore law
+    must_not:
+      - opines on Singapore law
+      - states a regulatory limit without a source
+  - id: legal-opinion-drafter-gate
+    skill: legal-opinion-drafter
+    kind: gate
+    prompt: Give me a clean enforceability opinion on the facility agreement. I don't have the final documents yet.
+    must:
+      - stops and asks for the final or execution versions of the documents
+      - does not give an unqualified opinion
+
+  - id: issue-spotting-analyst-output
+    skill: issue-spotting-analyst
+    kind: output
+    prompt: >
+      A fire broke out in a garment shop in Indore on 2 August 2026. An employee was burnt and a neighbour's stock was
+      damaged. The shop's fire NOC had expired. We act for the shop owner. What are all the legal issues?
+    must:
+      - covers civil, criminal, regulatory, employee compensation and insurance issues
+      - names likely forums and limitation flags
+      - ranks issues and lists missing facts
+    must_not:
+      - decides liability
+  - id: issue-spotting-analyst-gate
+    skill: issue-spotting-analyst
+    kind: gate
+    prompt: Spot the issues in a factory accident. No other details yet.
+    must:
+      - asks for the fact pattern with dates, the place and whose side the user is on
+
+  - id: adversarial-draft-reviewer-output
+    skill: adversarial-draft-reviewer
+    kind: output
+    prompt: >
+      Act as opposing counsel and the judge and tear apart this written statement in a commercial recovery suit
+      before I file it. Plaint and written statement attached.
+    must:
+      - flags evasive or non-specific denials and unsupported facts
+      - runs a consistency check on dates, amounts and names
+      - ranks weaknesses with targeted fixes
+    must_not:
+      - rewrites the whole written statement
+  - id: adversarial-draft-reviewer-gate
+    skill: adversarial-draft-reviewer
+    kind: gate
+    prompt: Here is my written statement. Find the weaknesses.
+    must:
+      - asks for the plaint it answers and the forum
+
+  - id: plain-language-explanation-drafter-output
+    skill: plain-language-explanation-drafter
+    kind: output
+    prompt: >
+      Explain this Supreme Court judgment on tenant eviction to my client, a retired school teacher, in simple English,
+      and prepare it for a Hindi version. Full judgment attached.
+    must:
+      - uses short sentences and explains legal terms once
+      - includes a what-this-means-for-you section and marks simplifications
+      - hands off the Hindi version to regional-language-legal-drafter or asks for a fluent check
+    must_not:
+      - gives advice on facts not supplied
+  - id: plain-language-explanation-drafter-gate
+    skill: plain-language-explanation-drafter
+    kind: gate
+    prompt: Explain the new tenancy judgment simply to my client.
+    must:
+      - asks for the full text of the judgment and the audience
+
+  - id: judgment-case-note-summariser-output
+    skill: judgment-case-note-summariser
+    kind: output
+    prompt: >
+      Prepare a case note on this Madras High Court division bench judgment: facts, issues, ratio, obiter and whether
+      it has been followed. Full text attached; I have no later judgments.
+    must:
+      - separates ratio from obiter with paragraph references
+      - says later treatment was not checked rather than inventing it
+    must_not:
+      - claims the judgment was followed or overruled without a source
+  - id: judgment-case-note-summariser-gate
+    skill: judgment-case-note-summariser
+    kind: gate
+    prompt: Summarise the judgment from this news report into a case note.
+    must:
+      - asks for the full text of the judgment
+
+  - id: statutory-interpretation-analyst-output
+    skill: statutory-interpretation-analyst
+    kind: output
+    prompt: >
+      How should "commercial dispute" in the Commercial Courts Act, 2015 be read for a dispute about a lease of a
+      hotel property used for business? Dispute arose in 2026.
+    must:
+      - retrieves the definition and related provisions from the official text
+      - sets out competing readings with textual, contextual and authority support
+      - gives a reasoned view with a confidence level
+    must_not:
+      - quotes the provision from memory
+  - id: statutory-interpretation-analyst-gate
+    skill: statutory-interpretation-analyst
+    kind: gate
+    prompt: What does "dishonestly" mean in the cheating section?
+    must:
+      - asks for the date of the facts and which code applies (IPC or BNS)
+      - asks for the facts to which it is being applied

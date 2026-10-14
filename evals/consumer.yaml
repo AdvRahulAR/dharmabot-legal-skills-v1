@@ -1,0 +1,81 @@
+# consumer behavioural cases. Synthetic facts only. See evals/README.md for format.
+cases:
+- id: consumer-complaint-drafter-output
+  skill: consumer-complaint-drafter
+  kind: output
+  prompt: My client's new car bought in March 2026 for Rs 14 lakh for family use has a recurring engine defect;
+    the dealer in Kochi refuses replacement. Job cards and emails attached. Draft a consumer complaint.
+  must:
+  - confirms consumer status and personal use
+  - identifies the forum by consideration paid
+  - checks limitation
+  - addresses mediation consent
+  must_not:
+  - claims compensation figures without basis
+  - uses e-Daakhil without checking the current portal
+- id: consumer-complaint-drafter-gate
+  skill: consumer-complaint-drafter
+  kind: gate
+  prompt: Draft a consumer complaint against a bank for my client's company; it bought a payment terminal for its
+    stores.
+  must:
+  - flags the commercial-purpose exclusion
+  - asks for facts on use before drafting
+- id: consumer-appeal-drafter-output
+  skill: consumer-appeal-drafter
+  kind: output
+  prompt: The District Commission awarded only Rs 50,000 against the opposite party builder on our complaint for
+    Rs 12 lakh. Order received on 1 October 2026. Draft an appeal to the State Commission.
+  must:
+  - computes limitation from receipt of the order
+  - notes the pre-deposit applies to the opposite party, not the complainant appellant
+  - flags points not raised below
+  must_not:
+  - promises enhancement
+  - states the pre-deposit percentage as settled without confirmation
+- id: consumer-appeal-drafter-gate
+  skill: consumer-appeal-drafter
+  kind: gate
+  prompt: Appeal this consumer order for me.
+  must:
+  - asks for the impugned order and date of receipt
+  - asks which party the client is and the amount awarded
+- id: product-liability-analyst-output
+  skill: product-liability-analyst
+  kind: output
+  prompt: A pressure cooker exploded in our client's kitchen in Pune in 2026, injuring her. The cooker is preserved;
+    bill from an online marketplace and medical records available. Who can be held liable and what compensation
+    can we claim?
+  must:
+  - maps manufacturer, seller and platform
+  - lists statutory exceptions
+  - plans expert evidence and chain of custody
+  must_not:
+  - asserts a defect as proved without evidence
+  - promises a compensation amount
+- id: product-liability-analyst-gate
+  skill: product-liability-analyst
+  kind: gate
+  prompt: A product hurt my client. Can we sue?
+  must:
+  - asks for the product identity and proof of purchase
+  - asks for incident details, harm and whether the product is preserved
+- id: advertising-claims-reviewer-output
+  skill: advertising-claims-reviewer
+  kind: output
+  prompt: 'Review these ad claims for our water purifier: ''kills 99.9% germs'' and ''doctor recommended''. Also
+    our influencer brief for Instagram reels. Test reports attached.'
+  must:
+  - breaks out each claim and tests substantiation
+  - checks endorsement disclosure rules
+  - gives suggested compliant wording
+  must_not:
+  - approves a claim without evidence
+  - omits disclosure requirements for influencers
+- id: advertising-claims-reviewer-gate
+  skill: advertising-claims-reviewer
+  kind: gate
+  prompt: Is our new ad compliant?
+  must:
+  - asks for the full creative and media format
+  - asks for the substantiation held for each claim

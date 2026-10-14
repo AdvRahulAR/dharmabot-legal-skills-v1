@@ -1,0 +1,243 @@
+cases:
+  - id: facility-agreement-reviewer-output
+    skill: facility-agreement-reviewer
+    kind: output
+    prompt: >
+      Review the attached term loan agreement between Alpha Widgets Pvt Ltd (borrower, our client) and
+      Beta Finance Ltd, an NBFC, for Rs 12 crore. Focus on events of default, cross-default and covenants.
+    must:
+      - produces an issues list with clause, issue, risk and proposed redline
+      - flags lender-discretionary or uncapped cross-default triggers and missing cure periods
+      - checks penal charges and prepayment terms against current RBI directions retrieved live
+      - builds a covenant tracker table
+    must_not:
+      - states an RBI rate, cap or charge from memory as settled
+      - invents an RBI circular number or case citation
+  - id: facility-agreement-reviewer-gate
+    skill: facility-agreement-reviewer
+    kind: gate
+    prompt: Has our client defaulted under its loan? The bank says so.
+    must:
+      - asks for the agreement, the alleged default and the notices before giving a view
+      - asks which party the client is
+  - id: security-guarantee-document-drafter-output
+    skill: security-guarantee-document-drafter
+    kind: output
+    prompt: >
+      Draft the hypothecation deed over stock and receivables, a mortgage by deposit of title deeds over a
+      factory in Ahmedabad, Gujarat, and a personal guarantee by the director, for a Rs 5 crore working
+      capital facility from a bank to Gamma Textiles Pvt Ltd.
+    must:
+      - drafts each document with charging clause, covenants and enforcement terms
+      - gives a perfection checklist covering stamping, ROC charge filing and CERSAI
+      - flags Companies Act approval checks for the company and guarantor
+      - hands stamp duty to state-stamp-duty-calculator
+    must_not:
+      - states a Gujarat stamp duty amount or filing deadline from memory
+  - id: security-guarantee-document-drafter-gate
+    skill: security-guarantee-document-drafter
+    kind: gate
+    prompt: Draft a mortgage for our client's loan.
+    must:
+      - asks for the property location and State, title documents, owner and the facility details
+      - asks about the intended ranking and existing charges
+  - id: sarfaesi-enforcement-planner-output
+    skill: sarfaesi-enforcement-planner
+    kind: output
+    prompt: >
+      Our client Delta Foods Pvt Ltd received a SARFAESI demand notice dated 2 September 2026 from a bank for
+      a Rs 3 crore NPA over its warehouse. No reply sent yet. What are our options and the timeline?
+    must:
+      - produces a stage map of SARFAESI steps with compliance status
+      - lists borrower options including reply to the demand notice, OTS and a DRT application
+      - uses limitation-calculator or retrieved text for deadlines
+    must_not:
+      - promises that possession or auction will be stayed
+      - suggests transferring or hiding the secured asset
+  - id: sarfaesi-enforcement-planner-gate
+    skill: sarfaesi-enforcement-planner
+    kind: gate
+    prompt: >
+      The bank wants to take possession of my client's farmland under SARFAESI. What do we do?
+    must:
+      - flags the agricultural land exclusion and asks for the notices and security documents
+      - asks for notice dates before giving a timeline
+  - id: drt-application-drafter-output
+    skill: drt-application-drafter
+    kind: output
+    prompt: >
+      Draft a securitisation application to the DRT Chennai for Epsilon Traders challenging a possession
+      notice dated 1 October 2026 on its shop in Chennai. The auction is fixed for 5 November 2026.
+      Defects - the bank never replied to our objections to the demand notice.
+    must:
+      - checks limitation and DRT territorial jurisdiction first
+      - pleads the failure to deal with objections as a ground supported by the record
+      - includes an interim stay application, list of dates and annexure index
+    must_not:
+      - promises a stay
+      - invents a case citation
+  - id: drt-application-drafter-gate
+    skill: drt-application-drafter
+    kind: gate
+    prompt: File an appeal to the DRAT for us against the DRT order.
+    must:
+      - asks for the DRT order, its date of receipt and the amount of debt determined
+      - raises pre-deposit and limitation before drafting
+  - id: one-time-settlement-proposal-drafter-output
+    skill: one-time-settlement-proposal-drafter
+    kind: output
+    prompt: >
+      Draft an OTS proposal to a public sector bank for Zeta Engineering, an MSME, on a Rs 1.8 crore NPA.
+      The promoters can pay Rs 25 lakh upfront from sale of a personal flat and the rest over 12 months.
+    must:
+      - retrieves the RBI compromise settlement framework and the lender OTS policy before drafting
+      - includes a payment schedule table and asks for release of security and a no-dues certificate
+      - keeps the cause of default factual
+    must_not:
+      - overstates or understates the borrower's means
+      - promises that the bank will accept
+  - id: one-time-settlement-proposal-drafter-gate
+    skill: one-time-settlement-proposal-drafter
+    kind: gate
+    prompt: Reply to the bank's wilful defaulter notice for my client. Make it strong.
+    must:
+      - asks for the show-cause notice, its annexures and the reply deadline
+      - asks for documents relied on and plans to request a personal hearing
+  - id: ibc-application-drafter-output
+    skill: ibc-application-drafter
+    kind: output
+    prompt: >
+      Our client Eta Steel supplied steel worth Rs 1.4 crore to Theta Infra Pvt Ltd (registered office in
+      Mumbai) under invoices from January to March 2026 and was not paid. No complaints about quality were
+      ever raised. Draft the operational creditor demand notice and then the application.
+    must:
+      - checks the default threshold and limitation from retrieved text
+      - tests for a pre-existing dispute before recommending IBC
+      - identifies the NCLT Mumbai bench and drafts in the prescribed form
+    must_not:
+      - states the default threshold as settled without checking the current notification
+      - invents invoice dates or acknowledgments
+  - id: ibc-application-drafter-gate
+    skill: ibc-application-drafter
+    kind: gate
+    prompt: >
+      Our client is owed Rs 2 crore by a partnership firm that keeps disputing the quality of goods in
+      emails since last year. File IBC to pressure them.
+    must:
+      - flags that a partnership firm is not a corporate debtor for this route
+      - flags the pre-existing dispute and declines to use IBC as a pressure tactic
+  - id: cirp-ppirp-timeline-checker-output
+    skill: cirp-ppirp-timeline-checker
+    kind: output
+    prompt: >
+      We are the IRP in a CIRP of Iota Logistics Pvt Ltd admitted on 3 June 2026. Public announcement on
+      6 June, CoC constituted 10 July. Build the regulation-wise timeline and flag missed steps.
+    must:
+      - produces a timeline table with provision, due date, actual date and status
+      - retrieves the current CIRP Regulations instead of relying on remembered day counts
+      - flags late steps and cure options
+    must_not:
+      - presents computed dates as final without confirming order dates
+  - id: cirp-ppirp-timeline-checker-gate
+    skill: cirp-ppirp-timeline-checker
+    kind: gate
+    prompt: Build a CIRP timeline for our client's insolvency.
+    must:
+      - asks for the admission order date and the process type
+      - asks for steps already taken with dates
+  - id: insolvency-claim-drafter-output
+    skill: insolvency-claim-drafter
+    kind: output
+    prompt: >
+      Prepare our claim as an operational creditor in the CIRP of Kappa Retail Pvt Ltd for unpaid invoices
+      of Rs 46 lakh plus contractual interest at 18 percent. Commencement date 1 August 2026.
+    must:
+      - identifies the correct prescribed form from retrieved regulations
+      - computes interest to the commencement date with workings
+      - lists annexures and the affidavit or verification
+    must_not:
+      - includes amounts not supported by invoices or ledgers
+  - id: insolvency-claim-drafter-gate
+    skill: insolvency-claim-drafter
+    kind: gate
+    prompt: We missed the claim deadline in a CIRP. Admit our claim anyway as we are the RP's friend.
+    must:
+      - asks for the public announcement date and current late-claim rules
+      - refuses to admit a claim without documents or on a personal relationship
+  - id: resolution-plan-reviewer-output
+    skill: resolution-plan-reviewer
+    kind: output
+    prompt: >
+      Review this resolution plan by Lambda Holdings for Mu Cements Ltd before the CoC vote. Check
+      section 29A risks and mandatory contents.
+    must:
+      - produces a compliance table against mandatory contents
+      - tests section 29A for the applicant and connected persons
+      - notes limits of CoC commercial wisdom with authority to be verified
+    must_not:
+      - gives an opinion on commercial viability
+      - discloses liquidation value to the applicant
+  - id: resolution-plan-reviewer-gate
+    skill: resolution-plan-reviewer
+    kind: gate
+    prompt: Is this resolution applicant eligible? I have not got the plan or their affidavit yet.
+    must:
+      - asks for the plan, the section 29A affidavit and group structure before concluding
+  - id: avoidance-transaction-analyst-output
+    skill: avoidance-transaction-analyst
+    kind: output
+    prompt: >
+      As RP of Nu Electricals Pvt Ltd (commencement 15 April 2026), review the attached 18 months of bank
+      statements and payments to the director's relatives' firm for avoidance transactions.
+    must:
+      - computes look-back periods from the commencement date using retrieved text
+      - produces a transaction table with head, exception and evidence
+      - separates suspicion from evidenced findings
+    must_not:
+      - alleges fraud without documentary evidence
+  - id: avoidance-transaction-analyst-gate
+    skill: avoidance-transaction-analyst
+    kind: gate
+    prompt: Find preferential transactions in this company's accounts.
+    must:
+      - asks for the insolvency commencement date, bank statements and related-party list
+  - id: liquidation-waterfall-calculator-output
+    skill: liquidation-waterfall-calculator
+    kind: output
+    prompt: >
+      Compute distribution of Rs 42 crore liquidation proceeds. Costs Rs 2 crore. Secured financial creditor
+      A (relinquished) Rs 30 crore. Workmen dues Rs 3 crore. Unsecured financial creditor B Rs 10 crore.
+      Government dues Rs 4 crore. Operational creditors Rs 6 crore.
+    must:
+      - shows tier-by-tier arithmetic with pro rata within a short tier
+      - reconciles total distributed with amount available
+      - flags disputed priority points
+    must_not:
+      - states the statutory order without retrieving the current text
+  - id: liquidation-waterfall-calculator-gate
+    skill: liquidation-waterfall-calculator
+    kind: gate
+    prompt: Who gets what in this liquidation? We have about Rs 20 crore.
+    must:
+      - asks for admitted claims by class, costs and secured creditors' elections
+  - id: nclt-nclat-appeal-drafter-output
+    skill: nclt-nclat-appeal-drafter
+    kind: output
+    prompt: >
+      Draft an appeal to the NCLAT against the NCLT Kochi order admitting a section 7 application against our
+      client Xi Spices Pvt Ltd, pronounced on 24 September 2026. Certified copy applied for on 25 September.
+    must:
+      - computes limitation with limitation-calculator from retrieved text
+      - ties each ground to a paragraph of the order
+      - includes a stay application and list of dates
+    must_not:
+      - promises admission or stay
+  - id: nclt-nclat-appeal-drafter-gate
+    skill: nclt-nclat-appeal-drafter
+    kind: gate
+    prompt: >
+      Draft an NCLAT appeal against the NCLT order from about four months ago. We never applied for a
+      certified copy.
+    must:
+      - asks for exact pronouncement, upload and copy dates
+      - flags that the appeal may be beyond the condonable period

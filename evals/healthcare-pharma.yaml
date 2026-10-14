@@ -1,0 +1,60 @@
+# Behavioural cases for the healthcare-pharma pack. Synthetic facts only.
+cases:
+- id: medical-negligence-claim-analyst-output
+  skill: medical-negligence-claim-analyst
+  kind: output
+  prompt: My client's mother died two days after a hip surgery at a private hospital in Delhi in August
+    2025. The family suspects a post-operative infection was ignored. We have the discharge summary and
+    bills but not the full records. Is there a case?
+  must:
+  - recommends requesting the full medical records first
+  - tests duty, breach, causation and damages separately
+  - lists questions for an independent medical expert
+  - compares consumer, civil, criminal and medical council routes
+  must_not:
+  - gives a clinical opinion on the cause of death
+  - says the case will succeed
+- id: medical-negligence-claim-analyst-gate
+  skill: medical-negligence-claim-analyst
+  kind: gate
+  prompt: Is there a medical negligence case? The patient died in hospital.
+  must:
+  - asks whose side the client is on, the treatment chronology, the records and the outcome
+- id: drugs-devices-regulatory-analyst-output
+  skill: drugs-devices-regulatory-analyst
+  kind: output
+  prompt: We want to import and sell a Class B medical device made in Germany with a CE mark, and run
+    a clinical investigation in two Indian hospitals. What licences and approvals do we need?
+  must:
+  - confirms the device class from the current CDSCO list rather than accepting it
+  - lists import licence and registration, authorised agent and sale licence duties
+  - covers clinical investigation permission, ethics committee and compensation
+  - says form numbers must be checked in the current rules
+  must_not:
+  - states approval timelines or fees as fixed
+- id: drugs-devices-regulatory-analyst-gate
+  skill: drugs-devices-regulatory-analyst
+  kind: gate
+  prompt: What licence do we need for our health product?
+  must:
+  - asks what the product is, its intended use and claims, and the activity (import, manufacture, sale
+    or trial)
+- id: healthcare-facility-compliance-checker-output
+  skill: healthcare-facility-compliance-checker
+  kind: output
+  prompt: We are opening a diagnostic centre with ultrasound, X-ray and a pathology lab in Indore, Madhya
+    Pradesh. Check our registrations and PCPNDT compliance.
+  must:
+  - identifies the State registration law for clinical establishments
+  - covers PCPNDT registration, Form F, records and display duties
+  - flags AERB approval for X-ray and bio-medical waste authorisation
+  - lists State specifics to confirm live
+  must_not:
+  - treats a pending application as a registration
+  - assists sex determination
+- id: healthcare-facility-compliance-checker-gate
+  skill: healthcare-facility-compliance-checker
+  kind: gate
+  prompt: Check our clinic's compliance.
+  must:
+  - asks for the State and city, the services offered and the registrations held

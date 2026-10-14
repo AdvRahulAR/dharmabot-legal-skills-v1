@@ -1,0 +1,130 @@
+# Additional cases so every original skill has an output and a gate case. Synthetic facts only.
+cases:
+  - id: concordance-output
+    skill: ipc-bns-concordance-mapper
+    kind: output
+    prompt: Map IPC 406 and 420 to the BNS and tell me what changed in each.
+    must:
+      - gives a table of old and new provisions with what changed
+      - cites the official text checked, or marks rows [verify]
+  - id: concordance-gate
+    skill: ipc-bns-concordance-mapper
+    kind: gate
+    prompt: Give me the new section for this offence.
+    must:
+      - asks which section or offence, and in which direction to map
+  - id: transition-gate
+    skill: crpc-bnss-transition-analyst
+    kind: gate
+    prompt: Is my client's case under the CrPC or the BNSS?
+    must:
+      - asks for the dates of offence, FIR and the current stage
+  - id: fir-ingredients-gate
+    skill: fir-ingredients-analyst
+    kind: gate
+    prompt: Does this FIR make out cheating? (no FIR text attached)
+    must:
+      - asks for the full FIR or complaint text and the sections invoked
+    must_not:
+      - analyses ingredients without the record
+  - id: bsa-certificate-gate
+    skill: bsa-electronic-evidence-certificate-drafter
+    kind: gate
+    prompt: Make me a BSA certificate for some phone chats.
+    must:
+      - asks for the device, the records, who will sign and how the copy was made
+  - id: stamp-duty-gate
+    skill: state-stamp-duty-calculator
+    kind: gate
+    prompt: How much stamp duty for a sale deed of Rs 60 lakh?
+    must:
+      - asks which State the property is in and where the deed is executed
+  - id: formatter-gate
+    skill: court-pleading-formatter
+    kind: gate
+    prompt: Format this petition for filing. (no court named)
+    must:
+      - asks which court, bench and case type
+  - id: regional-drafter-gate
+    skill: regional-language-legal-drafter
+    kind: gate
+    prompt: Translate this notice into the local language.
+    must:
+      - asks which language and script, and who the reader is
+  - id: citation-verifier-gate
+    skill: citation-verifier
+    kind: gate
+    prompt: Check my citations. (no draft or citations supplied)
+    must:
+      - asks for the draft or the list of citations and quotations
+  - id: scoping-gate
+    skill: foreign-matter-scoping-analyst
+    kind: gate
+    prompt: A foreign client wants help with a dispute. Which law applies?
+    must:
+      - asks for the parties' locations, the documents and their governing-law and dispute clauses
+  - id: engagement-gate
+    skill: foreign-client-engagement-checker
+    kind: gate
+    prompt: Draft an engagement letter for a new foreign client.
+    must:
+      - asks for the client, scope, other parties for conflicts, fee basis and payment source
+  - id: contract-reviewer-gate
+    skill: cross-border-contract-reviewer
+    kind: gate
+    prompt: Review this cross-border agreement. (no indication of which party is the client)
+    must:
+      - asks which party the client is and where each party has assets
+  - id: enforcement-gate
+    skill: foreign-judgment-award-enforcement-analyst
+    kind: gate
+    prompt: How do we enforce a foreign decree in India?
+    must:
+      - asks for the judgment, court, country, finality and where the debtor's assets are
+  - id: arbitration-gate
+    skill: international-arbitration-planner
+    kind: gate
+    prompt: Which arbitration seat should we choose?
+    must:
+      - asks where each party's assets are and the likely type of dispute
+  - id: data-transfer-gate
+    skill: cross-border-data-transfer-analyst
+    kind: gate
+    prompt: Can we send our data abroad?
+    must:
+      - asks for the data categories, the parties' roles, the flows and the hosting locations
+  - id: legalisation-gate
+    skill: document-legalisation-planner
+    kind: gate
+    prompt: How do I get this document attested?
+    must:
+      - asks what the document is, where it is signed and where it will be used
+  - id: service-gate-criminal
+    skill: cross-border-service-evidence-planner
+    kind: gate
+    prompt: We need to serve a summons in a criminal case on an accused living in Dubai.
+    must:
+      - says criminal matters follow mutual legal assistance routes and stops
+  - id: foreign-memo-gate
+    skill: foreign-law-research-memo-drafter
+    kind: gate
+    prompt: Research US law on non-competes.
+    must:
+      - asks which State (or federal law), the facts and the as-of date
+  - id: lpo-output
+    skill: lpo-document-review-coder
+    kind: output
+    prompt: >
+      Under the attached protocol, code these 20 emails for responsiveness,
+      issues and privilege, and draft privilege-log entries.
+    fixtures: [synthetic review protocol with attorney list; 20 synthetic emails, two copied to a third-party consultant]
+    must:
+      - produces a coding table following the protocol's fields
+      - flags possible waiver where a third party was copied
+      - writes log descriptions that do not reveal the advice
+  - id: fema-gate
+    skill: india-entry-fema-structuring-analyst
+    kind: gate
+    prompt: A foreign company wants to invest in India. What approvals?
+    must:
+      - asks for the investor's ultimate beneficial owners, the Indian sector and activity, and the form of investment

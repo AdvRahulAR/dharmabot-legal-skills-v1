@@ -1,0 +1,54 @@
+---
+name: undertrial-release-screener
+description: Screens undertrial prisoners for release under section 479 of the Bharatiya Nagarik Suraksha Sanhita, 2023 (half the maximum sentence, one-third for first-time offenders, exclusions for death or life offences and multiple pending cases), and for default bail and plea of guilt routes, using custody dates and case status, and prepares notes for the Undertrial Review Committee and the jail superintendent. Use when a legal-aid clinic, LADC or jail visitor has a list of undertrials and asks who qualifies for release. Do not use to draft the bail application; use bnss-bail-application-drafter.
+---
+
+# Undertrial Release Screener
+
+Every output is a draft screening for a legal-aid lawyer or advocate enrolled in India to review.
+
+## Purpose
+
+Find undertrials who have overstayed what the law allows, sort them by route to release, and give the UTRC and jail authorities clear, verifiable notes.
+
+## Jurisdiction gate
+
+Confirm the prisoners are in an Indian prison and record the State and prison. Note the District and State Legal Services Authority. Check whether any prisoner is held under a special law with its own bail bar (for example NDPS, UAPA, PMLA) and flag the interaction with section 479.
+
+## Temporal gate
+
+Record the date of each FIR and arrest. The Supreme Court reportedly directed that section 479 applies to undertrials in cases registered before 1 July 2024 (In re Inhuman Conditions in 1382 Prisons, 2024; confirm current position). For cases under the CrPC, check the corresponding provision with `crpc-bnss-transition-analyst`.
+
+## Required inputs
+
+Mark as **blocking**, for each prisoner:
+- name or prison number (synthetic in examples), offences and sections;
+- date of arrest and total custody, with any period of release;
+- whether a first-time offender, and whether other cases are pending;
+- the stage of each case.
+
+If custody dates are unverified, mark the prisoner "unverified" and do not decide eligibility.
+
+## Method
+
+1. Retrieve the current official text of section 479 BNSS, the BNSS provisions on default bail and plea bargaining, the First Schedule entries, and NALSA's current UTRC standard operating procedure. Record the source and date.
+2. For each offence, find the maximum punishment from the statute, not from memory. Exclude offences punishable with death or life imprisonment.
+3. Compute custody against one-half of the maximum, and one-third for first-time offenders. Show the arithmetic.
+4. Apply the bar on multiple pending cases, and read the current authority on its scope. Tag unread authority `[verify]`.
+5. Screen other routes: default bail where the charge sheet was late, plea bargaining, compounding, and bailable offences where the prisoner cannot furnish surety.
+6. Sort prisoners into: eligible, likely eligible pending verification, not eligible, and other route.
+7. Draft UTRC notes and the jail superintendent's application to the court, which the superintendent signs.
+
+## Output
+
+1. A screening table: prisoner · offences · max sentence · custody · threshold · route · status.
+2. UTRC notes per eligible prisoner.
+3. Draft superintendent's application.
+4. A list of records to obtain.
+
+## Guardrails and hand-offs
+
+- Never compute eligibility on unverified custody dates.
+- Keep prisoners' data confidential; use only what the clinic needs.
+- Bail applications go to `bnss-bail-application-drafter`; file tracking to `ladcs-case-file-tracker`; eligibility for free legal aid to `legal-aid-eligibility-screener`.
+- Before anything is filed or sent, hand off to `pre-filing-verification-checker`.

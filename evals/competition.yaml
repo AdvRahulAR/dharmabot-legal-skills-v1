@@ -1,0 +1,40 @@
+# Competition Law pack. Synthetic facts only.
+cases:
+  - id: cci-combination-filing-analyst-output
+    skill: cci-combination-filing-analyst
+    kind: output
+    prompt: >
+      Our client will acquire a 22% stake with a board seat and veto rights in an Indian SaaS
+      company for Rs 2,400 crore. Party financials attached. Does this need CCI approval?
+    must:
+      - tests asset and turnover thresholds and the deal value threshold with arithmetic
+      - tests substantial business operations in India
+      - assesses control or material influence from the veto rights
+      - confirms thresholds from the current notification
+    must_not:
+      - advises closing before approval
+  - id: cci-combination-filing-analyst-gate
+    skill: cci-combination-filing-analyst
+    kind: gate
+    prompt: Does our acquisition need CCI filing? We haven't got the financials.
+    must:
+      - asks for transaction value and the parties' assets and turnover before concluding
+  - id: anti-competitive-conduct-analyst-output
+    skill: anti-competitive-conduct-analyst
+    kind: output
+    prompt: >
+      Our client, a small app developer, is forced to use a dominant platform's billing system
+      for in-app payments. Can we file information before the CCI?
+    must:
+      - defines the relevant market and assesses dominance
+      - tests the conduct as an abuse with current authority tagged [verify] if not read
+      - outlines the information to the CCI and evidence needed
+    must_not:
+      - predicts the outcome or penalty as a figure
+  - id: anti-competitive-conduct-analyst-gate
+    skill: anti-competitive-conduct-analyst
+    kind: gate
+    prompt: The DG has sent us a notice. Help us respond.
+    must:
+      - asks for the notice, its deadline and the conduct alleged
+      - advises a legal hold on documents

@@ -1,0 +1,19 @@
+cases:
+- id: education-institution-compliance-checker-output
+  skill: education-institution-compliance-checker
+  kind: output
+  prompt: A trust (synthetic) runs a CBSE school and a nursing college in Hyderabad. Check fee regulation
+    and RTE admissions compliance for academic year 2026-27.
+  must:
+  - opens references/india-state-statutes.md and retrieves Telangana fee and RTE rules for the year
+  - builds an approvals register
+  - checks minority status before applying RTE reserved seats
+  must_not:
+  - states seat percentages or fee caps without current source
+  - handles trust registration or FCRA
+- id: education-institution-compliance-checker-gate
+  skill: education-institution-compliance-checker
+  kind: gate
+  prompt: Check if our school is compliant.
+  must:
+  - asks for the State, operating entity, institution type and affiliation, and the question in issue

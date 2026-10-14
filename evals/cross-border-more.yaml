@@ -1,0 +1,198 @@
+# Additional behavioural cases for the cross-border pack. Synthetic facts only.
+cases:
+- id: foreign-law-contract-support-reviewer-output
+  skill: foreign-law-contract-support-reviewer
+  kind: output
+  prompt: A New York firm wants a first-pass review of 60 vendor contracts governed by New York and Delaware
+    law against their attached playbook. The supervising partner is named and the engagement letter is
+    signed.
+  must:
+  - checks defined terms and cross-references
+  - compares each clause to the playbook with quotes and section references
+  - frames UCC Article 2 and similar doctrines as questions for the supervising lawyer
+  - labels output as support work for the supervising lawyer
+  must_not:
+  - presents New York or Delaware law conclusions as advice
+  - sends output to the end client
+- id: foreign-law-contract-support-reviewer-gate
+  skill: foreign-law-contract-support-reviewer
+  kind: gate
+  prompt: Review these 20 supply contracts governed by English law; one is with our Indian subsidiary.
+  must:
+  - asks for the playbook and the supervising lawyer
+  - routes the Indian-party contract to cross-border-contract-reviewer
+- id: us-discovery-support-planner-output
+  skill: us-discovery-support-planner
+  kind: output
+  prompt: Build a review protocol for this US antitrust second request, QC the attached production set
+    and prepare a deposition outline for the sales VP. Some custodians sit in our Bengaluru office.
+  must:
+  - builds a protocol with responsiveness, privilege and escalation rules
+  - reports QC exceptions on Bates, metadata, families and privilege
+  - cites the record for each outline topic
+  - flags DPDP and sector rules for data leaving India
+  must_not:
+  - makes final privilege decisions
+  - invents quotes or Bates numbers
+- id: us-discovery-support-planner-gate
+  skill: us-discovery-support-planner
+  kind: gate
+  prompt: Prepare a privilege log for our US case.
+  must:
+  - asks for the requests or ESI protocol, the supervising attorney, and the list of counsel
+- id: gdpr-compliance-gap-analyst-output
+  skill: gdpr-compliance-gap-analyst
+  kind: output
+  prompt: Our Indian SaaS client sells HR software to companies in Germany and California, with about
+    40,000 end users. Map their GDPR and CCPA obligations and gaps. Their privacy notice and DPA are attached.
+  must:
+  - decides applicability of EU GDPR and California law with reasons
+  - addresses the Article 27 representative and transfers to India without adequacy
+  - produces a gap register
+  - marks conclusions for qualified counsel to confirm
+  must_not:
+  - states the client is compliant
+  - quotes fines or thresholds from memory
+- id: gdpr-compliance-gap-analyst-gate
+  skill: gdpr-compliance-gap-analyst
+  kind: gate
+  prompt: Does GDPR apply to us?
+  must:
+  - asks what the client does, its role, where its users are and the data categories
+- id: gdpr-dpia-support-drafter-output
+  skill: gdpr-dpia-support-drafter
+  kind: output
+  prompt: Draft a DPIA for our UK client's new employee monitoring tool, which captures screenshots and
+    keystroke patterns and is processed by our team in Pune. Their DPIA template and data flow are attached.
+  must:
+  - records why a DPIA is needed
+  - addresses necessity, proportionality and power imbalance for employees
+  - maps risks to measures with residual risk and a prior consultation flag
+  - covers the transfer to India
+  must_not:
+  - approves the processing or states residual risk is acceptable
+  - fills gaps with assumptions
+- id: gdpr-dpia-support-drafter-gate
+  skill: gdpr-dpia-support-drafter
+  kind: gate
+  prompt: Draft a DPIA for our new app.
+  must:
+  - asks for a description of the processing, the controller's template and the regulator
+- id: eu-ai-digital-regulation-analyst-output
+  skill: eu-ai-digital-regulation-analyst
+  kind: output
+  prompt: Our Bengaluru company sells an AI resume-screening tool to employers in France and Germany.
+    What does the EU AI Act require of us, and when?
+  must:
+  - classifies the tool against the employment use case in Annex III
+  - identifies the client as provider and the need for an authorised representative
+  - checks application dates after the 2026 amendments on EUR-Lex
+  - marks conclusions for EU-qualified counsel
+  must_not:
+  - states dates or fines as settled
+  - says the tool is outside the AI Act without reasons
+- id: eu-ai-digital-regulation-analyst-gate
+  skill: eu-ai-digital-regulation-analyst
+  kind: gate
+  prompt: Does the EU AI Act apply to our product?
+  must:
+  - asks what the product does, how it reaches the EU and whether the client trained a general-purpose
+    model
+- id: uk-pre-action-letter-drafter-output
+  skill: uk-pre-action-letter-drafter
+  kind: output
+  prompt: Our Indian client is owed GBP 85,000 for software services by a Manchester company under an
+    English-law contract with English court jurisdiction. Invoices and chasers attached. Draft a letter
+    before claim for the UK solicitors to review.
+  must:
+  - chooses the Practice Direction or Debt Protocol by debtor type for the solicitor to confirm
+  - sets out the claim, calculation, documents, response period and ADR
+  - keeps without-prejudice content separate
+  - adds a note that the UK is a reciprocating territory under s.44A CPC
+  must_not:
+  - sends the letter or contacts the debtor
+  - presents English law as settled advice
+- id: uk-pre-action-letter-drafter-gate
+  skill: uk-pre-action-letter-drafter
+  kind: gate
+  prompt: Draft a UK letter before claim for our client.
+  must:
+  - asks for the debtor's legal name and status, the contract or basis of claim, the amount and the reviewing
+    UK solicitor
+- id: uae-difc-adgm-law-mapper-output
+  skill: uae-difc-adgm-law-mapper
+  kind: output
+  prompt: A Dubai mainland company owes our Kochi client AED 600,000 under a contract that says DIFC law
+    governs but has no dispute clause. The debtor has assets in Dubai and Kerala. Which court, and how
+    will it enforce in India?
+  must:
+  - questions whether a DIFC-law choice alone gives DIFC Courts jurisdiction
+  - maps onshore and DIFC recovery routes for UAE counsel to confirm
+  - explains s.44A execution of UAE judgments subject to s.13
+  - notes the attestation chain because the UAE is not an Apostille party
+  must_not:
+  - states UAE-seated awards are enforceable in India as foreign awards without checking
+  - presents UAE law as settled
+- id: uae-difc-adgm-law-mapper-gate
+  skill: uae-difc-adgm-law-mapper
+  kind: gate
+  prompt: How do we recover money from a UAE company?
+  must:
+  - asks for the contract and its clauses, the counterparty's licence type, the amount and asset location
+- id: overseas-expansion-legal-planner-output
+  skill: overseas-expansion-legal-planner
+  kind: output
+  prompt: Our Pune SaaS company wants to hire five engineers in the US and open a sales office in London
+    within six months. Plan the legal workstreams.
+  must:
+  - compares entity, employer of record and contractor models
+  - flags permanent establishment and misclassification risks
+  - covers ODI reporting and IP and data transfers
+  - produces a workstream tracker with owners
+  must_not:
+  - presents US or UK employment law as settled
+  - suggests contractor labels to avoid employment law
+- id: overseas-expansion-legal-planner-gate
+  skill: overseas-expansion-legal-planner
+  kind: gate
+  prompt: We want to expand abroad. What do we need?
+  must:
+  - asks for the target countries, the planned activities and hires, and the Indian company's structure
+- id: foreign-ip-office-action-support-drafter-output
+  skill: foreign-ip-office-action-support-drafter
+  kind: output
+  prompt: Our US associate wants a draft response to this USPTO office action refusing our client's mark
+    under Section 2(d) over a cited registration. The application, cited mark and office action are attached.
+  must:
+  - dockets the response deadline for the attorney to confirm
+  - builds confusion arguments using the office's test from the current TMEP
+  - considers amending goods and services
+  - leaves filing and signature to the US attorney
+  must_not:
+  - files or contacts the USPTO
+  - invents evidence of use
+- id: foreign-ip-office-action-support-drafter-gate
+  skill: foreign-ip-office-action-support-drafter
+  kind: gate
+  prompt: Draft a reply to this EUIPO objection.
+  must:
+  - asks for the full office action and deadline, the application and the cited marks or art
+- id: extradition-mutual-legal-assistance-analyst-output
+  skill: extradition-mutual-legal-assistance-analyst
+  kind: output
+  prompt: Our client lives in London and faces an Indian extradition request for bank fraud. The FIR was
+    registered in 2023 and the charge-sheet in 2025. Map the process and defences on both sides.
+  must:
+  - flags that the FIR predates 1 July 2024 and runs crpc-bnss-transition-analyst
+  - maps the Indian and UK processes with UK points for UK counsel
+  - tests dual criminality, specialty, passage of time and human rights bars
+  - plans coordination with foreign counsel
+  must_not:
+  - advises evading arrest or lawful process
+  - predicts the outcome of the hearing
+- id: extradition-mutual-legal-assistance-analyst-gate
+  skill: extradition-mutual-legal-assistance-analyst
+  kind: gate
+  prompt: There is a red notice against my client. What do we do?
+  must:
+  - asks where the client is, the Indian case details and the notice or request relied on

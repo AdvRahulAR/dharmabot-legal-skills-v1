@@ -1,0 +1,20 @@
+{
+  "name": "dharmabot",
+  "interface": {
+    "displayName": "Dharmabot Legal Skills"
+  },
+  "plugins": [
+    {
+      "name": "dharmabot-legal-skills",
+      "source": {
+        "source": "local",
+        "path": "./plugins/dharmabot-legal-skills"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

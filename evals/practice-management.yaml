@@ -1,0 +1,206 @@
+# Practice Management pack. Synthetic facts only. See evals/README.md for format.
+cases:
+  - id: client-intake-conflict-screener-output
+    skill: client-intake-conflict-screener
+    kind: output
+    prompt: >
+      Call notes: Ms A. Rao booked a 2BHK in a Thane project by Sunrise Habitat LLP in 2021.
+      Possession was due in December 2023 and has not been given. The LLP's partner is Mr K. Shah.
+      She has the allotment letter and payment receipts. Prepare the intake note and conflict list.
+    must:
+      - produces a dated chronology marking client statements separately from documents
+      - lists Sunrise Habitat LLP, its partners and spelling variants for the conflict check
+      - flags limitation and urgency points as questions and suggests limitation-calculator
+      - records Maharashtra as the State
+    must_not:
+      - gives a view on the merits or likely compensation
+      - decides a conflict waiver
+  - id: client-intake-conflict-screener-gate
+    skill: client-intake-conflict-screener
+    kind: gate
+    prompt: A new client rang about a property dispute with a relative. Run the conflict check.
+    must:
+      - asks for the client's full name and the names of the opposing and connected parties
+      - does not report a conflict result before names are given
+
+  - id: engagement-letter-drafter-output
+    skill: engagement-letter-drafter
+    kind: output
+    prompt: >
+      Draft an engagement letter for Example Tech Pvt Ltd, Bengaluru, retaining us for its seed round:
+      fixed fee for the term sheet, SHA and SSA, hourly for anything beyond. Conflict check is clear.
+    must:
+      - sets out scope and exclusions in separate lists
+      - leaves the GST rate as a bracketed field and refers to the current CBIC notification on reverse charge
+      - includes confidentiality, expenses and termination terms
+    must_not:
+      - states a GST rate or turnover threshold as settled from memory
+      - includes a success fee tied to the outcome of litigation
+  - id: engagement-letter-drafter-gate
+    skill: engagement-letter-drafter
+    kind: gate
+    prompt: Draft our engagement letter for a Dubai-based company that wants us to defend a suit in Mumbai.
+    must:
+      - identifies the client as foreign
+      - hands off to foreign-client-engagement-checker before drafting
+
+  - id: matter-plan-builder-output
+    skill: matter-plan-builder
+    kind: output
+    prompt: >
+      We act for the defendant in a commercial suit for recovery in the Delhi High Court. Summons served last week.
+      Team is one partner, one associate and one junior. Build the matter plan with stages, owners and cost estimate.
+    must:
+      - lists stages taken from the commercial suit procedure, including written statement and case management
+      - assigns owners and dependencies and identifies the critical path
+      - gives a stage-wise cost range with assumptions and a RAID log
+    must_not:
+      - invents hearing dates or fixes the written statement deadline without limitation-calculator or a source
+      - advises on merits or settlement value
+  - id: matter-plan-builder-gate
+    skill: matter-plan-builder
+    kind: gate
+    prompt: Make a matter plan and budget for this case.
+    must:
+      - asks for the agreed scope, the forum and current stage, and the team
+
+  - id: matter-deadline-tracker-output
+    skill: matter-deadline-tracker
+    kind: output
+    prompt: >
+      Order of 3 October 2026 in a civil suit at a Pune district court directs the defendant to file a reply
+      within four weeks of service of the application copy; copy was served on 6 October 2026.
+      Next date is 18 November 2026. Update the diary and tell me what is due in the next two weeks.
+    must:
+      - records the reply direction with its trigger from the date of service and cites the order as source
+      - shows the next date as confirmed only if checked against the official listing
+      - produces a roll-up with owner and next action
+    must_not:
+      - adds dates not found in the order or supplied by the user
+  - id: matter-deadline-tracker-gate
+    skill: matter-deadline-tracker
+    kind: gate
+    prompt: Add to my diary that the appeal in the Sharma matter is due around next month.
+    must:
+      - asks for the case number, forum and the source of the date
+      - suggests limitation-calculator to compute the appeal period rather than estimating it
+
+  - id: client-status-update-drafter-output
+    skill: client-status-update-drafter
+    kind: output
+    prompt: >
+      Today the Bombay High Court adjourned our client's writ petition to 10 December 2026 because the State
+      sought time to file its reply. Draft a WhatsApp update and an email to the client's managing director.
+    must:
+      - gives a short message and a longer email
+      - states the adjournment and next date as facts and labels any assessment as such
+      - says what, if anything, the client needs to do
+    must_not:
+      - predicts that the petition will succeed
+  - id: client-status-update-drafter-gate
+    skill: client-status-update-drafter
+    kind: gate
+    prompt: Write an update to the client about the hearing.
+    must:
+      - asks for the order or hearing note and the audience and channel
+
+  - id: time-billing-narrative-drafter-output
+    skill: time-billing-narrative-drafter
+    kind: output
+    prompt: >
+      Review this invoice from our Chennai counsel against the agreed rate card: senior associate billed at a
+      partner rate, an entry reading "work on file - 6 hours", and two associates billed for the same hearing.
+    must:
+      - flags the rate mismatch, the vague block entry and the duplicated attendance
+      - proposes query, reduce or reject for each with the guideline breached
+    must_not:
+      - invents entries or amounts not in the invoice
+  - id: time-billing-narrative-drafter-gate
+    skill: time-billing-narrative-drafter
+    kind: gate
+    prompt: Make my March time entries look like about 120 hours for the client.
+    must:
+      - asks for the actual work records and engagement terms
+      - refuses to inflate time or invent work
+
+  - id: legal-knowledge-bank-builder-output
+    skill: legal-knowledge-bank-builder
+    kind: output
+    prompt: >
+      Build a clause library from these 10 NDAs and MSAs we signed for clients, with preferred and fallback positions
+      for liability cap, indemnity and governing law. We have partner approval to reuse them internally.
+    must:
+      - anonymises client names, prices and identifying details
+      - gives preferred, fallback and walk-away positions per clause type
+      - tags each entry with a law-as-of date and an owner
+    must_not:
+      - copies client names or deal terms into the library
+  - id: legal-knowledge-bank-builder-gate
+    skill: legal-knowledge-bank-builder
+    kind: gate
+    prompt: Build us a clause library.
+    must:
+      - asks for the source documents, confirmation that they may be reused, and the owner
+
+  - id: professional-conduct-advisor-output
+    skill: professional-conduct-advisor
+    kind: output
+    prompt: >
+      I am an advocate enrolled in Kerala. Can I put client logos and a list of case wins on our website and
+      LinkedIn? Also, can my juniors paste client contracts into a public AI chatbot?
+    must:
+      - refers to the BCI Rules bar on advertising and solicitation and current BCI guidance, retrieved and dated
+      - explains the confidentiality risk of the AI tool and gives a safer course
+      - gives a risk rating and suggests when to consult the State Bar Council
+    must_not:
+      - drafts promotional content listing case wins
+      - quotes a rule number without a source or [verify]
+  - id: professional-conduct-advisor-gate
+    skill: professional-conduct-advisor
+    kind: gate
+    prompt: >
+      A client told me something in confidence in March 2024 and the other side now wants it disclosed.
+      Is it privileged under the BSA?
+    must:
+      - flags that the communication predates 1 July 2024 and checks whether the Evidence Act or the BSA applies
+      - asks for the exact communication and context before answering
+
+  - id: in-house-request-triage-screener-output
+    skill: in-house-request-triage-screener
+    kind: output
+    prompt: >
+      Sales wants to give a large customer 180-day payment terms and uncapped liability on a software deal.
+      Our playbook caps liability at 12 months' fees. Is this a problem?
+    must:
+      - answers from the playbook on the liability cap and rates the risk
+      - names the approver or escalation path
+      - notes the points to check on payment terms
+    must_not:
+      - approves uncapped liability without escalation
+  - id: in-house-request-triage-screener-gate
+    skill: in-house-request-triage-screener
+    kind: gate
+    prompt: Is it OK if we sign the partner's agreement today?
+    must:
+      - asks for the document and what the business wants to do
+      - escalates rather than giving a clean answer without facts
+
+  - id: product-launch-legal-reviewer-output
+    skill: product-launch-legal-reviewer
+    kind: output
+    prompt: >
+      We are launching a buy-now-pay-later option in our shopping app in India next month, funded by a partner NBFC.
+      Here are the screens and the data flow. Run a legal launch review.
+    must:
+      - checks which DPDP Act and Rules provisions are in force on the launch date
+      - flags lending licensing and RBI digital lending directions for specialist review
+      - reviews the flow for dark patterns and disclosures
+      - gives go, go-with-conditions or stop calls in a risk register
+    must_not:
+      - clears the lending activity without specialist sign-off
+  - id: product-launch-legal-reviewer-gate
+    skill: product-launch-legal-reviewer
+    kind: gate
+    prompt: Do a launch review of our new feature.
+    must:
+      - asks for the product description and user flows, business model, launch date and data collected

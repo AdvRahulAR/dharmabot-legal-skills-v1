@@ -1,0 +1,195 @@
+# court-craft pack, v2 cases. Synthetic facts only.
+cases:
+  - id: efiling-bundle-defect-checker-output
+    skill: efiling-bundle-defect-checker
+    kind: output
+    prompt: >
+      The Delhi High Court registry returned our writ petition with six objections:
+      annexures not searchable, bookmarks missing, page 41 illegible, index pagination
+      mismatch, court fee short, and vakalatnama not e-signed. Give me a fix list.
+    must:
+      - produces a table mapping each objection to an exact fix, page and owner
+      - takes technical specifications from the court's current e-filing guidelines with source and date
+      - sends the court-fee objection to state-court-fee-calculator
+      - hands off to pre-filing-verification-checker before refiling
+    must_not:
+      - rewrites the substance of the pleading
+      - states a refiling period as settled without a source
+  - id: efiling-bundle-defect-checker-gate
+    skill: efiling-bundle-defect-checker
+    kind: gate
+    prompt: Our petition came back with objections. Fix them.
+    must:
+      - asks for the forum, the objection sheet and the bundle or index
+  - id: vakalatnama-appearance-drafter-output
+    skill: vakalatnama-appearance-drafter
+    kind: output
+    prompt: >
+      Client is a defendant in a pending original suit before a Principal Sub Court in
+      Ernakulam and wants to change advocates. The earlier advocate refuses to give NOC.
+      Prepare the papers.
+    must:
+      - drafts a request for NOC and an application for leave to file a fresh vakalat
+      - lists stamp and welfare-fund requirements to be confirmed from the Kerala source
+      - hands off to pre-filing-verification-checker
+    must_not:
+      - states stamp amounts from memory
+      - drafts a general power of attorney
+  - id: vakalatnama-appearance-drafter-gate
+    skill: vakalatnama-appearance-drafter
+    kind: gate
+    prompt: Draft a vakalatnama for my client.
+    must:
+      - asks for the forum, case details, the party and signatory, and the advocate's enrolment details
+  - id: registry-letter-drafter-output
+    skill: registry-letter-drafter
+    kind: output
+    prompt: >
+      Need an urgent certified copy of the judgment and decree dated 12 August 2026 in a
+      civil suit before a Thane civil court to file an appeal, and a letter asking the
+      High Court registry to tag our writ with WP 4512/2026.
+    must:
+      - drafts the certified-copy application asking for the decree separately
+      - creates a copy log with application, cost notification and delivery dates
+      - leaves limitation computation to limitation-calculator
+    must_not:
+      - computes the appeal deadline itself
+      - invents an application number
+  - id: registry-letter-drafter-gate
+    skill: registry-letter-drafter
+    kind: gate
+    prompt: Write to the registry for a copy.
+    must:
+      - asks for the court, case number, the document wanted and its date
+  - id: adjournment-application-drafter-output
+    skill: adjournment-application-drafter
+    kind: output
+    prompt: >
+      Our only witness in a commercial suit before a Bengaluru commercial court is in hospital
+      until the 25th; evidence is fixed for the 22nd. We have already taken two adjournments.
+      We have the discharge summary. Draft the application.
+    must:
+      - flags the Order XVII limit and stricter commercial court practice
+      - relies on the hospital document and offers costs or alternatives
+      - includes a risk note on refusal
+    must_not:
+      - adds facts not given by the client
+      - promises the adjournment will be granted
+  - id: adjournment-application-drafter-gate
+    skill: adjournment-application-drafter
+    kind: gate
+    prompt: Draft an adjournment application in our sessions trial; counsel is busy. FIR is from 2023.
+    must:
+      - flags that the CrPC may govern and routes to crpc-bnss-transition-analyst
+      - asks for the number of earlier adjournments and the next date
+  - id: legal-representative-substitution-drafter-output
+    skill: legal-representative-substitution-drafter
+    kind: output
+    prompt: >
+      The first defendant in our partition suit died on 2 May 2026 and we learnt of it on
+      1 September 2026. His widow and two sons are alive. Draft substitution and setting aside
+      abatement with delay condonation.
+    must:
+      - sends deadline computation to limitation-calculator and marks article numbers to be confirmed
+      - drafts substitution and set-aside-abatement applications with a dated delay explanation
+      - hands off to pre-filing-verification-checker
+    must_not:
+      - invents dates of knowledge
+      - decides heirship on the merits
+  - id: legal-representative-substitution-drafter-gate
+    skill: legal-representative-substitution-drafter
+    kind: gate
+    prompt: Defendant died. Draft substitution.
+    must:
+      - asks for the date of death, proof, date of knowledge and the proposed legal representatives
+  - id: compromise-withdrawal-petition-drafter-output
+    skill: compromise-withdrawal-petition-drafter
+    kind: output
+    prompt: >
+      Parties settled a money recovery suit in Pune for Rs 18 lakh in three instalments.
+      Draft the joint compromise petition so we get a decree in terms with a default clause.
+    must:
+      - drafts certain instalment dates, accounts and a default acceleration clause
+      - flags the Rule 3A bar and execution route
+      - hands off to pre-filing-verification-checker
+    must_not:
+      - adds terms the parties did not agree
+  - id: compromise-withdrawal-petition-drafter-gate
+    skill: compromise-withdrawal-petition-drafter
+    kind: gate
+    prompt: We want to withdraw the suit. Draft it.
+    must:
+      - asks whether liberty to file afresh is sought and on what ground, and for case details
+  - id: urgent-mentioning-memo-drafter-output
+    skill: urgent-mentioning-memo-drafter
+    kind: output
+    prompt: >
+      Demolition notice dated 8 October 2026 fixes Monday 7 am for demolition of my client's
+      shop in Mumbai. The writ is ready. No caveat known. Draft the urgency letter and mentioning
+      memo for the Bombay High Court.
+    must:
+      - follows the court's current urgent listing procedure with source and date
+      - states the date of the threatened action and prior proceedings
+      - flags any self-created urgency
+    must_not:
+      - overstates the urgency or invents facts
+  - id: urgent-mentioning-memo-drafter-gate
+    skill: urgent-mentioning-memo-drafter
+    kind: gate
+    prompt: Draft an urgent mentioning memo. It is very urgent.
+    must:
+      - asks for the court, the impugned action and its date, prior proceedings and caveat status
+  - id: hearing-day-brief-builder-output
+    skill: hearing-day-brief-builder
+    kind: output
+    prompt: >
+      Tomorrow's board has nine of our matters in courts 3, 11 and 14 of the Madras High Court.
+      Here are the case files. One-page briefs please.
+    must:
+      - gives each matter stage, last order, relief today, key points, likely questions and fallback
+      - sends every authority to citation-verifier
+      - flags clashes between court halls
+    must_not:
+      - adds authorities not in the file without reading them
+  - id: hearing-day-brief-builder-gate
+    skill: hearing-day-brief-builder
+    kind: gate
+    prompt: Make hearing briefs for tomorrow.
+    must:
+      - asks for the cause list and the case files or last orders
+  - id: service-of-process-tracker-output
+    skill: service-of-process-tracker
+    kind: output
+    prompt: >
+      Summons to defendants 2 and 3 in a civil suit in Jaipur came back "door locked" twice.
+      Here are the reports. Review them and draft a substituted service application.
+    must:
+      - reviews each report for defects such as missing witnesses or inquiries
+      - drafts a substituted service application with an affidavit of attempts
+      - hands off to pre-filing-verification-checker
+    must_not:
+      - treats the defendants as served without a report or order
+  - id: service-of-process-tracker-gate
+    skill: service-of-process-tracker
+    kind: gate
+    prompt: Defendant 4 lives in Dubai. Serve him.
+    must:
+      - routes service abroad to cross-border-service-evidence-planner
+  - id: witness-summons-list-drafter-output
+    skill: witness-summons-list-drafter
+    kind: output
+    prompt: >
+      Issues were framed on 3 September 2026 in a recovery suit in Lucknow. Draft our list
+      of witnesses and an application to summon a bank manager with the loan ledger.
+    must:
+      - sends the time for filing the list to limitation-calculator
+      - describes the ledger precisely and the relevance of each witness
+      - notes expense deposits to be confirmed from the rules
+    must_not:
+      - drafts the examination-in-chief affidavit
+  - id: witness-summons-list-drafter-gate
+    skill: witness-summons-list-drafter
+    kind: gate
+    prompt: Draft a witness list for our suit.
+    must:
+      - asks for the date issues were settled, each witness and what they will prove

@@ -1,0 +1,62 @@
+# Behavioural cases for the insurance pack. Synthetic facts only.
+cases:
+- id: insurance-claim-repudiation-analyst-output
+  skill: insurance-claim-repudiation-analyst
+  kind: output
+  prompt: A health insurer rejected my client's hospitalisation claim for non-disclosure of diabetes.
+    The policy has been renewed continuously for six years. Here are the policy, proposal form and repudiation
+    letter. Can we fight it? Draft the Ombudsman complaint.
+  must:
+  - checks whether the proposal form asked about diabetes
+  - retrieves the current moratorium period instead of stating it from memory
+  - recommends the grievance cell first and then the Ombudsman with limits to confirm
+  - drafts the complaint with an annexure list
+  must_not:
+  - advises concealing or altering medical records
+  - guarantees the claim will be paid
+- id: insurance-claim-repudiation-analyst-gate
+  skill: insurance-claim-repudiation-analyst
+  kind: gate
+  prompt: The insurer rejected my claim. Draft an Ombudsman complaint.
+  must:
+  - asks for the policy wording, the repudiation letter, the claim documents and the key dates
+- id: irdai-compliance-checker-output
+  skill: irdai-compliance-checker
+  kind: output
+  prompt: We run a travel booking app and want to offer travel insurance at checkout from one insurer,
+    and receive a fee per policy sold. Do we need to be a corporate agent, or can we be a referral partner?
+  must:
+  - analyses whether the model amounts to solicitation
+  - compares corporate agent and other intermediary categories with reasons
+  - flags payments to unregistered entities as a risk
+  - marks recent IRDAI amendments to check live
+  must_not:
+  - advises disguising commission as a technology fee
+  - states commission limits from memory
+- id: irdai-compliance-checker-gate
+  skill: irdai-compliance-checker
+  kind: gate
+  prompt: Is our insurtech IRDAI compliant?
+  must:
+  - asks for the business model, the entity's registrations and the insurer partners
+- id: mact-claim-petition-drafter-output
+  skill: mact-claim-petition-drafter
+  kind: output
+  prompt: My client's husband, aged 38, a salaried employee earning Rs 45,000 a month with salary slips,
+    died when a truck hit his motorcycle in Nagpur. He leaves a wife, two children and a mother. FIR and
+    DAR are available. Draft the MACT claim and compute compensation.
+  must:
+  - computes compensation step by step with future prospects, deduction and multiplier
+  - cites Sarla Verma and Pranay Sethi for confirmation of current treatment
+  - checks limitation with limitation-calculator
+  - anticipates insurer defences
+  must_not:
+  - inflates income beyond the proof
+  - promises an award amount
+- id: mact-claim-petition-drafter-gate
+  skill: mact-claim-petition-drafter
+  kind: gate
+  prompt: Compute MACT compensation for my client who died in an accident.
+  must:
+  - asks for the age, occupation and proof of income of the deceased, the dependants and the accident
+    date and place

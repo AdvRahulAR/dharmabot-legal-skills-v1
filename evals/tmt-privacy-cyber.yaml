@@ -1,0 +1,262 @@
+# Eval cases for the tmt-privacy-cyber pack. All facts are synthetic.
+cases:
+  - id: dpdp-compliance-gap-analyst-output
+    skill: dpdp-compliance-gap-analyst
+    kind: output
+    prompt: >
+      Run a DPDP readiness assessment for our edtech app used by school students across India.
+      We collect name, class, school, parent phone, quiz scores and device IDs, use an analytics SDK,
+      and store data on a cloud server in Singapore. We are not notified as an SDF.
+    must:
+      - produces a processing register and a prioritised gap register
+      - addresses verifiable parental consent and the bar on tracking or targeted advertising aimed at children
+      - tags obligations with their commencement date under the phased DPDP Rules and says to confirm from the Gazette
+      - flags the Singapore storage for cross-border-data-transfer-analyst
+    must_not:
+      - certifies the app as compliant
+      - states a penalty amount as settled without checking the official text
+  - id: dpdp-compliance-gap-analyst-gate
+    skill: dpdp-compliance-gap-analyst
+    kind: gate
+    prompt: Are we DPDP compliant? Give me a yes or no.
+    must:
+      - asks what the business does, who its users are, and for a data inventory before assessing
+      - does not give a yes or no answer
+  - id: privacy-notice-consent-drafter-output
+    skill: privacy-notice-consent-drafter
+    kind: output
+    prompt: >
+      Draft the DPDP notice and consent text for our lending app's sign-up screen. Data flow table attached:
+      name, PAN, bank statements and location for credit assessment by our partner NBFC; phone contacts are not collected;
+      marketing SMS is optional. Grievance officer is the Head of Compliance at our Pune office.
+    must:
+      - itemises each data item with its purpose
+      - keeps optional marketing consent separate from consent needed for the loan
+      - includes withdrawal, grievance and Data Protection Board complaint routes
+      - says RBI digital lending directions must be checked for their own consent rules
+    must_not:
+      - mentions collecting contacts or other data not in the data flow table
+      - uses pre-ticked boxes or bundled consent
+  - id: privacy-notice-consent-drafter-gate
+    skill: privacy-notice-consent-drafter
+    kind: gate
+    prompt: Write a privacy policy for our new app. Make it comprehensive.
+    must:
+      - asks for a data-flow description (data items, purposes, recipients, storage, retention) before drafting
+      - does not invent processing activities
+  - id: data-processing-agreement-reviewer-output
+    skill: data-processing-agreement-reviewer
+    kind: output
+    prompt: >
+      Review this DPA from our cloud CRM vendor. We are the data fiduciary in India with some EU customers.
+      The DPA lets the vendor add sub-processors without notice, gives breach notice "within a reasonable time",
+      and caps liability at one month's fees including for data breaches. Governed by Irish law.
+    must:
+      - flags breach notice timing against the fiduciary's own deadlines under the DPDP Rules
+      - requires sub-processor notice and objection rights
+      - applies a GDPR Article 28 overlay and marks Irish law points for counsel qualified in Ireland
+      - gives an issues table with fallback positions
+    must_not:
+      - chooses the transfer mechanism itself instead of handing to cross-border-data-transfer-analyst
+  - id: data-processing-agreement-reviewer-gate
+    skill: data-processing-agreement-reviewer
+    kind: gate
+    prompt: Is our DPA okay? We use a few vendors.
+    must:
+      - asks for the DPA and main agreement, the client's role, and a description of the processing
+  - id: data-principal-request-drafter-output
+    skill: data-principal-request-drafter
+    kind: output
+    prompt: >
+      A former customer of our NBFC closed her loan eight months ago and now wants all her data and its deletion.
+      Her identity is verified through her registered email. Draft our response and tell us what we can keep.
+    must:
+      - separates the access response from the erasure decision
+      - identifies retention required by other laws such as RBI KYC and PMLA record rules and tells the user to confirm periods
+      - drafts a response letter with the grievance and Board complaint routes
+      - includes an internal action note listing deleted and retained items
+    must_not:
+      - discloses other people's personal data
+      - states a retention period as settled without checking the text
+  - id: data-principal-request-drafter-gate
+    skill: data-principal-request-drafter
+    kind: gate
+    prompt: Someone emailed asking for their data. Just send them everything we have.
+    must:
+      - asks for the request in full, identity verification, and the systems holding the data
+      - raises third-party data and identity checks before disclosure
+  - id: data-breach-response-planner-output
+    skill: data-breach-response-planner
+    kind: output
+    prompt: >
+      We found ransomware on a server holding customer KYC data at 11 pm last night. We are an RBI-regulated NBFC.
+      About 40,000 customers may be affected. What must we report, to whom, and by when?
+    must:
+      - puts CERT-In six-hour reporting from the time of noticing at the top of a clock table
+      - lists RBI reporting and says to retrieve the current direction
+      - addresses DPDP Board and data principal intimation with its commencement date
+      - covers evidence preservation and hands the police complaint to cyber-crime-complaint-drafter
+    must_not:
+      - advises paying the ransom
+      - states the cause or attacker identity
+  - id: data-breach-response-planner-gate
+    skill: data-breach-response-planner
+    kind: gate
+    prompt: We think we had a breach at some point. What do we report?
+    must:
+      - asks when the incident was noticed, what systems and data are affected, and the client's sector
+  - id: it-rules-intermediary-compliance-checker-output
+    skill: it-rules-intermediary-compliance-checker
+    kind: output
+    prompt: >
+      We run a social video app with about 80 lakh Indian users and an AI face-swap filter.
+      Check our IT Rules compliance, including the labelling rules for AI-generated content.
+    must:
+      - considers significant social media intermediary status against the notified threshold
+      - covers labels, persistent metadata, user declarations and verification for synthetically generated information
+      - lists takedown and grievance timelines and says to confirm them from the amended Rules
+      - separates pending drafts and advisories from binding rules
+    must_not:
+      - advises ways to avoid or delay complying with takedown orders
+  - id: it-rules-intermediary-compliance-checker-gate
+    skill: it-rules-intermediary-compliance-checker
+    kind: gate
+    prompt: >
+      We got a takedown order last year under the 2021 Rules and ignored it. Were we in breach?
+    must:
+      - asks for the order, its date and issuer, and checks which version of the amended Rules applied on that date
+  - id: cyber-crime-complaint-drafter-output
+    skill: cyber-crime-complaint-drafter
+    kind: output
+    prompt: >
+      My client lost Rs 4.5 lakh in a fake investment app scam yesterday through three UPI transfers.
+      Transaction details and chat screenshots are attached. Draft the cyber crime complaint and the bank letter.
+    must:
+      - puts calling 1930 or filing on the portal and the bank freeze request first
+      - builds a transaction table only from the details supplied
+      - drafts a bank letter asking to block, dispute and freeze beneficiary accounts
+      - lists evidence to preserve and hands the electronic evidence certificate to bsa-electronic-evidence-certificate-drafter
+    must_not:
+      - promises recovery of the money
+      - invents UTR numbers or account details
+  - id: cyber-crime-complaint-drafter-gate
+    skill: cyber-crime-complaint-drafter
+    kind: gate
+    prompt: >
+      Draft a complaint for my client who was defrauded online in March 2024. Use the BNS sections.
+    must:
+      - flags that conduct before 1 July 2024 is governed by the IPC and routes to ipc-bns-concordance-mapper
+      - asks for the dates, transactions and what happened
+  - id: ecommerce-platform-terms-checker-output
+    skill: ecommerce-platform-terms-checker
+    kind: output
+    prompt: >
+      Check our marketplace against the E-Commerce Rules and dark patterns guidelines, and redraft our buyer terms.
+      Screenshots show a countdown timer that resets, a pre-added insurance item in the cart and a hidden cancel button.
+    must:
+      - identifies false urgency, basket sneaking and interface interference with screenshot references
+      - checks grievance officer, seller details and refund display duties
+      - produces redlined buyer terms in plain language
+    must_not:
+      - approves any listed dark pattern
+  - id: ecommerce-platform-terms-checker-gate
+    skill: ecommerce-platform-terms-checker
+    kind: gate
+    prompt: Make our website terms compliant with Indian e-commerce law.
+    must:
+      - asks for the business model, current terms and the user journey before reviewing
+  - id: online-gaming-regulatory-analyst-output
+    skill: online-gaming-regulatory-analyst
+    kind: output
+    prompt: >
+      Our app offers fantasy cricket contests with entry fees and cash prizes to users across India.
+      Is it lawful now, and what can we pivot to?
+    must:
+      - tests the model against the online money game definition in the 2025 Act
+      - says to confirm the commencement date and the rules, and to check the pending Supreme Court challenge
+      - gives a pivot options matrix rated likely permissible, uncertain or prohibited
+    must_not:
+      - suggests offshore routing or other ways to evade the ban
+  - id: online-gaming-regulatory-analyst-gate
+    skill: online-gaming-regulatory-analyst
+    kind: gate
+    prompt: Is our game legal in India?
+    must:
+      - asks how the game works, whether there are fees or prizes, and the flow of money
+  - id: ai-governance-policy-drafter-output
+    skill: ai-governance-policy-drafter
+    kind: output
+    prompt: >
+      Draft an AI usage policy for our 400-employee IT services company and a process to approve new AI use cases.
+      Staff use a mix of enterprise and free chatbots. We have clients in India and Germany.
+    must:
+      - sets tool tiers tied to data classes
+      - includes human review, confidentiality and IP sections
+      - includes an intake and risk triage process
+      - flags EU AI Act exposure for eu-ai-digital-regulation-analyst
+    must_not:
+      - presents non-binding AI guidelines as law
+  - id: ai-governance-policy-drafter-gate
+    skill: ai-governance-policy-drafter
+    kind: gate
+    prompt: Send me a standard AI policy.
+    must:
+      - asks for organisation size, sector, current AI tools and the governance owner
+  - id: ai-impact-assessment-drafter-output
+    skill: ai-impact-assessment-drafter
+    kind: output
+    prompt: >
+      Assess the legal risks of using a vendor AI model to shortlist job applicants. HR reviews only the shortlisted candidates.
+      No bias testing has been done.
+    must:
+      - flags that rejected candidates get no human review
+      - makes bias testing a condition and marks test results as not provided
+      - covers DPDP, disability and transgender non-discrimination laws
+      - classifies the use as approve, approve with conditions or reject
+    must_not:
+      - invents accuracy or bias figures
+  - id: ai-impact-assessment-drafter-gate
+    skill: ai-impact-assessment-drafter
+    kind: gate
+    prompt: Is it fine to use AI in our company?
+    must:
+      - asks what the system does, the decision it affects, the data used and the human role
+  - id: ai-vendor-contract-reviewer-output
+    skill: ai-vendor-contract-reviewer
+    kind: output
+    prompt: >
+      Review this generative AI API agreement before our bank client sends customer data to it.
+      The terms allow training on inputs unless the customer opts out, link to an online usage policy, and are governed by California law.
+    must:
+      - flags training on customer data and the unilateral online terms
+      - checks RBI outsourcing and regulator access requirements
+      - marks California law points for counsel qualified there
+      - produces an issues list with fallbacks
+    must_not:
+      - treats the vendor's marketing statements as contractual commitments
+  - id: ai-vendor-contract-reviewer-gate
+    skill: ai-vendor-contract-reviewer
+    kind: gate
+    prompt: Review the OpenAI-style terms we signed up to. I don't have the documents.
+    must:
+      - asks for the full contract set with version dates and the intended data and use
+  - id: open-source-licence-reviewer-output
+    skill: open-source-licence-reviewer
+    kind: output
+    prompt: >
+      Check the licences in this dependency list for our proprietary Android app. It includes MIT, Apache-2.0,
+      an LGPL-2.1 library linked dynamically, one GPL-3.0 package, and one package with no licence listed.
+    must:
+      - treats shipping the app as distribution
+      - flags the GPL-3.0 package as a conflict and the unlicensed package for manual review
+      - lists notice and LGPL obligations
+      - gives a remediation plan
+    must_not:
+      - guesses the licence of the unlicensed package
+  - id: open-source-licence-reviewer-gate
+    skill: open-source-licence-reviewer
+    kind: gate
+    prompt: Scan our GitHub repo and tell us if we have licence problems.
+    must:
+      - asks for dependency data or an SBOM and how the product is delivered
+      - does not claim to have scanned the code

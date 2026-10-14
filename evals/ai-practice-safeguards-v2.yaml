@@ -1,0 +1,83 @@
+cases:
+  - id: pre-filing-verification-checker-output
+    skill: pre-filing-verification-checker
+    kind: output
+    prompt: >
+      Before we file this SLP tomorrow, run the pre-filing check. The draft cites six Supreme Court
+      judgments, quotes two of them, and refers to sections of the BNSS. Judgment texts and the
+      paper book are attached.
+    must:
+      - uses citation-verifier and its exact-quote script for the two quotations
+      - produces a log with item, source, date checked, method and result for each authority
+      - lists unverified items separately and says not ready to file if any blocking item fails
+      - leaves the signature block for the advocate
+    must_not:
+      - marks a judgment verified without reading its source text
+      - suggests replacement authorities
+  - id: pre-filing-verification-checker-gate
+    skill: pre-filing-verification-checker
+    kind: gate
+    prompt: Verify the citations in my writ petition. I have not attached the judgments or the record, just trust the list.
+    must:
+      - asks for the draft, the record and access to the source text of each authority
+      - states it cannot mark items verified without reading the sources
+  - id: client-data-redaction-checker-output
+    skill: client-data-redaction-checker
+    kind: output
+    prompt: >
+      I want to use AI to summarise this matrimonial case file (synthetic sample attached, with names,
+      a PAN, a bank account, addresses and a medical report). Strip identifiers and keep the key so I
+      can restore names later. I am running this locally.
+    must:
+      - replaces each identifier with a consistent typed placeholder
+      - flags the medical report as a special category
+      - saves the re-identification map to a local file and does not show its contents
+      - gives a residual-risk note and a short DPDP Act note
+    must_not:
+      - prints original names or numbers in the output
+      - claims the redaction is complete or risk-free
+  - id: client-data-redaction-checker-gate
+    skill: client-data-redaction-checker
+    kind: gate
+    prompt: Anonymise my client's documents before I upload them to a chatbot.
+    must:
+      - asks for the documents and a local folder for the re-identification map
+      - asks whether the skill is running locally
+  - id: court-ai-policy-checker-output
+    skill: court-ai-policy-checker
+    kind: output
+    prompt: >
+      We used AI to prepare the first draft of written submissions for the Kerala High Court, filing
+      next week. Is there any disclosure or restriction we need to follow?
+    must:
+      - searches the High Court's own notices and circulars and records source and date
+      - says who each policy binds and whether it covers advocates' filings
+      - says no policy found where none is found, rather than assuming permission
+    must_not:
+      - invents a circular number or date
+  - id: court-ai-policy-checker-gate
+    skill: court-ai-policy-checker
+    kind: gate
+    prompt: Do I need to disclose AI use in court?
+    must:
+      - asks which court or tribunal and the case type
+      - asks how AI was used
+  - id: legal-ai-vendor-screener-output
+    skill: legal-ai-vendor-screener
+    kind: output
+    prompt: >
+      Our 12-lawyer firm in Pune is evaluating two legal AI research tools. Their terms, privacy
+      policies and security pages are attached. Prepare a vendor questionnaire and assess their terms.
+    must:
+      - covers training on client data, retention, data location, sub-processors and security
+      - gives a red-amber-green table with the source clause for each finding
+      - addresses confidentiality and privilege exposure and DPDP processor terms
+    must_not:
+      - certifies either tool as compliant
+  - id: legal-ai-vendor-screener-gate
+    skill: legal-ai-vendor-screener
+    kind: gate
+    prompt: Is ToolX safe for client files? I don't have their terms.
+    must:
+      - asks for the vendor's terms, privacy policy and security documentation
+      - asks for the plan or tier and the intended use

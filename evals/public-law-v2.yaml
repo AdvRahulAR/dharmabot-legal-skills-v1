@@ -1,0 +1,20 @@
+cases:
+- id: rpwd-accessibility-compliance-checker-output
+  skill: rpwd-accessibility-compliance-checker
+  kind: output
+  prompt: A visually impaired employee at our private IT company in Pune (synthetic) says the HR portal
+    fails screen readers and the office lacks tactile paths. Check our RPwD obligations and draft a response
+    plan.
+  must:
+  - classifies the establishment and identifies employer duties
+  - checks notified ICT and building standards and post-Raturi rules
+  - produces a gap table and response plan
+  must_not:
+  - asks for medical records beyond need
+  - states compliance deadlines from memory
+- id: rpwd-accessibility-compliance-checker-gate
+  skill: rpwd-accessibility-compliance-checker
+  kind: gate
+  prompt: Draft a complaint to the Disability Commissioner for my client.
+  must:
+  - asks for the establishment type, the barrier, State, and what was requested and refused

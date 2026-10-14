@@ -1,0 +1,40 @@
+cases:
+  - id: litigation-portfolio-tracker-output
+    skill: litigation-portfolio-tracker
+    kind: output
+    prompt: >
+      Legal head of a listed company here. Consolidate our 230 cases (synthetic list) across consumer
+      forums, labour courts and High Courts into a portfolio report for the audit committee.
+    must:
+      - builds one row per matter with forum, stage, amount, next date and counsel assessment
+      - maps matters to provision, contingent liability or neither under Ind AS 37 for finance to decide
+      - flags possible listed-company disclosure items
+    must_not:
+      - assigns a probability counsel has not given
+  - id: litigation-portfolio-tracker-gate
+    skill: litigation-portfolio-tracker
+    kind: gate
+    prompt: Give the board a litigation exposure number for all our cases.
+    must:
+      - asks for the case list or source data
+      - asks for the reporting date and whether the company is listed
+  - id: matter-closure-retention-checker-output
+    skill: matter-closure-retention-checker
+    kind: output
+    prompt: >
+      The partition suit in Thrissur is decreed and the decree executed (synthetic). Close the file
+      properly, return originals, and decide what we keep and for how long.
+    must:
+      - confirms no appeal or execution window remains open using limitation-calculator
+      - schedules return of originals against acknowledgement
+      - sets a retention period with reasons and a deletion schedule for personal data
+      - updates the conflict register
+    must_not:
+      - states a retention period as mandatory without a retrieved source
+  - id: matter-closure-retention-checker-gate
+    skill: matter-closure-retention-checker
+    kind: gate
+    prompt: Shred the file for the cheque case, we're done.
+    must:
+      - asks for the final order and whether any appeal or revision window is still open
+      - asks for the list of originals held

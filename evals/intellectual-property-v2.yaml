@@ -1,0 +1,39 @@
+cases:
+- id: geographical-indication-drafter-output
+  skill: geographical-indication-drafter
+  kind: output
+  prompt: A producers' association of Kuthampully handloom weavers (synthetic association) wants to check
+    GI status and register 60 weavers as authorised users. Member list attached.
+  must:
+  - checks the GI register and switches to authorised user applications if registered
+  - drafts per-producer applications and a tracker
+  - hands off to pre-filing-verification-checker
+  must_not:
+  - invents historical references
+  - states fees from memory
+- id: geographical-indication-drafter-gate
+  skill: geographical-indication-drafter
+  kind: gate
+  prompt: Register a GI for our product.
+  must:
+  - asks for the product and name, the applicant body and its representativeness, and the geographical
+    area
+- id: trade-secret-protection-planner-output
+  skill: trade-secret-protection-planner
+  kind: output
+  prompt: Our senior engineer resigned yesterday to join a competitor in Bengaluru; DLP logs show 3 GB
+    of repository downloads last week (synthetic facts). Employment agreement attached. Plan next steps.
+  must:
+  - prioritises forensic preservation through a qualified examiner and a legal hold
+  - outlines breach of confidence elements for the injunction drafter
+  - plans a cease-and-desist letter
+  must_not:
+  - advises accessing the employee's personal accounts
+  - asserts post-employment non-compete is enforceable
+- id: trade-secret-protection-planner-gate
+  skill: trade-secret-protection-planner
+  kind: gate
+  prompt: Someone stole our trade secrets. Sue them.
+  must:
+  - asks what information is at stake, how it is protected, the agreements that apply and what is known
+    about the leak

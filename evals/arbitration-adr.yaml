@@ -1,0 +1,236 @@
+# Arbitration, Mediation and ADR pack cases. Synthetic facts only. See evals/README.md for format.
+cases:
+  - id: arbitration-clause-reviewer-output
+    skill: arbitration-clause-reviewer
+    kind: output
+    prompt: >
+      Review the arbitration clause in this franchise agreement between two Indian
+      companies. It says disputes go to two arbitrators, one appointed by each party,
+      venue Delhi, and courts at Jaipur have exclusive jurisdiction.
+    must:
+      - analyses whether Delhi is the seat or only the venue, given the Jaipur clause
+      - flags the even number of arbitrators and suggests a presiding arbitrator
+      - checks stamping of the main agreement and hands off to contract-execution-stamping-checker
+      - gives repaired clause wording
+    must_not:
+      - states that the clause is definitely valid or invalid without analysis
+      - invents a case citation
+  - id: arbitration-clause-reviewer-gate
+    skill: arbitration-clause-reviewer
+    kind: gate
+    prompt: >
+      Review our arbitration clause with a Singapore distributor that says SIAC rules,
+      seat Singapore.
+    must:
+      - identifies the clause as cross-border with a foreign seat
+      - hands off to international-arbitration-planner instead of applying the domestic review
+
+  - id: arbitration-invocation-notice-drafter-output
+    skill: arbitration-invocation-notice-drafter
+    kind: output
+    prompt: >
+      Draft a notice invoking arbitration against the contractor for delay damages
+      under clause 25 of the EPC contract. Seat is Mumbai, sole arbitrator to be
+      mutually agreed, and clause 24 requires 30 days of senior-management talks,
+      which ended without settlement last month. Claim is Rs 3.4 crore.
+    must:
+      - quotes the arbitration clause and records compliance with the negotiation tier
+      - proposes an arbitrator and asks for concurrence
+      - includes a claims schedule with limitation notes and refers to limitation-calculator
+      - states that the notice date matters for commencement under section 21, to be confirmed
+    must_not:
+      - invents figures beyond the Rs 3.4 crore given
+      - threatens criminal proceedings
+  - id: arbitration-invocation-notice-drafter-gate
+    skill: arbitration-invocation-notice-drafter
+    kind: gate
+    prompt: Send an arbitration notice to the vendor for non-payment. I don't have the contract handy.
+    must:
+      - asks for the arbitration clause and contract before drafting
+      - asks for the claim details, amounts and dates
+
+  - id: section-9-interim-relief-drafter-output
+    skill: section-9-interim-relief-drafter
+    kind: output
+    prompt: >
+      Draft a section 9 petition in the Bombay High Court to stop the buyer from
+      encashing our performance bank guarantee before arbitration starts. The seat is
+      Mumbai. The buyer has issued an invocation letter claiming defects we dispute.
+    must:
+      - explains that unconditional guarantees are restrained only in narrow cases such as egregious fraud or special equities
+      - notes the requirement to commence arbitration within a period after a pre-arbitral order, to be confirmed
+      - hands off the follow-on notice to arbitration-invocation-notice-drafter
+      - drafts prayers for interim and ad interim relief
+    must_not:
+      - promises that the court will grant an injunction
+      - alleges fraud without supporting documents
+  - id: section-9-interim-relief-drafter-gate
+    skill: section-9-interim-relief-drafter
+    kind: gate
+    prompt: >
+      The tribunal was constituted three months ago and is hearing the matter. Draft a
+      section 9 petition in the Delhi High Court to freeze the respondent's accounts.
+    must:
+      - raises the section 9(3) bar once the tribunal is constituted
+      - asks why the section 17 remedy is not efficacious or suggests applying to the tribunal
+
+  - id: section-11-appointment-petition-drafter-output
+    skill: section-11-appointment-petition-drafter
+    kind: output
+    prompt: >
+      The respondent ignored our section 21 notice sent 45 days ago. Both parties are
+      Bengaluru companies and the seat is Bengaluru. Draft the section 11 petition in
+      the Karnataka High Court.
+    must:
+      - shows how the agreed appointment procedure failed
+      - keeps the petition to prima facie existence of the arbitration agreement
+      - addresses limitation for the petition and refers to limitation-calculator
+      - includes a disclosure checklist for the proposed arbitrator
+    must_not:
+      - argues the full merits of the claim
+      - predicts which arbitrator the court will appoint
+  - id: section-11-appointment-petition-drafter-gate
+    skill: section-11-appointment-petition-drafter
+    kind: gate
+    prompt: >
+      Draft a section 11 petition in the Delhi High Court. The respondent is a German
+      company and the seat is New Delhi.
+    must:
+      - identifies the matter as an international commercial arbitration
+      - flags that the petition lies before the Supreme Court, not the High Court
+
+  - id: arbitral-proceedings-drafter-output
+    skill: arbitral-proceedings-drafter
+    kind: output
+    prompt: >
+      Draft our statement of claim in this DIAC arbitration on unpaid running bills and
+      price escalation under a building contract. We act for the contractor.
+    must:
+      - structures each claim as a separate head tied to a contract clause and evidence
+      - checks DIAC rules and the statutory timelines for pleadings and award
+      - refers interest and quantum to damages-interest-calculator
+      - produces an exhibit list mapped to each claim
+    must_not:
+      - invents amounts or dates not in the record
+  - id: arbitral-proceedings-drafter-gate
+    skill: arbitral-proceedings-drafter
+    kind: gate
+    prompt: Draft a section 29A application to extend the arbitrator's mandate.
+    must:
+      - asks for the date the tribunal was constituted and when pleadings were completed
+      - asks whether the parties consent to an extension
+
+  - id: section-34-37-award-challenge-drafter-output
+    skill: section-34-37-award-challenge-drafter
+    kind: output
+    prompt: >
+      We lost a domestic award against a PSU. The tribunal ignored our delay notices and
+      awarded liquidated damages. The signed award was received 70 days ago. Assess the
+      grounds and draft a section 34 petition.
+    must:
+      - computes the remaining time and refers to limitation-calculator
+      - tests each ground narrowly and warns that courts do not re-appreciate evidence
+      - drafts a separate stay application with a deposit or security offer
+      - maps award findings to paragraphs
+    must_not:
+      - guarantees that the award will be set aside
+      - invents a case citation
+  - id: section-34-37-award-challenge-drafter-gate
+    skill: section-34-37-award-challenge-drafter
+    kind: gate
+    prompt: >
+      Draft a section 34 petition. The award was received five months ago and we did not
+      file anything yet.
+    must:
+      - flags that the period of three months plus the limited extension appears to have expired
+      - does not draft as if the petition is within time
+
+  - id: pre-institution-mediation-advisor-output
+    skill: pre-institution-mediation-advisor
+    kind: output
+    prompt: >
+      We want to file a commercial suit for Rs 1.2 crore in Chennai for unpaid invoices.
+      There is no arbitration clause and no urgency. Do we need pre-institution
+      mediation and how do we start it?
+    must:
+      - explains that section 12A mediation appears mandatory where no urgent interim relief is contemplated
+      - drafts the PIMS application to the appropriate Legal Services Authority
+      - checks the status of the Mediation Act 2023 provisions
+      - notes exclusion of mediation time from limitation, to be confirmed
+    must_not:
+      - suggests pleading urgency to skip mediation
+  - id: pre-institution-mediation-advisor-gate
+    skill: pre-institution-mediation-advisor
+    kind: gate
+    prompt: Do I need pre-institution mediation before suing my supplier?
+    must:
+      - asks for the nature of the dispute, the claim value and the place of filing
+      - asks whether urgent interim relief is needed
+
+  - id: mediation-brief-drafter-output
+    skill: mediation-brief-drafter
+    kind: output
+    prompt: >
+      Prepare our confidential brief to the mediator and an opening statement for the
+      court-annexed mediation in this partnership dispute in Kochi. Our client wants to
+      exit the firm and be paid out for its capital.
+    must:
+      - produces a confidential brief separate from the internal negotiation sheet
+      - maps the interests of both partners
+      - gives a caucus disclosure plan
+      - respects mediation confidentiality
+    must_not:
+      - suggests misleading the mediator about facts
+  - id: mediation-brief-drafter-gate
+    skill: mediation-brief-drafter
+    kind: gate
+    prompt: Write a mediation brief for tomorrow.
+    must:
+      - asks for the dispute summary, documents and the type of mediation
+      - asks who the client is and who will attend with settlement authority
+
+  - id: mediated-settlement-agreement-drafter-output
+    skill: mediated-settlement-agreement-drafter
+    kind: output
+    prompt: >
+      We settled a commercial dispute in mediation. The buyer will pay Rs 60 lakh in
+      three instalments and the supplier will withdraw its pending commercial suit in
+      Pune. Draft the mediated settlement agreement and tell me how it is enforced.
+    must:
+      - drafts a payment schedule and a default clause
+      - ties withdrawal of the suit to payment
+      - checks which Mediation Act 2023 provisions are in force
+      - refers stamping to state-stamp-duty-calculator
+    must_not:
+      - adds terms the parties did not agree
+  - id: mediated-settlement-agreement-drafter-gate
+    skill: mediated-settlement-agreement-drafter
+    kind: gate
+    prompt: >
+      Draft a settlement agreement. The parties also agreed that the cheating FIR will be
+      withdrawn as part of the deal.
+    must:
+      - asks for the agreed terms, the parties and the list of pending cases
+      - flags that a criminal case can be closed only through the forum's lawful procedure
+
+  - id: settlement-strategy-planner-output
+    skill: settlement-strategy-planner
+    kind: output
+    prompt: >
+      The other side offered Rs 40 lakh to settle our Rs 1 crore claim pending in a
+      commercial court for two years. Our counsel puts our chances on liability at about
+      60 percent. Should we take it? Build our negotiation plan.
+    must:
+      - builds a scenario table with probability, net amount and time
+      - uses the advocate's probability rather than its own
+      - recommends opening, target and walk-away figures with reasons
+      - leaves the decision to the client
+    must_not:
+      - tells the client definitively to accept or reject
+  - id: settlement-strategy-planner-gate
+    skill: settlement-strategy-planner
+    kind: gate
+    prompt: Is a settlement offer of Rs 15 lakh good?
+    must:
+      - asks for the claim, its basis and the forum and stage
+      - asks for the client's priorities and the advocate's view of merits

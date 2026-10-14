@@ -1,0 +1,241 @@
+# Corporate and Securities pack. Synthetic facts only.
+cases:
+  - id: company-incorporation-planner-output
+    skill: company-incorporation-planner
+    kind: output
+    prompt: >
+      Two resident Indian founders in Hyderabad want to start a D2C skincare brand and plan
+      to raise angel money next year. Company, LLP or partnership? Then prepare the incorporation set.
+    must:
+      - compares private company, LLP and partnership in a table
+      - recommends a private company with reasons tied to fundraising
+      - lists SPICe+ inputs, MOA and AOA, and post-incorporation registrations
+      - notes Telangana for stamp duty and Shops and Establishments
+    must_not:
+      - states government fees or capital minimums as settled without a source
+  - id: company-incorporation-planner-gate
+    skill: company-incorporation-planner
+    kind: gate
+    prompt: Incorporate a private company for us. One shareholder is our Dubai-based parent company.
+    must:
+      - flags the non-resident shareholder and FEMA
+      - hands off to india-entry-fema-structuring-analyst before drafting
+  - id: board-meeting-documents-drafter-output
+    skill: board-meeting-documents-drafter
+    kind: output
+    prompt: >
+      Draft the board resolution and EGM notice with explanatory statement for a preferential
+      allotment of equity shares by Alpha Widgets Private Limited to two resident investors.
+    must:
+      - drafts operative resolutions and classifies each as board or special resolution
+      - includes an explanatory statement disclosing material facts and interests
+      - lists post-meeting forms with deadlines marked for verification
+    must_not:
+      - invents attendance, votes or interests
+  - id: board-meeting-documents-drafter-gate
+    skill: board-meeting-documents-drafter
+    kind: gate
+    prompt: Write the minutes of yesterday's board meeting where we approved the bank loan.
+    must:
+      - asks for attendance, quorum, chair, interests declared and votes before drafting minutes
+      - offers a template marked with input gaps instead of invented details
+  - id: roc-secretarial-compliance-checker-output
+    skill: roc-secretarial-compliance-checker
+    kind: output
+    prompt: >
+      Here is the MCA filing history for Beta Foods Private Limited for FY 2025-26. List every
+      ROC filing and register it must complete and what is overdue.
+    must:
+      - produces a status table with complied, late, overdue and not evidenced
+      - states exposure for each gap with a cited source or [verify]
+      - gives a cure sequence
+    must_not:
+      - marks an item filed without evidence
+  - id: roc-secretarial-compliance-checker-gate
+    skill: roc-secretarial-compliance-checker
+    kind: gate
+    prompt: Is our company up to date on ROC filings?
+    must:
+      - asks for the CIN, the period and the filing history before concluding
+  - id: related-party-transaction-analyst-output
+    skill: related-party-transaction-analyst
+    kind: output
+    prompt: >
+      Our listed client wants to lease office space for nine years from a company owned by its
+      promoter's spouse. Annual rent and the last audited turnover are attached. Which approvals apply?
+    must:
+      - identifies the counterparty as a related party under both the Companies Act and LODR
+      - tests ordinary course and arm's length separately
+      - maps audit committee, board and shareholder approvals and who must abstain
+      - retrieves the current materiality thresholds rather than quoting from memory
+    must_not:
+      - suggests splitting the lease to avoid a threshold
+  - id: related-party-transaction-analyst-gate
+    skill: related-party-transaction-analyst
+    kind: gate
+    prompt: Does our deal with a group company need shareholder approval?
+    must:
+      - asks for the listing status, the transaction details and the relationship chain
+  - id: sebi-lodr-disclosure-checker-output
+    skill: sebi-lodr-disclosure-checker
+    kind: output
+    prompt: >
+      Our listed client received a large export order and a tax demand on the same day. The
+      materiality policy and last audited figures are attached. What must be disclosed and by when?
+    must:
+      - classifies each event and applies the materiality test with arithmetic
+      - fixes the deadline from the time of awareness with a cited source
+      - drafts fact-only exchange disclosures
+    must_not:
+      - advises delaying disclosure
+  - id: sebi-lodr-disclosure-checker-gate
+    skill: sebi-lodr-disclosure-checker
+    kind: gate
+    prompt: We got a big contract. Is it material under Regulation 30? We don't have a materiality policy handy.
+    must:
+      - asks for the materiality policy and the figures for the quantitative test
+      - marks any view as provisional without them
+  - id: insider-trading-pit-checker-output
+    skill: insider-trading-pit-checker
+    kind: output
+    prompt: >
+      A designated employee of our listed client bought shares two days before quarterly results
+      were announced. Trading window notices and pre-clearance records are attached. Check the breach and our steps.
+    must:
+      - builds a UPSI and trading timeline
+      - tests window closure, pre-clearance and contra-trade rules
+      - lists the company's inquiry and exchange reporting steps
+    must_not:
+      - concludes the employee traded on the basis of UPSI without stating the facts and presumptions
+  - id: insider-trading-pit-checker-gate
+    skill: insider-trading-pit-checker
+    kind: gate
+    prompt: Someone in our team traded around results. Is that insider trading?
+    must:
+      - asks for the person's role, designation status, trade dates and the UPSI timeline
+  - id: takeover-code-trigger-analyst-output
+    skill: takeover-code-trigger-analyst
+    kind: output
+    prompt: >
+      Our client holds 18% of a listed company and will cross 26% after a preferential allotment.
+      Its affiliate holds 3%. Is an open offer triggered and is any exemption available?
+    must:
+      - aggregates holdings of persons acting in concert
+      - tests initial threshold and control with the threshold confirmed from the regulations
+      - analyses Regulation 10 exemptions and whether a SEBI application is needed
+    must_not:
+      - computes a final offer price
+  - id: takeover-code-trigger-analyst-gate
+    skill: takeover-code-trigger-analyst
+    kind: gate
+    prompt: We are buying 30% of an unlisted private company. Do we need to make an open offer under SAST?
+    must:
+      - explains that the SAST Regulations apply to listed targets and stops the open offer analysis
+  - id: securities-issuance-compliance-checker-output
+    skill: securities-issuance-compliance-checker
+    kind: output
+    prompt: >
+      Check the steps and documents for a private placement of CCPS by our unlisted company to
+      12 investors, two of whom are non-resident.
+    must:
+      - sets out the private placement step sequence and documents including PAS-4 and PAS-3
+      - flags the separate bank account and payment from the allottee's own account
+      - flags FEMA pricing and reporting for the non-residents
+    must_not:
+      - values the shares or fixes the price
+  - id: securities-issuance-compliance-checker-gate
+    skill: securities-issuance-compliance-checker
+    kind: gate
+    prompt: We want to issue shares to some investors. What do we file?
+    must:
+      - asks for the issuer class, instrument, allottees and their residency, and the route
+  - id: ma-due-diligence-analyst-output
+    skill: ma-due-diligence-analyst
+    kind: output
+    prompt: >
+      Prepare a legal due diligence request list for acquiring a Chennai logistics company, then
+      a red-flag report from the attached VDR index and documents.
+    must:
+      - organises the request list by workstream
+      - produces an issue log with severity and recommended action
+      - lists documents not provided
+    must_not:
+      - treats missing documents as clean
+  - id: ma-due-diligence-analyst-gate
+    skill: ma-due-diligence-analyst
+    kind: gate
+    prompt: Write the red-flag report on the target. We haven't got data room access yet.
+    must:
+      - says it cannot report without the documents and offers a request list instead
+  - id: share-purchase-agreement-reviewer-output
+    skill: share-purchase-agreement-reviewer
+    kind: output
+    prompt: >
+      We act for the buyer. Review the attached Indian-law SPA for 100% of a Pune engineering
+      company, focusing on warranties, indemnities and escrow. The red-flag report is attached.
+    must:
+      - reviews warranties, indemnity limits and escrow from the buyer's side
+      - maps red-flag items to specific protections
+      - tests the non-compete against the Contract Act restraint-of-trade rule
+    must_not:
+      - states market cap percentages as fact without a source
+  - id: share-purchase-agreement-reviewer-gate
+    skill: share-purchase-agreement-reviewer
+    kind: gate
+    prompt: Review this SPA governed by English law for a UK target with no Indian operations.
+    must:
+      - flags foreign governing law and hands off to cross-border-contract-reviewer
+  - id: closing-checklist-builder-output
+    skill: closing-checklist-builder
+    kind: output
+    prompt: >
+      Build the closing checklist from the attached SPA, SHA and escrow agreement and show what is
+      still blocking signing and closing.
+    must:
+      - extracts CPs and deliverables with clause references
+      - tracks status from evidence and separates assurances
+      - highlights blockers for signing and closing
+    must_not:
+      - invents amounts or account details for funds flow
+  - id: closing-checklist-builder-gate
+    skill: closing-checklist-builder
+    kind: gate
+    prompt: Make a closing checklist for our acquisition. Documents are still with the other side.
+    must:
+      - asks for the transaction documents, parties and target dates before building it
+  - id: esop-scheme-drafter-output
+    skill: esop-scheme-drafter
+    kind: output
+    prompt: >
+      Draft an ESOP scheme with a 10% pool, four-year vesting and one-year cliff for our private
+      company, plus the grant letter.
+    must:
+      - drafts scheme clauses on eligibility, vesting, exercise and leavers
+      - checks minimum vesting and eligibility against the retrieved rules
+      - adds tax notes for a CA with a temporal gate on the Income-tax Act 2025
+    must_not:
+      - promises employees a tax outcome
+  - id: esop-scheme-drafter-gate
+    skill: esop-scheme-drafter
+    kind: gate
+    prompt: Grant ESOPs to our LLP's senior staff.
+    must:
+      - explains that an LLP cannot issue ESOPs and suggests a phantom or profit-share plan
+  - id: scheme-of-arrangement-planner-output
+    skill: scheme-of-arrangement-planner
+    kind: output
+    prompt: >
+      Plan a merger of two wholly owned unlisted subsidiaries into their parent. Can we use the
+      fast-track route?
+    must:
+      - tests fast-track eligibility against the current amended rules
+      - lists notices to authorities and the document set
+      - gives an indicative timeline without promising a sanction date
+    must_not:
+      - states fast-track thresholds without citing the rule or [verify]
+  - id: scheme-of-arrangement-planner-gate
+    skill: scheme-of-arrangement-planner
+    kind: gate
+    prompt: We want to restructure our group. Draft the scheme.
+    must:
+      - asks for the companies, their class, shareholding links and the commercial objective

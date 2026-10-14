@@ -1,0 +1,152 @@
+cases:
+  - id: gst-notice-reply-drafter-output
+    skill: gst-notice-reply-drafter
+    kind: output
+    prompt: >
+      Omicron Traders received a GST show-cause notice for FY 2020-21 invoking the fraud provision, alleging
+      fake ITC of Rs 38 lakh from a supplier whose registration was later cancelled. We have invoices,
+      e-way bills and bank payments. Draft the reply.
+    must:
+      - checks limitation and whether the extended period is properly invoked
+      - answers ITC allegations with documents and raises bona fide purchaser arguments where supported
+      - requests cross-examination and personal hearing
+    must_not:
+      - states a penalty percentage or limitation period from memory as settled
+      - invents a judgment citation
+  - id: gst-notice-reply-drafter-gate
+    skill: gst-notice-reply-drafter
+    kind: gate
+    prompt: Reply to our GST notice. I have not got the notice copy with me.
+    must:
+      - asks for the notice, financial year, provision invoked and returns
+  - id: gst-transaction-analyst-output
+    skill: gst-transaction-analyst
+    kind: output
+    prompt: >
+      What is the GST treatment of our software support services to a client in Dubai, delivered from Kochi
+      and paid in US dollars?
+    must:
+      - tests each export of services condition including place of supply
+      - mentions LUT or IGST refund options
+      - marks rates and notifications to be checked live
+    must_not:
+      - states a GST rate as final without the live notification
+  - id: gst-transaction-analyst-gate
+    skill: gst-transaction-analyst
+    kind: gate
+    prompt: Is GST payable on our deal?
+    must:
+      - asks what is supplied, by whom, to whom and the locations
+  - id: income-tax-notice-reply-drafter-output
+    skill: income-tax-notice-reply-drafter
+    kind: output
+    prompt: >
+      Pi Exports Pvt Ltd received a reassessment notice for AY 2019-20 dated 20 August 2026. Check validity
+      and draft the reply.
+    must:
+      - applies the temporal gate on which Act and reassessment procedure govern
+      - checks time limit, sanction and the pre-notice procedure
+      - considers whether a writ is stronger than a reply
+    must_not:
+      - treats the Income-tax Act, 2025 as governing without checking transition provisions
+  - id: income-tax-notice-reply-drafter-gate
+    skill: income-tax-notice-reply-drafter
+    kind: gate
+    prompt: Draft a reply to my client's income tax notice about cash deposits.
+    must:
+      - asks for the notice with DIN and date, the year and the return filed
+  - id: tax-appeal-grounds-drafter-output
+    skill: tax-appeal-grounds-drafter
+    kind: output
+    prompt: >
+      Draft the appeal to the CIT(A) against an assessment order dated 10 September 2026 adding Rs 2.3 crore
+      as unexplained cash credit for Rho Builders. Order served 12 September.
+    must:
+      - drafts numbered grounds including general and alternative grounds
+      - drafts a statement of facts and a stay application
+      - computes limitation through limitation-calculator
+    must_not:
+      - states pre-deposit percentages or fees from memory as settled
+      - promises a stay
+  - id: tax-appeal-grounds-drafter-gate
+    skill: tax-appeal-grounds-drafter
+    kind: gate
+    prompt: File a GSTAT appeal against the appellate order. I do not know when it was served.
+    must:
+      - asks for the order and its date of service
+      - checks the current GSTAT filing timelines before drafting
+  - id: income-tax-act-2025-concordance-mapper-output
+    skill: income-tax-act-2025-concordance-mapper
+    kind: output
+    prompt: >
+      Map the 1961 Act transfer pricing sections cited in this TPO order for AY 2023-24 to the Income-tax
+      Act, 2025, and tell me which Act governs the appeal.
+    must:
+      - uses the official concordance and marks any proposed mapping as unverified
+      - states which Act governs with reasoning from savings provisions
+    must_not:
+      - presents an unverified mapping as official
+  - id: income-tax-act-2025-concordance-mapper-gate
+    skill: income-tax-act-2025-concordance-mapper
+    kind: gate
+    prompt: What is the new section for the old one?
+    must:
+      - asks which provisions are to be mapped and for which year or proceeding
+  - id: transfer-pricing-documentation-drafter-output
+    skill: transfer-pricing-documentation-drafter
+    kind: output
+    prompt: >
+      Prepare the functional analysis and documentation outline for Sigma Tech India Pvt Ltd, a captive
+      providing software development services to its US parent on cost plus.
+    must:
+      - produces a functions, assets and risks analysis and characterisation
+      - recommends a method with reasons and leaves comparables to the chartered accountant
+      - lists data needed from the chartered accountant
+    must_not:
+      - selects comparables or states an arm's length margin
+  - id: transfer-pricing-documentation-drafter-gate
+    skill: transfer-pricing-documentation-drafter
+    kind: gate
+    prompt: Write our TP report for this year.
+    must:
+      - asks for the group structure, intercompany agreements and transaction values
+      - asks for the year to apply the correct Act
+  - id: dtaa-withholding-analyst-output
+    skill: dtaa-withholding-analyst
+    kind: output
+    prompt: >
+      We, an Indian company, pay a German consultant EUR 20,000 for remote strategy advice. What TDS applies,
+      and does the India-Germany DTAA reduce it? The consultant has a TRC.
+    must:
+      - characterises the payment under domestic law and the treaty
+      - tests PE, Form 10F and treaty entitlement
+      - shows a TDS computation with workings and the Form 15CA and 15CB route
+      - marks German-law points for counsel qualified in Germany
+    must_not:
+      - states a treaty or domestic rate as final without the live text
+  - id: dtaa-withholding-analyst-gate
+    skill: dtaa-withholding-analyst
+    kind: gate
+    prompt: What TDS do we deduct on our foreign vendor payment?
+    must:
+      - asks for the payee's country of residence, nature of payment and contract
+  - id: customs-trade-remedy-analyst-output
+    skill: customs-trade-remedy-analyst
+    kind: output
+    prompt: >
+      Classify an imported lithium-ion battery pack for e-bikes from Vietnam and check whether we can claim
+      the India-ASEAN FTA rate.
+    must:
+      - classifies using the interpretative rules and explains rival headings
+      - tests FTA origin criteria and CAROTAR duties
+      - checks whether anti-dumping or safeguard duty applies
+      - marks rates as check live
+    must_not:
+      - states a duty rate from memory as settled
+      - suggests misdeclaring origin
+  - id: customs-trade-remedy-analyst-gate
+    skill: customs-trade-remedy-analyst
+    kind: gate
+    prompt: What customs duty applies to our import?
+    must:
+      - asks for a technical description of the goods and the country of origin

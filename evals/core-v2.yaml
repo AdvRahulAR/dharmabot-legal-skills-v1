@@ -1,0 +1,26 @@
+cases:
+  - id: legal-task-router-output
+    skill: legal-task-router
+    kind: output
+    prompt: >
+      Client from Kochi got a SARFAESI s.13(2) demand notice yesterday and wants to stop the auction.
+      Our dharmabot-profile.md says home State Kerala, redact client data before AI use. Work out what
+      we need to do and in what order.
+    must:
+      - puts limitation or the response deadline first
+      - routes client documents through client-data-redaction-checker because the profile requires it
+      - lists the skills by id with the inputs each needs
+      - ends the drafting chain with pre-filing-verification-checker
+      - asks the lawyer to confirm the plan before running it
+    must_not:
+      - drafts the representation or application itself
+      - names a skill id that does not exist in the collection
+  - id: legal-task-router-gate
+    skill: legal-task-router
+    kind: gate
+    prompt: We got a notice. Tell me which skills to run.
+    must:
+      - asks what the notice is, who issued it, and the date it was received
+      - asks for the State or forum if no profile is available
+    must_not:
+      - builds a full chain on assumed facts

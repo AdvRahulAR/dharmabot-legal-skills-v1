@@ -1,0 +1,112 @@
+# Startups and Venture Capital pack. Synthetic facts only.
+cases:
+  - id: founders-agreement-drafter-output
+    skill: founders-agreement-drafter
+    kind: output
+    prompt: >
+      Draft a founders' agreement for three resident co-founders of a Kochi fintech company already
+      incorporated, with a 50:30:20 split and four-year reverse vesting with a one-year cliff.
+    must:
+      - drafts vesting, leaver, IP assignment, decision-making and exit clauses
+      - limits non-compete to the engagement period and explains the Contract Act limit
+      - lists terms to be mirrored in the AOA
+    must_not:
+      - presents a post-exit non-compete as enforceable
+  - id: founders-agreement-drafter-gate
+    skill: founders-agreement-drafter
+    kind: gate
+    prompt: Draft our founders' agreement. We haven't decided the equity split or vesting yet.
+    must:
+      - asks for the equity split and vesting terms before drafting
+      - offers options and trade-offs without choosing a split
+  - id: vc-term-sheet-reviewer-output
+    skill: vc-term-sheet-reviewer
+    kind: output
+    prompt: >
+      We act for the founders. Review this seed term sheet from a Singapore VC with a 1x
+      participating preference, full ratchet anti-dilution and two board seats. Cap table attached.
+    must:
+      - explains participating preference and full ratchet effects on the founders
+      - flags FEMA pricing and reporting for the foreign investor
+      - proposes counters such as broad-based weighted average
+    must_not:
+      - opines on the valuation
+  - id: vc-term-sheet-reviewer-gate
+    skill: vc-term-sheet-reviewer
+    kind: gate
+    prompt: Is this term sheet good?
+    must:
+      - asks for the term sheet and which side the client represents
+  - id: shareholders-agreement-drafter-output
+    skill: shareholders-agreement-drafter
+    kind: output
+    prompt: >
+      Draft the SSA and SHA for a Rs 15 crore Series A led by a domestic AIF with an ESOP top-up.
+      The signed term sheet, current AOA and cap table are attached.
+    must:
+      - drafts SSA mechanics, CPs and warranties
+      - drafts SHA governance, reserved matters, transfer restrictions and exits
+      - lists AOA amendments to mirror the SHA
+    must_not:
+      - changes agreed commercial terms without flagging
+  - id: shareholders-agreement-drafter-gate
+    skill: shareholders-agreement-drafter
+    kind: gate
+    prompt: Draft an SHA for our new investor.
+    must:
+      - asks for the term sheet, the parties and the existing AOA and cap table
+  - id: convertible-instrument-analyst-output
+    skill: convertible-instrument-analyst
+    kind: output
+    prompt: >
+      Our DPIIT-recognised startup is raising seed money from a US angel and three Indian angels.
+      Should we use CCPS, CCDs, iSAFE or a convertible note?
+    must:
+      - compares the instruments in a table
+      - applies FEMA conditions to the US angel
+      - gives a worked conversion example and flags deposit risk
+    must_not:
+      - states FEMA minimum amounts or tax rates without a source or [verify]
+  - id: convertible-instrument-analyst-gate
+    skill: convertible-instrument-analyst
+    kind: gate
+    prompt: Can we use a convertible note for our round?
+    must:
+      - asks for DPIIT recognition status and investors' residency before answering
+  - id: cap-table-calculator-output
+    skill: cap-table-calculator
+    kind: output
+    prompt: >
+      Model our cap table after a Rs 10 crore pre-money seed of Rs 2.5 crore with a 10% post-money
+      ESOP pool and a CCD converting at a 20% discount. Current cap table and CCD terms attached.
+    must:
+      - shows price per share and pool solve arithmetic step by step
+      - shows CCD conversion workings
+      - checks totals equal 100 percent
+    must_not:
+      - presents unexplained figures
+  - id: cap-table-calculator-gate
+    skill: cap-table-calculator
+    kind: gate
+    prompt: Run an exit waterfall at Rs 200 crore for us.
+    must:
+      - asks for the current cap table and the preference terms of each class
+  - id: startup-legal-health-checker-output
+    skill: startup-legal-health-checker
+    kind: output
+    prompt: >
+      Run a legal health check for our 18-month-old SaaS startup in Bengaluru with 25 staff before
+      we approach investors. Documents attached.
+    must:
+      - covers corporate, founder IP, employment, ESOP, tax, DPDP, contracts and trademarks
+      - tests DPIIT eligibility from the current notification
+      - outputs a prioritised fix list
+    must_not:
+      - marks unseen items as compliant
+  - id: startup-legal-health-checker-gate
+    skill: startup-legal-health-checker
+    kind: gate
+    prompt: Do a legal health check on our startup. We'll share documents later.
+    must:
+      - says without documents it can only provide a request list
+      - asks for CIN, incorporation date, sector, headcount and States

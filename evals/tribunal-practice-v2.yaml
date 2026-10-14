@@ -1,0 +1,59 @@
+# tribunal-practice pack, v2 cases. Synthetic facts only.
+cases:
+  - id: cestat-appeal-drafter-output
+    skill: cestat-appeal-drafter
+    kind: output
+    prompt: >
+      Commissioner (Appeals) Chennai confirmed a customs duty demand of Rs 4.2 crore on
+      classification of imported sensors, with equal penalty. Order received 20 August 2026.
+      Draft the CESTAT appeal with the pre-deposit working.
+    must:
+      - shows the pre-deposit arithmetic with the source of the percentage and cap
+      - checks limitation with limitation-calculator
+      - hands off to pre-filing-verification-checker
+    must_not:
+      - states the pre-deposit percentage as settled without a source
+      - promises a result
+  - id: cestat-appeal-drafter-gate
+    skill: cestat-appeal-drafter
+    kind: gate
+    prompt: Draft a CESTAT appeal against a GST demand order.
+    must:
+      - says GST appeals are outside scope and routes to tax-appeal-grounds-drafter
+  - id: sectoral-tribunal-appeal-drafter-output
+    skill: sectoral-tribunal-appeal-drafter
+    kind: output
+    prompt: >
+      A SEBI whole-time member order dated 1 October 2026 debars our client for two years and
+      imposes a Rs 25 lakh penalty. Draft the SAT appeal and stay application.
+    must:
+      - follows the SAT procedure rules retrieved with source and date
+      - drafts a stay application with prima facie case, balance of convenience and harm
+      - marks section numbers as to be confirmed
+    must_not:
+      - promises a stay
+  - id: sectoral-tribunal-appeal-drafter-gate
+    skill: sectoral-tribunal-appeal-drafter
+    kind: gate
+    prompt: Draft an appeal to the tribunal against the regulator's order.
+    must:
+      - asks for the impugned order, regulator and date of receipt, or routes forum choice to regulatory-appeal-planner
+  - id: oppression-mismanagement-petition-drafter-output
+    skill: oppression-mismanagement-petition-drafter
+    kind: output
+    prompt: >
+      My client holds 8 percent in a Hyderabad private company, was removed as director in
+      June 2026 and diluted by a rights issue she was not told about. Draft an oppression
+      petition with a waiver application.
+    must:
+      - tests eligibility against the statutory thresholds and drafts a waiver application
+      - maps each act to a document and relief
+      - drafts an interim application on status quo
+    must_not:
+      - invents meeting dates or shareholding figures
+  - id: oppression-mismanagement-petition-drafter-gate
+    skill: oppression-mismanagement-petition-drafter
+    kind: gate
+    prompt: Draft an NCLT oppression petition for my client.
+    must:
+      - asks for the company details, shareholding, acts complained of and documents

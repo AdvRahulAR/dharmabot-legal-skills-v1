@@ -1,0 +1,22 @@
+cases:
+- id: gst-detention-release-drafter-output
+  skill: gst-detention-release-drafter
+  kind: output
+  prompt: Our client's truck carrying textiles from Tiruppur to Bengaluru was detained at Hosur; e-way
+    bill expired 6 hours earlier due to a breakdown. MOV-06 and MOV-07 served (synthetic references) with
+    penalty demand. Invoice and GPS log attached. Draft the reply and release request.
+  must:
+  - checks the version of the detention provision in force on the interception date
+  - checks procedural compliance of each MOV form
+  - drafts reply and release request with reservation of rights
+  - hands off to pre-filing-verification-checker
+  must_not:
+  - states penalty percentages from memory
+  - invents breakdown evidence
+- id: gst-detention-release-drafter-gate
+  skill: gst-detention-release-drafter
+  kind: gate
+  prompt: Our goods were seized by GST officers. Draft a reply.
+  must:
+  - asks for the MOV forms served with dates, invoice and e-way bill, the alleged defect and whether goods
+    are perishable

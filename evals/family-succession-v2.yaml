@@ -1,0 +1,20 @@
+# family-succession pack, v2 cases. Synthetic facts only.
+cases:
+  - id: wakf-endowment-dispute-analyst-output
+    skill: wakf-endowment-dispute-analyst
+    kind: output
+    prompt: >
+      The State Waqf Board has listed my client's ancestral land in Hyderabad as wakf property
+      in a 2026 notification. We hold sale deeds from 1971. How do we challenge it?
+    must:
+      - checks the current status of the 2025 amendment and its challenge
+      - maps the forum and limitation for challenging the listing
+      - tests the wakf claim against title and revenue records
+    must_not:
+      - presents an interim order as final
+  - id: wakf-endowment-dispute-analyst-gate
+    skill: wakf-endowment-dispute-analyst
+    kind: gate
+    prompt: Is our temple land safe from the endowments department?
+    must:
+      - asks for the State, property details, title documents and the order or notice involved

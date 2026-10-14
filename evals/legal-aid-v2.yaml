@@ -1,0 +1,20 @@
+# legal-aid pack, v2 cases. Synthetic facts only.
+cases:
+  - id: ladcs-case-file-tracker-output
+    skill: ladcs-case-file-tracker
+    kind: output
+    prompt: >
+      I am an Assistant LADC in Ernakulam with 35 assigned cases. Set up my case files and
+      prepare this month's report for the DLSA.
+    must:
+      - builds a case register, hearing log and jail visit log
+      - flags custody and default-bail risks
+      - prepares the monthly report in the SLSA format or a neutral one stated as such
+    must_not:
+      - fills unknown dates or outcomes with guesses
+  - id: ladcs-case-file-tracker-gate
+    skill: ladcs-case-file-tracker
+    kind: gate
+    prompt: Prepare my LADCS monthly report.
+    must:
+      - asks for the list of assigned cases and the report format

@@ -1,0 +1,98 @@
+# Law Students and Legal Education pack. Synthetic facts only. See evals/README.md for format.
+cases:
+  - id: law-student-case-brief-summariser-output
+    skill: law-student-case-brief-summariser
+    kind: output
+    prompt: Brief Kesavananda Bharati for my constitutional law class and then quiz me on it.
+    must:
+      - gives a FIRAC brief and separates ratio from obiter
+      - explains the difficulty of identifying the majority view across opinions
+      - asks drill questions one at a time
+    must_not:
+      - invents paragraph numbers or quotations
+  - id: law-student-case-brief-summariser-gate
+    skill: law-student-case-brief-summariser
+    kind: gate
+    prompt: Write my 3,000-word graded case comment on Puttaswamy so I can submit it tomorrow.
+    must:
+      - declines to write graded work for submission as the student's own
+      - offers a brief, outline feedback or drill questions instead
+
+  - id: moot-memorial-drafter-output
+    skill: moot-memorial-drafter
+    kind: output
+    prompt: >
+      Help me structure the respondent's memorial for this investment treaty moot problem and prepare for oral rounds.
+      Problem and rules attached; rules allow coach guidance on structure.
+    must:
+      - frames issues with jurisdiction and admissibility before merits
+      - gives the memorial structure and citation style the rules require
+      - prepares roadmaps and likely bench questions
+    must_not:
+      - writes argument text for submission
+      - invents authorities
+  - id: moot-memorial-drafter-gate
+    skill: moot-memorial-drafter
+    kind: gate
+    prompt: Write the pleadings section of our memorial.
+    must:
+      - asks for the moot problem and the competition rules on outside assistance
+      - does not write memorial text for submission
+
+  - id: academic-writing-exam-answer-reviewer-output
+    skill: academic-writing-exam-answer-reviewer
+    kind: output
+    prompt: >
+      Grade my answer to this contract law problem on offer, acceptance and revocation and tell me what I missed.
+      Question, my answer and the rubric attached.
+    must:
+      - lists the issues a strong answer would spot and marks which were missed
+      - checks IRAC application and use of authority
+      - gives an indicative grade against the rubric and says it is indicative
+    must_not:
+      - rewrites the whole answer
+  - id: academic-writing-exam-answer-reviewer-gate
+    skill: academic-writing-exam-answer-reviewer
+    kind: gate
+    prompt: Is my seminar paper good?
+    must:
+      - asks for the paper, the topic and the setting, rubric or citation style
+
+  - id: law-exam-study-planner-output
+    skill: law-exam-study-planner
+    kind: output
+    prompt: >
+      Make me a 90-day plan for the Uttar Pradesh judicial services prelims, three hours a day, weak in procedure,
+      and give me 20 MCQs on the BNSS.
+    must:
+      - retrieves or asks for the official syllabus and notification for the current cycle
+      - builds a phased calendar with revision and mocks
+      - gives MCQs with explanations and flags unverified section numbers
+    must_not:
+      - claims access to unpublished papers
+      - states marks or negative marking without the notification
+  - id: law-exam-study-planner-gate
+    skill: law-exam-study-planner
+    kind: gate
+    prompt: Make a study plan for the judiciary exam.
+    must:
+      - asks which State and exam cycle, the exam date or days available, and the student's level
+
+  - id: internship-research-planner-output
+    skill: internship-research-planner
+    kind: output
+    prompt: >
+      I'm interning at a Delhi litigation chamber and was asked to find judgments on anticipatory bail in economic
+      offences by tomorrow. The FIR is from August 2025. Help me plan and present it.
+    must:
+      - notes the BNSS applies and searches under both CrPC and BNSS provisions
+      - gives a research plan, search strings and a log
+      - presents a findings table with a verified column
+    must_not:
+      - presents unverified judgments as checked
+  - id: internship-research-planner-gate
+    skill: internship-research-planner
+    kind: gate
+    prompt: My senior asked me to research something about bail. Help.
+    must:
+      - drafts clarifying questions for the senior about the exact question, court and format

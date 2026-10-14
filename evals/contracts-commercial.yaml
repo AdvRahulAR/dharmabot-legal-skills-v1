@@ -1,0 +1,277 @@
+# Contracts and Commercial pack cases. Synthetic facts only. See evals/README.md for format.
+cases:
+  - id: nda-drafter-output
+    skill: nda-drafter
+    kind: output
+    prompt: >
+      Draft a mutual NDA between my client, a Pune EV startup, and a Japanese component
+      maker evaluating a supply deal. Battery designs and some employee data will be shared.
+    must:
+      - includes standard exclusions and purpose-limited use
+      - addresses personal data handling with reference to the DPDP Act and its phased commencement
+      - flags governing law and enforcement for cross-border-contract-reviewer
+      - keeps non-compete out of the NDA or flags section 27 risk
+    must_not:
+      - states a stamp duty amount
+  - id: nda-drafter-gate
+    skill: nda-drafter
+    kind: gate
+    prompt: Draft an NDA for my client.
+    must:
+      - asks whether it is mutual or one-way and the purpose of disclosure
+      - asks for the parties and the kind of information to be shared
+
+  - id: nda-triage-reviewer-output
+    skill: nda-triage-reviewer
+    kind: output
+    prompt: >
+      Triage this NDA from a prospective vendor; we just need to know if we can sign it
+      today. It has a two-year non-solicit of our employees and a residuals clause in the
+      vendor's favour. Indian law, Bengaluru courts.
+    must:
+      - classifies the NDA as amber or red with the triggering clauses quoted
+      - proposes replacement wording for the non-solicit and residuals clauses
+      - names who must approve
+    must_not:
+      - says the NDA is approved
+  - id: nda-triage-reviewer-gate
+    skill: nda-triage-reviewer
+    kind: gate
+    prompt: Can we sign the NDA the vendor sent? Yes or no.
+    must:
+      - asks for the full NDA text
+      - asks which side the client is
+
+  - id: playbook-contract-reviewer-output
+    skill: playbook-contract-reviewer
+    kind: output
+    prompt: >
+      Review this customer MSA against our playbook and give me a redline and an issues
+      list. We are the supplier. Playbook cap is 12 months' fees and no uncapped indemnities.
+    must:
+      - produces a risk-ranked issues list with clause references
+      - gives replacement wording and a fallback for each issue
+      - lists missing protections
+      - marks items needing business approval
+    must_not:
+      - presents an assumed market standard as fact
+  - id: playbook-contract-reviewer-gate
+    skill: playbook-contract-reviewer
+    kind: gate
+    prompt: Review this MSA and redline it.
+    must:
+      - asks which party the client is
+      - asks for the playbook or confirmation to use defaults
+
+  - id: msa-sow-drafter-output
+    skill: msa-sow-drafter
+    kind: output
+    prompt: >
+      Draft an MSA and first SOW for our Noida IT services company supplying application
+      support to a retail chain on a monthly fixed fee. We will access their customer data.
+    must:
+      - separates the MSA from a reusable SOW template
+      - includes SLA, change control and acceptance schedules
+      - addresses DPDP Act roles and checks which provisions are in force
+      - does not state GST or withholding rates
+    must_not:
+      - presents service credits as a penalty without analysis
+  - id: msa-sow-drafter-gate
+    skill: msa-sow-drafter
+    kind: gate
+    prompt: Draft a services agreement.
+    must:
+      - asks whether the client is the supplier or the customer
+      - asks for the services, fee model and data access
+
+  - id: vendor-saas-agreement-reviewer-output
+    skill: vendor-saas-agreement-reviewer
+    kind: output
+    prompt: >
+      Review this SaaS subscription agreement for our HR software; we are the customer in
+      India. The vendor is in the US and the terms link to an online DPA and SLA.
+    must:
+      - fetches and records versions of linked terms
+      - covers data location, sub-processors and breach notice for CERT-In and DPDP duties
+      - covers exit and data return
+      - flags US governing law for cross-border-contract-reviewer
+    must_not:
+      - states CERT-In reporting timelines without citing the current direction
+  - id: vendor-saas-agreement-reviewer-gate
+    skill: vendor-saas-agreement-reviewer
+    kind: gate
+    prompt: Review the vendor's terms for our new software.
+    must:
+      - asks for the full terms including linked policies
+      - asks what data the service will hold and whether the customer is regulated
+
+  - id: distribution-franchise-agreement-drafter-output
+    skill: distribution-franchise-agreement-drafter
+    kind: output
+    prompt: >
+      Draft a franchise agreement for a Kerala cafe chain franchising to operators in Tamil
+      Nadu, with an upfront fee, monthly royalty and a fixed menu price list.
+    must:
+      - warns that fixing resale prices raises Competition Act risk
+      - drafts post-term protection around confidentiality and de-branding rather than broad non-compete
+      - flags State licensing and stamp duty for each State
+    must_not:
+      - states royalty tax rates from memory
+  - id: distribution-franchise-agreement-drafter-gate
+    skill: distribution-franchise-agreement-drafter
+    kind: gate
+    prompt: Draft a distribution agreement.
+    must:
+      - asks which side the client is and the type of arrangement
+      - asks for territory, exclusivity and money flows
+
+  - id: loi-term-sheet-reviewer-output
+    skill: loi-term-sheet-reviewer
+    kind: output
+    prompt: >
+      Review this MOU for a joint bid with a Gujarat EPC firm and tell me which parts are
+      binding. Both sides have already shared costs for the bid preparation.
+    must:
+      - produces a binding map clause by clause
+      - flags the risk that conduct has created a concluded contract
+      - lists vague terms with tighter wording
+      - refers stamping to contract-execution-stamping-checker
+    must_not:
+      - assures the client that a non-binding label prevents liability
+  - id: loi-term-sheet-reviewer-gate
+    skill: loi-term-sheet-reviewer
+    kind: gate
+    prompt: >
+      Review this term sheet from an angel investor for a seed round in our startup.
+    must:
+      - identifies it as a venture funding term sheet
+      - hands off to vc-term-sheet-reviewer
+
+  - id: contract-summariser-output
+    skill: contract-summariser
+    kind: output
+    prompt: >
+      Summarise these 40 leases into a table with parties, rent, escalation, lock-in,
+      renewal and termination notice.
+    must:
+      - produces one row per lease with a clause reference in each cell
+      - marks silent terms as not stated and conflicts as ambiguous
+      - reports coverage of documents received and abstracted
+    must_not:
+      - gives advice or ranks risk
+      - fills a blank by inference
+  - id: contract-summariser-gate
+    skill: contract-summariser
+    kind: gate
+    prompt: Abstract the attached vendor contracts.
+    must:
+      - asks for the contracts if not supplied and the columns wanted
+      - asks for the audience or confirms default columns
+
+  - id: contract-obligations-tracker-output
+    skill: contract-obligations-tracker
+    kind: output
+    prompt: >
+      Extract every obligation, payment date, notice period and renewal deadline from this
+      distribution agreement into a tracker. Effective date is 1 April 2026.
+    must:
+      - produces rows with obligation, party, trigger, due date, clause and owner
+      - shows the formula for each computed date
+      - lists upcoming deadlines with cancel-by dates first
+    must_not:
+      - invents a date where the contract is silent
+  - id: contract-obligations-tracker-gate
+    skill: contract-obligations-tracker
+    kind: gate
+    prompt: Build a renewal calendar from our contracts.
+    must:
+      - asks for the executed contracts and amendments
+      - asks for effective dates if not stated and which party the client is
+
+  - id: contract-negotiation-planner-output
+    skill: contract-negotiation-planner
+    kind: output
+    prompt: >
+      Plan our negotiation on the liability and IP clauses with this large bank customer.
+      They want unlimited liability for data breach and ownership of all deliverables.
+    must:
+      - gives opening, target, fallback and walk-away for each issue
+      - proposes trade-offs across issues
+      - drafts counter-proposal wording
+      - notes regulated-customer constraints
+    must_not:
+      - presents assumed market practice as settled fact
+  - id: contract-negotiation-planner-gate
+    skill: contract-negotiation-planner
+    kind: gate
+    prompt: Help me negotiate this contract.
+    must:
+      - asks for the draft and the counterparty's markup
+      - asks which party the client is and its red lines
+
+  - id: contract-amendment-drafter-output
+    skill: contract-amendment-drafter
+    kind: output
+    prompt: >
+      Draft an addendum extending this services agreement by two years and changing the
+      fee schedule, and show how the contract has changed over time. There are two earlier
+      amendments.
+    must:
+      - builds an amendment history table
+      - drafts the addendum with clause-by-clause replacements and an effective date
+      - flags stamping for contract-execution-stamping-checker
+      - produces a consolidated view marked as a reading aid
+    must_not:
+      - treats the conformed copy as the signed instrument
+  - id: contract-amendment-drafter-gate
+    skill: contract-amendment-drafter
+    kind: gate
+    prompt: Draft a novation so our sister company takes over the contract.
+    must:
+      - asks for the base agreement and earlier amendments
+      - asks for the incoming party and confirms counterparty consent is needed
+
+  - id: contract-termination-analyst-output
+    skill: contract-termination-analyst
+    kind: output
+    prompt: >
+      Can my client terminate this supply contract because of the new export ban notified
+      last month? What notice and consequences? The contract has a force majeure clause
+      that mentions change in law.
+    must:
+      - tests the event against the force majeure wording and notice requirements
+      - considers frustration only if the contract does not cover the event
+      - flags the risk of wrongful termination
+      - produces a dated exit plan
+    must_not:
+      - invents a case citation
+  - id: contract-termination-analyst-gate
+    skill: contract-termination-analyst
+    kind: gate
+    prompt: Can we terminate the contract with our supplier?
+    must:
+      - asks for the full contract and the event relied on
+      - asks for correspondence and which side the client is
+
+  - id: contract-execution-stamping-checker-output
+    skill: contract-execution-stamping-checker
+    kind: output
+    prompt: >
+      This services agreement will be e-signed by parties in Bengaluru and Delhi. Check
+      execution, e-stamping and registration.
+    must:
+      - identifies the stamp laws of Karnataka and Delhi and where duty is payable
+      - checks the e-signature method and IT Act exclusions
+      - hands off duty computation to state-stamp-duty-calculator
+      - produces a signing checklist
+    must_not:
+      - states a stamp duty rate or amount from memory
+  - id: contract-execution-stamping-checker-gate
+    skill: contract-execution-stamping-checker
+    kind: gate
+    prompt: >
+      We want to e-sign a sale deed for a flat in Hyderabad through an online signing
+      platform. Check if that works.
+    must:
+      - flags that contracts for sale or conveyance of immovable property are believed excluded from e-signature under the IT Act, to be confirmed
+      - addresses compulsory registration

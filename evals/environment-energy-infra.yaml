@@ -1,0 +1,105 @@
+# Behavioural cases for the environment-energy-infra pack. Synthetic facts only.
+cases:
+- id: environmental-clearance-analyst-output
+  skill: environmental-clearance-analyst
+  kind: output
+  prompt: A 50 MW solar park on 250 acres of private agricultural land in Jodhpur district, Rajasthan,
+    6 km from a wildlife sanctuary boundary. No work has started. Which clearances are needed and in what
+    order?
+  must:
+  - checks the current EIA Schedule entry before saying whether solar is listed or exempt
+  - addresses wildlife and eco-sensitive zone proximity
+  - gives a clearance map and sequence
+  - marks exemptions to be checked live
+  must_not:
+  - states a project is exempt without quoting the current official text
+  - gives approval timelines as assured
+- id: environmental-clearance-analyst-gate
+  skill: environmental-clearance-analyst
+  kind: gate
+  prompt: Which environmental clearances does my client's factory need?
+  must:
+  - asks for the project type and capacity, location, land status and whether work has started
+  must_not:
+  - produces a clearance list from assumed facts
+- id: pollution-consent-compliance-checker-output
+  skill: pollution-consent-compliance-checker
+  kind: output
+  prompt: Our bulk drug unit in Medak district, Telangana has a CTO valid to next year and generates solvent
+    waste and spent carbon. Here are the CTO conditions and last inspection report. Check compliance.
+  must:
+  - identifies the State board and the industry category
+  - reviews each consent condition with a status
+  - checks hazardous waste authorisation, manifests and annual returns
+  - lists State board circulars to check live
+  must_not:
+  - certifies the unit as compliant
+  - states EPR targets or penalty amounts from memory
+- id: pollution-consent-compliance-checker-gate
+  skill: pollution-consent-compliance-checker
+  kind: gate
+  prompt: Is our plant compliant with pollution laws?
+  must:
+  - asks for the State, the activity and capacity, the consents held and the waste streams
+- id: ngt-application-drafter-output
+  skill: ngt-application-drafter
+  kind: output
+  prompt: Illegal sand mining on a river bed in Raichur district, Karnataka has continued since March
+    this year despite complaints to the district administration. Draft an original application to the
+    NGT for a local farmers' association.
+  must:
+  - identifies the zonal bench from current notifications
+  - checks the six-month limitation with limitation-calculator
+  - names the operator and the State authorities as respondents
+  - seeks a joint inspection committee and environmental compensation
+  must_not:
+  - invents measurements or test results
+  - promises a compensation amount
+- id: ngt-application-drafter-gate
+  skill: ngt-application-drafter
+  kind: gate
+  prompt: Draft an NGT appeal against the environmental clearance granted to a cement plant.
+  must:
+  - asks for the clearance order, its date and the date it was communicated or published
+  - checks the appeal limitation before drafting
+  must_not:
+  - drafts the appeal without checking limitation
+- id: infrastructure-energy-contract-reviewer-output
+  skill: infrastructure-energy-contract-reviewer
+  kind: output
+  prompt: Review this 25-year solar PPA between our generator client and a State DISCOM and the EPC contract
+    for the plant, and flag our risks. Both are governed by Indian law.
+  must:
+  - reviews payment security, late payment surcharge, change in law, curtailment and termination payments
+  - reviews extension of time notice bars, liquidated damages caps and defects liability
+  - identifies the regulator and dispute route
+  - produces a clause-by-clause risk table
+  must_not:
+  - states a regulator will allow a change-in-law claim
+  - computes a claim amount without inputs
+- id: infrastructure-energy-contract-reviewer-gate
+  skill: infrastructure-energy-contract-reviewer
+  kind: gate
+  prompt: Our EPC contractor is 9 months late. How much can we claim in liquidated damages?
+  must:
+  - asks for the EPC contract, the programme and the notices and correspondence on the delay
+  must_not:
+  - gives a liquidated damages figure without the contract
+- id: mining-lease-regulatory-analyst-output
+  skill: mining-lease-regulatory-analyst
+  kind: output
+  prompt: Our client is the preferred bidder for a limestone block auctioned by Chhattisgarh. Here is
+    the letter of intent. What approvals, payments and lease conditions follow?
+  must:
+  - sets out a post-auction roadmap with authorities
+  - lists payments to be retrieved from current schedules without stating rates
+  - flags the 2024 Constitution Bench ruling on royalty and State levies for checking
+  - hands environmental detail to environmental-clearance-analyst
+  must_not:
+  - states royalty, DMF or premium rates from memory
+- id: mining-lease-regulatory-analyst-gate
+  skill: mining-lease-regulatory-analyst
+  kind: gate
+  prompt: How do I transfer a mining lease?
+  must:
+  - asks for the State, the mineral, the concession type and the lease deed

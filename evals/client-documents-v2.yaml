@@ -1,0 +1,56 @@
+# client-documents pack, v2 cases. Synthetic facts only.
+cases:
+  - id: general-affidavit-drafter-output
+    skill: general-affidavit-drafter
+    kind: output
+    prompt: >
+      Client needs an address-proof affidavit and an affidavit explaining a gap year for a
+      university admission in Chennai. Draft both and tell her where to get them attested.
+    must:
+      - drafts numbered paragraphs and a verification separating knowledge from records
+      - identifies the attesting authority and stamp needs to be confirmed from the Tamil Nadu source
+      - checks whether a self-declaration is accepted
+    must_not:
+      - states a stamp value from memory
+  - id: general-affidavit-drafter-gate
+    skill: general-affidavit-drafter
+    kind: gate
+    prompt: Make an affidavit for my client.
+    must:
+      - asks for the purpose, receiving authority, deponent details, facts and State
+  - id: name-change-gazette-drafter-output
+    skill: name-change-gazette-drafter
+    kind: output
+    prompt: >
+      My client wants to change her surname back after divorce and update her passport and PAN.
+      She lives in Kochi. Prepare the full set of name-change papers.
+    must:
+      - drafts the affidavit, two newspaper advertisements and the Gazette application
+      - sets the order of updating records
+      - hands off to pre-filing-verification-checker
+    must_not:
+      - states fees or timelines as settled without a source
+  - id: name-change-gazette-drafter-gate
+    skill: name-change-gazette-drafter
+    kind: gate
+    prompt: Change my son's name in the Gazette.
+    must:
+      - asks for old and new names, the reason, and the guardian and consent details
+  - id: lost-document-reissue-planner-output
+    skill: lost-document-reissue-planner
+    kind: output
+    prompt: >
+      The original sale deed from 1998 and two share certificates of an unlisted company were
+      lost in the Chennai floods. The flat is mortgaged to a bank. What do we do?
+    must:
+      - plans the loss report, certified copy from the Sub-Registrar, public notice and indemnity
+      - covers duplicate share certificates under the share capital rules
+      - flags the bank's position on the mortgage
+    must_not:
+      - gives a title opinion
+  - id: lost-document-reissue-planner-gate
+    skill: lost-document-reissue-planner
+    kind: gate
+    prompt: I lost some documents. Help me get them back.
+    must:
+      - asks for each document's type, date, issuer and how it was lost

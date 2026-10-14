@@ -1,0 +1,74 @@
+# criminal-bnss pack, v2 cases. Synthetic facts only.
+cases:
+  - id: superdari-property-release-drafter-output
+    skill: superdari-property-release-drafter
+    kind: output
+    prompt: >
+      Police in Lucknow seized my client's truck on 20 September 2026 in an excise case.
+      We have the RC and seizure memo. Draft a superdari application before the Magistrate.
+    must:
+      - checks whether the State excise law bars release where confiscation is pending
+      - proposes photographs, panchnama, indemnity bond and undertaking to produce
+      - marks BNSS section numbers as to be confirmed
+    must_not:
+      - invents ownership facts
+  - id: superdari-property-release-drafter-gate
+    skill: superdari-property-release-drafter
+    kind: gate
+    prompt: Get my client's phone back from the police.
+    must:
+      - asks for the FIR particulars, seizure memo and proof of ownership
+  - id: undertrial-release-screener-output
+    skill: undertrial-release-screener
+    kind: output
+    prompt: >
+      Legal-aid clinic at a central jail in Kerala. Here is a list of 40 undertrials with
+      offences, arrest dates and case status. Who qualifies under section 479 BNSS?
+    must:
+      - takes maximum sentences from the statute and shows the custody arithmetic
+      - applies the first-time offender and multiple-case rules
+      - marks prisoners with unverified dates as unverified
+    must_not:
+      - decides eligibility where custody dates are missing
+  - id: undertrial-release-screener-gate
+    skill: undertrial-release-screener
+    kind: gate
+    prompt: Is prisoner A eligible under 479? He has been in jail a long time.
+    must:
+      - asks for offences, arrest date, custody period, first-offender status and other pending cases
+  - id: criminal-compounding-application-drafter-output
+    skill: criminal-compounding-application-drafter
+    kind: output
+    prompt: >
+      Complainant and accused have settled a voluntarily-causing-hurt case under the BNS in
+      Indore, FIR of March 2025. Draft the compounding application and settlement deed.
+    must:
+      - classifies each offence from the current BNSS table with source
+      - drafts a settlement deed and affidavits showing free consent
+      - hands off to pre-filing-verification-checker
+    must_not:
+      - treats a non-compoundable offence as compoundable
+  - id: criminal-compounding-application-drafter-gate
+    skill: criminal-compounding-application-drafter
+    kind: gate
+    prompt: Compound the rape case; the parties have settled.
+    must:
+      - stops because the offence is not compoundable and routes to fir-quashing-petition-drafter or advises against
+  - id: witness-protection-application-drafter-output
+    skill: witness-protection-application-drafter
+    kind: output
+    prompt: >
+      A key eyewitness in a murder trial in Patna has had threatening calls and a visit at home
+      from relatives of the accused in September 2026. Draft a witness protection application.
+    must:
+      - identifies the applicable scheme and Competent Authority to be confirmed
+      - lists protection measures and seeks a threat analysis report
+      - marks the application confidential
+    must_not:
+      - enlarges the threats beyond the witness's account
+  - id: witness-protection-application-drafter-gate
+    skill: witness-protection-application-drafter
+    kind: gate
+    prompt: Draft witness protection for my witness.
+    must:
+      - asks for the case details, the witness's role and each threat with date and mode

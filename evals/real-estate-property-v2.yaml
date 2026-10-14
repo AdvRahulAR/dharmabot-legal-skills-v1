@@ -1,0 +1,20 @@
+# real-estate-property pack, v2 cases. Synthetic facts only.
+cases:
+  - id: cooperative-society-dispute-analyst-output
+    skill: cooperative-society-dispute-analyst
+    kind: output
+    prompt: >
+      The managing committee of a Pune housing society refuses to transfer a flat to my client's
+      late father's heirs because the nominee is a cousin. What is the remedy?
+    must:
+      - separates the nominee's position from the heirs' ownership under current authority
+      - maps the forum among Registrar, co-operative court and appellate court
+      - marks section numbers and time limits to be confirmed
+    must_not:
+      - guarantees transfer
+  - id: cooperative-society-dispute-analyst-gate
+    skill: cooperative-society-dispute-analyst
+    kind: gate
+    prompt: Our society is not giving NOC. What can we do?
+    must:
+      - asks for the State, society registration and bye-laws, and the facts of the refusal

@@ -1,0 +1,254 @@
+# Intellectual Property pack cases. Synthetic facts only.
+cases:
+  - id: trademark-clearance-analyst-output
+    skill: trademark-clearance-analyst
+    kind: output
+    prompt: >
+      We want to launch a snack brand called Crunchwala in Classes 29 and 30.
+      Here is our Registry public search of 3 October 2026 showing Crunchy
+      Wala in Class 30 (registered) and Krunchwalla in Class 29 (abandoned).
+    must:
+      - states the scope and date of searches done
+      - gives separate risk ratings for use and registration
+      - checks the status of each hit
+    must_not:
+      - says the mark is clear or guarantees registration
+  - id: trademark-clearance-analyst-gate
+    skill: trademark-clearance-analyst
+    kind: gate
+    prompt: Is the name Zestora clear to use?
+    must:
+      - asks for the goods and services, classes and the search results relied on
+      - does not claim a full search was done
+  - id: trademark-application-drafter-output
+    skill: trademark-application-drafter
+    kind: output
+    prompt: >
+      Prepare a TM-A application for our logo mark in Classes 9 and 42 for SaaS,
+      claiming use since 2022. We are a DPIIT-recognised startup in Kochi.
+    must:
+      - drafts specifications for each class
+      - recommends separate word and device filings if the logo contains a distinctive word
+      - prepares a user affidavit tied to evidence
+    must_not:
+      - states the fee from memory as settled
+  - id: trademark-application-drafter-gate
+    skill: trademark-application-drafter
+    kind: gate
+    prompt: File a trademark for our brand, user since 2015.
+    must:
+      - asks for the applicant details, the mark, the goods and services and evidence of use since 2015
+  - id: trademark-examination-reply-drafter-output
+    skill: trademark-examination-reply-drafter
+    kind: output
+    prompt: >
+      Draft a reply to this examination report dated 25 September 2026 raising
+      a section 9(1)(a) descriptiveness objection to FreshBasket in Class 35
+      and a section 11 conflict with three cited marks.
+    must:
+      - computes and flags the reply deadline as to be confirmed
+      - distinguishes each citation on marks, goods and trade channels
+      - requests a hearing in the alternative
+    must_not:
+      - fabricates evidence of use or sales figures
+  - id: trademark-examination-reply-drafter-gate
+    skill: trademark-examination-reply-drafter
+    kind: gate
+    prompt: Reply to the objection on our trademark.
+    must:
+      - asks for the examination report, its date and the application as filed
+  - id: trademark-opposition-drafter-output
+    skill: trademark-opposition-drafter
+    kind: output
+    prompt: >
+      A competitor's application for Swiggi Foods in Class 43 was advertised in
+      the Trade Marks Journal on 1 September 2026. Our client owns earlier
+      registrations for a similar mark. Draft our notice of opposition.
+    must:
+      - computes the opposition deadline from the Journal date with confirmation
+      - pleads only grounds with factual support
+      - notes whether a passing-off suit is a better or parallel route
+    must_not:
+      - invents case law or Registry orders
+  - id: trademark-opposition-drafter-gate
+    skill: trademark-opposition-drafter
+    kind: gate
+    prompt: >
+      A rival's mark was advertised in the Journal in January 2026. Draft our
+      opposition now.
+    must:
+      - flags that the opposition window has likely expired
+      - suggests rectification or a suit as alternatives
+  - id: ip-infringement-analyst-output
+    skill: ip-infringement-analyst
+    kind: output
+    prompt: >
+      A Surat company is selling sarees with a print copied from our client's
+      registered design and a label confusingly similar to our client's mark.
+      Analyse and draft a cease-and-desist.
+    must:
+      - confirms the design and trademark registrations are in force
+      - considers defences and delay
+      - drafts a proportionate letter
+    must_not:
+      - threatens criminal action as leverage in a civil claim
+      - overstates rights
+  - id: ip-infringement-analyst-gate
+    skill: ip-infringement-analyst
+    kind: gate
+    prompt: Someone is copying us. Send them a legal notice.
+    must:
+      - asks which right is relied on, proof of ownership and evidence of the infringing acts
+  - id: copyright-design-registration-advisor-output
+    skill: copyright-design-registration-advisor
+    kind: output
+    prompt: >
+      Who owns the code and illustrations made for our app by two freelancers
+      and one employee, and should we register copyright and the product
+      packaging design?
+    must:
+      - distinguishes contract of service from contract for service
+      - checks assignment formalities
+      - flags the copyright-design overlap rule as to be confirmed
+    must_not:
+      - asserts ownership without documents
+  - id: copyright-design-registration-advisor-gate
+    skill: copyright-design-registration-advisor
+    kind: gate
+    prompt: Can we register our product design?
+    must:
+      - asks whether and when the design was published, sold or shown
+  - id: invention-disclosure-screener-output
+    skill: invention-disclosure-screener
+    kind: output
+    prompt: >
+      Our engineers built an AI model that predicts crop disease from leaf
+      images captured by a custom field sensor. We demoed it at a conference in
+      June 2026. Is it patentable in India?
+    must:
+      - tests section 3(k) with the current CRI Guidelines
+      - flags the June 2026 demo as a novelty risk
+      - recommends an action such as filing a provisional
+    must_not:
+      - presents the screen as a prior-art search or patentability opinion
+  - id: invention-disclosure-screener-gate
+    skill: invention-disclosure-screener
+    kind: gate
+    prompt: Is our new app patentable?
+    must:
+      - asks for a description of what is new and how it works, and any public disclosures
+  - id: patent-specification-drafter-output
+    skill: patent-specification-drafter
+    kind: output
+    prompt: >
+      Draft a provisional specification for this water purification process,
+      with figures described, for filing at the Chennai Patent Office.
+    must:
+      - follows the specification structure with a detailed description and embodiments
+      - lists forms with numbers to confirm
+      - computes the deadline to file the complete specification as to be confirmed
+    must_not:
+      - adds data or embodiments not supplied
+  - id: patent-specification-drafter-gate
+    skill: patent-specification-drafter
+    kind: gate
+    prompt: File our PCT application in India.
+    must:
+      - asks for the international application details and earliest priority date
+      - flags the national phase deadline
+  - id: patent-fer-reply-drafter-output
+    skill: patent-fer-reply-drafter
+    kind: output
+    prompt: >
+      Draft a response to this FER dated 1 August 2026 citing lack of inventive
+      step over D1 and D2 and a section 3(k) objection. Claims and D1, D2 are
+      attached.
+    must:
+      - builds an objection table
+      - maps claim features against D1 and D2
+      - checks that amendments are within section 59
+    must_not:
+      - invents experimental data
+  - id: patent-fer-reply-drafter-gate
+    skill: patent-fer-reply-drafter
+    kind: gate
+    prompt: Reply to our patent FER; it came some time last year.
+    must:
+      - asks for the FER and its date
+      - flags the possible lapse of the response period
+  - id: freedom-to-operate-analyst-output
+    skill: freedom-to-operate-analyst
+    kind: output
+    prompt: >
+      Before launching our medical device in India, run an FTO triage against
+      these five Indian patents and chart claim 1 of each.
+    must:
+      - checks the current status of each patent
+      - builds element-by-element claim charts
+      - suggests design-arounds
+    must_not:
+      - calls the triage a non-infringement opinion
+  - id: freedom-to-operate-analyst-gate
+    skill: freedom-to-operate-analyst
+    kind: gate
+    prompt: Are we free to launch our device?
+    must:
+      - asks for the product description and the patents or search results to chart
+  - id: ip-assignment-licence-drafter-output
+    skill: ip-assignment-licence-drafter
+    kind: output
+    prompt: >
+      Draft an assignment of all IP from our founder's earlier proprietorship
+      to the new private company in Maharashtra, and a software licence to a
+      distributor in Singapore.
+    must:
+      - verifies the chain of title
+      - flags recordal with the IP offices
+      - flags stamp duty, withholding tax and FEMA
+    must_not:
+      - states stamp or tax rates from memory
+  - id: ip-assignment-licence-drafter-gate
+    skill: ip-assignment-licence-drafter
+    kind: gate
+    prompt: Draft an IP assignment to our company.
+    must:
+      - asks for the IP to be assigned, the parties and evidence that the assignor owns it
+  - id: ip-portfolio-tracker-output
+    skill: ip-portfolio-tracker
+    kind: output
+    prompt: >
+      Build a tracker of our 46 trademarks and 3 patents with renewal dates,
+      status and ownership gaps. Our docket export is attached.
+    must:
+      - checks status against official records
+      - lists upcoming deadlines
+      - flags rights held in the wrong entity's name
+    must_not:
+      - invents registration numbers or dates
+  - id: ip-portfolio-tracker-gate
+    skill: ip-portfolio-tracker
+    kind: gate
+    prompt: Tell me when our trademarks need renewal.
+    must:
+      - asks for the list of marks with application or registration numbers
+  - id: domain-name-dispute-analyst-output
+    skill: domain-name-dispute-analyst
+    kind: output
+    prompt: >
+      Someone registered ourbrand.in and ourbrand.com in 2025 and is redirecting
+      both to a rival. Our mark has been registered since 2018. Can we get them back?
+    must:
+      - routes the .in domain to INDRP and the .com to UDRP
+      - tests all three elements on the evidence
+      - compares a passing-off suit
+    must_not:
+      - promises transfer
+  - id: domain-name-dispute-analyst-gate
+    skill: domain-name-dispute-analyst
+    kind: gate
+    prompt: >
+      A domain matching our brand was registered in 2012; we adopted our brand
+      in 2020. File a UDRP complaint.
+    must:
+      - flags that registration before the client's rights makes bad faith hard to prove
+      - flags reverse domain-name hijacking risk

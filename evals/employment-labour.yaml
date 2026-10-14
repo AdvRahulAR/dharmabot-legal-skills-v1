@@ -1,0 +1,219 @@
+# Employment and Labour pack cases. Synthetic facts only.
+cases:
+  - id: employment-contract-drafter-output
+    skill: employment-contract-drafter
+    kind: output
+    prompt: >
+      Draft an employment agreement for a senior backend engineer joining a
+      Bengaluru company, CTC Rs 48 lakh with 40 percent basic, ESOPs under the
+      company scheme, IP assignment and a 90-day notice period.
+    must:
+      - classifies the role as worker or non-worker with reasons
+      - shows which pay components fall within wages under the Code on Wages
+      - flags Karnataka Shops and Establishments points
+      - refers ESOP terms to the scheme rather than restating vesting
+    must_not:
+      - includes a broad post-employment non-compete without flagging section 27 risk
+      - states a statutory threshold as settled without confirmation
+  - id: employment-contract-drafter-gate
+    skill: employment-contract-drafter
+    kind: gate
+    prompt: Draft an offer letter for our new hire.
+    must:
+      - asks for the role, pay structure, employer entity and State of work before drafting
+  - id: restrictive-covenant-analyst-output
+    skill: restrictive-covenant-analyst
+    kind: output
+    prompt: >
+      Our client's sales head resigned and will join a competitor next month.
+      His contract bars him from working for any competitor in India for 12
+      months after exit and from approaching clients. Can we stop him?
+    must:
+      - separates the post-term non-compete from non-solicitation and confidentiality
+      - explains that post-term non-competes in employment are generally void under section 27
+      - suggests remedies based on confidentiality or evidence of misuse
+    must_not:
+      - promises an injunction
+      - invents a case citation
+  - id: restrictive-covenant-analyst-gate
+    skill: restrictive-covenant-analyst
+    kind: gate
+    prompt: Is our non-compete enforceable?
+    must:
+      - asks for the clause text, the contract type and whether the restraint is in-term or post-term
+  - id: hr-policy-handbook-drafter-output
+    skill: hr-policy-handbook-drafter
+    kind: output
+    prompt: >
+      Draft an employee handbook for a 150-person software company with offices
+      in Delhi and Chennai, covering leave, code of conduct, remote work and
+      device monitoring.
+    must:
+      - builds a State matrix for Delhi and Tamil Nadu leave and holidays
+      - addresses employee data and monitoring under the DPDP Act
+      - hands off the POSH policy to posh-compliance-advisor
+    must_not:
+      - states leave entitlements as settled without State-rule confirmation
+  - id: hr-policy-handbook-drafter-gate
+    skill: hr-policy-handbook-drafter
+    kind: gate
+    prompt: Update our handbook to the latest law.
+    must:
+      - asks for the current handbook, the States of operation and headcount per State
+  - id: posh-compliance-advisor-output
+    skill: posh-compliance-advisor
+    kind: output
+    prompt: >
+      Set up POSH compliance for our 60-person company with one office in
+      Kolkata. We have no Internal Committee yet.
+    must:
+      - lists Internal Committee composition requirements including an external member
+      - covers the annual report to the District Officer and board-report disclosure
+      - produces a gap list with actions
+    must_not:
+      - states thresholds or fees as settled without confirmation
+  - id: posh-compliance-advisor-gate
+    skill: posh-compliance-advisor
+    kind: gate
+    prompt: Audit our POSH compliance across all offices.
+    must:
+      - asks for each workplace, its district and headcount, and the existing committee details
+  - id: posh-inquiry-report-drafter-output
+    skill: posh-inquiry-report-drafter
+    kind: output
+    prompt: >
+      Our Internal Committee received a written complaint on 2 September 2026
+      from an employee against her manager about messages sent in July and
+      August 2026. Draft the notices, inquiry plan and report format.
+    must:
+      - builds a timeline from the date of receipt with periods marked to confirm
+      - offers conciliation only at the complainant's request
+      - leaves findings for the Committee to record
+    must_not:
+      - decides guilt
+      - uses the parties' full names in drafts
+  - id: posh-inquiry-report-drafter-gate
+    skill: posh-inquiry-report-drafter
+    kind: gate
+    prompt: Write the POSH inquiry report finding the respondent guilty.
+    must:
+      - asks for the complaint, the hearing record and the Committee's own findings
+      - declines to reach findings for the Committee
+  - id: labour-codes-compliance-checker-output
+    skill: labour-codes-compliance-checker
+    kind: output
+    prompt: >
+      Map our obligations under the four Labour Codes for a 300-worker factory
+      in Tamil Nadu (with 80 contract workers) and a 40-person office in Pune.
+    must:
+      - treats each site separately by State
+      - records the Codes' reported commencement and checks State rules live
+      - covers contract labour, standing orders, EPF and ESI
+      - flags transition issues from repealed laws
+    must_not:
+      - states contribution rates or thresholds as settled
+  - id: labour-codes-compliance-checker-gate
+    skill: labour-codes-compliance-checker
+    kind: gate
+    prompt: What labour compliances do we need?
+    must:
+      - asks for the State, type of establishment and headcount by category for each site
+  - id: termination-retrenchment-analyst-output
+    skill: termination-retrenchment-analyst
+    kind: output
+    prompt: >
+      We want to let go of 25 operators and 5 managers in our 180-person Noida
+      unit because a product line is closing. What process and compensation
+      apply? Draft separation agreements.
+    must:
+      - classifies workers and managers separately
+      - checks the prior-permission threshold under the IR Code with confirmation
+      - addresses last-in-first-out and notice to the government
+      - keeps non-waivable statutory rights out of the release
+    must_not:
+      - suggests disguising retrenchment as resignation
+  - id: termination-retrenchment-analyst-gate
+    skill: termination-retrenchment-analyst
+    kind: gate
+    prompt: >
+      Notice was served on 10 November 2025 and retrenchment took effect on
+      10 December 2025. Which law governs the compensation?
+    must:
+      - flags that the dates straddle the reported IR Code commencement
+      - checks the savings provisions before answering
+  - id: disciplinary-inquiry-drafter-output
+    skill: disciplinary-inquiry-drafter
+    kind: output
+    prompt: >
+      Draft a show-cause notice and charge-sheet for a factory worker accused
+      of submitting false travel claims of Rs 38,000, and set out the inquiry
+      procedure under our certified standing orders.
+    must:
+      - ties each charge to a defined act of misconduct
+      - provides for an independent inquiry officer and defence representative
+      - includes a second show-cause step
+    must_not:
+      - records findings of guilt before the inquiry
+  - id: disciplinary-inquiry-drafter-gate
+    skill: disciplinary-inquiry-drafter
+    kind: gate
+    prompt: Draft a charge-sheet for misconduct against an employee.
+    must:
+      - asks for the specific allegation, the documents relied on and the applicable standing orders or rules
+  - id: employee-dues-calculator-output
+    skill: employee-dues-calculator
+    kind: output
+    prompt: >
+      Compute gratuity, leave encashment and notice pay for an employee who
+      resigned on 31 August 2026 after 7 years 8 months, last drawn basic
+      Rs 62,000, DA nil, other allowances Rs 70,000, 24 days leave balance.
+    must:
+      - applies the wage definition and checks the 50 percent rule
+      - shows each formula and the part-year rounding rule
+      - flags the gratuity ceiling and tax exemption as to be confirmed
+    must_not:
+      - states a statutory ceiling from memory as settled
+  - id: employee-dues-calculator-gate
+    skill: employee-dues-calculator
+    kind: gate
+    prompt: Calculate the full and final settlement for an employee leaving next week.
+    must:
+      - asks for dates of joining and exit, mode of exit, pay components and leave balance
+  - id: gig-worker-classification-analyst-output
+    skill: gig-worker-classification-analyst
+    kind: output
+    prompt: >
+      We engage 2,000 delivery partners in Karnataka and Rajasthan through our
+      app. They log in when they like but we set prices and can deactivate
+      them for low ratings. Are they employees, and what do we owe?
+    must:
+      - applies control, integration and economic-reality tests
+      - maps aggregator duties under the Code on Social Security and each State law
+      - checks whether each State law and scheme is in force
+    must_not:
+      - recommends paper changes that do not match practice
+  - id: gig-worker-classification-analyst-gate
+    skill: gig-worker-classification-analyst
+    kind: gate
+    prompt: Are our freelancers employees?
+    must:
+      - asks for the engagement terms, how work is allocated and supervised, and the States involved
+  - id: labour-dispute-claim-drafter-output
+    skill: labour-dispute-claim-drafter
+    kind: output
+    prompt: >
+      Draft a claim for reinstatement with back wages for a machine operator in
+      a Pune factory terminated on 15 March 2026 without inquiry after 6 years
+      of service. Conciliation failed on 30 June 2026.
+    must:
+      - identifies the forum currently hearing such disputes in Maharashtra
+      - checks limitation using limitation-calculator
+      - pleads reliefs without promising them
+    must_not:
+      - invents wage records or attendance
+  - id: labour-dispute-claim-drafter-gate
+    skill: labour-dispute-claim-drafter
+    kind: gate
+    prompt: Draft a Labour Court claim for my client who was fired.
+    must:
+      - asks for the date of termination, the employer's legal name, the State and the conciliation status

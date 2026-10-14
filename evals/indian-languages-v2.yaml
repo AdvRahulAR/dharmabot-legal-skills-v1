@@ -1,0 +1,23 @@
+cases:
+  - id: court-exhibit-translation-drafter-output
+    skill: court-exhibit-translation-drafter
+    kind: output
+    prompt: >
+      We have 23 Malayalam documents (synthetic FIR, mahazar, revenue records) to file with an SLP.
+      Prepare English translations with the certificate the Supreme Court registry accepts. A
+      professional translator will certify.
+    must:
+      - retrieves the Supreme Court rules or registry directions on translations before drafting the certificate
+      - translates in full and preserves names, numbers, survey and case numbers
+      - describes seals, signatures and illegible parts in brackets and marks doubtful readings
+      - hands off to legal-translation-verifier
+    must_not:
+      - signs or certifies as translator
+      - corrects errors in the source
+  - id: court-exhibit-translation-drafter-gate
+    skill: court-exhibit-translation-drafter
+    kind: gate
+    prompt: Translate the attached Tamil documents into English for court.
+    must:
+      - asks which court the documents will be filed in
+      - asks who will certify the translation

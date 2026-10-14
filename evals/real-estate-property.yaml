@@ -1,0 +1,278 @@
+# real-estate-property behavioural cases. Synthetic facts only. See evals/README.md for format.
+cases:
+- id: property-title-diligence-analyst-output
+  skill: property-title-diligence-analyst
+  kind: output
+  prompt: Prepare a 30-year title report for 3 acres of agricultural land in a village near Mysuru being
+    bought for a warehouse. I have a 1994 partition deed, a 2003 sale deed, a 2015 sale deed through a
+    GPA holder, current RTC extracts and ECs for 1995-2026.
+  must:
+  - tabulates the chain of title link by link from the documents supplied
+  - flags the GPA sale for checking the POA's registration, scope and the principal being alive
+  - notes that RTC entries do not by themselves confer title
+  - flags Karnataka agricultural land purchase and conversion requirements for checking from the official
+    text
+  - lists documents missing and requisitions to raise
+  must_not:
+  - certifies title as clear and marketable without qualifications
+  - invents a case citation, registration number or section number
+- id: property-title-diligence-analyst-gate
+  skill: property-title-diligence-analyst
+  kind: gate
+  prompt: Give me a title opinion on the seller's house. He says it is inherited and clean.
+  must:
+  - asks for the State and property identifiers
+  - asks for the title documents and revenue records before giving any opinion
+  must_not:
+  - gives a title opinion without documents
+- id: encumbrance-certificate-analyst-output
+  skill: encumbrance-certificate-analyst
+  kind: output
+  prompt: Read this EC for 2004-2026 for a flat in Chennai and tell me whether it matches the title documents.
+    The EC shows a 2011 mortgage to a bank and no release; the 2019 sale deed to the seller is listed.
+  must:
+  - extracts each EC entry into a table
+  - flags the 2011 mortgage without a matching release
+  - recommends CERSAI and other searches for charges an EC may not show
+  - states that an EC shows only registered transactions in the searched office and period
+  must_not:
+  - treats the EC as proof that the flat is free of all charges
+- id: encumbrance-certificate-analyst-gate
+  skill: encumbrance-certificate-analyst
+  kind: gate
+  prompt: Is this property encumbrance-free? Here is the EC.
+  must:
+  - asks for the search period, issuing office and property description used for the search
+  - asks for the title documents for reconciliation
+  must_not:
+  - declares the property free of encumbrances without reconciliation
+- id: sale-deed-drafter-output
+  skill: sale-deed-drafter
+  kind: output
+  prompt: Draft an agreement to sell and the sale deed for a flat in Kolkata; the price is partly paid
+    through a home loan from a bank. Buyer and seller are resident individuals; registration is planned
+    for November 2026.
+  must:
+  - drafts both an agreement to sell and a sale deed with a bracketed schedule
+  - includes lender payment flow and the buyer's TDS recital
+  - checks which income-tax law governs TDS on the payment date and does not state the rate from memory
+  - flags West Bengal apartment ownership and stamp rules for checking
+  - hands off stamp duty to state-stamp-duty-calculator
+  must_not:
+  - states a stamp duty or TDS rate as settled from memory
+  - fills in an extent or price not supplied
+- id: sale-deed-drafter-gate
+  skill: sale-deed-drafter
+  kind: gate
+  prompt: Draft a sale deed for my client's plot. Price 40 lakh.
+  must:
+  - asks for the State and Sub-Registrar office
+  - asks for parties' details and the title documents or property schedule
+  must_not:
+  - produces a complete deed with invented survey numbers
+- id: family-conveyance-deed-drafter-output
+  skill: family-conveyance-deed-drafter
+  kind: output
+  prompt: Draft a release deed by my client's two sisters in her favour for their late father's house
+    in Thrissur, and a gift deed of her flat in Kochi to her son. The family is Hindu; the father died
+    intestate in 2021.
+  must:
+  - confirms the sisters' shares before drafting the release
+  - includes an acceptance clause in the gift deed
+  - flags Kerala concessional family stamp duty for checking and hands off figures to state-stamp-duty-calculator
+  - lists all heirs, including the mother if alive, in the recitals or asks about them
+  must_not:
+  - drafts the release without asking about other heirs
+  - states a stamp rate from memory
+- id: family-conveyance-deed-drafter-gate
+  skill: family-conveyance-deed-drafter
+  kind: gate
+  prompt: Draft a partition deed among three brothers for the family land.
+  must:
+  - asks for the State and property schedule
+  - asks how the land is held and for the full list of heirs or co-owners
+  - asks for the personal law and the date of death of the person through whom they inherit
+- id: lease-licence-agreement-drafter-output
+  skill: lease-licence-agreement-drafter
+  kind: output
+  prompt: Draft a 9-year commercial lease for a showroom in Mumbai for my client, the tenant, and tell
+    me if a leave and licence is better. Rent 4 lakh per month, 15% escalation every 3 years, 12 months
+    deposit.
+  must:
+  - explains lease versus licence by substance, not label
+  - flags Maharashtra rent control and leave-and-licence registration rules for checking
+  - covers lock-in, fit-out, escalation, deposit, subletting and termination clauses
+  - hands off stamp duty to state-stamp-duty-calculator
+  must_not:
+  - states a stamp rate or rent threshold as settled from memory
+  - advises using a licence to evade rent law
+- id: lease-licence-agreement-drafter-gate
+  skill: lease-licence-agreement-drafter
+  kind: gate
+  prompt: Draft a rent agreement for my client.
+  must:
+  - asks for the State and city
+  - asks whether the premises are residential or commercial and which party the client is
+  - asks for term, rent and deposit
+- id: power-of-attorney-drafter-output
+  skill: power-of-attorney-drafter
+  kind: output
+  prompt: Draft a specific power of attorney for my NRI client in Canada to let her brother sell her plot
+    in Hyderabad.
+  must:
+  - drafts a special POA with numbered, specific powers
+  - limits receipt of consideration to a named account
+  - notes that a POA is not a conveyance
+  - plans authentication abroad and stamping in Telangana after arrival, handing off to document-legalisation-planner
+  must_not:
+  - grants a power to gift or mortgage that was not requested
+  - states stamp amounts or time limits as settled from memory
+- id: power-of-attorney-drafter-gate
+  skill: power-of-attorney-drafter
+  kind: gate
+  prompt: Draft a GPA for my client.
+  must:
+  - asks for the acts to be authorised and the property, case or account concerned
+  - asks where the POA will be signed and used
+- id: rera-complaint-drafter-output
+  skill: rera-complaint-drafter
+  kind: output
+  prompt: The builder in Noida promised possession by March 2023 and has still not delivered. My client
+    paid 85 lakh. Draft a RERA complaint for interest or refund.
+  must:
+  - asks or records whether the client wants to stay and take delay interest or withdraw and take a refund
+  - uses the UP RERA format and rules, retrieved from the official source
+  - computes interest per payment only on the formula in the State rules
+  - compares the consumer commission route
+  must_not:
+  - promises a refund or date of payment
+  - states an interest rate from memory
+- id: rera-complaint-drafter-gate
+  skill: rera-complaint-drafter
+  kind: gate
+  prompt: Draft a RERA complaint for my client's delayed flat.
+  must:
+  - asks for the State and the project's RERA registration
+  - asks for the agreement and payment record and the promised possession date
+- id: rera-project-compliance-checker-output
+  skill: rera-project-compliance-checker
+  kind: output
+  prompt: Check RERA compliance for our client's new 200-unit residential project in Pune before launch.
+    Plans are sanctioned; land is under a JDA; brochures are ready but no bookings yet.
+  must:
+  - confirms registration is needed before any advertisement or booking
+  - checks the separate account and withdrawal certification
+  - flags the landowner's promoter status under the JDA
+  - produces a gap table and hands off recurring dates to compliance-calendar-builder
+  must_not:
+  - states penalty amounts or deadlines from memory
+  - advises marketing before registration
+- id: rera-project-compliance-checker-gate
+  skill: rera-project-compliance-checker
+  kind: gate
+  prompt: Is our project RERA compliant?
+  must:
+  - asks for the State, project type and phase
+  - asks for launch status and approvals obtained
+- id: builder-buyer-agreement-reviewer-output
+  skill: builder-buyer-agreement-reviewer
+  kind: output
+  prompt: Review this builder-buyer agreement for a flat in Gurugram before my client pays 30%. It lets
+    the builder forfeit 20% on cancellation and charges the buyer 18% interest but pays 5 rupees per sq
+    ft per month for delay.
+  must:
+  - compares the agreement with the Haryana model agreement for sale
+  - flags the asymmetric interest and forfeiture clauses
+  - produces a clause table with risk ratings and proposed redrafts
+  - flags the advance-payment limit before a registered agreement for checking
+  must_not:
+  - advises the buyer to stop paying without counsel's advice
+  - verifies approvals that were not supplied
+- id: builder-buyer-agreement-reviewer-gate
+  skill: builder-buyer-agreement-reviewer
+  kind: gate
+  prompt: Is this builder agreement OK? It is a standard one.
+  must:
+  - asks for the agreement itself and its annexures
+  - asks for the State and RERA registration number
+- id: joint-development-agreement-reviewer-output
+  skill: joint-development-agreement-reviewer
+  kind: output
+  prompt: 'Review this JDA for my landowner client in Bengaluru: 60:40 area sharing in the landowner''s
+    favour, a refundable deposit of 1 crore and a GPA to the developer.'
+  must:
+  - tests landowner security such as deposit, phased GPA, completion deadline and reversion
+  - flags the landowner's possible promoter status under RERA
+  - flags Karnataka stamp duty on development agreements and possession clauses for checking
+  - lists capital gains and GST issues for a tax adviser
+  must_not:
+  - gives tax or stamp figures from memory
+  - invents a case citation, registration number or section number
+- id: joint-development-agreement-reviewer-gate
+  skill: joint-development-agreement-reviewer
+  kind: gate
+  prompt: Review the JDA for my client.
+  must:
+  - asks for the draft JDA and GPA
+  - asks which side the client is on and for the State
+- id: land-records-mutation-advisor-output
+  skill: land-records-mutation-advisor
+  kind: output
+  prompt: My client inherited farmland in Maharashtra from her father who died intestate in 2025. How
+    do we mutate the 7/12 extract and convert it to non-agricultural use?
+  must:
+  - identifies the Maharashtra Land Revenue Code and mutation procedure from the official source
+  - lists heirship documents and notice to other heirs
+  - explains conversion steps and that charges must be checked live
+  - notes that revenue entries do not confer title
+  must_not:
+  - states conversion charges or ceiling limits from memory
+- id: land-records-mutation-advisor-gate
+  skill: land-records-mutation-advisor
+  kind: gate
+  prompt: How do I get the land record changed to my name?
+  must:
+  - asks for the State and location
+  - asks what event is being recorded and for the current record extract
+- id: land-acquisition-compensation-calculator-output
+  skill: land-acquisition-compensation-calculator
+  kind: output
+  prompt: The State is acquiring 2 acres of my client's land near Nashik for a highway. Compute the compensation
+    and our objections. Guideline value is 20 lakh per acre; two nearby sale deeds show 35 and 40 lakh
+    per acre.
+  must:
+  - asks or checks whether the National Highways Act or the 2013 Act governs
+  - shows market value, multiplier, assets and solatium step by step with sources
+  - marks the State multiplier as to be confirmed from the notification
+  - outlines objections and the arbitration or reference route with limitation handed to limitation-calculator
+  must_not:
+  - presents the computed figure as what will be awarded
+  - invents sale instances
+- id: land-acquisition-compensation-calculator-gate
+  skill: land-acquisition-compensation-calculator
+  kind: gate
+  prompt: Calculate the compensation for my client's acquired land.
+  must:
+  - asks for the notifications and the statute under which they were issued
+  - asks for the land's extent, classification and location
+- id: nri-property-transaction-checker-output
+  skill: nri-property-transaction-checker
+  kind: output
+  prompt: My client, an OCI in the US, wants to sell her inherited flat in Delhi and repatriate the money.
+    She inherited it from her mother, a resident Indian, in 2022.
+  must:
+  - confirms inheritance from a resident is permitted under the Non-debt Instruments Rules from the official
+    text
+  - explains repatriation through the NRO route and Forms 15CA and 15CB, with limits to be confirmed
+  - flags buyer TDS on payment to a non-resident and checks which tax law applies on the payment date
+  - marks US tax points for counsel qualified in the US
+  must_not:
+  - states remittance limits or TDS rates as settled from memory
+  - suggests informal fund transfer channels
+- id: nri-property-transaction-checker-gate
+  skill: nri-property-transaction-checker
+  kind: gate
+  prompt: My client lives abroad and wants to buy farmland in Punjab. Can he?
+  must:
+  - asks for his citizenship and residential status (NRI, OCI or foreign national)
+  - flags the general bar on agricultural land acquisition by persons resident outside India for checking

@@ -1,0 +1,14 @@
+{
+  "name": "dharmabot-legal-skills",
+  "version": "0.1.0",
+  "description": "317 free, open-source AI skills covering the full range of Indian legal work, all States and UTs, Indian languages and cross-border work with the US, UK, UAE, EU and Singapore.",
+  "author": {
+    "name": "Dharmabot AI",
+    "url": "https://dharmabot.ai"
+  },
+  "homepage": "https://github.com/dharmabot-ai/dharmabot-legal-skills",
+  "repository": "https://github.com/dharmabot-ai/dharmabot-legal-skills",
+  "license": "MIT",
+  "keywords": ["legal", "law", "india", "state-law", "cross-border", "uae", "gdpr", "arbitration", "lpo", "bns", "bnss", "bsa", "legal-aid", "lok-adalat", "indian-languages", "advocate", "litigation", "contracts", "corporate", "insolvency", "tax", "ip", "employment", "family-law", "compliance"],
+  "skills": "./skills/"
+}

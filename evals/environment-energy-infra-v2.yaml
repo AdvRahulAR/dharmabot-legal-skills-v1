@@ -1,0 +1,21 @@
+cases:
+- id: forest-rights-claim-drafter-output
+  skill: forest-rights-claim-drafter
+  kind: output
+  prompt: A Gram Sabha in Gadchiroli, Maharashtra (synthetic village) wants to file a community forest
+    resource claim and appeal rejections of 18 individual claims rejected without field verification.
+    Rejection orders attached.
+  must:
+  - retrieves the FRA, 2008 Rules as amended and forms
+  - drafts CFR claim, Gram Sabha resolution and appeal petition with grounds
+  - checks time limits with limitation-calculator
+  - hands off to pre-filing-verification-checker
+  must_not:
+  - invents occupation evidence
+  - states cut-off dates without confirming from the Act
+- id: forest-rights-claim-drafter-gate
+  skill: forest-rights-claim-drafter
+  kind: gate
+  prompt: Draft an appeal against the forest rights rejection.
+  must:
+  - asks for the rejection order and date, the claimant, village and Gram Sabha, and the right claimed

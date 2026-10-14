@@ -1,0 +1,99 @@
+cases:
+  - id: tabular-document-reviewer-output
+    skill: tabular-document-reviewer
+    kind: output
+    prompt: >
+      Here are 140 demand notices and replies from our NPA files (synthetic). For each, extract date,
+      amount demanded, security mentioned and whether a demand notice was served, in an XLSX.
+    must:
+      - confirms the column schema on a small sample before the full run
+      - gives one row per document with answer, page or paragraph citation and confidence per column
+      - writes NOT FOUND where the answer is absent
+      - outputs XLSX with a column-notes sheet and a spot-check sample
+    must_not:
+      - fills a cell from another document or by assumption
+      - draws legal conclusions across the set
+  - id: tabular-document-reviewer-gate
+    skill: tabular-document-reviewer
+    kind: gate
+    prompt: Make a spreadsheet of these documents.
+    must:
+      - asks what questions should become columns and their answer types
+      - asks for CSV or XLSX
+  - id: pleadings-matrix-builder-output
+    skill: pleadings-matrix-builder
+    kind: output
+    prompt: >
+      Here are the plaint, written statement and replication in our partnership suit in a Bengaluru
+      civil court (synthetic). We act for the plaintiff. Build a pleadings matrix and suggest issues.
+    must:
+      - classifies each averment as admitted, denied, evasively denied or not traversed with paragraph pinpoints
+      - proposes issues linked to rows with burden of proof
+      - lists admissions usable to narrow trial
+    must_not:
+      - invents case law on deemed admission
+  - id: pleadings-matrix-builder-gate
+    skill: pleadings-matrix-builder
+    kind: gate
+    prompt: Frame issues for my suit. I only have the plaint.
+    must:
+      - asks for the written statement and any replication
+      - asks which party the advocate represents
+  - id: deposition-evidence-analyst-output
+    skill: deposition-evidence-analyst
+    kind: output
+    prompt: >
+      Cross-examination of PW1 to PW4 in a sessions trial in Pune is over (synthetic depositions and
+      police statements attached). Tell me what admissions and contradictions we can use.
+    must:
+      - checks whether the BSA or the Indian Evidence Act governs from the dates
+      - gives page and line pinpoints for each admission and contradiction
+      - notes whether earlier statements were properly put to the witness
+    must_not:
+      - paraphrases testimony as stronger than recorded
+  - id: deposition-evidence-analyst-gate
+    skill: deposition-evidence-analyst
+    kind: gate
+    prompt: Find contradictions in the prosecution witnesses. I'll describe what they said.
+    must:
+      - asks for the recorded depositions with page and line numbers
+      - asks for the charge or issues and the earlier statements
+  - id: order-xi-disclosure-planner-output
+    skill: order-xi-disclosure-planner
+    kind: output
+    prompt: >
+      In our Delhi commercial suit the defendant has filed 600 pages of documents (synthetic index
+      attached, with service dates). We act for the plaintiff. Plan our admission-denial affidavit and inspection.
+    must:
+      - retrieves Order XI as applicable to commercial suits and the High Court rules
+      - computes time limits with limitation-calculator
+      - gives a position and reason for every document
+      - prepares inspection requests and a privilege log
+    must_not:
+      - recommends denying documents known to be genuine
+  - id: order-xi-disclosure-planner-gate
+    skill: order-xi-disclosure-planner
+    kind: gate
+    prompt: Prepare our Order XI admission-denial for a regular civil suit in a district court that is not a commercial suit.
+    must:
+      - flags that Order XI as amended for commercial suits may not apply to a non-commercial suit
+      - asks to confirm the suit type and court
+  - id: judgment-alert-digest-builder-output
+    skill: judgment-alert-digest-builder
+    kind: output
+    prompt: >
+      Prepare our weekly arbitration and IBC judgment digest from the Supreme Court and the Delhi and
+      Bombay High Courts for the past week.
+    must:
+      - uses official court sites or licensed databases and records each source
+      - verifies each judgment exists through citation-verifier
+      - gives court, bench, date, citation or a note that none is assigned, link and holding
+      - flags conflicts with earlier law
+    must_not:
+      - includes a judgment that was not read or cannot be found at the source
+  - id: judgment-alert-digest-builder-gate
+    skill: judgment-alert-digest-builder
+    kind: gate
+    prompt: Send me the latest judgments.
+    must:
+      - asks for the period, the courts and the practice areas

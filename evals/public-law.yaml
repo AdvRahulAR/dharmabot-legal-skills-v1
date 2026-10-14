@@ -1,0 +1,145 @@
+# public-law pack. Synthetic facts only.
+cases:
+  - id: writ-petition-drafter-output
+    skill: writ-petition-drafter
+    kind: output
+    prompt: >
+      A municipal corporation in Tamil Nadu cancelled our client's trade licence on
+      5 September 2025 without notice or hearing. Draft a writ petition in the Madras High Court.
+    must:
+      - addresses maintainability and any alternative remedy
+      - pleads breach of natural justice tied to documents
+      - includes an interim relief application
+    must_not:
+      - promises interim relief
+  - id: writ-petition-drafter-gate
+    skill: writ-petition-drafter
+    kind: gate
+    prompt: Draft a writ against a private company that terminated my client's distribution contract.
+    must:
+      - flags that the respondent may not be State and the dispute may be contractual
+  - id: pil-drafter-output
+    skill: pil-drafter
+    kind: output
+    prompt: >
+      An NGO wants to file a PIL in the Allahabad High Court about untreated sewage entering a
+      river near a town. It has photos, a pollution board report and two representations.
+    must:
+      - checks whether the NGT is the better forum
+      - addresses petitioner bona fides and prior representations
+      - seeks specific, enforceable directions
+    must_not:
+      - presents news reports as verified facts
+  - id: pil-drafter-gate
+    skill: pil-drafter
+    kind: gate
+    prompt: File a PIL to stop my neighbour's construction which blocks my view.
+    must:
+      - flags private interest and declines to frame it as a PIL
+  - id: constitutional-validity-analyst-output
+    skill: constitutional-validity-analyst
+    kind: output
+    prompt: >
+      A State rule notified in 2025 requires police verification for every online seller.
+      Does it violate Articles 14, 19(1)(g) and 21?
+    must:
+      - presents both challenger and State arguments
+      - applies proportionality step by step
+      - checks the rule against its parent Act
+    must_not:
+      - states the rule will be struck down
+  - id: constitutional-validity-analyst-gate
+    skill: constitutional-validity-analyst
+    kind: gate
+    prompt: Is the new rule unconstitutional?
+    must:
+      - asks for the text of the rule, its parent Act and its date
+  - id: rti-application-appeal-drafter-output
+    skill: rti-application-appeal-drafter
+    kind: output
+    prompt: >
+      Draft an RTI application to a municipal corporation in Karnataka for the building
+      approval file of the tower next door, and a first appeal if they refuse.
+    must:
+      - frames the request as records, not questions
+      - applies the State RTI rules on fee and format, to be confirmed
+      - gives reply and appeal deadlines
+    must_not:
+      - asks for opinions or reasons
+  - id: rti-application-appeal-drafter-gate
+    skill: rti-application-appeal-drafter
+    kind: gate
+    prompt: The PIO refused my RTI on personal information grounds. Draft the second appeal.
+    must:
+      - asks for the application, the reply, the first appeal and dates
+      - checks whether the DPDP amendment to the exemption is in force
+  - id: service-law-matter-analyst-output
+    skill: service-law-matter-analyst
+    kind: output
+    prompt: >
+      A central government employee was placed in sealed cover at the 2025 DPC because of a
+      chargesheet issued after the DPC met. What are his remedies?
+    must:
+      - identifies the Central Administrative Tribunal as the first forum
+      - checks sealed-cover conditions against current office memoranda and authority
+      - computes limitation via limitation-calculator
+    must_not:
+      - promises promotion
+  - id: service-law-matter-analyst-gate
+    skill: service-law-matter-analyst
+    kind: gate
+    prompt: My client was denied promotion. What can he do?
+    must:
+      - asks for the employer, post, service rules and impugned order
+  - id: tender-procurement-compliance-checker-output
+    skill: tender-procurement-compliance-checker
+    kind: output
+    prompt: >
+      Check our bid (fixture) for a State PWD road tender closing on 30 October 2025, and tell
+      us if we can challenge an eligibility clause requiring three similar works in that State.
+    must:
+      - produces a bid compliance matrix
+      - flags the bid deadline and pre-bid query route
+      - applies limited judicial review standards
+    must_not:
+      - promises the challenge will succeed
+  - id: tender-procurement-compliance-checker-gate
+    skill: tender-procurement-compliance-checker
+    kind: gate
+    prompt: Is our bid compliant?
+    must:
+      - asks for the tender document with corrigenda and the due date
+  - id: election-petition-analyst-output
+    skill: election-petition-analyst
+    kind: output
+    prompt: >
+      Our client lost a State assembly election by 312 votes; the result was declared on
+      1 October 2025. He suspects the winner's nomination was wrongly accepted. Can we file?
+    must:
+      - computes the filing deadline from the result date, to be confirmed
+      - identifies necessary parties and strict pleading requirements
+    must_not:
+      - promises the election will be set aside
+  - id: election-petition-analyst-gate
+    skill: election-petition-analyst
+    kind: gate
+    prompt: Can we challenge the gram panchayat election result?
+    must:
+      - flags that a local-body election is under State law and a different forum
+  - id: regulatory-appeal-planner-output
+    skill: regulatory-appeal-planner
+    kind: output
+    prompt: >
+      SEBI's whole-time member passed an order on 20 September 2025 debarring our client for
+      two years. Plan the appeal to SAT and the stay application.
+    must:
+      - gives forum, limitation and any pre-deposit, to be confirmed from the official text
+      - outlines a stay strategy and grounds
+    must_not:
+      - advises non-compliance with an unstayed order
+  - id: regulatory-appeal-planner-gate
+    skill: regulatory-appeal-planner
+    kind: gate
+    prompt: The regulator passed an order against us. Plan the appeal.
+    must:
+      - asks for the order, its date of receipt and the statute it was passed under

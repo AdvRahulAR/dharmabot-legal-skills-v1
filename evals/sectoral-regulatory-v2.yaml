@@ -1,0 +1,128 @@
+cases:
+- id: digital-lending-compliance-reviewer-output
+  skill: digital-lending-compliance-reviewer
+  kind: output
+  prompt: Our NBFC (middle layer) partners with an app called QuickRupee (synthetic). Attached are the
+    LSP agreement, KFS template, fund-flow diagram and 12 app screenshots. Audit against RBI digital lending
+    rules.
+  must:
+  - retrieves current Digital Lending Directions and the consolidated Master Direction and records the
+    date
+  - checks fund flows, KFS and APR, cooling-off, DLG, multi-lender display and data access
+  - tests screens against CCPA dark patterns guidelines
+  - produces a gap table with source paragraph and fix
+  must_not:
+  - states a DLG cap or percentage without citing the current text
+  - certifies the product as RBI compliant
+- id: digital-lending-compliance-reviewer-gate
+  skill: digital-lending-compliance-reviewer
+  kind: gate
+  prompt: Check if our lending app is compliant with RBI rules. We're a fintech.
+  must:
+  - asks for the regulated entity's type and registration, the LSP agreement, KFS and app flow before
+    reviewing
+  - does not decide licensing and points to financial-services-licensing-analyst if the lender is unregulated
+- id: rbi-master-direction-mapper-output
+  skill: rbi-master-direction-mapper
+  kind: output
+  prompt: Our NBFC's KYC policy cites RBI circulars DOR.XX/2019 on KYC, a 2017 circular on outsourcing
+    and a 2021 circular on scale-based regulation (synthetic references). Map each to the current consolidated
+    Master Direction.
+  must:
+  - retrieves the November 2025 consolidated Master Directions and repeal list from rbi.org.in
+  - maps each citation by subject to a successor paragraph or flags no successor
+  - classifies the change as unchanged, reworded, substantive or no successor
+  must_not:
+  - guesses paragraph numbers without reading the text
+  - drafts redlines to the policy
+- id: rbi-master-direction-mapper-gate
+  skill: rbi-master-direction-mapper
+  kind: gate
+  prompt: Map our old RBI circular references to the new Master Directions.
+  must:
+  - asks for the list of citations or the documents and the regulated entity type
+  - explains that mapping is entity-wise
+- id: fema-regularisation-drafter-output
+  skill: fema-regularisation-drafter
+  kind: output
+  prompt: Synthetic Pvt Ltd allotted shares to a Singapore investor in March 2023 and never filed FC-GPR;
+    it also missed two ODI annual performance reports. Board resolutions, FIRC and KYC attached. No ED
+    notice. Decide LSF or compounding and draft.
+  must:
+  - retrieves the Compounding Proceedings Rules 2024 and current LSF provisions
+  - lists each lapse separately with due and actual dates
+  - labels LSF or compounding amounts as estimates with workings
+  - drafts the application, chronology, undertakings and covering letter
+  - hands off to pre-filing-verification-checker
+  must_not:
+  - presents the compounding amount as final
+  - suggests backdating documents
+- id: fema-regularisation-drafter-gate
+  skill: fema-regularisation-drafter
+  kind: gate
+  prompt: ED has issued us a show-cause notice under FEMA for a delayed FC-GPR. Draft the compounding
+    application.
+  must:
+  - stops on the pending ED proceeding and flags that compounding may be barred or restricted
+  - routes the defence to regulator-notice-reply-drafter
+- id: aif-fund-documents-drafter-output
+  skill: aif-fund-documents-drafter
+  kind: output
+  prompt: 'Synthetic Capital is launching a Rs 300 crore Category II AIF as a trust in Mumbai: 2% management
+    fee, 8% hurdle, 20% carry with full catch-up, 7-year term. Draft PPM fee, waterfall and conflicts
+    sections and the contribution agreement.'
+  must:
+  - retrieves the AIF Regulations, master circular and later circulars and records a cut-off date
+  - follows SEBI's PPM template structure
+  - gives a waterfall with a worked example marked illustrative
+  - provides a consistency table across documents
+  - hands off to pre-filing-verification-checker
+  must_not:
+  - states minimum investment or thresholds from memory
+  - promises returns
+- id: aif-fund-documents-drafter-gate
+  skill: aif-fund-documents-drafter
+  kind: gate
+  prompt: Draft a PPM for our new fund in GIFT City.
+  must:
+  - identifies that a GIFT IFSC fund is under IFSCA rules, not SEBI AIF Regulations, and stops or redirects
+  - asks for category, structure and commercial terms if an Indian AIF is intended
+- id: product-recall-planner-output
+  skill: product-recall-planner
+  kind: output
+  prompt: Batch SM-0423 of our packaged spice mix (synthetic brand) failed an FSSAI-notified lab test
+    for ethylene oxide. 8,000 units sold in Kerala, Tamil Nadu and on two marketplaces. Plan the recall.
+  must:
+  - retrieves the FSS Food Recall Procedure Regulations and records the version
+  - classifies the recall with reasons and sets depth
+  - drafts regulator intimation, trade notice and consumer notice
+  - includes evidence preservation and a legal hold
+  must_not:
+  - states recall timelines from memory
+  - advises delaying the recall
+- id: product-recall-planner-gate
+  skill: product-recall-planner
+  kind: gate
+  prompt: Something's wrong with one of our products. Plan a recall.
+  must:
+  - asks for the product, batch numbers, defect or test result, distribution footprint and regulator communications
+- id: state-excise-licence-advisor-output
+  skill: state-excise-licence-advisor
+  kind: output
+  prompt: Client wants a bar licence for a new 4-star hotel in Bengaluru and has a suspension notice dated
+    last week for its Mysuru bar for serving after hours. Advise.
+  must:
+  - opens references/india-state-statutes.md and retrieves the Karnataka Excise Act, rules and current
+    excise year notifications
+  - maps the licence category from the State's own list
+  - identifies reply deadline, hearing right and appeal authority for the notice
+  must_not:
+  - states fees or distance limits from memory
+  - suggests ways to get around distance rules
+- id: state-excise-licence-advisor-gate
+  skill: state-excise-licence-advisor
+  kind: gate
+  prompt: My client wants to open a bar. What licence do they need?
+  must:
+  - asks which State and district, the premises and its distances, and the type of outlet
+  - checks whether the State is under prohibition

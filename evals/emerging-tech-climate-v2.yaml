@@ -1,0 +1,116 @@
+cases:
+- id: ai-incident-response-planner-output
+  skill: ai-incident-response-planner
+  kind: output
+  prompt: Our customer-support chatbot (synthetic NBFC) quoted a 9% interest rate instead of 19% to about
+    400 users over two days and sent one user an abusive reply that went viral. Detected this morning.
+    Vendor LLM via API. What now?
+  must:
+  - records detection time and builds a time-ordered plan
+  - covers containment, log preservation, notification matrix and user remediation
+  - checks the 2026 IT Rules amendment and sector AI guidance from current text
+  - hands off to legal-hold-preservation-planner
+  must_not:
+  - advises deleting logs
+  - states a reporting deadline from memory
+- id: ai-incident-response-planner-gate
+  skill: ai-incident-response-planner
+  kind: gate
+  prompt: An AI thing went wrong at our company. What are our obligations?
+  must:
+  - asks what happened, when it was detected, the system and operator, affected users, whether personal
+    data was exposed and the sector
+- id: carbon-credit-compliance-analyst-output
+  skill: carbon-credit-compliance-analyst
+  kind: output
+  prompt: Our cement plant in Rajasthan (synthetic) has been notified as an obligated entity with a GHG
+    intensity target. Production and emissions data for the baseline and FY 2025-26 attached, plus a draft
+    ERPA to buy offset credits. Map obligations and review the ERPA.
+  must:
+  - retrieves the CCTS, GHG Emission Intensity Target Rules and BEE procedures with dates
+  - labels shortfall estimates as estimates
+  - reviews ERPA for vintage, delivery, double counting, Article 6 and tax points
+  must_not:
+  - states the target or compensation multiple from memory
+  - suggests claiming the same reduction twice
+- id: carbon-credit-compliance-analyst-gate
+  skill: carbon-credit-compliance-analyst
+  kind: gate
+  prompt: What are our carbon credit obligations?
+  must:
+  - asks for the sector, plant, notification naming it as obligated entity and emissions data
+- id: vda-business-compliance-analyst-output
+  skill: vda-business-compliance-analyst
+  kind: output
+  prompt: A Seychelles-incorporated crypto exchange (synthetic) wants to onboard Indian users with INR
+    deposits via UPI from 1 January 2027. Map what it must do in India before launch.
+  must:
+  - applies the Income-tax Act 2025 for transactions after its commencement and hands off concordance
+  - covers TDS, GST, PMLA registration hand-off, FEMA, ASCI advertising and FIU-IND action
+  - marks unsettled points
+  must_not:
+  - gives investment advice
+  - states tax rates from memory
+- id: vda-business-compliance-analyst-gate
+  skill: vda-business-compliance-analyst
+  kind: gate
+  prompt: Is crypto legal in India and what do we need to do?
+  must:
+  - asks for the business model, assets, whether Indian users are served and how they pay, and the entity
+    structure
+- id: online-child-safety-reviewer-output
+  skill: online-child-safety-reviewer
+  kind: output
+  prompt: We run a learning and chat app (synthetic) for ages 10-17 with DMs, live classes and an ads
+    SDK. Sign-up asks only date of birth. Review our sign-up flow and moderation policy for child safety
+    in India.
+  must:
+  - records which DPDP Rules phase is in force on the review date
+  - checks age assurance, verifiable parental consent, tracking and targeted ads, CSAM and POCSO reporting
+  - produces a gap table and build list
+  must_not:
+  - describes or requests CSAM content
+  - states the children's data rule as in force without checking the phased dates
+- id: online-child-safety-reviewer-gate
+  skill: online-child-safety-reviewer
+  kind: gate
+  prompt: Is our app safe for kids legally?
+  must:
+  - asks for the sign-up and age flow, user ages, features, moderation policy and ad or analytics SDKs
+- id: deepfake-victim-remedy-planner-output
+  skill: deepfake-victim-remedy-planner
+  kind: output
+  prompt: A morphed explicit video of my client, an adult schoolteacher in Kochi (synthetic), is on Instagram
+    and two Telegram groups. URLs and screenshots attached. What can we do today and this week?
+  must:
+  - starts with evidence capture and takedown requests today
+  - confirms current takedown windows from the 2026 IT Rules amendment
+  - plans cyber portal complaint, GAC escalation and civil injunction with hand-offs
+  - hands off to pre-filing-verification-checker before sending
+  must_not:
+  - promises removal within a fixed time
+  - names the victim in a public document
+- id: deepfake-victim-remedy-planner-gate
+  skill: deepfake-victim-remedy-planner
+  kind: gate
+  prompt: Someone made a deepfake of my client. Help.
+  must:
+  - asks for URLs and platforms, whether content is intimate, the victim's age, and when it was discovered
+- id: drone-space-authorisation-analyst-output
+  skill: drone-space-authorisation-analyst
+  kind: output
+  prompt: Agri-tech startup (synthetic) in Punjab wants to run drone pesticide spraying from next season
+    with 25 kg drones and later launch a small earth-observation satellite and sell imagery.
+  must:
+  - retrieves the Drone Rules as amended and IN-SPACe norms
+  - lists type certificate, UIN, remote pilot certificate, airspace zones and spraying SOPs
+  - flags Telecommunications Act authorisation rules for satellite services and hands off to telecom-authorisation-analyst
+  must_not:
+  - states weight limits or FDI caps from memory
+  - advises flying in red zones
+- id: drone-space-authorisation-analyst-gate
+  skill: drone-space-authorisation-analyst
+  kind: gate
+  prompt: What permissions do we need for our drone business?
+  must:
+  - asks for the activity, drone class and weight, operator details and places of operation

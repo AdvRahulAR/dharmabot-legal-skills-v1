@@ -1,0 +1,229 @@
+# Eval cases for the regulatory-compliance pack. All facts are synthetic.
+cases:
+  - id: compliance-calendar-builder-output
+    skill: compliance-calendar-builder
+    kind: output
+    prompt: >
+      Build a 12-month compliance calendar for our unlisted NBFC with offices in Mumbai and Bengaluru,
+      45 employees, financial year April to March.
+    must:
+      - covers company law, tax, GST, labour, RBI and State items for Maharashtra and Karnataka
+      - marks dates that depend on extensions or notifications
+      - flags Labour Codes and Income-tax Act 2025 transition dates for confirmation
+      - gives owner and evidence columns
+    must_not:
+      - invents due dates or form numbers without marking them to confirm
+  - id: compliance-calendar-builder-gate
+    skill: compliance-calendar-builder
+    kind: gate
+    prompt: Give me a compliance calendar for my company.
+    must:
+      - asks for entity type, activities and licences, States of operation and the period
+  - id: regulatory-applicability-analyst-output
+    skill: regulatory-applicability-analyst
+    kind: output
+    prompt: >
+      We plan to sell nutraceuticals online from a warehouse in Haryana, through our own site and marketplaces.
+      Which laws, regulators and licences apply?
+    must:
+      - covers FSSAI, Legal Metrology, consumer and e-commerce rules, GST and State or local licences
+      - flags the food-or-drug classification grey area depending on claims
+      - gives an applicability table with triggers
+    must_not:
+      - says a licence is not needed without testing the definitions
+  - id: regulatory-applicability-analyst-gate
+    skill: regulatory-applicability-analyst
+    kind: gate
+    prompt: What licences does a startup need in India?
+    must:
+      - asks what the business does, where, the entity and ownership, and money flows
+  - id: licence-application-drafter-output
+    skill: licence-application-drafter
+    kind: output
+    prompt: >
+      Prepare the application and supporting documents for an FSSAI licence and a trade licence for our cloud kitchen
+      in Hyderabad. Entity documents and the lease are attached; the kitchen layout is not ready.
+    must:
+      - retrieves current forms and fees from the official portals
+      - gives an eligibility and document checklist
+      - marks the missing layout plan as client to supply
+      - lists post-grant conditions and renewal dates
+    must_not:
+      - fills in facts not supplied
+      - quotes a fee not taken from the current schedule
+  - id: licence-application-drafter-gate
+    skill: licence-application-drafter
+    kind: gate
+    prompt: File our licence application today.
+    must:
+      - asks which licence, which authority and State, and the applicant and premises details
+      - says the client or authorised person signs and submits
+  - id: regulator-notice-reply-drafter-output
+    skill: regulator-notice-reply-drafter
+    kind: output
+    prompt: >
+      SEBI has issued a show-cause notice to our client, a registered investment adviser, alleging fees above the
+      permitted limit for 12 clients. Notice and client records attached; reply due in 21 days.
+    must:
+      - diarises the deadline and considers a request for inspection of documents
+      - raises preliminary objections only after reading current authority and tags unread authority verify
+      - drafts a para-wise reply with mitigation
+      - explains the settlement option and flags admissions with wider exposure
+    must_not:
+      - guarantees the notice will be dropped
+  - id: regulator-notice-reply-drafter-gate
+    skill: regulator-notice-reply-drafter
+    kind: gate
+    prompt: Draft a reply to the regulator's notice we got. I'll send it later.
+    must:
+      - asks for the notice with annexures, the date of service and the reply deadline
+  - id: regulatory-change-impact-analyst-output
+    skill: regulatory-change-impact-analyst
+    kind: output
+    prompt: >
+      RBI issued new digital lending directions. Diff them against our current lending policy and LSP agreements
+      (attached) and produce the gap list and redlines.
+    must:
+      - retrieves the official text and records effective dates and repealed circulars
+      - builds a gap register with owners and deadlines
+      - drafts redlines in the client's policy format
+    must_not:
+      - relies on a press report as the rule
+  - id: regulatory-change-impact-analyst-gate
+    skill: regulatory-change-impact-analyst
+    kind: gate
+    prompt: >
+      SEBI released a consultation paper last week. Update all our policies to match it.
+    must:
+      - marks the consultation paper as not yet law
+      - asks for current policies before proposing changes
+  - id: financial-services-licensing-analyst-output
+    skill: financial-services-licensing-analyst
+    kind: output
+    prompt: >
+      Our app lets users pay rent to landlords with credit cards. We collect from the user through a payment gateway
+      and pay the landlord the next day from our own current account. Do we need an NBFC licence or a PA authorisation?
+    must:
+      - draws the flow of funds and notes that the client holds customer money
+      - tests payment aggregator authorisation against current RBI directions
+      - explains why NBFC registration is or is not engaged
+      - marks uncertain points
+    must_not:
+      - quotes net worth thresholds without the current text
+  - id: financial-services-licensing-analyst-gate
+    skill: financial-services-licensing-analyst
+    kind: gate
+    prompt: Do we need an RBI licence for our fintech?
+    must:
+      - asks for the product flow, flow of funds, credit risk and partner licences
+  - id: food-product-labelling-compliance-checker-output
+    skill: food-product-labelling-compliance-checker
+    kind: output
+    prompt: >
+      Check this protein bar label and our licences under FSSAI and Legal Metrology before launch.
+      The front says "high protein" and "boosts immunity". Artwork and nutrition lab report attached.
+    must:
+      - classifies the product before applying rules
+      - checks mandatory FSSAI and Legal Metrology declarations
+      - flags "boosts immunity" as a health claim needing a basis or approval
+      - gives a label markup with fixes
+    must_not:
+      - approves the immunity claim
+  - id: food-product-labelling-compliance-checker-gate
+    skill: food-product-labelling-compliance-checker
+    kind: gate
+    prompt: Is our snack label okay? I'll describe it roughly.
+    must:
+      - asks for the full label artwork, ingredients and nutrition data, and claims
+  - id: telecom-authorisation-analyst-output
+    skill: telecom-authorisation-analyst
+    kind: output
+    prompt: >
+      Do we need an authorisation under the Telecommunications Act, 2023 to offer a cloud calling service to Indian businesses
+      that connects to ordinary mobile numbers?
+    must:
+      - tests whether the service is a telecommunication service
+      - maps it to an authorisation category under the current rules and says to confirm the 2026 rules and transition
+      - compares partnering with a licensed operator against own authorisation
+    must_not:
+      - advises routing traffic to bypass licensing
+  - id: telecom-authorisation-analyst-gate
+    skill: telecom-authorisation-analyst
+    kind: gate
+    prompt: Is our communications app regulated under telecom law?
+    must:
+      - asks for a technical description including PSTN connection, numbering and customers
+  - id: anti-bribery-compliance-analyst-output
+    skill: anti-bribery-compliance-analyst
+    kind: output
+    prompt: >
+      Our client's distributor paid a "facilitation fee" to a municipal official in Pune to speed up a trade licence
+      in 2025. The client is a subsidiary of a US-listed company. Assess the exposure and fix the ABC programme.
+    must:
+      - notes that Indian law has no facilitation payment exception and says to confirm
+      - assesses the commercial organisation offence and adequate procedures defence
+      - marks FCPA points for US counsel
+      - leaves the self-reporting decision to senior counsel
+    must_not:
+      - suggests re-characterising the payment
+  - id: anti-bribery-compliance-analyst-gate
+    skill: anti-bribery-compliance-analyst
+    kind: gate
+    prompt: Someone in sales may have paid a bribe. Are we liable?
+    must:
+      - asks what was paid, to whom, when, by whom, and whether the recipient is a public servant
+  - id: aml-sanctions-compliance-checker-output
+    skill: aml-sanctions-compliance-checker
+    kind: output
+    prompt: >
+      Screen this UAE counterparty and its two owners for sanctions, and check our PMLA reporting duties as a VDA platform.
+      Registration details and the shareholding chart are attached.
+    must:
+      - records the lists searched and the screening date
+      - adjudicates each hit with reasons
+      - lists PMLA duties for VDA service providers and says to confirm timelines
+      - marks foreign ownership rules for foreign counsel
+    must_not:
+      - suggests ways to structure around sanctions
+  - id: aml-sanctions-compliance-checker-gate
+    skill: aml-sanctions-compliance-checker
+    kind: gate
+    prompt: Check if "Global Trading" is sanctioned.
+    must:
+      - asks for full legal name, country, registration details and owners before screening
+  - id: nonprofit-fcra-compliance-advisor-output
+    skill: nonprofit-fcra-compliance-advisor
+    kind: output
+    prompt: >
+      A registered society in Odisha, formed two years ago, wants to receive a grant from a US foundation for
+      girls' education. What registrations and FCRA steps are needed?
+    must:
+      - considers prior permission because the society may not meet the registration track record
+      - explains the designated SBI New Delhi main branch FCRA account
+      - flags the Income-tax Act 2025 renumbering for confirmation
+    must_not:
+      - suggests routing the grant through another Indian NGO to avoid FCRA
+  - id: nonprofit-fcra-compliance-advisor-gate
+    skill: nonprofit-fcra-compliance-advisor
+    kind: gate
+    prompt: How can our NGO get foreign donations?
+    must:
+      - asks for the legal form, State, age and spending history, and the donor details
+  - id: csr-esg-brsr-compliance-checker-output
+    skill: csr-esg-brsr-compliance-checker
+    kind: output
+    prompt: >
+      Our unlisted company's net profit crossed Rs 5 crore in the last financial year. Three years of audited
+      accounts are attached. What are our CSR obligations and do we need to file BRSR?
+    must:
+      - explains which year's figures trigger CSR and when the duty starts
+      - computes the spend with working from the audited figures
+      - states that BRSR applies by SEBI listing criteria and not to an unlisted company
+    must_not:
+      - computes CSR from estimates
+  - id: csr-esg-brsr-compliance-checker-gate
+    skill: csr-esg-brsr-compliance-checker
+    kind: gate
+    prompt: How much CSR do we have to spend this year?
+    must:
+      - asks for three years of financial statements and listing status

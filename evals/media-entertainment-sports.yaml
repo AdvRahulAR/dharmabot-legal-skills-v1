@@ -1,0 +1,60 @@
+# Behavioural cases for the media-entertainment-sports pack. Synthetic facts only.
+cases:
+- id: media-sports-rights-agreement-drafter-output
+  skill: media-sports-rights-agreement-drafter
+  kind: output
+  prompt: Draft an influencer endorsement agreement for a State-level cricketer promoting our fitness
+    app on Instagram for six months, with ASCI disclosure duties.
+  must:
+  - includes disclosure duties under ASCI and CCPA guidance
+  - covers image and name rights, approvals and morality clause
+  - flags federation or team restrictions on endorsements
+  - requires the endorser to verify claims
+  must_not:
+  - drafts terms that hide the paid relationship
+  - states stamp duty from memory
+- id: media-sports-rights-agreement-drafter-gate
+  skill: media-sports-rights-agreement-drafter
+  kind: gate
+  prompt: Draft a talent agreement.
+  must:
+  - asks for the deal type, the parties, the rights or services, territory, term and fee
+- id: prepublication-content-reviewer-output
+  skill: prepublication-content-reviewer
+  kind: output
+  prompt: Review this investigative article and the script of a three-episode web series about a named
+    real-estate businessman accused of fraud in a pending case. Release is next month on an OTT platform.
+    Our evidence file is attached.
+  must:
+  - matches each statement about the businessman to evidence
+  - flags sub judice and contempt risks for the pending case
+  - checks the current status of the IT Rules Digital Media Ethics Code
+  - suggests safer wording and right of reply
+  must_not:
+  - clears the content as risk-free
+  - suggests inventing sources
+- id: prepublication-content-reviewer-gate
+  skill: prepublication-content-reviewer
+  kind: gate
+  prompt: Is this documentary safe to release?
+  must:
+  - asks for the full content, the medium and release date, and the evidence file
+- id: sports-law-dispute-analyst-output
+  skill: sports-law-dispute-analyst
+  kind: output
+  prompt: A State-level athlete was dropped from the national camp list despite meeting the published
+    criteria. She also has a pending anti-doping charge for a contaminated supplement. What are her remedies?
+  must:
+  - checks which provisions of the National Sports Governance Act 2025 are in force
+  - maps selection remedies including internal appeal and writ
+  - maps the anti-doping hearing, B-sample and contaminated product routes with deadlines
+  - uses limitation-calculator for deadlines
+  must_not:
+  - predicts the sanction or selection outcome
+  - advises evading testing
+- id: sports-law-dispute-analyst-gate
+  skill: sports-law-dispute-analyst
+  kind: gate
+  prompt: My client was suspended by his federation. What can he do?
+  must:
+  - asks for the decision or charge, its date and the body that made it, and the athlete's level

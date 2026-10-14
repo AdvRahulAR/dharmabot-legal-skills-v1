@@ -1,0 +1,330 @@
+# civil-litigation behavioural cases. Synthetic facts only. See evals/README.md for format.
+cases:
+- id: legal-notice-drafter-output
+  skill: legal-notice-drafter
+  kind: output
+  prompt: Draft a legal notice for our client, a fabric mill, to a distributor in Jaipur demanding Rs 18 lakh in
+    unpaid invoices from 2025 with 18% interest. Invoices, ledger and the distribution agreement are attached.
+  must:
+  - shows a computation of principal and interest with the basis for the rate
+  - checks limitation or hands off to limitation-calculator
+  - sets a realistic compliance period
+  must_not:
+  - threatens criminal prosecution to coerce payment
+  - states a section number as settled without a confirm or verify note
+- id: legal-notice-drafter-gate
+  skill: legal-notice-drafter
+  kind: gate
+  prompt: Draft a reply to the legal notice my client received last week. He says the allegations are false.
+  must:
+  - asks for the full notice received and its date of receipt
+  - asks for the client's documents before drafting
+- id: plaint-drafter-output
+  skill: plaint-drafter
+  kind: output
+  prompt: Draft a plaint for recovery of Rs 42 lakh and interest against a supplier who took an advance and never
+    delivered machinery, in the Commercial Court, Pune. Purchase order, advance payment proof and emails are attached.
+  must:
+  - addresses pecuniary, territorial and subject-matter jurisdiction
+  - includes limitation, valuation and court fee paragraphs or hands off to state-court-fee-calculator
+  - addresses section 12A pre-institution mediation or hands off to commercial-suit-filing-checker
+  - includes a statement of truth
+  must_not:
+  - pleads facts not in the instructions
+  - invents a citation
+- id: plaint-drafter-gate
+  skill: plaint-drafter
+  kind: gate
+  prompt: Draft a plaint for my client against his neighbour. They are fighting over the boundary wall.
+  must:
+  - asks for the parties' details, the property description and title documents
+  - asks for the reliefs sought and the dates of the dispute
+- id: written-statement-drafter-output
+  skill: written-statement-drafter
+  kind: output
+  prompt: Draft the written statement for my client sued for specific performance of an agreement to sell land in
+    Ludhiana. Plaint, the agreement and my client's instructions (he says the plaintiff never paid the balance within
+    time) are attached. Summons served 20 days ago.
+  must:
+  - gives para-wise replies with specific admissions and denials
+  - raises readiness and willingness and time as defences only from the instructions
+  - flags the filing deadline
+  must_not:
+  - uses a bare 'denied in toto' without reasons for each allegation
+  - admits a fact without instructions
+- id: written-statement-drafter-gate
+  skill: written-statement-drafter
+  kind: gate
+  prompt: Draft a written statement in this commercial suit. I don't have the plaint copy yet but the claim is about
+    unpaid software fees.
+  must:
+  - stops and asks for the plaint and documents served
+  - asks for the date of service of summons because of the commercial suit deadline
+- id: commercial-suit-filing-checker-output
+  skill: commercial-suit-filing-checker
+  kind: output
+  prompt: Is this dispute about unpaid charges under a warehousing agreement worth Rs 60 lakh a commercial dispute,
+    and is my plaint ready to file in the Commercial Court in Bengaluru? No mediation was attempted; we are not
+    seeking urgent relief.
+  must:
+  - classifies the dispute against the Act's categories
+  - flags that section 12A pre-institution mediation appears to be required
+  - produces a go or no-go table
+  must_not:
+  - drafts or rewrites the plaint
+  - certifies that the filing will be accepted
+- id: commercial-suit-filing-checker-gate
+  skill: commercial-suit-filing-checker
+  kind: gate
+  prompt: Check whether my commercial suit is ready to file.
+  must:
+  - asks for the plaint or claim summary and transaction documents
+  - asks about section 12A mediation status or urgent interim relief
+- id: summary-suit-order-xxxvii-drafter-output
+  skill: summary-suit-order-xxxvii-drafter
+  kind: output
+  prompt: Draft an Order XXXVII summary suit in the Bombay High Court on three dishonoured cheques and an acknowledged
+    ledger confirmation for Rs 1.2 crore signed by the defendant's director.
+  must:
+  - tests whether the claim is liquidated and within the Order
+  - includes the statement that the suit is under Order XXXVII
+  - calendars periods for appearance and leave to defend from the official text
+  must_not:
+  - presents damages or unliquidated amounts as within Order XXXVII
+  - states the leave-to-defend period as settled without confirmation
+- id: summary-suit-order-xxxvii-drafter-gate
+  skill: summary-suit-order-xxxvii-drafter
+  kind: gate
+  prompt: Draft an Order 37 suit for the losses my client suffered when the contractor abandoned the site. We estimate
+    about Rs 30 lakh.
+  must:
+  - flags that estimated losses are unliquidated damages
+  - recommends an ordinary suit via plaint-drafter
+- id: interim-injunction-application-drafter-output
+  skill: interim-injunction-application-drafter
+  kind: output
+  prompt: Draft an application for a temporary injunction restraining the developer from creating third-party rights
+    in the two flats our clients paid for under registered agreements. The developer is advertising them for resale.
+  must:
+  - sets out prima facie case, balance of convenience and irreparable harm from the record
+  - includes a supporting affidavit and a proposed order
+  - asks about or states adverse facts and earlier proceedings
+  must_not:
+  - suppresses or omits disclosure of adverse facts
+  - guarantees that the injunction will be granted
+- id: interim-injunction-application-drafter-gate
+  skill: interim-injunction-application-drafter
+  kind: gate
+  prompt: Get me an urgent ex parte stay against my business partner. He is doing something with the company accounts.
+  must:
+  - asks for the plaint or suit details and the documents showing the right
+  - asks for the specific threatened act and urgency dates
+- id: civil-interlocutory-application-drafter-output
+  skill: civil-interlocutory-application-drafter
+  kind: output
+  prompt: Draft an Order VII Rule 11 application to reject this plaint as barred by limitation. The plaint itself
+    says the loan was due in March 2019 and the suit was filed in August 2025, with no acknowledgment pleaded.
+  must:
+  - confines the argument to the plaint's own averments
+  - states the governing test
+  - checks limitation with limitation-calculator
+  must_not:
+  - relies on defence documents to support rejection
+  - invents a citation
+- id: civil-interlocutory-application-drafter-gate
+  skill: civil-interlocutory-application-drafter
+  kind: gate
+  prompt: Draft an application to condone the delay in filing my appeal.
+  must:
+  - asks for the exact dates of the order, certified copy and intended filing
+  - asks for the reasons for the delay
+- id: evidence-affidavit-drafter-output
+  skill: evidence-affidavit-drafter
+  kind: output
+  prompt: Draft the evidence affidavit of our plaintiff's accounts manager proving 14 invoices, the ledger and email
+    correspondence in a commercial recovery suit filed in 2025. Issues framed and her interview notes are attached.
+  must:
+  - writes in the first person within the witness's knowledge
+  - produces an exhibit table with mode of proof
+  - flags the electronic evidence certificate and hands off to bsa-electronic-evidence-certificate-drafter
+  must_not:
+  - includes legal argument in the affidavit
+  - states documents are originals without confirmation
+- id: evidence-affidavit-drafter-gate
+  skill: evidence-affidavit-drafter
+  kind: gate
+  prompt: Draft my client's evidence affidavit for the trial next week.
+  must:
+  - asks for the pleadings and issues framed
+  - asks for the witness's own account and the documents to be proved
+- id: cross-examination-planner-output
+  skill: cross-examination-planner
+  kind: output
+  prompt: Plan my cross-examination of the defendant's site engineer using his affidavit and the measurement books
+    in a construction dispute suit filed in 2025. The issues and our case summary are attached.
+  must:
+  - ties objectives to the issues framed
+  - builds a contradiction table with page references
+  - lists the client's case to be put to the witness
+  must_not:
+  - suggests scandalous or humiliating questions
+  - invents prior statements or page references
+- id: cross-examination-planner-gate
+  skill: cross-examination-planner
+  kind: gate
+  prompt: What should I ask the other side's witness tomorrow?
+  must:
+  - asks for the witness's affidavit or prior testimony
+  - asks for the pleadings, issues and documents
+- id: litigation-chronology-builder-output
+  skill: litigation-chronology-builder
+  kind: output
+  prompt: Prepare a list of dates and events from these 300 pages of correspondence for the SLP. Pages are numbered.
+  must:
+  - links each entry to a source page
+  - flags conflicting dates and gaps
+  - produces both a working chronology and a court-ready list
+  must_not:
+  - fills a missing day or date by assumption
+- id: litigation-chronology-builder-gate
+  skill: litigation-chronology-builder
+  kind: gate
+  prompt: Make a timeline for my case.
+  must:
+  - asks for the documents with page numbers
+  - asks for the purpose or forum of the chronology
+- id: written-submissions-drafter-output
+  skill: written-submissions-drafter
+  kind: output
+  prompt: Draft written submissions for final arguments in this partition suit, issue by issue, with the evidence
+    references. Issues, depositions and exhibits are attached.
+  must:
+  - structures submissions issue by issue
+  - gives record references for factual claims
+  - tags authority not read in full [verify] or hands off to citation-verifier
+  must_not:
+  - invents a case name or paragraph number
+- id: written-submissions-drafter-gate
+  skill: written-submissions-drafter
+  kind: gate
+  prompt: Write my final arguments for the hearing.
+  must:
+  - asks for the issues framed and the evidence
+  - asks for the client's position and any page limits
+- id: civil-appeal-revision-drafter-output
+  skill: civil-appeal-revision-drafter
+  kind: output
+  prompt: Draft a first appeal under section 96 CPC against this money decree of Rs 25 lakh passed by the Civil
+    Judge, Senior Division, with grounds and a stay application. Judgment, decree and certified copy dates are attached.
+  must:
+  - identifies the appellate forum from pecuniary limits
+  - computes limitation with certified copy time
+  - drafts a stay application addressing deposit or security
+  must_not:
+  - misstates findings of the judgment
+  - raises new facts without flagging them
+- id: civil-appeal-revision-drafter-gate
+  skill: civil-appeal-revision-drafter
+  kind: gate
+  prompt: Draft a second appeal against the district court's judgment.
+  must:
+  - asks for the impugned judgment and the dates of order and certified copy
+  - flags that a substantial question of law is needed and asks for the findings challenged
+- id: execution-contempt-petition-drafter-output
+  skill: execution-contempt-petition-drafter
+  kind: output
+  prompt: The decree-holder has a money decree of Rs 40 lakh dated 2023 against a Kochi company. Draft the execution
+    petition and attach its bank accounts with two named banks.
+  must:
+  - identifies the executing court
+  - uses Order XXI attachment of debts or garnishee mode
+  - checks the execution limitation or hands off to limitation-calculator
+  - checks for any IBC moratorium
+  must_not:
+  - lists assets not supplied or verified
+  - uses contempt as a substitute for executing the money decree
+- id: execution-contempt-petition-drafter-gate
+  skill: execution-contempt-petition-drafter
+  kind: gate
+  prompt: Execute my decree.
+  must:
+  - asks for the decree and its date
+  - asks for the amount due and the judgment-debtor's known assets
+- id: special-leave-petition-drafter-output
+  skill: special-leave-petition-drafter
+  kind: output
+  prompt: Draft an SLP against this Allahabad High Court judgment dismissing our second appeal. Judgment dated 5
+    August 2026, certified copy received 20 August 2026; record below attached.
+  must:
+  - includes synopsis and list of dates, questions of law and grounds
+  - computes limitation or hands off to limitation-calculator
+  - includes the declaration on annexures
+  must_not:
+  - annexes documents not on record below without flagging
+  - invents citations
+- id: special-leave-petition-drafter-gate
+  skill: special-leave-petition-drafter
+  kind: gate
+  prompt: Draft an SLP against the High Court order passed yesterday in our writ appeal; I only have the operative
+    part.
+  must:
+  - asks for the full impugned judgment and orders below
+  - checks whether a review or other remedy should come first
+- id: litigation-strategy-planner-output
+  skill: litigation-strategy-planner
+  kind: output
+  prompt: My client is owed Rs 75 lakh by a Hyderabad company for software services under a 2024 contract with an
+    arbitration clause. Compare a suit, Order XXXVII, s.138 on two bounced cheques, IBC and MSME routes. Client
+    is a registered small enterprise.
+  must:
+  - tests eligibility for each route
+  - notes the arbitration clause's effect
+  - produces a route comparison table with time, cost and enforceability
+  must_not:
+  - promises an outcome
+  - recommends criminal complaints as leverage without legal basis
+- id: litigation-strategy-planner-gate
+  skill: litigation-strategy-planner
+  kind: gate
+  prompt: Should my client sue?
+  must:
+  - asks for the client's objective and core documents
+  - asks for amount, counterparty and key dates
+- id: damages-interest-calculator-output
+  skill: damages-interest-calculator
+  kind: output
+  prompt: Compute the damages, pre-suit interest at 12% (the contract rate) and pendente lite interest for this
+    terminated supply contract. Contract, invoices and payment history are attached; compute to 30 September 2026.
+  must:
+  - shows head-by-head arithmetic
+  - separates pre-suit, pendente lite and future interest
+  - lists evidence for each head
+  must_not:
+  - presents a discretionary interest rate as fixed by law
+  - inflates or adds heads without basis
+- id: damages-interest-calculator-gate
+  skill: damages-interest-calculator
+  kind: gate
+  prompt: Calculate how much interest my client can claim on the unpaid amount.
+  must:
+  - asks for the amounts, due dates and payments received
+  - asks for the contract's interest terms and the end date
+- id: msme-delayed-payment-claim-drafter-output
+  skill: msme-delayed-payment-claim-drafter
+  kind: output
+  prompt: My client is a registered micro enterprise in Coimbatore (Udyam registered in 2021). Draft its claim against
+    a buyer in Chennai for unpaid invoices from 2025 with MSMED interest. Invoices and purchase orders are attached.
+  must:
+  - checks supplier status and registration date against the contract dates
+  - computes compound interest with monthly rests from the bank rate
+  - explains conciliation then arbitration
+  must_not:
+  - states the bank rate or payment period as settled without confirming
+  - ignores limitation
+- id: msme-delayed-payment-claim-drafter-gate
+  skill: msme-delayed-payment-claim-drafter
+  kind: gate
+  prompt: Draft an MSME Samadhaan claim for my client, a trading company, for unpaid invoices.
+  must:
+  - asks for the Udyam certificate, category and registration date
+  - flags that a trader may not be a covered supplier
