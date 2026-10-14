@@ -117,7 +117,7 @@ Copy [`templates/dharmabot-profile.md`](templates/dharmabot-profile.md) into you
 ### Claude Code
 
 ```text
-/plugin marketplace add dharmabot-ai/dharmabot-legal-skills
+/plugin marketplace add AdvRahulAR/dharmabot-legal-skills-v1
 /plugin install dharmabot-legal-skills@dharmabot
 ```
 
@@ -126,22 +126,22 @@ Then start a new session or run `/reload-plugins`.
 ### OpenAI Codex
 
 ```bash
-codex plugin marketplace add dharmabot-ai/dharmabot-legal-skills
+codex plugin marketplace add AdvRahulAR/dharmabot-legal-skills-v1
 codex plugin add dharmabot-legal-skills@dharmabot
 ```
 
 Or copy the skills into your user folder:
 
 ```bash
-git clone https://github.com/dharmabot-ai/dharmabot-legal-skills
-cd dharmabot-legal-skills && ./scripts/install.sh --codex
+git clone https://github.com/AdvRahulAR/dharmabot-legal-skills-v1
+cd dharmabot-legal-skills-v1 && ./scripts/install.sh --codex
 ```
 
 ### Google Antigravity
 
 ```bash
-git clone https://github.com/dharmabot-ai/dharmabot-legal-skills
-cd dharmabot-legal-skills && ./scripts/install.sh --antigravity
+git clone https://github.com/AdvRahulAR/dharmabot-legal-skills-v1
+cd dharmabot-legal-skills-v1 && ./scripts/install.sh --antigravity
 ```
 
 For one project only, use `./scripts/install.sh --project /path/to/project`. This installs into `.claude/skills/` and `.agents/skills/` in that project; Codex and Antigravity both read `.agents/skills/`.

@@ -6,8 +6,8 @@
     "name": "Dharmabot AI",
     "url": "https://dharmabot.ai"
   },
-  "homepage": "https://github.com/dharmabot-ai/dharmabot-legal-skills",
-  "repository": "https://github.com/dharmabot-ai/dharmabot-legal-skills",
+  "homepage": "https://github.com/AdvRahulAR/dharmabot-legal-skills-v1",
+  "repository": "https://github.com/AdvRahulAR/dharmabot-legal-skills-v1",
   "license": "MIT",
   "keywords": ["legal", "law", "india", "state-law", "cross-border", "uae", "gdpr", "arbitration", "lpo", "bns", "bnss", "bsa", "legal-aid", "lok-adalat", "indian-languages", "advocate", "litigation", "contracts", "corporate", "insolvency", "tax", "ip", "employment", "family-law", "compliance"],
   "skills": "./skills/"

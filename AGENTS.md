@@ -4,8 +4,8 @@ This repository contains Dharmabot Legal Skills: Agent Skills (`SKILL.md` folder
 
 ## If you are asked to install these skills
 
-- **Claude Code:** run `claude plugin marketplace add dharmabot-ai/dharmabot-legal-skills`, then `claude plugin install dharmabot-legal-skills@dharmabot`. Tell the user to start a new session or run `/reload-plugins`.
-- **Codex:** run `codex plugin marketplace add dharmabot-ai/dharmabot-legal-skills`, then `codex plugin add dharmabot-legal-skills@dharmabot`. Alternatively clone the repo and run `./scripts/install.sh --codex`.
+- **Claude Code:** run `claude plugin marketplace add AdvRahulAR/dharmabot-legal-skills-v1`, then `claude plugin install dharmabot-legal-skills@dharmabot`. Tell the user to start a new session or run `/reload-plugins`.
+- **Codex:** run `codex plugin marketplace add AdvRahulAR/dharmabot-legal-skills-v1`, then `codex plugin add dharmabot-legal-skills@dharmabot`. Alternatively clone the repo and run `./scripts/install.sh --codex`.
 - **Antigravity:** clone the repo and run `./scripts/install.sh --antigravity` (or `--project <dir>` for one workspace).
 
 Afterwards, tell the user that the skills are drafts for review by an enrolled advocate, and point them to `DISCLAIMER.md`.
