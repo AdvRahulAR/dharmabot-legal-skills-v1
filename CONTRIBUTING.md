@@ -17,7 +17,7 @@ Thank you for helping. This project is most useful when practising advocates che
 3. Body sections in this order: draft notice line, `## Purpose`, `## Jurisdiction gate`, `## Temporal gate` (criminal and procedure skills), `## Required inputs` (mark **blocking** inputs), `## Method` (step 1 retrieves the current official text), `## Output`, `## Verification` (optional), and `## Guardrails` (or `## Guardrails and hand-offs`).
 4. Never put rates, fees, income ceilings or section numbers in a skill as settled facts. If you mention a number to help orientation, say "believed to be ... confirm from the source".
 5. Every drafting skill's guardrails must hand off to `pre-filing-verification-checker` before anything is filed or sent.
-6. Put any calculation in a script under `scripts/` with unit tests in `tests/`. Use only the Python standard library and no network access.
+6. Put any calculation in a script under `scripts/` with unit tests in `tests/`. Use only the Python standard library and no network access. A script used by more than one skill lives in `shared/scripts/`; list it under `shared_scripts` in `skill-registry.yaml` and the build copies it into the skill's `scripts/` folder. Any skill that turns on a time period should list `date_calc.py` and compute dates with it.
 7. If the skill needs a shared reference table, list it under `shared_refs` in `skill-registry.yaml`; the build copies it into the skill's `references/` folder so the skill works when installed on its own. Edit the file in `shared/references/`, never the copies.
 8. Add the skill to `skill-registry.yaml`, then run:
 

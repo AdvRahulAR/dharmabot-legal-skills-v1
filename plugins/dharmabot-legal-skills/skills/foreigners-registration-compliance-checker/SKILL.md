@@ -33,6 +33,7 @@ Also useful: employment contract, salary, the sponsoring entity, address proofs,
 1. Retrieve the current official text of the Immigration and Foreigners Act 2025, its Rules and Order, any exemption orders, and the MHA visa manual and e-FRRO guidance. Record versions and dates.
 2. Check the visa matches the activity. An employment visa usually needs a specific employer and salary conditions; business visas do not allow employment. Check whether conversion is allowed in India or needs exit.
 3. Check registration: whether registration was required for this visa and stay, the deadline, and the method.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 4. Check host reporting: duties on employers, hotels and other accommodation providers, hospitals and educational institutions to report foreigners, with forms and timelines.
 5. Overstay or default: the penalty or fee, regularisation procedure, and risk of exit permit refusal, blacklisting or prosecution. Do not state amounts; retrieve them.
 6. Exit: exit permit requirements and timing before departure.

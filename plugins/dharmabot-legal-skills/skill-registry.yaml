@@ -1,7 +1,8 @@
 # Source of truth for skill metadata. Edit here, then run:
 #   python3 scripts/build.py
 # which regenerates each skill's skill.meta.yaml, agents/openai.yaml and
-# references/ copies of shared files, and the catalogue in README.md.
+# references/ and scripts/ copies of shared files (shared_refs, shared_scripts),
+# and the catalogue in README.md.
 # SKILL.md frontmatter stays name + description only.
 version: 1
 release: 0.1.0
@@ -119,8 +120,9 @@ skills:
     practice_area: criminal
     category: drafting
     language: [en]
+    shared_scripts: [date_calc.py]
     default_prompt: Draft an anticipatory bail application from this FIR for the Sessions Court.
-    hands_off_to: [court-pleading-formatter, regional-language-legal-drafter, citation-verifier, pre-filing-verification-checker]
+    hands_off_to: [undertrial-release-screener, arrest-rights-advisor, court-pleading-formatter, regional-language-legal-drafter, citation-verifier, pre-filing-verification-checker]
   - id: fir-ingredients-analyst
     display_name: FIR Ingredients Analyst
     short: Test FIR allegations against each offence's ingredients
@@ -162,6 +164,7 @@ skills:
     category: calculation
     language: [en]
     shared_refs: [india-state-statutes.md]
+    shared_scripts: [date_calc.py]
     default_prompt: How much stamp duty and registration fee for this gift deed for a flat in Bengaluru?
     hands_off_to: [document-legalisation-planner]
   - id: tenancy-rent-control-analyst
@@ -173,6 +176,7 @@ skills:
     category: analysis
     language: [en]
     shared_refs: [india-state-statutes.md]
+    shared_scripts: [date_calc.py]
     default_prompt: Can my client evict this tenant in Lucknow for bona fide own use? Here is the agreement and the facts.
     hands_off_to: [court-pleading-formatter, regional-language-legal-drafter, limitation-calculator, state-court-fee-calculator]
   - id: court-pleading-formatter
@@ -272,6 +276,7 @@ skills:
     category: analysis
     language: [en]
     shared_refs: [foreign-jurisdictions.md]
+    shared_scripts: [date_calc.py]
     default_prompt: My client has an English High Court money judgment against a Mumbai company. How do we enforce it?
     hands_off_to: [limitation-calculator, document-legalisation-planner, legal-translation-verifier]
   - id: international-arbitration-planner
@@ -283,6 +288,7 @@ skills:
     category: advice
     language: [en]
     shared_refs: [foreign-jurisdictions.md]
+    shared_scripts: [date_calc.py]
     default_prompt: Draft an arbitration clause for a supply contract between a Pune manufacturer and a German buyer.
     hands_off_to: [limitation-calculator]
   - id: cross-border-data-transfer-analyst
@@ -347,6 +353,7 @@ skills:
     practice_area: corporate
     category: advice
     language: [en]
+    shared_scripts: [date_calc.py]
     default_prompt: A Singapore company wants to set up an Indian subsidiary for software development. What structure and approvals?
     hands_off_to: [foreign-client-engagement-checker]
   # ---------------- core ----------------
@@ -368,6 +375,7 @@ skills:
     practice_area: procedure
     category: calculation
     language: [en]
+    shared_scripts: [date_calc.py]
     default_prompt: What is the last date to file an appeal against this decree dated 10 March 2026?
     hands_off_to: []
   # ---------------- added in the full-coverage build ----------------
@@ -380,6 +388,7 @@ skills:
     category: intake
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: A new client called about a dispute with her builder in Thane. Here are my call notes; prepare the intake
       note and conflict list.
     hands_off_to:
@@ -411,6 +420,7 @@ skills:
     category: planning
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Build a matter plan for defending this commercial suit in the Delhi High Court, with stages, owners and
       a cost estimate.
     hands_off_to:
@@ -426,6 +436,7 @@ skills:
     category: tracking
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Update my case diary from these cause lists and orders and tell me what is due in the next two weeks.
     hands_off_to:
     - limitation-calculator
@@ -568,6 +579,7 @@ skills:
     category: analysis
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Here are the facts of a shop fire in Indore that injured an employee and damaged a neighbour's stock. What
       are all the legal issues?
     hands_off_to:
@@ -582,6 +594,7 @@ skills:
     category: review
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Act as opposing counsel and the judge and tear apart this written statement before I file it.
     hands_off_to:
     - citation-verifier
@@ -637,6 +650,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft a legal notice to a distributor in Jaipur demanding Rs 18 lakh in unpaid invoices with 18% interest.
       Also tell me how to reply to his counter-notice.
     hands_off_to:
@@ -653,6 +667,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft a plaint for recovery of Rs 42 lakh and interest against a supplier in the Commercial Court, Pune.
     hands_off_to:
     - pre-filing-verification-checker
@@ -669,6 +684,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft the written statement for my client sued for specific performance of an agreement to sell in Ludhiana.
     hands_off_to:
     - pre-filing-verification-checker
@@ -684,6 +700,7 @@ skills:
     category: compliance
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Is this dispute a commercial dispute, and is my plaint ready to file in the Commercial Court in Bengaluru?
     hands_off_to:
     - pre-institution-mediation-advisor
@@ -698,6 +715,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft an Order XXXVII summary suit on these dishonoured invoices and an acknowledged ledger, in the Bombay
       High Court.
     hands_off_to:
@@ -730,6 +748,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft an Order VII Rule 11 application to reject this plaint as barred by limitation, and a caveat in the
       High Court.
     hands_off_to:
@@ -802,6 +821,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft a first appeal under s.96 CPC against this money decree, with grounds and a stay application.
     hands_off_to:
     - pre-filing-verification-checker
@@ -817,6 +837,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: The decree-holder has a money decree against a Kochi company. Draft the execution petition and attach its
       bank accounts.
     hands_off_to:
@@ -832,6 +853,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft an SLP against this Allahabad High Court judgment dismissing our second appeal.
     hands_off_to:
     - pre-filing-verification-checker
@@ -848,6 +870,7 @@ skills:
     category: planning
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: My client is owed Rs 75 lakh by a Hyderabad company. Compare a suit, Order XXXVII, s.138, IBC and MSME routes.
     hands_off_to:
     - damages-interest-calculator
@@ -863,6 +886,7 @@ skills:
     category: calculation
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Compute the damages, pre-suit interest at 12% and pendente lite interest for this terminated supply contract.
     hands_off_to:
     - plaint-drafter
@@ -876,6 +900,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: My client is a registered micro enterprise in Coimbatore. Draft its claim against a buyer for unpaid invoices
       with MSMED interest.
     hands_off_to:
@@ -923,6 +948,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft a discharge application for my client in this Sessions case; the chargesheet does not show any act
       by him.
     hands_off_to:
@@ -938,6 +964,7 @@ skills:
     category: analysis
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Go through this 600-page chargesheet in a dowry death case and list the gaps in the prosecution case.
     hands_off_to:
     - discharge-application-drafter
@@ -966,6 +993,7 @@ skills:
     category: analysis
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: My client has been convicted of causing death by negligence under s.106(1) BNS. Prepare the mitigation note
       for the hearing on sentence.
     hands_off_to:
@@ -980,6 +1008,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft an appeal against this conviction by the Sessions Court in Nagpur and an application to suspend sentence.
     hands_off_to:
     - pre-filing-verification-checker
@@ -995,6 +1024,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: The cheque for Rs 6 lakh bounced on 2 September with 'funds insufficient'. Draft the s.138 notice and tell
       me the complaint deadline.
     hands_off_to:
@@ -1025,6 +1055,7 @@ skills:
     category: analysis
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Check this NDPS seizure of 1.2 kg ganja for compliance with ss.42, 50 and 52A and assess bail.
     hands_off_to:
     - bnss-bail-application-drafter
@@ -1038,6 +1069,7 @@ skills:
     category: advice
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: My client's son has been picked up by the police in Patna without any notice. What are his rights and what
       do we do tonight?
     hands_off_to:
@@ -1053,6 +1085,7 @@ skills:
     category: analysis
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: ED has issued my client a s.50 PMLA summons and provisionally attached his flat. Map his options.
     hands_off_to:
     - enforcement-summons-response-planner
@@ -1080,6 +1113,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft a notice invoking arbitration against the contractor for delay damages under clause 25 of the EPC
       contract.
     hands_off_to:
@@ -1095,6 +1129,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft a s.9 petition in the Bombay High Court to stop the buyer from encashing our bank guarantee before
       arbitration starts.
     hands_off_to:
@@ -1110,6 +1145,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: The respondent ignored our s.21 notice for 45 days. Draft the s.11 petition in the Karnataka High Court.
     hands_off_to:
     - pre-filing-verification-checker
@@ -1124,6 +1160,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft our statement of claim in this DIAC arbitration on unpaid running bills and escalation.
     hands_off_to:
     - pre-filing-verification-checker
@@ -1139,6 +1176,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: We lost a domestic award against a PSU. Assess grounds and draft a s.34 petition; the award was received
       70 days ago.
     hands_off_to:
@@ -1155,6 +1193,7 @@ skills:
     category: advice
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: We want to file a commercial suit for Rs 1.2 crore in Chennai. Do we need pre-institution mediation and
       how do we start it?
     hands_off_to:
@@ -1328,6 +1367,7 @@ skills:
     category: tracking
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Extract every obligation, payment date, notice period and renewal deadline from this distribution agreement
       into a tracker.
     hands_off_to:
@@ -1370,6 +1410,7 @@ skills:
     category: analysis
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Can my client terminate this supply contract because of the new export ban? What notice and consequences?
     hands_off_to:
     - legal-notice-drafter
@@ -1385,6 +1426,7 @@ skills:
     - en
     shared_refs:
     - india-state-statutes.md
+    shared_scripts: [date_calc.py]
     default_prompt: This agreement will be e-signed by parties in Bengaluru and Delhi. Check execution, e-stamping and registration.
     hands_off_to:
     - state-stamp-duty-calculator
@@ -1413,6 +1455,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft the board resolution, EGM notice with explanatory statement, and minutes for a preferential allotment.
     hands_off_to:
     - pre-filing-verification-checker
@@ -1427,6 +1470,7 @@ skills:
     category: compliance
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: List every ROC filing and register this private company must complete for FY 2025-26, and what is overdue.
     hands_off_to:
     - board-meeting-documents-drafter
@@ -1453,6 +1497,7 @@ skills:
     category: compliance
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Our listed client received a large order and a tax demand on the same day. What must be disclosed to the
       exchanges and by when?
     hands_off_to:
@@ -1467,6 +1512,7 @@ skills:
     category: compliance
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: An employee traded two days before results. Check whether this breaches the PIT Regulations and what we
       must do.
     hands_off_to:
@@ -1481,6 +1527,7 @@ skills:
     category: analysis
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Our client will cross 26% in a listed company after this preferential allotment. Is an open offer triggered
       and is any exemption available?
     hands_off_to:
@@ -1495,6 +1542,7 @@ skills:
     category: compliance
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Check the steps and documents for a private placement of CCPS by our unlisted company to 12 investors.
     hands_off_to:
     - board-meeting-documents-drafter
@@ -1539,6 +1587,7 @@ skills:
     category: tracking
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Build the closing checklist for this acquisition and show what is still blocking signing and closing.
     hands_off_to:
     - share-purchase-agreement-reviewer
@@ -1670,6 +1719,7 @@ skills:
     category: review
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Review this term loan agreement from an NBFC for our client, the borrower, especially the events of default
       and covenants.
     hands_off_to:
@@ -1686,6 +1736,7 @@ skills:
     - en
     shared_refs:
     - india-state-statutes.md
+    shared_scripts: [date_calc.py]
     default_prompt: Draft the hypothecation deed, the mortgage by deposit of title deeds and the personal guarantee for this
       working capital facility in Gujarat.
     hands_off_to:
@@ -1702,6 +1753,7 @@ skills:
     category: planning
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: The bank has issued a s.13(2) notice to my client for a Rs 3 crore NPA. What are our options and the timeline?
     hands_off_to:
     - drt-application-drafter
@@ -1716,6 +1768,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft a s.17 SARFAESI application to the DRT Chennai challenging the possession notice; the auction is in
       three weeks.
     hands_off_to:
@@ -1732,6 +1785,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft an OTS proposal to the bank for our MSME client's Rs 1.8 crore NPA, with a 12-month payment plan.
     hands_off_to:
     - pre-filing-verification-checker
@@ -1746,6 +1800,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Our client supplied steel worth Rs 1.4 crore and was not paid. Draft the s.8 demand notice and then the
       s.9 application.
     hands_off_to:
@@ -1762,6 +1817,7 @@ skills:
     category: compliance
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: We are the IRP in a CIRP admitted on 3 June 2026. Build the regulation-wise timeline and flag missed steps.
     hands_off_to:
     - insolvency-claim-drafter
@@ -1776,6 +1832,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Prepare our Form B claim in this CIRP for unpaid invoices plus interest, with the supporting documents.
     hands_off_to:
     - pre-filing-verification-checker
@@ -1805,6 +1862,7 @@ skills:
     category: analysis
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: As RP, review these 18 months of bank statements and related-party payments for avoidance transactions.
     hands_off_to:
     - fraud-funds-flow-analyst
@@ -1818,6 +1876,7 @@ skills:
     category: calculation
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Compute distribution of Rs 42 crore of liquidation proceeds among these creditors under s.53 IBC.
     hands_off_to:
     - resolution-plan-reviewer
@@ -1831,6 +1890,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft an appeal to the NCLAT under s.61 IBC against this admission order; it was pronounced 20 days ago.
     hands_off_to:
     - pre-filing-verification-checker
@@ -1929,6 +1989,7 @@ skills:
     - en
     shared_refs:
     - india-state-statutes.md
+    shared_scripts: [date_calc.py]
     default_prompt: Draft a specific power of attorney for my NRI client in Canada to let her brother sell her plot in Hyderabad.
     hands_off_to:
     - pre-filing-verification-checker
@@ -1945,6 +2006,7 @@ skills:
     - en
     shared_refs:
     - india-state-statutes.md
+    shared_scripts: [date_calc.py]
     default_prompt: The builder in Noida has delayed possession by three years. Draft a RERA complaint for interest or refund.
     hands_off_to:
     - pre-filing-verification-checker
@@ -1962,6 +2024,7 @@ skills:
     - en
     shared_refs:
     - india-state-statutes.md
+    shared_scripts: [date_calc.py]
     default_prompt: Check RERA compliance for our client's new residential project in Pune before launch.
     hands_off_to:
     - builder-buyer-agreement-reviewer
@@ -2008,6 +2071,7 @@ skills:
     - en
     shared_refs:
     - india-state-statutes.md
+    shared_scripts: [date_calc.py]
     default_prompt: My client inherited farmland in Maharashtra. How do we mutate the 7/12 extract and convert it to non-agricultural
       use?
     hands_off_to:
@@ -2024,6 +2088,7 @@ skills:
     - en
     shared_refs:
     - india-state-statutes.md
+    shared_scripts: [date_calc.py]
     default_prompt: The State is acquiring 2 acres of my client's land near Nashik for a highway. Compute the compensation and
       our objections.
     hands_off_to:
@@ -2055,6 +2120,7 @@ skills:
     category: analysis
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: My client, married under the Special Marriage Act in 2019, wants a divorce on grounds of cruelty. Assess
       her case.
     hands_off_to:
@@ -2070,6 +2136,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft a divorce petition under s.13(1)(ia) HMA for the Family Court, Bengaluru, from these facts.
     hands_off_to:
     - pre-filing-verification-checker
@@ -2085,6 +2152,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft the s.13B petition, the settlement terms on alimony and custody, and the waiver application for the
       six-month period.
     hands_off_to:
@@ -2101,6 +2169,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft a maintenance application under s.144 BNSS for my client and her child, and work out a fair amount
       from the husband's salary slips.
     hands_off_to:
@@ -2176,6 +2245,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft a petition for probate of my client's mother's registered will in the Bombay High Court, and a succession
       certificate for her bank deposits.
     hands_off_to:
@@ -2279,6 +2349,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Our Internal Committee received a complaint against a manager. Draft the notices, the inquiry plan and the
       report format.
     hands_off_to:
@@ -2311,6 +2382,7 @@ skills:
     category: analysis
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: We want to let go of 25 people in our Noida unit. What process, notice and compensation apply, and draft
       the separation agreements.
     hands_off_to:
@@ -2326,6 +2398,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft a show-cause notice and charge-sheet for an employee accused of falsifying expense claims, and the
       inquiry procedure.
     hands_off_to:
@@ -2341,6 +2414,7 @@ skills:
     category: calculation
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Compute gratuity, leave encashment and notice pay for an employee leaving after 7 years 8 months on a last
       drawn basic of Rs 62,000.
     hands_off_to:
@@ -2368,6 +2442,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft a claim before the Labour Court for reinstatement with back wages for a machine operator terminated
       without inquiry.
     hands_off_to:
@@ -2396,6 +2471,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Prepare a TM-A application for our logo mark in Classes 9 and 42 for SaaS, with user since 2022.
     hands_off_to:
     - pre-filing-verification-checker
@@ -2410,6 +2486,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft a reply to this examination report raising s.9(1)(a) descriptiveness and a s.11 conflict with three
       marks.
     hands_off_to:
@@ -2425,6 +2502,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: A competitor's application for 'Swiggi Foods' was advertised. Draft our notice of opposition.
     hands_off_to:
     - pre-filing-verification-checker
@@ -2440,6 +2518,7 @@ skills:
     category: analysis
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: A Surat company is selling sarees with a print copied from our client's registered design and a confusingly
       similar label. Analyse and draft a cease-and-desist.
     hands_off_to:
@@ -2469,6 +2548,7 @@ skills:
     category: intake
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Our engineers built an AI model that predicts crop disease from leaf images. Is it patentable in India?
     hands_off_to:
     - patent-specification-drafter
@@ -2482,6 +2562,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft a provisional specification for this water purification process, with figures described, for filing
       at the Chennai Patent Office.
     hands_off_to:
@@ -2497,6 +2578,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft a response to this FER citing lack of inventive step over D1 and D2 and a s.3(k) objection.
     hands_off_to:
     - pre-filing-verification-checker
@@ -2541,6 +2623,7 @@ skills:
     category: tracking
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Build a tracker of our 46 trademarks and 3 patents with renewal dates, status and ownership gaps.
     hands_off_to:
     - trademark-application-drafter
@@ -2613,6 +2696,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: A former customer wants all her data and its deletion. Draft our response and tell us what we can keep.
     hands_off_to:
     - pre-filing-verification-checker
@@ -2655,6 +2739,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: My client lost Rs 4.5 lakh in a fake investment app scam yesterday. Draft the cyber crime complaint and
       the bank letter.
     hands_off_to:
@@ -2755,6 +2840,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: We received a GST show-cause notice under s.74 for FY 2020-21 alleging fake ITC. Analyse it and draft our
       reply.
     hands_off_to:
@@ -2784,6 +2870,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: My client received a reassessment notice for AY 2019-20. Check validity and draft the reply.
     hands_off_to:
     - pre-filing-verification-checker
@@ -2799,6 +2886,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft the appeal to the CIT(A) against this assessment order adding Rs 2.3 crore as unexplained cash credit.
     hands_off_to:
     - pre-filing-verification-checker
@@ -2858,6 +2946,7 @@ skills:
     category: analysis
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Classify this imported lithium battery pack and check whether we can claim the India-ASEAN FTA rate.
     hands_off_to:
     - gst-transaction-analyst
@@ -2873,6 +2962,7 @@ skills:
     - en
     shared_refs:
     - india-state-statutes.md
+    shared_scripts: [date_calc.py]
     default_prompt: Build a 12-month compliance calendar for our NBFC with offices in Mumbai and Bengaluru.
     hands_off_to:
     - roc-secretarial-compliance-checker
@@ -2905,6 +2995,7 @@ skills:
     - en
     shared_refs:
     - india-state-statutes.md
+    shared_scripts: [date_calc.py]
     default_prompt: Prepare the application and supporting documents for an FSSAI State licence and a trade licence for our
       cloud kitchen in Hyderabad.
     hands_off_to:
@@ -2920,6 +3011,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: SEBI has issued a show-cause notice to our client, an investment adviser. Draft the reply and plan the hearing.
     hands_off_to:
     - pre-filing-verification-checker
@@ -2934,6 +3026,7 @@ skills:
     category: analysis
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: RBI issued new digital lending directions. Diff them against our current policies and produce the gap list
       and redlines.
     hands_off_to:
@@ -3037,6 +3130,7 @@ skills:
     category: compliance
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Our company's net profit crossed Rs 5 crore. What are our CSR obligations and do we need to file BRSR?
     hands_off_to:
     - board-meeting-documents-drafter
@@ -3050,6 +3144,7 @@ skills:
     category: analysis
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Does our client's Rs 2,400 crore acquisition of a minority stake in a SaaS company need CCI approval?
     hands_off_to:
     - share-purchase-agreement-reviewer
@@ -3077,6 +3172,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: My client's new car has a recurring engine defect and the dealer refuses replacement. Draft a consumer complaint.
     hands_off_to:
     - pre-filing-verification-checker
@@ -3093,6 +3189,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: The District Commission awarded only Rs 50,000. Draft an appeal to the State Commission.
     hands_off_to:
     - pre-filing-verification-checker
@@ -3134,6 +3231,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft a writ petition in the Madras High Court challenging the cancellation of our client's trade licence
       without a hearing.
     hands_off_to:
@@ -3179,6 +3277,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft an RTI application to the municipal corporation for the building approval file of the tower next door,
       and a first appeal if they refuse.
     hands_off_to:
@@ -3194,6 +3293,7 @@ skills:
     category: analysis
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: My client, a central government employee, was denied promotion because of a sealed-cover procedure. What
       are his remedies?
     hands_off_to:
@@ -3209,6 +3309,7 @@ skills:
     category: compliance
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Check our bid for this State PWD tender for compliance, and tell us if we can challenge the restrictive
       eligibility clause.
     hands_off_to:
@@ -3224,6 +3325,7 @@ skills:
     category: analysis
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Our client lost the assembly election by 312 votes and suspects nomination irregularities. Can we file an
       election petition?
     hands_off_to:
@@ -3238,6 +3340,7 @@ skills:
     category: planning
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: SEBI's WTM has passed an order debarring our client for two years. Plan the appeal to SAT and the stay application.
     hands_off_to:
     - limitation-calculator
@@ -3310,6 +3413,7 @@ skills:
     category: planning
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: The SFIO has sent a summons to our CFO and asked for five years of records. How do we respond?
     hands_off_to:
     - pmla-proceedings-analyst
@@ -3354,6 +3458,7 @@ skills:
     - en
     shared_refs:
     - india-state-statutes.md
+    shared_scripts: [date_calc.py]
     default_prompt: Check the pollution control compliance of our pharma unit in Telangana, including CTO conditions and hazardous
       waste.
     hands_off_to:
@@ -3368,6 +3473,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Draft an application to the NGT about an illegal sand mining operation damaging a river in Karnataka.
     hands_off_to:
     - pre-filing-verification-checker
@@ -3383,6 +3489,7 @@ skills:
     category: review
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Review this 25-year solar PPA with a DISCOM and the EPC contract for the plant, and flag our risks.
     hands_off_to:
     - arbitral-proceedings-drafter
@@ -3399,6 +3506,7 @@ skills:
     - en
     shared_refs:
     - india-state-statutes.md
+    shared_scripts: [date_calc.py]
     default_prompt: Our client won a limestone block auction in Chhattisgarh. What approvals and lease conditions follow?
     hands_off_to:
     - environmental-clearance-analyst
@@ -3412,6 +3520,7 @@ skills:
     category: analysis
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: The insurer rejected my client's health claim for non-disclosure of diabetes. Can we fight it? Draft the
       Ombudsman complaint.
     hands_off_to:
@@ -3440,6 +3549,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: My client's husband, aged 38, earning Rs 45,000 a month, died in a truck accident in Nagpur. Draft the MACT
       claim and compute compensation.
     hands_off_to:
@@ -3456,6 +3566,7 @@ skills:
     category: analysis
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: My client's mother died after surgery at a Delhi private hospital. Is there a case for medical negligence?
     hands_off_to:
     - consumer-complaint-drafter
@@ -3527,6 +3638,7 @@ skills:
     category: analysis
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: A State-level athlete was dropped from selection and has a pending doping charge. What are her remedies?
     hands_off_to:
     - writ-petition-drafter
@@ -3542,6 +3654,7 @@ skills:
     - en
     shared_refs:
     - foreign-jurisdictions.md
+    shared_scripts: [date_calc.py]
     default_prompt: A ship carrying our client's cargo is in Kandla port and owes freight damages. Can we arrest it?
     hands_off_to:
     - international-arbitration-planner
@@ -3556,6 +3669,7 @@ skills:
     category: analysis
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: My client's international flight was cancelled and her baggage lost. What can she claim from the airline?
     hands_off_to:
     - consumer-complaint-drafter
@@ -3569,6 +3683,7 @@ skills:
     category: analysis
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Our goods worth Rs 9 lakh were damaged in transit by the transporter from Ludhiana to Chennai. How do we
       claim?
     hands_off_to:
@@ -3586,6 +3701,7 @@ skills:
     - en
     shared_refs:
     - foreign-jurisdictions.md
+    shared_scripts: [date_calc.py]
     default_prompt: My client's OCI card was cancelled for 'anti-India activities' after a social media post. What can she do?
       Also, her son's passport was impounded.
     hands_off_to:
@@ -3600,6 +3716,7 @@ skills:
     category: compliance
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Our Korean engineer's employment visa expires next month and he did not register with the FRRO. What do
       we do?
     hands_off_to:
@@ -3786,6 +3903,7 @@ skills:
     - en
     shared_refs:
     - foreign-jurisdictions.md
+    shared_scripts: [date_calc.py]
     default_prompt: Our Indian client is owed GBP 85,000 by a Manchester company. Draft a letter before claim for the UK solicitors
       to review.
     hands_off_to:
@@ -3837,6 +3955,7 @@ skills:
     - en
     shared_refs:
     - foreign-jurisdictions.md
+    shared_scripts: [date_calc.py]
     default_prompt: Our US associate wants a draft response to this USPTO office action refusing our client's mark under Section
       2(d).
     hands_off_to:
@@ -3888,6 +4007,7 @@ skills:
     category: compliance
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Delhi High Court registry has returned our writ with 6 objections (non-searchable annexures, bookmarks missing,
       court fee). Here is the objection sheet and the PDF; fix list please.
     hands_off_to:
@@ -3956,6 +4076,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: The first defendant in our partition suit died four months ago and we just learnt of it. Draft substitution
       and setting aside abatement with delay condonation.
     hands_off_to:
@@ -4021,6 +4142,7 @@ skills:
     category: tracking
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Summons to defendants 2 and 3 have come back 'door locked' twice. Review the service reports and draft a
       substituted service application with the right publication.
     hands_off_to:
@@ -4036,6 +4158,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Issues were framed on 3 September. Draft our list of witnesses and an application to summon the bank manager
       with the loan ledger.
     hands_off_to:
@@ -4053,6 +4176,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Commissioner (Appeals) Chennai confirmed a 4.2 crore customs duty demand on classification. Draft the CESTAT
       appeal with the pre-deposit working.
     hands_off_to:
@@ -4070,6 +4194,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: SEBI's WTM order debars our client for two years and imposes a 25 lakh penalty. Draft the SAT appeal and
       the stay application.
     hands_off_to:
@@ -4087,6 +4212,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: My client holds 8% in a Hyderabad private company and has been removed as director and diluted. Draft an
       oppression petition with a waiver application.
     hands_off_to:
@@ -4138,6 +4264,7 @@ skills:
     category: planning
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Original sale deed from 1998 and two share certificates of an unlisted company were lost in the Chennai
       floods. What do we do to replace them?
     hands_off_to:
@@ -4183,6 +4310,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: We missed the FC-GPR filing for a 2023 allotment and the ODI annual return for two years. Work out LSF versus
       compounding and draft the application.
     hands_off_to:
@@ -4215,6 +4343,7 @@ skills:
     category: planning
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: A batch of our packaged spice mix failed an FSSAI lab test for ethylene oxide. Plan the recall and the regulator
       communications.
     hands_off_to:
@@ -4232,6 +4361,7 @@ skills:
     language:
     - en
     shared_refs: *id001
+    shared_scripts: [date_calc.py]
     default_prompt: Client wants an FL-3 bar licence for a new hotel in Bengaluru and has a pending suspension notice for its
       Mysuru outlet. Advise.
     hands_off_to:
@@ -4247,6 +4377,7 @@ skills:
     category: planning
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Our customer-support chatbot told users a wrong loan interest rate and generated an abusive reply that went
       viral. What are our legal obligations now?
     hands_off_to:
@@ -4308,6 +4439,7 @@ skills:
     category: planning
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: A morphed explicit video of my client, a Kochi schoolteacher, is circulating on Instagram and Telegram.
       What can we do today and this week?
     hands_off_to:
@@ -4444,6 +4576,7 @@ skills:
     category: planning
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: In our Delhi commercial suit the defendant has filed 600 pages. Plan our admission-denial affidavit and
       identify what inspection we should seek.
     hands_off_to:
@@ -4490,6 +4623,7 @@ skills:
     category: compliance
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: 'The partition suit is decreed and executed. Close the file properly: return originals, decide what we keep
       and for how long.'
     hands_off_to:
@@ -4521,6 +4655,7 @@ skills:
     category: intake
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: 'Legal-aid clinic at Viyyur jail: here is a list of 40 undertrials with offences and custody dates. Who
       qualifies under s.479 BNSS?'
     hands_off_to:
@@ -4569,6 +4704,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: Our client's truck was detained at Hosur for an expired e-way bill; MOV-07 has been issued with 200% penalty.
       Draft the reply and release request.
     hands_off_to:
@@ -4585,6 +4721,7 @@ skills:
     category: tracking
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: I'm an Assistant LADC in Ernakulam with 35 assigned cases. Set up my case files and prepare this month's
       report for the DLSA.
     hands_off_to:
@@ -4616,6 +4753,7 @@ skills:
     language:
     - en
     shared_refs: *id001
+    shared_scripts: [date_calc.py]
     default_prompt: The managing committee of a Pune housing society is refusing to transfer a flat to my client's late father's
       heirs. What's the remedy?
     hands_off_to:
@@ -4631,6 +4769,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: A producers' association of Kuthampully weavers wants to check the GI status and register 60 weavers as
       authorised users. Prepare the papers.
     hands_off_to:
@@ -4680,6 +4819,7 @@ skills:
     language:
     - en
     shared_refs: *id001
+    shared_scripts: [date_calc.py]
     default_prompt: The State Waqf Board has listed my client's ancestral land in Hyderabad as wakf property. How do we challenge
       it?
     hands_off_to:
@@ -4695,6 +4835,7 @@ skills:
     category: drafting
     language:
     - en
+    shared_scripts: [date_calc.py]
     default_prompt: A Gram Sabha in Gadchiroli wants to file a community forest resource claim and appeal rejections of 18 individual
       claims. Prepare the papers.
     hands_off_to:

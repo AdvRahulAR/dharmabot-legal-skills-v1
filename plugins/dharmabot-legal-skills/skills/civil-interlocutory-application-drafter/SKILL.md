@@ -25,8 +25,9 @@ Mark as **blocking**:
 
 ## Method
 
-1. Retrieve the current official text of the governing provision, any High Court amendment, and the relevant rules. Record the version and date.
-2. Identify the test and apply only the record. Typical tests:
+1. Retrieve the current official text of the governing provision, any High Court amendment, and the relevant rules. Record the version and date. Confirm every section, order and rule number used in this skill against that text.
+2. Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+3. Identify the test and apply only the record. Typical tests:
    - **Rejection of plaint:** read the plaint and its documents only; no defence material. Bars include no cause of action, undervaluation, insufficient stamp and bar by law (including limitation on the plaint's own averments).
    - **Amendment:** necessary for the real controversy; after trial starts, show due diligence (believed to be the proviso to Order VI Rule 17; confirm). Check whether a time-barred claim is being introduced.
    - **Impleadment or deletion:** necessary or proper party.
@@ -35,10 +36,10 @@ Mark as **blocking**:
    - **Discovery and interrogatories:** relevance and necessity; in commercial suits, the amended Order XI.
    - **Caveat:** under section 148A CPC, with service on the likely applicant; note the period it remains in force.
    - **Transfer:** the correct court (District Court, High Court or Supreme Court) and grounds such as convenience or apprehension of bias.
-3. Check limitation for the application itself with `limitation-calculator`.
-4. Draft the application, the supporting affidavit, and a short proposed order.
-5. Search for and read current authority on the test. Tag unread authority `[verify]`.
-6. State in the note when a different remedy fits better (for example an appeal against a decree, not an application).
+4. Check limitation for the application itself with `limitation-calculator`.
+5. Draft the application, the supporting affidavit, and a short proposed order.
+6. Search for and read current authority on the test. Tag unread authority `[verify]`.
+7. State in the note when a different remedy fits better (for example an appeal against a decree, not an application).
 
 ## Output
 

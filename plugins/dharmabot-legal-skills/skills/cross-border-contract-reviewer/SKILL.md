@@ -30,12 +30,12 @@ Also useful: the client's playbook or fallback positions, and deal size.
 1. Read `references/foreign-jurisdictions.md`.
 2. **Governing law and forum.** Is the choice valid and sensible? Is the dispute route court or arbitration, and if arbitration, what are the seat, institution, rules and language? Hand off arbitration clause design to `international-arbitration-planner`.
 3. **Enforceability test.** For each likely outcome, ask where it would need enforcing and whether that works:
-   - a foreign court judgment in India: is the country a reciprocating territory under s.44A CPC? (The US is not; the UK, UAE and Singapore are.)
+   - a foreign court judgment in India: is the country a reciprocating territory under s.44A CPC (believed to be the section; confirm against the official text)? (The US is believed not to be; the UK, UAE and Singapore are believed to be. Confirm from the current Gazette notifications [verify].)
    - a foreign award in India: is the seat in a country notified under the New York Convention? (The UAE was not notified at the last check.)
    - an Indian judgment or award abroad.
 
    Flag clauses that leave the client with an unenforceable win.
-4. **Indian mandatory and public-policy limits.** Check restraints of trade and non-competes (Indian Contract Act, 1872, s.27), clauses restricting legal proceedings (s.28), stated damages and penalty clauses (under s.74, a court awards reasonable compensation up to the stated sum, rather than drawing the English penalty distinction), specific performance, and consumer or employment protections where relevant. Retrieve current text and authority.
+4. **Indian mandatory and public-policy limits.** Check restraints of trade and non-competes (Indian Contract Act, 1872, s.27), clauses restricting legal proceedings (s.28), stated damages and penalty clauses (under s.74, a court awards reasonable compensation up to the stated sum, rather than drawing the English penalty distinction), specific performance, and consumer or employment protections where relevant. Retrieve current text and authority, and confirm each section number against the official text.
 5. **FEMA.** Check pricing and payment terms, guarantees, deferred payments, advance payments, foreign-currency accounts, and any equity or debt features. Hand off structuring to `india-entry-fema-structuring-analyst`.
 6. **Tax.** Check withholding on payments to non-residents under the Indian income-tax law now in force, the treaty position, grossing-up clauses, GST (import of services and reverse charge, export of services), and permanent-establishment risk. Mark these for chartered-accountant confirmation.
 7. **Stamp duty.** Instruments executed abroad and later brought into India may be dutiable within a time limit after receipt. Use `state-stamp-duty-calculator`.

@@ -17,7 +17,7 @@ Confirm the proceeding is before an Indian court or authority. Ask whether a spe
 
 ## Temporal gate
 
-This skill is the temporal gate for the other criminal skills. The new codes came into force on 1 July 2024, but not every provision did. For example, section 106(2) of the BNS (the hit-and-run offence) and its BNSS First Schedule entry were held back. Before relying on any provision, confirm from the commencement notifications (S.O. 848(E) to 850(E) of 23 February 2024 and any later notification) that it is in force.
+This skill is the temporal gate for the other criminal skills. The new codes came into force on 1 July 2024, but not every provision did. For example, section 106(2) of the BNS (the hit-and-run offence; believed to be the section, confirm against the official text) and its BNSS First Schedule entry were held back. Before relying on any provision, confirm from the commencement notifications (S.O. 848(E) to 850(E) of 23 February 2024 and any later notification) that it is in force.
 
 ## Required inputs
 

@@ -36,8 +36,10 @@ Also useful: the date of applying for a certified copy and the date the copy was
    - The start date is excluded by default (`--include-start` to change).
    - `--exclude` (repeatable) adds excluded spans, inclusive, such as time taken to obtain copies.
    - `--holidays` is a file of `YYYY-MM-DD` dates when the court is closed, taken from that court's published calendar. If the last day falls on one, the date moves to the next open day. Use `--weekends-closed` only if that court does not sit on any Saturday or Sunday; many courts sit on some Saturdays, so prefer the court's own calendar.
-   - Section 4 extends only the prescribed period. Do not use it to extend a condonation window or a period a special statute treats differently (for example the further 30 days under section 34(3) of the Arbitration and Conciliation Act, 1996). Check current authority for the statute in question.
+   - Section 4 extends only the prescribed period. Do not use it to extend a condonation window or a period a special statute treats differently (for example the further 30 days believed to be under section 34(3) of the Arbitration and Conciliation Act, 1996; confirm against the official text). Check current authority for the statute in question.
+   - `--to` counts the days elapsed between `--start` and that date, both with the start day excluded and with it counted.
    - The script prints its working. Paste the working into the output.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either.
 
 4. Check conditions on any extension or exclusion relied on (for example whether a copy application was made within time).
 5. State whether delay condonation is available for this proceeding and on what test, citing the provision retrieved, if the date has passed.
@@ -50,6 +52,7 @@ Also useful: the date of applying for a certified copy and the date the copy was
 
 ## Guardrails
 
+- If the user's stated count and the dates disagree, say so before giving any date.
 - If the court's holiday list was not supplied, say the date was not adjusted for holidays.
 - Never present a computed date without the provision and the working.
 - When a deadline is within 7 days, put that first, in bold.

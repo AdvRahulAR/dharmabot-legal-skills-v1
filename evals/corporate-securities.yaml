@@ -239,3 +239,160 @@ cases:
     prompt: We want to restructure our group. Draft the scheme.
     must:
       - asks for the companies, their class, shareholding links and the commercial objective
+  - id: board-meeting-documents-drafter-date-mismatch
+    skill: board-meeting-documents-drafter
+    kind: gate
+    prompt: >
+      Our private company's board meeting to approve a Rs 2 crore loan is fixed for 2026-03-20 and the
+      notice went out on 2026-03-02. The CS says that is about 7 days' notice. Draft the notice and
+      agenda.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: board-meeting-documents-drafter-date-calc
+    skill: board-meeting-documents-drafter
+    kind: output
+    prompt: >
+      A private company's board approved an allotment on 2026-02-10 and an EGM passed a special
+      resolution on 2026-02-25. List the post-meeting filings and compute the last date for each from
+      the meeting dates.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note
+  - id: roc-secretarial-compliance-checker-date-mismatch
+    skill: roc-secretarial-compliance-checker
+    kind: gate
+    prompt: >
+      Our AGM for FY 2024-25 was held on 2025-09-26 and we filed the annual return on 2026-01-15,
+      which our accountant says was about 50 days after the AGM. Check our ROC compliance for the
+      year.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: roc-secretarial-compliance-checker-date-calc
+    skill: roc-secretarial-compliance-checker
+    kind: output
+    prompt: >
+      Private company, FY 2025-26, AGM held on 2026-09-25. Compute the last dates for filing the
+      financial statements and the annual return, and say whether a filing on 2026-11-30 is late.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note
+  - id: sebi-lodr-disclosure-checker-date-mismatch
+    skill: sebi-lodr-disclosure-checker
+    kind: gate
+    prompt: >
+      Our listed client signed a binding acquisition agreement on 2026-05-04 and disclosed it to the
+      exchanges on 2026-05-12. Management says it disclosed within one day. Was the disclosure late?
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: sebi-lodr-disclosure-checker-date-calc
+    skill: sebi-lodr-disclosure-checker
+    kind: output
+    prompt: >
+      A listed company received a tax demand order of Rs 40 crore on 2026-07-14 (synthetic; turnover
+      Rs 900 crore; materiality policy attached). Is it material, and by when must it be disclosed?
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note
+  - id: insider-trading-pit-checker-date-mismatch
+    skill: insider-trading-pit-checker
+    kind: gate
+    prompt: >
+      A designated person bought shares of our listed client on 2026-02-02 and sold them on
+      2026-04-20. He says the sale came about 30 days after the purchase. Test the trade.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: insider-trading-pit-checker-date-calc
+    skill: insider-trading-pit-checker
+    kind: output
+    prompt: >
+      A designated person sold shares on 2026-03-10 and bought again on 2026-07-01. The trading window
+      was closed from 2026-04-01 to 2026-05-15. Test for a contra-trade and a window breach.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note
+  - id: takeover-code-trigger-analyst-date-mismatch
+    skill: takeover-code-trigger-analyst
+    kind: gate
+    prompt: >
+      We signed an SPA to buy 27% of a listed company on 2026-06-01, about a week ago; today is
+      2026-06-25. Map the open offer obligations and timeline.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: takeover-code-trigger-analyst-date-calc
+    skill: takeover-code-trigger-analyst
+    kind: output
+    prompt: >
+      An acquirer signed an SPA on 2026-08-03 to buy 26% of a listed company (synthetic). Lay out the
+      open offer timeline with computed dates.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note
+  - id: securities-issuance-compliance-checker-date-mismatch
+    skill: securities-issuance-compliance-checker
+    kind: gate
+    prompt: >
+      Our private company received private placement money on 2026-01-05 and plans to allot on
+      2026-03-20. The founders say that is within about 45 days of receipt. Check the issue.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: securities-issuance-compliance-checker-date-calc
+    skill: securities-issuance-compliance-checker
+    kind: output
+    prompt: >
+      A private company received private placement money on 2026-04-02. Compute the last date to allot
+      and to file the return of allotment.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note
+  - id: closing-checklist-builder-date-mismatch
+    skill: closing-checklist-builder
+    kind: gate
+    prompt: >
+      The SPA was signed on 2026-02-16 with a long-stop date of 2026-05-17. The client says that gives
+      about 120 days to satisfy the CPs. Build the closing checklist.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: closing-checklist-builder-date-calc
+    skill: closing-checklist-builder
+    kind: output
+    prompt: >
+      Build the closing checklist. The SPA was signed on 2026-09-01 with a long-stop date 120 days
+      from signing, and closing is planned for 2026-10-30 with FEMA reporting due after closing.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note

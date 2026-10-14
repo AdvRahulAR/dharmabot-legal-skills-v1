@@ -13,7 +13,7 @@ Find undertrials who have overstayed what the law allows, sort them by route to 
 
 ## Jurisdiction gate
 
-Confirm the prisoners are in an Indian prison and record the State and prison. Note the District and State Legal Services Authority. Check whether any prisoner is held under a special law with its own bail bar (for example NDPS, UAPA, PMLA) and flag the interaction with section 479.
+Confirm the prisoners are in an Indian prison and record the State and prison. Note the District and State Legal Services Authority. Check whether any prisoner is held under a special law with its own bail bar (for example NDPS, UAPA, PMLA) and flag the interaction with section 479 BNSS (believed to be the section; confirm against the official text).
 
 ## Temporal gate
 
@@ -31,9 +31,10 @@ If custody dates are unverified, mark the prisoner "unverified" and do not decid
 
 ## Method
 
-1. Retrieve the current official text of section 479 BNSS, the BNSS provisions on default bail and plea bargaining, the First Schedule entries, and NALSA's current UTRC standard operating procedure. Record the source and date.
+1. Retrieve the current official text of section 479 BNSS (believed to be the section; confirm the number), the BNSS provisions on default bail and plea bargaining, the First Schedule entries, and NALSA's current UTRC standard operating procedure. Record the source and date.
 2. For each offence, find the maximum punishment from the statute, not from memory. Exclude offences punishable with death or life imprisonment.
 3. Compute custody against one-half of the maximum, and one-third for first-time offenders. Show the arithmetic.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 4. Apply the bar on multiple pending cases, and read the current authority on its scope. Tag unread authority `[verify]`.
 5. Screen other routes: default bail where the charge sheet was late, plea bargaining, compounding, and bailable offences where the prisoner cannot furnish surety.
 6. Sort prisoners into: eligible, likely eligible pending verification, not eligible, and other route.

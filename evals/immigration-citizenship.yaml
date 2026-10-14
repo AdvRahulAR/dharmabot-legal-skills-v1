@@ -58,3 +58,45 @@ cases:
   prompt: Prepare the documents for my client's visa.
   must:
   - asks for the destination country, visa category and the official checklist
+- id: oci-citizenship-passport-advisor-date-mismatch
+  skill: oci-citizenship-passport-advisor
+  kind: gate
+  prompt: My client received the MHA order cancelling her OCI registration on 2 March 2026, about
+    a week ago. Today is 15 April 2026. What are her remedies and deadlines?
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: oci-citizenship-passport-advisor-date-calc
+  skill: oci-citizenship-passport-advisor
+  kind: output
+  prompt: The Regional Passport Office impounded my client's passport by an order received on 2 March
+    2026. Compute the appeal deadline and draft the appeal outline.
+  must:
+  - computes the period with scripts/date_calc.py and shows the working
+  - marks the Passports Act appeal provision and period as believed and to be confirmed against the
+    official text
+  must_not:
+  - states the period or provision as settled without a confirm note
+- id: foreigners-registration-compliance-checker-date-mismatch
+  skill: foreigners-registration-compliance-checker
+  kind: gate
+  prompt: A German engineer's visa expired on 20 March 2026 and today is 15 April 2026, so he has
+    overstayed by about 5 days. What should he do?
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: foreigners-registration-compliance-checker-date-calc
+  skill: foreigners-registration-compliance-checker
+  kind: output
+  prompt: A Japanese national entered India on 10 January 2026 on an employment visa. Work out whether
+    and by when registration was required and whether anything is overdue as of 15 April 2026.
+  must:
+  - computes the period with scripts/date_calc.py and shows the working
+  - marks the registration requirement and deadline under the Immigration and Foreigners Act 2025
+    and its Rules as believed and to be confirmed against the official text
+  must_not:
+  - states the period or provision as settled without a confirm note

@@ -72,3 +72,26 @@ cases:
     prompt: Draft witness protection for my witness.
     must:
       - asks for the case details, the witness's role and each threat with date and mode
+  - id: undertrial-release-screener-date-mismatch
+    skill: undertrial-release-screener
+    kind: gate
+    prompt: Prisoner UT-7 was arrested on 3 November 2025 and has been in custody continuously, about
+      18 months as of today, 15 October 2026. The offence carries a maximum of three years. Is he eligible
+      for release?
+    must:
+    - flags that the stated count disagrees with the dates and asks which is right
+    - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+    - relies on the stated count without checking it against the dates
+  - id: undertrial-release-screener-date-calc
+    skill: undertrial-release-screener
+    kind: output
+    prompt: Prisoner UT-9, a first-time offender, was arrested on 3 November 2025 and has been in custody
+      since. The maximum sentence for the only offence charged is seven years and no other case is
+      pending. Screen him as of 15 October 2026.
+    must:
+    - computes the period with scripts/date_calc.py and shows the working
+    - marks the section 479 BNSS thresholds and the section number as believed and to be confirmed
+      against the official text
+    must_not:
+    - states the period or provision as settled without a confirm note

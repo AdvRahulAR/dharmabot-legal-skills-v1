@@ -30,9 +30,10 @@ Also useful: any will, succession certificate or legal heirship certificate; whe
 1. Retrieve the current official text of Order XXII (Rules 1 to 12, including any State amendment), Order XXXII for minors, and the Limitation Act articles for substitution and for setting aside abatement (believed to be Articles 120 and 121; confirm). Record the source and date.
 2. Decide whether the right to sue survives, and whether the suit abates wholly or only against the deceased. Check if the remaining parties can continue. Note that the abatement rules do not apply in the same way to execution proceedings (believed to be Rule 12; confirm), though substitution is still needed there.
 3. Compute deadlines with `limitation-calculator`. If the substitution period has run, the suit has abated as to that party. Plan an application to set aside abatement and, if needed, to condone delay.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 4. Identify legal representatives as defined in the CPC, including intermeddlers. Where heirship is disputed, note that the court decides it only for the purpose of the suit. Hand heir identification to `intestate-succession-share-calculator`.
 5. Draft the substitution application with a list of proposed legal representatives and an amended cause title.
-6. Draft the set-aside-abatement and delay application. Explain each period of delay with dates. Address the rule that knowledge of death matters, and any Rule 10A intimation by counsel.
+6. Draft the set-aside-abatement and delay application. Explain each period of delay with dates. Address the rule that knowledge of death matters, and any Rule 10A intimation by counsel (believed to be Order XXII Rule 10A; confirm against the official text).
 7. Check the exemption that may apply to non-contesting or ex parte defendants, and Rule 4A where no representative exists (confirm current wording).
 8. Search for current Supreme Court and High Court authority on liberal construction in abatement cases. Read it; tag anything unread `[verify]`.
 

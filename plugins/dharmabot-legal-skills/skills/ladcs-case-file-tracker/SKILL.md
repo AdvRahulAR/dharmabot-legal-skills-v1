@@ -31,6 +31,7 @@ Also useful: remand and bail orders, jail visit notes, next dates, and the names
 3. Keep a dated hearing log: date, court, what happened, next step, who acts.
 4. Log jail visits and client communications. Record consent where the client shares information meant for family.
 5. Run risk flags each week: custody beyond default-bail periods, long custody relative to the maximum sentence (refer to `undertrial-release-screener`), missed hearing dates, no bail application on record, and pending copies.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 6. Prepare the monthly report in the SLSA format: cases assigned, disposed, bail obtained, pending, and remarks. Prepare quarterly summaries if required.
 7. Export upcoming dates to `matter-deadline-tracker`.
 

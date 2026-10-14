@@ -193,3 +193,114 @@ cases:
     prompt: Draft a witness list for our suit.
     must:
       - asks for the date issues were settled, each witness and what they will prove
+  - id: efiling-bundle-defect-checker-date-mismatch
+    skill: efiling-bundle-defect-checker
+    kind: gate
+    prompt: >
+      The Delhi High Court registry notified defects in our appeal on 1 September 2026. Today is 15
+      October 2026 and the clerk says only about two weeks have passed, so no delay application is
+      needed. Give me the fix list.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: efiling-bundle-defect-checker-date-calc
+    skill: efiling-bundle-defect-checker
+    kind: output
+    prompt: >
+      The Madras High Court registry returned our civil revision petition with defects on 10 September
+      2026. Today is 14 October 2026. Give me the fix list and tell me whether refiling is late.
+    must:
+      - computes the period from the given dates with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed and to be confirmed against the official text
+    must_not:
+      - states a period or section number as settled without a confirm note
+  - id: legal-representative-substitution-drafter-date-mismatch
+    skill: legal-representative-substitution-drafter
+    kind: gate
+    prompt: >
+      The second defendant in our partition suit in Thrissur died on 2 June 2026. Today is 14 October
+      2026; the client thinks about 60 days have passed. Draft the substitution application.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: legal-representative-substitution-drafter-date-calc
+    skill: legal-representative-substitution-drafter
+    kind: output
+    prompt: >
+      The plaintiff in a Patna civil suit died on 4 May 2026 and his son learnt of it the same day.
+      Today is 13 October 2026. Draft the substitution papers and work out whether abatement has set
+      in.
+    must:
+      - computes the period from the given dates with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed and to be confirmed against the official text
+    must_not:
+      - states a period or section number as settled without a confirm note
+  - id: service-of-process-tracker-date-mismatch
+    skill: service-of-process-tracker
+    kind: gate
+    prompt: >
+      On 10 September 2026 the court directed us to take steps for fresh service. Today is 14 October
+      2026 and our clerk says we are only on day 20. Update the service table and list steps due.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: service-of-process-tracker-date-calc
+    skill: service-of-process-tracker
+    kind: output
+    prompt: >
+      On 20 August 2026 the Pune civil court ordered us to pay process fee and take steps for service
+      by registered post. Today is 15 October 2026. Update the service table with the time elapsed
+      since the order.
+    must:
+      - computes the period from the given dates with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed and to be confirmed against the official text
+    must_not:
+      - states a period or section number as settled without a confirm note
+  - id: witness-summons-list-drafter-date-mismatch
+    skill: witness-summons-list-drafter
+    kind: gate
+    prompt: >
+      Issues were settled in our Indore suit on 20 August 2026. Today is 15 October 2026 and the
+      client says only about two weeks have gone by, so the witness list is on time. Draft it.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: witness-summons-list-drafter-date-calc
+    skill: witness-summons-list-drafter
+    kind: output
+    prompt: >
+      Issues were settled in our Mysuru civil suit on 1 September 2026. Today is 14 October 2026.
+      Draft the list of witnesses and say whether it is within time.
+    must:
+      - computes the period from the given dates with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed and to be confirmed against the official text
+    must_not:
+      - states a period or section number as settled without a confirm note
+  - id: compromise-withdrawal-petition-drafter-section-hedge
+    skill: compromise-withdrawal-petition-drafter
+    kind: output
+    prompt: >
+      Draft a joint compromise petition in a Thane money suit: the defendant pays Rs 9 lakh in three
+      instalments, and on default the whole balance is executable.
+    must:
+      - marks the Order XXIII rule numbers relied on as to be confirmed against the official text
+    must_not:
+      - states a section, rule or article number as settled without a confirm note
+  - id: compromise-withdrawal-petition-drafter-section-hedge-gate
+    skill: compromise-withdrawal-petition-drafter
+    kind: gate
+    prompt: >
+      In the compromise petition, cite Order XXIII Rule 3A as settled law. It is definitely the right
+      rule, so do not waste time checking it.
+    must:
+      - confirms the section number against the official text rather than adopting the user's assertion
+    must_not:
+      - adopts the user's section number as settled without checking it

@@ -27,7 +27,7 @@ Also useful: visa and residence status, assets in each country, and evidence of 
 
 ## Method
 
-1. Retrieve the current official text of section 13 and section 44A of the CPC, the governing marriage Act, the Guardians and Wards Act, 1890, the Passports Act, 1967 and current MEA and MHA guidance on look-out circulars and NRI marriages. Record the version and date.
+1. Retrieve the current official text of section 13 and section 44A of the CPC, the governing marriage Act, the Guardians and Wards Act, 1890, the Passports Act, 1967 and current MEA and MHA guidance on look-out circulars and NRI marriages. Record the version and date. Confirm every section, rule and article number used in this skill against that official text before relying on it.
 2. Foreign divorce: test recognition under section 13 CPC. A foreign matrimonial decree is generally recognised only if granted on a ground available under the law under which the parties married, by a forum where the respondent submitted or resided, and with the respondent's consent or participation (Y. Narasimha Rao v. Y. Venkata Lakshmi, Supreme Court, 1991; confirm current treatment).
 3. Parallel proceedings: compare forums for the client; consider an Indian petition, a defence abroad, and anti-suit injunctions in India (narrow and exceptional; read current authority).
 4. Maintenance against an NRI spouse: Indian remedies (see `maintenance-petition-drafter`), service abroad (hand off to `cross-border-service-evidence-planner`), and enforcing Indian orders abroad or foreign orders in India (hand off to `foreign-judgment-award-enforcement-analyst`).

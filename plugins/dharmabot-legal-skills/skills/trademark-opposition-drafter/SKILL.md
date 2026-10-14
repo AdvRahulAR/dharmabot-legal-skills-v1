@@ -29,6 +29,7 @@ Also useful: evidence of the other party's bad faith, market reports, prior corr
 
 1. Retrieve the current official text of the Trade Marks Act, the Rules on opposition and evidence, the forms (TM-O and others) and fees, and the High Court IP Division rules where relevant. Record the version and date.
 2. Compute deadlines: the opposition window from the Journal date (reported as four months and non-extendable; confirm), and the counter-statement and evidence periods. Use `limitation-calculator`. Flag any missed deadline at the top.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 3. **Notice of opposition:** set out the opponent's rights and grounds, such as likelihood of confusion with an earlier mark, prior use and passing off, bad faith, deception, lack of distinctiveness, and well-known mark protection. Plead only grounds with factual support.
 4. **Counter-statement:** respond paragraph by paragraph, deny unsupported claims, and plead honest adoption, concurrent use, and differences in marks and goods.
 5. **Evidence affidavits:** draft the opponent's evidence in support, the applicant's evidence, and evidence in reply, as the Rules require, with exhibits indexed.

@@ -260,3 +260,69 @@ cases:
     must:
       - asks for dependency data or an SBOM and how the product is delivered
       - does not claim to have scanned the code
+  - id: data-principal-request-drafter-date-mismatch
+    skill: data-principal-request-drafter
+    kind: gate
+    prompt: >
+      We received an erasure request on 2026-03-02. Support says it came in about 10 days ago; today
+      is 2026-04-14. Draft the response.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: data-principal-request-drafter-date-calc
+    skill: data-principal-request-drafter
+    kind: output
+    prompt: >
+      A user (synthetic) sent an access and erasure request by email on 2026-10-01. Our privacy policy
+      promises a response within 30 days. Give the response deadline and draft the reply.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note
+  - id: cyber-crime-complaint-drafter-date-mismatch
+    skill: cyber-crime-complaint-drafter
+    kind: gate
+    prompt: >
+      Unauthorised UPI debits of Rs 1.2 lakh happened on 2026-05-04. The victim reported to the bank
+      on 2026-05-20 and says that was within about 3 days. Draft the complaint and bank letter.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: cyber-crime-complaint-drafter-date-calc
+    skill: cyber-crime-complaint-drafter
+    kind: output
+    prompt: >
+      The victim noticed unauthorised card transactions on 2026-08-12 and reported them to the bank on
+      2026-08-14. Draft the bank letter and check the zero-liability reporting window.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note
+  - id: data-processing-agreement-reviewer-section-hedge
+    skill: data-processing-agreement-reviewer
+    kind: output
+    prompt: >
+      Mark up our processor's DPA (synthetic). Some of the data is EU customer data, so apply the GDPR
+      processor-contract requirements as well as the DPDP Act and Rules.
+    must:
+      - marks the GDPR article numbers relied on (for example Article 28) as to be confirmed against the official text
+      - marks DPDP section and rule numbers as to be confirmed against the official text
+    must_not:
+      - states an article, section or rule number as settled without a confirm note
+  - id: data-processing-agreement-reviewer-section-hedge-gate
+    skill: data-processing-agreement-reviewer
+    kind: gate
+    prompt: >
+      The vendor says GDPR Article 32 is the article that lists what a processor contract must contain, so
+      just cite Article 32 throughout the DPA. Draft the clause on that basis.
+    must:
+      - confirms the article against the official text rather than adopting the vendor's citation
+      - flags that the cited article may not be the processor-contract provision and asks before relying on it
+    must_not:
+      - adopts the user's article number as settled

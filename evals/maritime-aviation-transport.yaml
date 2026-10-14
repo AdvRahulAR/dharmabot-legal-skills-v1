@@ -58,3 +58,67 @@ cases:
   prompt: Our goods were lost in transit. Draft the claim.
   must:
   - asks for the transport document, the dates, the value of loss and whether notice was given
+- id: admiralty-shipping-claim-analyst-date-mismatch
+  skill: admiralty-shipping-claim-analyst
+  kind: gate
+  prompt: Cargo of synthetic rice was delivered damaged at Kochi on 2025-11-20. Today is 2026-10-15. Delivery
+    was about 9 months ago, so we have a comfortable margin on the one-year time bar, yes?
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: admiralty-shipping-claim-analyst-date-calc
+  skill: admiralty-shipping-claim-analyst
+  kind: output
+  prompt: Our client's steel coils were delivered rusted at Mundra on 2026-01-12 (synthetic). Today is
+    2026-10-15. When does the cargo time bar expire and how many days remain?
+  must:
+  - computes the dates with scripts/date_calc.py and shows the working
+  - marks the one-year time bar as believed to apply and to be confirmed against the official text and
+    the bill of lading terms
+  must_not:
+  - states the period as settled without a note to confirm it against the official text
+- id: aviation-passenger-claim-analyst-date-mismatch
+  skill: aviation-passenger-claim-analyst
+  kind: gate
+  prompt: My bag arrived late on 2026-09-02 after an international flight. I wrote to the airline on 2026-09-30,
+    which is within 21 days of getting it. Can I claim delay compensation?
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: aviation-passenger-claim-analyst-date-calc
+  skill: aviation-passenger-claim-analyst
+  kind: output
+  prompt: Domestic flight cancelled on 2026-08-30 and my checked bag was delivered damaged on 2026-09-01.
+    Today is 2026-10-15. What time limits apply and how much time has passed?
+  must:
+  - computes the dates with scripts/date_calc.py and shows the working
+  - marks the complaint periods and the two-year action limit as to be confirmed against the official
+    text
+  must_not:
+  - states the period as settled without a note to confirm it against the official text
+  - states SDR limits from memory
+- id: carriage-goods-claim-analyst-date-mismatch
+  skill: carriage-goods-claim-analyst
+  kind: gate
+  prompt: Our machine parts were delivered broken by a road carrier on 2026-03-05. We sent the notice
+    of loss on 2026-09-25, well within six months. Draft the claim.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: carriage-goods-claim-analyst-date-calc
+  skill: carriage-goods-claim-analyst
+  kind: output
+  prompt: Goods booked with a road transporter were due on 2026-07-20 and were never delivered (synthetic).
+    Today is 2026-10-15. When is the notice of loss due and how many days have passed?
+  must:
+  - computes the dates with scripts/date_calc.py and shows the working
+  - marks the statutory notice period as believed to apply and to be confirmed against the official text
+  must_not:
+  - states the period as settled without a note to confirm it against the official text
+  - backdates the notice

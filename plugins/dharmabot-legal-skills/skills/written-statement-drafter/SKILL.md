@@ -31,14 +31,15 @@ Also useful: any claim the defendant has against the plaintiff, prior correspond
 
 ## Method
 
-1. Retrieve the current official text of Order VIII CPC (including Commercial Courts Act amendments), Order VII Rule 11, the Limitation Act and the High Court's rules. Record the version and date.
-2. Build a para-wise table: plaint paragraph · allegation · client instruction · admit, deny or not known · supporting document.
-3. Draft preliminary objections only where grounded: jurisdiction, limitation, arbitration clause, non-joinder or misjoinder, valuation and court fee, bar by statute, res judicata, no cause of action.
-4. Draft para-wise replies. Deny each fact specifically and state the defendant's version. In commercial suits, give reasons for each denial; a bare denial risks being treated as an admission.
-5. Add additional pleas and the defendant's own facts.
-6. Plead set-off (ascertained sum, legally recoverable) or a counterclaim with valuation, court fee and limitation, as the facts allow.
-7. Add verification and, in commercial suits, the statement of truth and the documents affidavit.
-8. Where a threshold point is strong, recommend a separate application (for example under Order VII Rule 11, or under the Arbitration Act to refer parties) and note the timing interplay with filing the written statement.
+1. Retrieve the current official text of Order VIII CPC (including Commercial Courts Act amendments), Order VII Rule 11, the Limitation Act and the High Court's rules. Record the version and date. Confirm every section, order and rule number used in this skill against that text.
+2. Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+3. Build a para-wise table: plaint paragraph · allegation · client instruction · admit, deny or not known · supporting document.
+4. Draft preliminary objections only where grounded: jurisdiction, limitation, arbitration clause, non-joinder or misjoinder, valuation and court fee, bar by statute, res judicata, no cause of action.
+5. Draft para-wise replies. Deny each fact specifically and state the defendant's version. In commercial suits, give reasons for each denial; a bare denial risks being treated as an admission.
+6. Add additional pleas and the defendant's own facts.
+7. Plead set-off (ascertained sum, legally recoverable) or a counterclaim with valuation, court fee and limitation, as the facts allow.
+8. Add verification and, in commercial suits, the statement of truth and the documents affidavit.
+9. Where a threshold point is strong, recommend a separate application (for example under Order VII Rule 11, or under the Arbitration Act to refer parties) and note the timing interplay with filing the written statement.
 
 ## Output
 

@@ -30,6 +30,7 @@ Also useful: the counterparty's assets and solvency, the client's budget and app
 1. Retrieve the current official text of each statute behind the routes considered (CPC, Commercial Courts Act, Arbitration Act, IBC and its default threshold, SARFAESI, RDB Act, MSMED Act, Consumer Protection Act, Negotiable Instruments Act) and record the version and date. Confirm any threshold from the current notification.
 2. Assess the merits: elements of each claim and defence, evidence for each, and gaps.
 3. Check limitation for every route with `limitation-calculator`.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 4. Map routes and test eligibility for each. Examples: IBC needs an operational or financial debt above the notified threshold and no pre-existing dispute for operational creditors; MSME reference needs a registered micro or small supplier; cheque dishonour needs a valid notice within time; SARFAESI needs secured debt held by a covered lender.
 5. Compare in a table: route · eligibility · time to first relief · cost · enforceability · leverage · risks.
 6. Note interactions: parallel routes, moratorium effects, and the risk of abuse-of-process findings.

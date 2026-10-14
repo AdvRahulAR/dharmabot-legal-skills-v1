@@ -34,6 +34,7 @@ Also useful: startup recognition or MSME registration (for the fee category), tr
 4. Decide the filing set. Recommend separate word and device filings where the logo contains a distinctive word, and a multi-class or single-class approach with reasons.
 5. For a user claim, draft the user affidavit stating the date of first use with supporting evidence (invoices, advertisements, website archives). Flag gaps between the claimed date and the evidence.
 6. Record priority details and check that the priority period has not expired; confirm the period from the Act.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 7. Draft the authorisation of agent (TM-48 or the current form) where an agent files.
 8. Note follow-up: examination, advertisement, opposition window and renewal.
 

@@ -37,3 +37,26 @@ cases:
   must:
   - asks what information is at stake, how it is protected, the agreements that apply and what is known
     about the leak
+- id: geographical-indication-drafter-date-mismatch
+  skill: geographical-indication-drafter
+  kind: gate
+  prompt: >
+    A GI application for a name our producers' association uses was advertised in the GI Journal
+    dated 1 July 2026. The client says it was published about 3 weeks ago, as of 15 October 2026,
+    and wants to oppose. Draft the notice of opposition.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: geographical-indication-drafter-date-calc
+  skill: geographical-indication-drafter
+  kind: output
+  prompt: >
+    A GI application conflicting with our association's registered GI was advertised in the GI
+    Journal dated 15 September 2026. Work out the last date to oppose, with the working.
+  must:
+  - computes the date or period with scripts/date_calc.py and shows the working
+  - marks the period or provision relied on as believed to be correct and to be confirmed against the official text
+  must_not:
+  - states the period as settled without a confirm note

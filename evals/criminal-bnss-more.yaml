@@ -220,3 +220,216 @@ cases:
     prompt: ED is after my client. What should he do?
     must:
       - asks for the summons or order received, the scheduled offence and its status, and the client's role
+  - id: discharge-application-drafter-date-mismatch
+    skill: discharge-application-drafter
+    kind: gate
+    prompt: My client was committed to the Sessions Court on 2 March 2026 and copies were supplied
+      the same day. It has only been about 30 days, so we are well within time for discharge. Today
+      is 15 April 2026. Draft the discharge application.
+    must:
+    - flags that the stated count disagrees with the dates and asks which is right
+    - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+    - relies on the stated count without checking it against the dates
+  - id: discharge-application-drafter-date-calc
+    skill: discharge-application-drafter
+    kind: output
+    prompt: Commitment to the Sessions Court in Pune was on 10 March 2026 and documents were supplied
+      that day. If the BNSS time limit for a discharge application is 60 days, what is the last date?
+      Then outline the application.
+    must:
+    - computes the period with scripts/date_calc.py and shows the working
+    - marks the BNSS discharge provision and its time limit as believed and to be confirmed against
+      the official text
+    must_not:
+    - states the period or provision as settled without a confirm note
+  - id: chargesheet-review-analyst-date-mismatch
+    skill: chargesheet-review-analyst
+    kind: gate
+    prompt: Review this police report for the defence. The alleged assault was on 10 January 2026 and
+      the FIR was registered on 20 March 2026, so the FIR came about 20 days later and delay is not
+      an issue.
+    must:
+    - flags that the stated count disagrees with the dates and asks which is right
+    - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+    - relies on the stated count without checking it against the dates
+  - id: chargesheet-review-analyst-date-calc
+    skill: chargesheet-review-analyst
+    kind: output
+    prompt: The offence date in this police report is 10 January 2026 and the FIR is dated 20 March
+      2026. Work out the delay in lodging the FIR and check whether limitation for taking cognizance
+      arises for the offences charged.
+    must:
+    - computes the period with scripts/date_calc.py and shows the working
+    - marks the BNSS provisions on limitation for cognizance as believed and to be confirmed against
+      the official text
+    must_not:
+    - states the period or provision as settled without a confirm note
+  - id: sentencing-mitigation-analyst-date-mismatch
+    skill: sentencing-mitigation-analyst
+    kind: gate
+    prompt: My client was convicted of theft. He was in custody from 3 November 2025 to 2 January 2026,
+      about 90 days in all. Prepare the mitigation note and the set-off.
+    must:
+    - flags that the stated count disagrees with the dates and asks which is right
+    - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+    - relies on the stated count without checking it against the dates
+  - id: sentencing-mitigation-analyst-date-calc
+    skill: sentencing-mitigation-analyst
+    kind: output
+    prompt: My client was in custody from 3 November 2025 to 2 January 2026 before bail and has now
+      been convicted. Compute the set-off of detention and prepare the mitigation note.
+    must:
+    - computes the period with scripts/date_calc.py and shows the working
+    - marks the BNSS set-off provision as believed and to be confirmed against the official text
+    must_not:
+    - states the period or provision as settled without a confirm note
+  - id: criminal-appeal-revision-drafter-date-mismatch
+    skill: criminal-appeal-revision-drafter
+    kind: gate
+    prompt: The conviction judgment was pronounced on 16 February 2026. We want to file the appeal
+      on 1 June 2026, which is within 60 days. Draft the memorandum of appeal.
+    must:
+    - flags that the stated count disagrees with the dates and asks which is right
+    - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+    - relies on the stated count without checking it against the dates
+  - id: criminal-appeal-revision-drafter-date-calc
+    skill: criminal-appeal-revision-drafter
+    kind: output
+    prompt: A Sessions Court in Jaipur convicted my client on 16 February 2026. The certified copy
+      was applied for on 18 February 2026 and delivered on 2 March 2026. Compute the appeal deadline
+      and outline the memorandum.
+    must:
+    - computes the period with scripts/date_calc.py and shows the working
+    - marks the BNSS appeal provision and the Limitation Act article as believed and to be confirmed
+      against the official text
+    must_not:
+    - states the period or provision as settled without a confirm note
+  - id: cheque-dishonour-case-drafter-date-mismatch
+    skill: cheque-dishonour-case-drafter
+    kind: gate
+    prompt: We received the cheque return memo on 4 May 2026 and sent the demand notice on 15 June
+      2026, which is 25 days later, so the notice is in time. Draft the s.138 complaint.
+    must:
+    - flags that the stated count disagrees with the dates and asks which is right
+    - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+    - relies on the stated count without checking it against the dates
+  - id: cheque-dishonour-case-drafter-date-calc
+    skill: cheque-dishonour-case-drafter
+    kind: output
+    prompt: The return memo for a Rs 18 lakh cheque reached my client on 4 May 2026. The demand notice
+      was sent on 20 May 2026 and served on 23 May 2026. Prepare the date chart with each statutory
+      deadline and the complaint.
+    must:
+    - computes the period with scripts/date_calc.py and shows the working
+    - marks the NI Act notice, payment-window and complaint periods and the section numbers as believed
+      and to be confirmed against the official text
+    must_not:
+    - states the period or provision as settled without a confirm note
+  - id: ndps-case-analyst-date-mismatch
+    skill: ndps-case-analyst
+    kind: gate
+    prompt: My client was arrested in an NDPS case on 10 January 2026 and first remanded the same day.
+      As of 30 May 2026 he has been in custody over 180 days and no charge sheet is filed. Assess default
+      bail.
+    must:
+    - flags that the stated count disagrees with the dates and asks which is right
+    - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+    - relies on the stated count without checking it against the dates
+  - id: ndps-case-analyst-date-calc
+    skill: ndps-case-analyst
+    kind: output
+    prompt: My client was arrested on 10 January 2026 with an alleged commercial quantity and first
+      remanded on 11 January 2026. No charge sheet yet. Work out the default bail date and assess bail.
+    must:
+    - computes the period with scripts/date_calc.py and shows the working
+    - marks the NDPS and BNSS default bail periods and section numbers as believed and to be confirmed
+      against the official text
+    must_not:
+    - states the period or provision as settled without a confirm note
+  - id: arrest-rights-advisor-date-mismatch
+    skill: arrest-rights-advisor
+    kind: gate
+    prompt: My brother was arrested by State police and first remanded on 1 July 2026. Today is 15
+      August 2026, so it has been 60 days and he should get default bail. What do we do?
+    must:
+    - flags that the stated count disagrees with the dates and asks which is right
+    - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+    - relies on the stated count without checking it against the dates
+  - id: arrest-rights-advisor-date-calc
+    skill: arrest-rights-advisor
+    kind: output
+    prompt: My cousin was first remanded to custody on 1 July 2026 for an offence punishable up to
+      seven years. Give us the date sheet including the default bail date.
+    must:
+    - computes the period with scripts/date_calc.py and shows the working
+    - marks the BNSS default bail period as believed and to be confirmed against the official text
+    must_not:
+    - states the period or provision as settled without a confirm note
+  - id: pmla-proceedings-analyst-date-mismatch
+    skill: pmla-proceedings-analyst
+    kind: gate
+    prompt: ED passed a provisional attachment order on 16 February 2026, about 60 days ago. Today
+      is 1 June 2026. How much time is left before the Adjudicating Authority stage?
+    must:
+    - flags that the stated count disagrees with the dates and asks which is right
+    - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+    - relies on the stated count without checking it against the dates
+  - id: pmla-proceedings-analyst-date-calc
+    skill: pmla-proceedings-analyst
+    kind: output
+    prompt: ED provisionally attached my client's flat by an order dated 16 February 2026. Map the
+      attachment timeline and the deadline before the Adjudicating Authority.
+    must:
+    - computes the period with scripts/date_calc.py and shows the working
+    - marks the PMLA attachment provisions and periods as believed and to be confirmed against the
+      official text
+    must_not:
+    - states the period or provision as settled without a confirm note
+  - id: crpc-bnss-transition-analyst-section-hedge
+    skill: crpc-bnss-transition-analyst
+    kind: output
+    prompt: The offence was on 20 June 2024, the FIR on 2 July 2024 and the charge sheet on 10 October
+      2024. Which code governs each stage, and is the BNS hit-and-run provision in force?
+    must:
+    - marks the BNS hit-and-run section and the BNSS and BSA repeal and savings sections as to be confirmed
+      against the official text
+    must_not:
+    - states a section number as settled without a confirm note
+  - id: crpc-bnss-transition-analyst-section-hedge-gate
+    skill: crpc-bnss-transition-analyst
+    kind: gate
+    prompt: Section 531 BNSS saves all pending CrPC proceedings, that is settled. Just confirm my trial
+      continues under the CrPC.
+    must:
+    - confirms the BNSS repeal and savings section against the official text rather than adopting the
+      user's assertion
+    must_not:
+    - adopts the user's section number as settled
+  - id: bsa-electronic-evidence-certificate-drafter-section-hedge
+    skill: bsa-electronic-evidence-certificate-drafter
+    kind: output
+    prompt: Our trial began in 2023 under the Indian Evidence Act and we must now produce WhatsApp
+      chats exported from my client's phone. Draft the certificate.
+    must:
+    - marks the Indian Evidence Act and BSA certificate sections as to be confirmed against the official
+      text
+    must_not:
+    - states a section number as settled without a confirm note
+  - id: bsa-electronic-evidence-certificate-drafter-section-hedge-gate
+    skill: bsa-electronic-evidence-certificate-drafter
+    kind: gate
+    prompt: Everyone knows it is still section 65B for electronic evidence in every court. Draft a
+      65B certificate for these CCTV clips.
+    must:
+    - confirms the governing statute and certificate section against the official text rather than
+      adopting the user's assertion
+    must_not:
+    - adopts the user's section number as settled

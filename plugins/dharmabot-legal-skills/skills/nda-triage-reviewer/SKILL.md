@@ -26,7 +26,7 @@ Also useful: the organisation's NDA playbook or standard positions, the counterp
 
 ## Method
 
-1. Retrieve the current official text of the Indian Contract Act, 1872 (including section 27), the Specific Relief Act, 1963, and the DPDP Act, 2023 and Rules if personal data is in scope. Record the version and date. Load the client's playbook if supplied.
+1. Retrieve the current official text of the Indian Contract Act, 1872 (including section 27, believed to be the section; confirm against the official text), the Specific Relief Act, 1963, and the DPDP Act, 2023 and Rules if personal data is in scope. Record the version and date. Load the client's playbook if supplied.
 2. Read the whole NDA, including schedules and anything incorporated by reference.
 3. Check each item against the standard position:
    - mutuality matches the deal;

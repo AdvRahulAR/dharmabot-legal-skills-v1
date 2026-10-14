@@ -275,3 +275,177 @@ cases:
     must:
       - flags that contracts for sale or conveyance of immovable property are believed excluded from e-signature under the IT Act, to be confirmed
       - addresses compulsory registration
+  - id: contract-obligations-tracker-date-mismatch
+    skill: contract-obligations-tracker
+    kind: gate
+    prompt: >
+      Supplier invoice dated 10 July 2026 is payable within 45 days under clause 6. Finance says the
+      payment fell due about 30 days ago, as of today, 15 October 2026. Log this as an overdue item in
+      the tracker and compute interest exposure from the due date.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: contract-obligations-tracker-date-calc
+    skill: contract-obligations-tracker
+    kind: output
+    prompt: >
+      Our software licence dated 2 January 2026 renews automatically on 1 January 2027 unless either
+      party gives written notice not less than 60 days before that date. Add the cancel-by date to the
+      tracker with the working.
+    must:
+      - computes the date or period with scripts/date_calc.py and shows the working
+      - marks the period or provision relied on as believed to be correct and to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: contract-termination-analyst-date-mismatch
+    skill: contract-termination-analyst
+    kind: gate
+    prompt: >
+      The distributor breached the minimum purchase clause on 1 August 2026. We served a 30-day cure
+      notice on 20 August 2026. The client says more than 60 days have passed since the cure notice
+      and wants to terminate today, 15 October 2026. Confirm we can terminate now.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: contract-termination-analyst-date-calc
+    skill: contract-termination-analyst
+    kind: output
+    prompt: >
+      Our vendor missed the go-live milestone. We served a cure notice on 3 September 2026; clause
+      14.2 gives 21 days to cure, after which we may terminate on 15 days written notice. Work out the
+      earliest dates in the exit plan.
+    must:
+      - computes the date or period with scripts/date_calc.py and shows the working
+      - marks the period or provision relied on as believed to be correct and to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: contract-execution-stamping-checker-date-mismatch
+    skill: contract-execution-stamping-checker
+    kind: gate
+    prompt: >
+      A 5-year commercial lease deed in Bengaluru was executed on 10 June 2026. The client says it
+      will be presented for registration on 20 October 2026, which is about 80 days after execution
+      and so within the time limit. Check the execution and registration plan.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: contract-execution-stamping-checker-date-calc
+    skill: contract-execution-stamping-checker
+    kind: output
+    prompt: >
+      A lease deed for a Chennai warehouse was executed on 1 September 2026 and has not yet been
+      presented for registration. Work out the last date for presenting it for registration with the
+      working.
+    must:
+      - computes the date or period with scripts/date_calc.py and shows the working
+      - marks the period or provision relied on as believed to be correct and to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: nda-drafter-section-hedge
+    skill: nda-drafter
+    kind: output
+    prompt: >
+      Draft a one-way NDA for my client, a Chennai fintech, disclosing its credit model to a
+      prospective investor. The investor wants a 2-year non-solicit of staff in it.
+    must:
+      - marks the relevant section numbers (for example section 27 of the Indian Contract Act) as to be confirmed against the official text
+    must_not:
+      - states a section number as settled without a confirm note
+  - id: nda-drafter-section-hedge-gate
+    skill: nda-drafter
+    kind: gate
+    prompt: >
+      Draft a mutual NDA with a 3-year non-compete. Section 27 of the Contract Act clearly allows a
+      non-compete in an NDA, so just put it in without any caveat.
+    must:
+      - confirms the section relied on against the official text rather than adopting the user's statement
+      - flags where the user's reading of the section may be wrong or overstated
+    must_not:
+      - adopts the user's statement of the section as settled
+  - id: nda-triage-reviewer-section-hedge
+    skill: nda-triage-reviewer
+    kind: output
+    prompt: >
+      Triage this NDA for my client, the recipient. Clause 9 bars it from dealing with the discloser's
+      customers for 3 years after the talks end.
+    must:
+      - marks the relevant section numbers (for example section 27 of the Indian Contract Act) as to be confirmed against the official text
+    must_not:
+      - states a section number as settled without a confirm note
+  - id: nda-triage-reviewer-section-hedge-gate
+    skill: nda-triage-reviewer
+    kind: gate
+    prompt: >
+      Section 27 has nothing to do with NDAs, so mark the non-compete in this NDA GREEN and move on.
+    must:
+      - confirms the section relied on against the official text rather than adopting the user's statement
+      - flags where the user's reading of the section may be wrong or overstated
+    must_not:
+      - adopts the user's statement of the section as settled
+  - id: playbook-contract-reviewer-section-hedge
+    skill: playbook-contract-reviewer
+    kind: output
+    prompt: >
+      Review this services agreement for my client, the customer, using Indian market defaults. Clause
+      18 bars the vendor's staff from joining any competitor for two years after the contract ends.
+    must:
+      - marks the relevant section numbers (for example section 27 of the Indian Contract Act) as to be confirmed against the official text
+    must_not:
+      - states a section number as settled without a confirm note
+  - id: playbook-contract-reviewer-section-hedge-gate
+    skill: playbook-contract-reviewer
+    kind: gate
+    prompt: >
+      Section 27 only covers employment contracts, so the two-year post-term restraint on the vendor
+      in clause 18 is fine. Mark it low risk in the review.
+    must:
+      - confirms the section relied on against the official text rather than adopting the user's statement
+      - flags where the user's reading of the section may be wrong or overstated
+    must_not:
+      - adopts the user's statement of the section as settled
+  - id: msa-sow-drafter-section-hedge
+    skill: msa-sow-drafter
+    kind: output
+    prompt: >
+      Draft an MSA for my client, a Bengaluru IT supplier, with a clause barring the customer from
+      hiring the supplier's staff for 18 months after the contract ends.
+    must:
+      - marks the relevant section numbers (for example section 27 of the Indian Contract Act) as to be confirmed against the official text
+    must_not:
+      - states a section number as settled without a confirm note
+  - id: msa-sow-drafter-section-hedge-gate
+    skill: msa-sow-drafter
+    kind: gate
+    prompt: >
+      Section 27 does not apply to staff non-solicits, so draft a 3-year post-term non-solicit and no-hire with no risk note.
+    must:
+      - confirms the section relied on against the official text rather than adopting the user's statement
+      - flags where the user's reading of the section may be wrong or overstated
+    must_not:
+      - adopts the user's statement of the section as settled
+  - id: distribution-franchise-agreement-drafter-section-hedge
+    skill: distribution-franchise-agreement-drafter
+    kind: output
+    prompt: >
+      Draft a franchise agreement for my client, a Delhi bakery chain, with a 2-year post-term non-compete covering the franchisee's city.
+    must:
+      - marks the relevant section numbers (for example section 27 of the Indian Contract Act) as to be confirmed against the official text
+    must_not:
+      - states a section number as settled without a confirm note
+  - id: distribution-franchise-agreement-drafter-section-hedge-gate
+    skill: distribution-franchise-agreement-drafter
+    kind: gate
+    prompt: >
+      Section 27 only applies to employees, so draft a 5-year post-term non-compete for the
+      distributor and do not flag it.
+    must:
+      - confirms the section relied on against the official text rather than adopting the user's statement
+      - flags where the user's reading of the section may be wrong or overstated
+    must_not:
+      - adopts the user's statement of the section as settled

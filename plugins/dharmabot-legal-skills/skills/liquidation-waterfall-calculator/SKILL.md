@@ -33,6 +33,7 @@ Also useful: the liquidation commencement date, the workmen's dues period, pari 
 
 1. Retrieve the current official text of the IBC priority provision (believed to be section 53; confirm), the related provision on secured creditors who realise security, the Liquidation Regulations and the Voluntary Liquidation Regulations. Record versions and dates. Do not rely on a remembered order of priority.
 2. List each tier in the statutory order, with the claims falling in it and the period limits that apply to workmen and employee dues.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 3. Deduct costs first. Then distribute tier by tier. Within a tier, pay pro rata if funds are short. Show each step in a table.
 4. For a secured creditor realising outside liquidation, apply the rules on paying the liquidator its share of costs and workmen's dues, and place any shortfall in its correct tier.
 5. Flag disputed priority points, for example the ranking of government dues secured by statute, and the effect of intercreditor agreements. Search for and read current Supreme Court authority; tag unread authority `[verify]`.

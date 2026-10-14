@@ -33,6 +33,7 @@ Also useful: the information recorded before the search, any report to a superio
 4. Sampling and chain of custody: when and before whom samples were drawn; inventory certified by a Magistrate as required; sealing; dispatch and receipt at the laboratory; seal intact on receipt; malkhana entries.
 5. Arrest: grounds of arrest given in writing; information to relatives; production.
 6. Bail: apply the twin conditions where commercial quantity is involved. Assess delay in trial and long custody as current authority treats them. Check default bail time limits and any extension procedure; compute dates with `limitation-calculator`.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 7. Search for and read current Supreme Court authority on each safeguard. Tag anything unread `[verify]`.
 
 ## Output

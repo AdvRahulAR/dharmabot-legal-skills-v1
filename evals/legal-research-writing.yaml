@@ -157,3 +157,49 @@ cases:
     must:
       - asks for the date of the facts and which code applies (IPC or BNS)
       - asks for the facts to which it is being applied
+  - id: issue-spotting-analyst-date-mismatch
+    skill: issue-spotting-analyst
+    kind: gate
+    prompt: >
+      A worker at our synthetic client's warehouse was injured on 10 November 2025. Today is 2 March 2026.
+      The accident was about a month ago. Spot the issues and the deadlines.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: issue-spotting-analyst-date-calc
+    skill: issue-spotting-analyst
+    kind: output
+    prompt: >
+      A worker at our synthetic client's warehouse was injured on 10 November 2025 and a notice of claim
+      arrived on 5 January 2026. Spot the issues and flag the time-sensitive ones with dates.
+    must:
+      - computes the period from the given dates with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: adversarial-draft-reviewer-date-mismatch
+    skill: adversarial-draft-reviewer
+    kind: gate
+    prompt: >
+      Review our draft plaint for synthetic plaintiff Nova Supplies. It pleads that the cause of action
+      arose on 15 January 2026 and that the suit, filed on 30 April 2026, is within 45 days of it. Stress-
+      test it.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: adversarial-draft-reviewer-date-calc
+    skill: adversarial-draft-reviewer
+    kind: output
+    prompt: >
+      Review our draft plaint for synthetic plaintiff Nova Supplies. It pleads the cause of action on 15
+      January 2026, a demand notice on 1 February 2026, and filing on 30 April 2026. Check whether
+      limitation is shown correctly.
+    must:
+      - computes the period from the given dates with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note

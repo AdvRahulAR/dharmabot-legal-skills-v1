@@ -20,3 +20,27 @@ cases:
   must:
   - asks for the MOV forms served with dates, invoice and e-way bill, the alleged defect and whether goods
     are perishable
+- id: gst-detention-release-drafter-date-mismatch
+  skill: gst-detention-release-drafter
+  kind: gate
+  prompt: >
+    Our synthetic client's truck was detained and the MOV notice was served on 1 September 2026. Today
+    is 12 October 2026. The notice was served only 7 days ago, so we have time. Draft the reply and
+    release request.
+  must:
+    - flags that the stated count disagrees with the dates and asks which is right
+    - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+    - relies on the stated count without checking it against the dates
+- id: gst-detention-release-drafter-date-calc
+  skill: gst-detention-release-drafter
+  kind: output
+  prompt: >
+    Our synthetic client's truck was intercepted on 1 September 2026 and the detention notice was served
+    on 2 September 2026. Work out the response time and the appeal deadline against any penalty order,
+    and draft the reply.
+  must:
+    - computes the period from the given dates with scripts/date_calc.py and shows the working
+    - marks the governing provision and period as believed, to be confirmed against the official text
+  must_not:
+    - states the period as settled without a confirm note

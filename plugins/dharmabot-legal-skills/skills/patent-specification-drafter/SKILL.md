@@ -29,9 +29,10 @@ Also useful: the screening report, known prior art, preferred claim scope, comme
 
 1. Retrieve the current official text of the Patents Act and Rules, the forms and fee schedule from the Patent Office website, and the Manual of Patent Office Practice and Procedure. Record the version and date.
 2. Compute key dates from the priority date: complete specification after a provisional, Convention deadline, PCT national phase entry, and request for examination. Confirm each period from the Rules and use `limitation-calculator`.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 3. Draft the specification: title, field, background (without admitting prior art unnecessarily), objects, summary, brief description of drawings, detailed description with best method and multiple embodiments, and abstract.
 4. Draft claims in tiers: broad independent claims, narrower independent claims in other categories (process, system, apparatus, use where allowed), and dependent claims with fallback features. Check every claim is supported by the description.
-5. Check section 3 risk in claim wording (for software, tie claims to technical features and hardware).
+5. Check section 3 risk (believed to be the section; confirm against the official text) in claim wording (for software, tie claims to technical features and hardware).
 6. Prepare the forms: application (Form 1), specification (Form 2), statement and undertaking on foreign filings (Form 3), declaration of inventorship (Form 5), and authorisation of agent (Form 26). Confirm current form numbers and contents.
 7. List the documents needed: priority documents, proof of right, translations, and the startup or small-entity proof.
 

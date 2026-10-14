@@ -30,6 +30,7 @@ Also useful: the respondent's reply, witness lists, documents and electronic evi
 
 1. Retrieve the current official text of the POSH Act, the POSH Rules, the employer's policy and service rules. Record the version and date.
 2. Check limitation for filing and whether the Committee recorded reasons for any extension.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 3. Offer conciliation only at the complainant's request and never on monetary settlement, as the Act is believed to provide; confirm the wording.
 4. Build a timeline from receipt: copy to the respondent, reply, inquiry completion (believed to be 90 days) and report (believed to be within 10 days of completion). Confirm each period from the Act and Rules.
 5. Draft notices: to the respondent with the complaint and documents; hearing notices to both parties; witness notices. Record that legal practitioners may not represent parties, if the Rules so provide; confirm.

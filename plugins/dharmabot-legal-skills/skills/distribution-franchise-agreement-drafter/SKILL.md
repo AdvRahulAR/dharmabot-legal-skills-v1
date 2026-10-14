@@ -33,7 +33,7 @@ Also useful: the brand's trademark registrations, operations manual, existing ne
 4. **Brand and know-how.** Trademark licence, quality control, manuals, training, audits, confidentiality and ownership of goodwill. Hand off detailed IP terms to `ip-assignment-licence-drafter`.
 5. **Fees.** Franchise fee, royalties, marketing fund, GST on each, and withholding; leave rates to the client's tax adviser.
 6. **Competition law.** Screen resale price maintenance, exclusive supply or distribution, tie-ins and refusal to deal under the Competition Act provisions on vertical agreements. Recommend "maximum" or "recommended" retail prices rather than fixed resale prices. Hand off real risk to `anti-competitive-conduct-analyst`.
-7. **Restraints.** In-term non-compete is usually easier to defend than post-term restraints, which section 27 may make void. Draft post-term protection around confidentiality, de-branding and trademark use.
+7. **Restraints.** In-term non-compete is usually easier to defend than post-term restraints, which section 27 (believed to be the section; confirm against the official text) may make void. Draft post-term protection around confidentiality, de-branding and trademark use.
 8. **Term and exit.** Renewal, termination for breach and convenience, buy-back of stock, de-identification, customer data, and transition.
 9. **Liability and compliance.** Product liability, recalls, consumer complaints, labelling and licences, anti-bribery.
 10. **Disputes.** Arbitration with a stated seat, or courts; injunction rights for brand misuse.

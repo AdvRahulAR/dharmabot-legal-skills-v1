@@ -40,7 +40,7 @@ Also useful: the deal value, the relationship's importance, the client's risk ap
    - assignment, change of control and subcontracting;
    - governing law, dispute resolution and seat;
    - force majeure.
-4. **Enforceability.** Flag liquidated damages that look like penalties, restraints that may be void under section 27, waivers of statutory rights, and specific performance assumptions under the amended Specific Relief Act. Search for and read current authority where relied on; tag unread authority `[verify]`.
+4. **Enforceability.** Flag liquidated damages that look like penalties, restraints that may be void under section 27 (believed to be the section; confirm against the official text), waivers of statutory rights, and specific performance assumptions under the amended Specific Relief Act. Search for and read current authority where relied on; tag unread authority `[verify]`.
 5. **Missing protections.** List clauses the playbook expects that are absent.
 6. **Risk rank.** High (financial or legal exposure, must change), medium (should change), low (nice to have).
 7. **Redlines.** For each issue give replacement wording and a fallback position.

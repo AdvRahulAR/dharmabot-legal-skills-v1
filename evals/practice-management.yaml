@@ -204,3 +204,99 @@ cases:
     prompt: Do a launch review of our new feature.
     must:
       - asks for the product description and user flows, business model, launch date and data collected
+  - id: client-intake-conflict-screener-date-mismatch
+    skill: client-intake-conflict-screener
+    kind: gate
+    prompt: >
+      New walk-in client, Ms Kavya Rao. She received a legal notice dated 2026-08-03 from her
+      landlord, Sunrise Estates LLP, demanding a reply. She says it arrived about a week ago.
+      Today is 2026-10-01. Prepare the intake note and conflict list.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: client-intake-conflict-screener-date-calc
+    skill: client-intake-conflict-screener
+    kind: output
+    prompt: >
+      New enquiry from Mr Dev Menon. He received a demand notice dated 2026-09-10 from Apex
+      Traders Pvt Ltd giving him 30 days to pay Rs 4 lakh. Today is 2026-09-25. Prepare the
+      intake note, conflict list and time-critical points.
+    must:
+      - computes the last date of the notice window with scripts/date_calc.py and shows the working
+      - marks any statutory period as believed and to be confirmed, and passes limitation to limitation-calculator
+    must_not:
+      - states the period as settled without a confirm note
+  - id: matter-plan-builder-date-mismatch
+    skill: matter-plan-builder
+    kind: gate
+    prompt: >
+      Commercial suit, Delhi. Summons with the plaint was served on our client on 2026-07-01.
+      Today is 2026-09-15 and the associate says we still have about 30 days to file the written
+      statement. Build the matter plan.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: matter-plan-builder-date-calc
+    skill: matter-plan-builder
+    kind: output
+    prompt: >
+      Commercial suit before a Bengaluru Commercial Court. Summons served on our client on
+      2026-09-01. Build a matter plan with the written statement deadline and the stages to
+      evidence.
+    must:
+      - computes the written statement date from the service date with scripts/date_calc.py and shows the working
+      - marks the written statement period as believed and to be confirmed from the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: matter-deadline-tracker-date-mismatch
+    skill: matter-deadline-tracker
+    kind: gate
+    prompt: >
+      Update the diary. Order dated 2026-06-12 in CS 412/2026 directs the defendant to file a
+      reply within four weeks. Today is 2026-07-20 and the associate says we have about two
+      weeks left.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: matter-deadline-tracker-date-calc
+    skill: matter-deadline-tracker
+    kind: output
+    prompt: >
+      Update the diary. Order dated 2026-09-02 in OS 77/2026 directs our client to deposit Rs 6
+      lakh within six weeks of receipt of the order. We received the certified copy on
+      2026-09-05.
+    must:
+      - computes the deposit deadline from the date of receipt with scripts/date_calc.py and shows the working
+      - marks the entry with its source and notes that any statutory period must be confirmed from the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: matter-closure-retention-checker-date-mismatch
+    skill: matter-closure-retention-checker
+    kind: gate
+    prompt: >
+      Close file 2025/118. The final decree was passed on 2026-03-02. Today is 2026-04-20. The
+      partner says the 90-day appeal window ended long ago, so we can destroy the working
+      papers.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: matter-closure-retention-checker-date-calc
+    skill: matter-closure-retention-checker
+    kind: output
+    prompt: >
+      Close file 2026/031. Judgment dated 2026-08-14; certified copy applied for on 2026-08-16
+      and received on 2026-08-28. Today is 2026-10-15. Can we close the file and return the
+      originals?
+    must:
+      - computes the remaining appeal window from the dates with scripts/date_calc.py and shows the working
+      - marks the appeal period as believed and to be confirmed, and hands off limitation to limitation-calculator
+    must_not:
+      - states the period as settled without a confirm note

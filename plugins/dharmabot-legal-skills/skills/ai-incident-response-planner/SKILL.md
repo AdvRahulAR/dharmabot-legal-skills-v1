@@ -34,6 +34,7 @@ Also useful: the AI vendor contract, internal AI policy, model and prompt versio
 3. **Contain.** Suspend the feature or route, add guardrails, and stop further spread. Record each action with time.
 4. **Preserve.** Freeze logs, prompts, model versions, configs and outputs; hand off to `legal-hold-preservation-planner`.
 5. **Notify.** Build a notification matrix: regulator (sector regulator, CERT-In if a cyber incident, Data Protection Board if a personal data breach), affected users, customers under contract, insurers, and platforms hosting the content. Confirm each trigger and deadline from current text.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 6. **Remedy users.** Correct false information given (for example a wrong loan rate), honour or explain transactions made on it, and assess consumer claims.
 7. **Unlawful content.** Apply intermediary takedown and reporting duties; hand off to `it-rules-intermediary-compliance-checker`.
 8. **Root cause and fixes.** Record the cause, the control that failed, and the change made.

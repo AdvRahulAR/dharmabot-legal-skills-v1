@@ -30,11 +30,12 @@ SEBI amends LODR and its master circular often. Record the event date and time, 
 
 1. Retrieve the current official text of SEBI LODR, the current LODR master circular and any later circulars on disclosure of material events, from sebi.gov.in. Record the version and date.
 2. Classify the event:
-   - deemed material (listed in Part A of Schedule III; disclose without a materiality test);
-   - material if it crosses the materiality test (Part B) or the company's policy;
+   - deemed material (listed in Part A of Schedule III, believed to be the provision; confirm against the official text; disclose without a materiality test);
+   - material if it crosses the materiality test (Part B, believed to be the provision; confirm against the official text) or the company's policy;
    - not material, but consider voluntary disclosure.
 3. Apply the quantitative and qualitative tests from the retrieved text. Show the arithmetic. Where the company's policy is missing, say so and stop short of a final view.
 4. Fix the deadline. Timelines are short and depend on the trigger (board decision, event within the company, event from outside). Confirm each from the current text; compute from the time of awareness.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 5. Draft the disclosure with the details the master circular prescribes for that event type. Use a fact-only tone, no promotional language.
 6. For a media report or market rumour, check whether the top listed entities' verification requirement applies to this company, and draft the confirmation, denial or clarification.
 7. For governance checks, test board composition, independent director proportion, committee constitution, meeting frequency, the corporate governance report and the results timeline against the retrieved text.

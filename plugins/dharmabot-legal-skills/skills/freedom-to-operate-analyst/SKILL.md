@@ -31,7 +31,7 @@ Also useful: the client's own patents, known competitor patents, prior art, and 
 3. Construe each independent claim: identify the elements, the meaning of key terms in light of the specification, and any prosecution history that narrows them.
 4. Build a claim chart: element · product feature · present (yes, no, unclear) · notes.
 5. Consider equivalents only after reading current Indian authority on it. Tag anything not read in full `[verify]`.
-6. Note validity attacks against high-risk claims: prior art, obviousness, section 3 exclusions, and insufficiency, and the routes (post-grant opposition window, revocation).
+6. Note validity attacks against high-risk claims: prior art, obviousness, section 3 exclusions (believed to be the section; confirm against the official text), and insufficiency, and the routes (post-grant opposition window, revocation).
 7. Suggest design-arounds that remove at least one element of each independent claim, for engineering review.
 8. Note other angles: expiry dates, licensing options, statements of working, and compulsory licensing grounds.
 9. Rate risk per patent as high, medium or low, with reasons.

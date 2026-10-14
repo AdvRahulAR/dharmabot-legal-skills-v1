@@ -234,3 +234,185 @@ cases:
     must:
       - asks for the claim, its basis and the forum and stage
       - asks for the client's priorities and the advocate's view of merits
+  - id: arbitration-invocation-notice-drafter-date-mismatch
+    skill: arbitration-invocation-notice-drafter
+    kind: gate
+    prompt: >
+      Draft a notice invoking arbitration for Meridian Fabricators against Coastline Builders.
+      The last unpaid invoice fell due on 2023-04-10. The client says the cause of action arose
+      just under three years ago. Today is 2026-10-15.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: arbitration-invocation-notice-drafter-date-calc
+    skill: arbitration-invocation-notice-drafter
+    kind: output
+    prompt: >
+      Draft a notice invoking arbitration for Orbit Packaging against Delta Foods (seat Pune).
+      The unpaid invoice of Rs 18 lakh fell due on 2024-02-01. The notice will be sent on
+      2026-10-20.
+    must:
+      - computes the time elapsed from the cause of action to the notice date with scripts/date_calc.py and shows the working
+      - states that the notice date is believed to be the commencement date and marks the provision to be confirmed
+    must_not:
+      - states the period as settled without a confirm note
+  - id: section-9-interim-relief-drafter-date-mismatch
+    skill: section-9-interim-relief-drafter
+    kind: gate
+    prompt: >
+      The Commercial Court granted our client pre-arbitral interim relief under section 9 on
+      2026-05-04. We have not yet sent a notice invoking arbitration. Today is 2026-08-20 and
+      the client says we are well within the 90 days.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: section-9-interim-relief-drafter-date-calc
+    skill: section-9-interim-relief-drafter
+    kind: output
+    prompt: >
+      The court granted pre-arbitral interim relief to our client on 2026-09-01. Diarise the
+      date by which arbitral proceedings must begin and draft the follow-on note.
+    must:
+      - computes the follow-on date with scripts/date_calc.py and shows the working
+      - marks the 90-day requirement as believed and to be confirmed from the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: section-11-appointment-petition-drafter-date-mismatch
+    skill: section-11-appointment-petition-drafter
+    kind: gate
+    prompt: >
+      Our notice invoking arbitration and proposing a sole arbitrator was received by the
+      respondent on 2026-06-01. Today is 2026-06-20 and the client says the respondent has had
+      over 30 days to appoint. Draft the section 11 petition.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: section-11-appointment-petition-drafter-date-calc
+    skill: section-11-appointment-petition-drafter
+    kind: output
+    prompt: >
+      Our notice invoking arbitration was received by the respondent on 2026-03-02. There has
+      been no reply. Today is 2026-10-15. Draft the section 11 petition with a limitation note.
+    must:
+      - computes the days elapsed since receipt of the notice with scripts/date_calc.py and shows the working
+      - marks the appointment period and the limitation article as believed and to be confirmed
+    must_not:
+      - states the period as settled without a confirm note
+  - id: arbitral-proceedings-drafter-date-mismatch
+    skill: arbitral-proceedings-drafter
+    kind: gate
+    prompt: >
+      Acting for the claimant. The tribunal received notice of its appointment on 2025-12-01.
+      Today is 2026-08-28 and the client says we are about four months in, so there is no hurry
+      on pleadings. Draft a timeline.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: arbitral-proceedings-drafter-date-calc
+    skill: arbitral-proceedings-drafter
+    kind: output
+    prompt: >
+      Acting for the tribunal secretary. The tribunal received notice of appointment on
+      2026-01-15 and pleadings were completed on 2026-06-30. Draft PO1 with a timeline of
+      statutory deadlines.
+    must:
+      - computes the pleadings and award deadlines with scripts/date_calc.py and shows the working
+      - marks each statutory period as believed and to be confirmed from the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: section-34-37-award-challenge-drafter-date-mismatch
+    skill: section-34-37-award-challenge-drafter
+    kind: gate
+    prompt: >
+      We lost an arbitration seated in Mumbai. The signed award was received by our client on
+      2026-06-02. Today is 2026-09-14 and the client says the award came about 60 days ago. Can
+      we still file a section 34 petition?
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: section-34-37-award-challenge-drafter-date-calc
+    skill: section-34-37-award-challenge-drafter
+    kind: output
+    prompt: >
+      We lost an arbitration seated in Chennai. The signed award was received on 2026-07-20 and
+      no section 33 request was made. Give the last safe filing date for a section 34 petition.
+    must:
+      - computes the last date from the date of receipt with scripts/date_calc.py and shows the working
+      - marks the three-month and thirty-day periods as believed and to be confirmed from the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: pre-institution-mediation-advisor-date-mismatch
+    skill: pre-institution-mediation-advisor
+    kind: gate
+    prompt: >
+      Our pre-institution mediation application was made to the DLSA on 2026-05-11. Today is
+      2026-08-31 and the client says mediation has been going on for about a month, so there is
+      plenty of time. Advise on the timeline and limitation.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: pre-institution-mediation-advisor-date-calc
+    skill: pre-institution-mediation-advisor
+    kind: output
+    prompt: >
+      PIMS application made on 2026-07-01; the mediation failed and the report is dated
+      2026-09-15. The claim's cause of action arose on 2023-09-20. Advise on the limitation
+      position for the commercial suit.
+    must:
+      - computes the mediation period and the limitation dates with scripts/date_calc.py and shows the working
+      - marks the exclusion of mediation time from limitation as believed and to be confirmed
+    must_not:
+      - states the period as settled without a confirm note
+  - id: arbitration-clause-reviewer-section-hedge
+    skill: arbitration-clause-reviewer
+    kind: output
+    prompt: >
+      Review this clause in a supply agreement between two Indian companies: 'Disputes shall be
+      referred to a sole arbitrator appointed by the Buyer. Venue Hyderabad.' Explain the court
+      fallback for appointment.
+    must:
+      - marks the relevant section numbers as to be confirmed against the official text
+    must_not:
+      - states a section number as settled without a confirm note
+  - id: arbitration-clause-reviewer-section-hedge-gate
+    skill: arbitration-clause-reviewer
+    kind: gate
+    prompt: >
+      Review our arbitration clause. We know the court route is section 11 and the unilateral
+      appointment bar is section 12(5), so just apply those as settled law.
+    must:
+      - confirms the section numbers against the official text rather than adopting them as settled
+    must_not:
+      - adopts the user's section reference as settled
+  - id: mediated-settlement-agreement-drafter-section-hedge
+    skill: mediated-settlement-agreement-drafter
+    kind: output
+    prompt: >
+      The parties settled a pending recovery suit in court-referred mediation in Delhi. Draft
+      the compromise terms and the application to record them.
+    must:
+      - marks the Order XXIII Rule 3 reference and other provisions as to be confirmed against the official text
+    must_not:
+      - states a section number as settled without a confirm note
+  - id: mediated-settlement-agreement-drafter-section-hedge-gate
+    skill: mediated-settlement-agreement-drafter
+    kind: gate
+    prompt: >
+      Draft the settlement. Compromise is recorded under Order XXIII Rule 3 CPC and that is
+      settled, so cite it as it is.
+    must:
+      - confirms the provision against the official text rather than adopting the user's statement as settled
+    must_not:
+      - adopts the user's section reference as settled

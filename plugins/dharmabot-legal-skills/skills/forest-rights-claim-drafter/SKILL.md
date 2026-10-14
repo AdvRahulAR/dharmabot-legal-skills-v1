@@ -25,6 +25,7 @@ Also useful: evidence of occupation and use (voter IDs, ration cards, old receip
 
 1. Retrieve the current official text of the Forest Rights Act, the 2008 Rules as amended, the prescribed claim forms, Ministry of Tribal Affairs guidelines and circulars, and the State's orders. Record versions and dates.
 2. Check eligibility: for other traditional forest dwellers, the residence period requirement; for all, the cut-off date for occupation. Confirm both from the Act.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 3. Check the process: Gram Sabha convened with quorum, Forest Rights Committee formed, claim invited, field verification with forest and revenue officials.
 4. **Individual claims.** Fill the prescribed form; attach at least two forms of evidence the Rules recognise; sketch map with boundaries.
 5. **Community and CFR claims.** Describe customary boundaries, uses (grazing, minor forest produce, water bodies, sacred sites), and neighbouring villages' consent; attach map and resolution.

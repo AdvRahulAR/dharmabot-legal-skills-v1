@@ -31,8 +31,9 @@ Also useful: hearing transcripts, evidence relied on, and whether enforcement or
 
 ## Method
 
-1. Retrieve the current official text of sections 34, 36 and 37 of the Arbitration and Conciliation Act, 1996, the Commercial Courts Act, 2015, and the court's rules. Record the version and date.
+1. Retrieve the current official text of sections 34, 36 and 37 of the Arbitration and Conciliation Act, 1996, the Commercial Courts Act, 2015, and the court's rules. Record the version and date. Confirm every section, rule and article number used in this skill against that official text before relying on it.
 2. **Limitation.** The period is believed to be three months from receipt, extendable by up to thirty days on sufficient cause and no further. Confirm from the text and compute with `limitation-calculator`. Section 37 appeals carry their own period; confirm from the Commercial Courts Act and current authority.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 3. **Map the award.** Build a table of every finding: issue · finding · evidence relied on · paragraph.
 4. **Test grounds narrowly.** Incapacity; invalid agreement; lack of notice or inability to present the case; matters beyond the reference; improper composition or procedure; non-arbitrability; conflict with public policy (fraud or corruption, fundamental policy of Indian law, basic notions of morality or justice); and, for domestic awards only, patent illegality on the face of the award. Explain that courts do not re-appreciate evidence or reinterpret the contract where a view is possible.
 5. Search for and read current Supreme Court authority on each ground in play, and on the court's power to modify or sever an award. Tag anything not read in full `[verify]`.

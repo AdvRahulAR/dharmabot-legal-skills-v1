@@ -17,7 +17,7 @@ Confirm the deceased's religion, last residence and where the assets are. Identi
 
 ## Temporal gate
 
-Probate was compulsory for certain wills under section 213 read with section 57 of the 1925 Act. The Repealing and Amending Act, 2025 (assent reported as 20 December 2025) is reported to have omitted section 213. Confirm the commencement date and current authority on pending proceedings, and check whether banks, registrars or societies still ask for probate in practice.
+Probate was compulsory for certain wills under section 213 read with section 57 of the 1925 Act (believed to be the sections; confirm against the official text). The Repealing and Amending Act, 2025 (assent reported as 20 December 2025) is reported to have omitted section 213. Confirm the commencement date and current authority on pending proceedings, and check whether banks, registrars or societies still ask for probate in practice.
 
 ## Required inputs
 
@@ -39,6 +39,7 @@ Also useful: attesting witnesses' availability, any caveat or known objection, a
 5. Prepare the affidavit of an attesting witness, and plan proof if no witness is available.
 6. List heirs to be cited, with addresses for service; plan publication if the court requires it.
 7. Court fee: hand off to `state-court-fee-calculator`; limitation where relevant to `limitation-calculator`.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 8. Caveat: if a caveat is filed, the matter becomes contentious and is tried as a suit; prepare for that.
 
 ## Output

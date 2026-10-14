@@ -276,3 +276,120 @@ cases:
   must:
   - asks for his citizenship and residential status (NRI, OCI or foreign national)
   - flags the general bar on agricultural land acquisition by persons resident outside India for checking
+- id: power-of-attorney-drafter-date-mismatch
+  skill: power-of-attorney-drafter
+  kind: gate
+  prompt: >
+    My client signed a special POA in Dubai on 5 May 2026 to sell a flat in Pune; the original
+    reached India on 1 July 2026. He says it arrived about 30 days ago, as of 15 October 2026, so it
+    is still within the stamping window. Plan the execution and stamping steps.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: power-of-attorney-drafter-date-calc
+  skill: power-of-attorney-drafter
+  kind: output
+  prompt: >
+    A POA executed in Singapore was received in India on 20 September 2026 for use with a Kochi Sub-Registrar. Work out the last date to stamp it after arrival, with the working.
+  must:
+  - computes the date or period with scripts/date_calc.py and shows the working
+  - marks the period or provision relied on as believed to be correct and to be confirmed against the official text
+  must_not:
+  - states the period as settled without a confirm note
+- id: rera-complaint-drafter-date-mismatch
+  skill: rera-complaint-drafter
+  kind: gate
+  prompt: >
+    The builder promised possession of my client's Gurugram flat by 31 December 2024 and has not
+    delivered. The client says the delay is about 12 months as of 15 October 2026. Draft a RERA
+    complaint seeking delay interest for that period.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: rera-complaint-drafter-date-calc
+  skill: rera-complaint-drafter
+  kind: output
+  prompt: >
+    Possession of a Noida flat was promised by 30 June 2025; the client paid Rs 42 lakh by then and
+    wants delay interest up to 15 October 2026. Compute the delay period per payment with the
+    working.
+  must:
+  - computes the date or period with scripts/date_calc.py and shows the working
+  - marks the period or provision relied on as believed to be correct and to be confirmed against the official text
+  must_not:
+  - states the period as settled without a confirm note
+- id: rera-project-compliance-checker-date-mismatch
+  skill: rera-project-compliance-checker
+  kind: gate
+  prompt: >
+    Our Hyderabad project's RERA registration is valid until 30 June 2027. The promoter says
+    registration expires in about 12 months from today, 15 October 2026, so the extension can wait.
+    Build the compliance calendar.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: rera-project-compliance-checker-date-calc
+  skill: rera-project-compliance-checker
+  kind: output
+  prompt: >
+    Our Pune project's RERA registration expires on 31 March 2027 and the promoter wants to apply
+    for extension before expiry. Put the extension and the next quarterly update into the compliance
+    calendar with the working.
+  must:
+  - computes the date or period with scripts/date_calc.py and shows the working
+  - marks the period or provision relied on as believed to be correct and to be confirmed against the official text
+  must_not:
+  - states the period as settled without a confirm note
+- id: land-records-mutation-advisor-date-mismatch
+  skill: land-records-mutation-advisor
+  kind: gate
+  prompt: >
+    The Tahsildar rejected my client's mutation application by an order dated 2 June 2026, received
+    on 10 June 2026. The client says it is only day 20 since receipt, as of 15 October 2026, so the
+    appeal is in time. Advise on the appeal.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: land-records-mutation-advisor-date-calc
+  skill: land-records-mutation-advisor
+  kind: output
+  prompt: >
+    A mutation notice in a Karnataka village was published on 1 October 2026 and the objection
+    period is to be confirmed from the State rules. Work out the last date for filing an objection,
+    with the working.
+  must:
+  - computes the date or period with scripts/date_calc.py and shows the working
+  - marks the period or provision relied on as believed to be correct and to be confirmed against the official text
+  must_not:
+  - states the period as settled without a confirm note
+- id: land-acquisition-compensation-calculator-date-mismatch
+  skill: land-acquisition-compensation-calculator
+  kind: gate
+  prompt: >
+    The preliminary notification for our client's land was published on 15 January 2025 and the
+    award was made on 20 August 2026. The client says only about 6 months passed between them, so
+    the additional amount runs for 6 months. Compute the compensation.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: land-acquisition-compensation-calculator-date-calc
+  skill: land-acquisition-compensation-calculator
+  kind: output
+  prompt: >
+    Preliminary notification under the 2013 Act was published on 1 March 2025 and the award made on
+    1 September 2026. Compute the period for the additional amount, with the working.
+  must:
+  - computes the date or period with scripts/date_calc.py and shows the working
+  - marks the period or provision relied on as believed to be correct and to be confirmed against the official text
+  must_not:
+  - states the period as settled without a confirm note

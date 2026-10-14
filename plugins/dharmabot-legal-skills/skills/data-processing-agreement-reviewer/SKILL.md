@@ -14,7 +14,7 @@ Make sure the DPA lets the fiduciary meet its own DPDP duties through the proces
 ## Jurisdiction gate
 
 - Record the governing law and seat of disputes. If not Indian law, mark points of that law "to be confirmed by counsel qualified in [jurisdiction]".
-- Identify whose data is processed. If EU personal data is involved, apply the GDPR Article 28 overlay. For UK data, flag UK GDPR for UK counsel.
+- Identify whose data is processed. If EU personal data is involved, apply the GDPR Article 28 overlay (believed to be Article 28; confirm against the official text). For UK data, flag UK GDPR for UK counsel.
 - Note sector rules on outsourcing and data (RBI outsourcing of IT services, SEBI cloud framework, IRDAI) and retrieve them where the client is regulated.
 
 ## Temporal gate
@@ -43,7 +43,7 @@ Also useful: the client's negotiation playbook, security schedule, insurance, an
 9. Audit rights and certifications; regulator access where sector rules require it.
 10. Data location and onward transfers. Hand the mechanism to `cross-border-data-transfer-analyst`.
 11. Liability, indemnity and caps: check whether data breaches sit inside or outside the cap, and that insurance supports it.
-12. GDPR Article 28(3) overlay: each mandatory item present.
+12. GDPR Article 28(3) overlay (believed to be Article 28(3); confirm against the official text): each mandatory item present.
 13. Prepare redlines and a fallback ladder for each issue.
 
 ## Output

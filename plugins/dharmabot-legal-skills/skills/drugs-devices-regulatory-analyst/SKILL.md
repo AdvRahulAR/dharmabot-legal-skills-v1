@@ -17,7 +17,7 @@ Confirm the product will be imported, made, sold, distributed or tested in India
 
 ## Temporal gate
 
-Device licensing was phased in by risk class, revised Schedule M (good manufacturing practice) was phased in by firm size, and a new drugs, devices and cosmetics law has been proposed. Record today's date and check every transition deadline live.
+Device licensing was phased in by risk class, revised Schedule M (good manufacturing practice; believed to be the Schedule; confirm against the official text) was phased in by firm size, and a new drugs, devices and cosmetics law has been proposed. Record today's date and check every transition deadline live.
 
 ## Required inputs
 

@@ -31,7 +31,7 @@ Also useful: payment details, security offered (post-dated cheques, guarantees),
 
 ## Method
 
-1. Retrieve the current official text of the governing law (the Mediation Act, 2023 and its notifications, Part III of the Arbitration and Conciliation Act, 1996, or Order XXIII CPC), the court's rules on compromise, and the stamp law of the State of execution. Record the version and date.
+1. Retrieve the current official text of the governing law (the Mediation Act, 2023 and its notifications, Part III of the Arbitration and Conciliation Act, 1996, or Order XXIII CPC), the court's rules on compromise, and the stamp law of the State of execution. Record the version and date. Confirm every section, rule and article number used in this skill against that official text before relying on it.
 2. **Terms audit.** List every agreed term and every gap: who pays, how much, by when, how, and what happens on default. Ask the user to close gaps rather than inventing terms.
 3. **Draft.** Recitals; the dispute and proceedings; settlement terms in numbered obligations; payment schedule with dates and account details left blank for the parties; default clause (acceleration, revival of claims, or decree for the full amount where lawful); withdrawal or disposal of each case with timing tied to payment; mutual releases, carved out for obligations under the agreement; confidentiality; costs; and signature and authentication blocks.
 4. **Enforceability check.** Flag terms that may be unenforceable or unlawful: agreements to compound non-compoundable offences, waivers of statutory rights, restraints of trade, penalties, or terms affecting non-parties. Check that criminal cases can be closed only through the forum's lawful procedure.

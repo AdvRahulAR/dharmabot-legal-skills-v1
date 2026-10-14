@@ -26,7 +26,7 @@ Also useful: whether either party is a government body or PSU, any institutional
 
 ## Method
 
-1. Retrieve the current official text of the Arbitration and Conciliation Act, 1996 with all amendments, any institutional rules named in the clause, and the stamp law of the State of execution. Record the version and date. Check for any amendment Act or notification after your last known version.
+1. Retrieve the current official text of the Arbitration and Conciliation Act, 1996 with all amendments, any institutional rules named in the clause, and the stamp law of the State of execution. Record the version and date. Check for any amendment Act or notification after your last known version. Confirm every section, rule and article number used in this skill against that official text before relying on it.
 2. **Existence and validity.** Is there a written agreement to refer disputes to arbitration, with intent to be bound? Flag optional or "may" wording, clauses that allow either court or arbitration, and expert-determination or "final and binding decision of the engineer" clauses that are not arbitration.
 3. **Arbitrability.** Check the subject matter against non-arbitrable categories (for example certain rights in rem, criminal, matrimonial, insolvency, some tenancy and consumer matters). Search for and read current Supreme Court authority; tag anything not read in full `[verify]`.
 4. **Seat versus venue.** Decide whether "venue", "place" or "held at" designates the juridical seat, reading the clause as a whole. Note conflicts with an exclusive-jurisdiction clause naming another city. Search for current authority on the seat test.

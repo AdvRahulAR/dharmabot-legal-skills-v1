@@ -29,10 +29,11 @@ Mark as **blocking**:
 
 ## Method
 
-1. Retrieve the current official text of the Waqf Act as amended, the State Waqf Rules, the relevant State endowments or public trusts law, section 92 CPC, and the Supreme Court's current orders on the 2025 amendment. Record the source and date. Open `references/india-state-statutes.md` as a starting point.
+1. Retrieve the current official text of the Waqf Act as amended, the State Waqf Rules, the relevant State endowments or public trusts law, section 92 CPC, and the Supreme Court's current orders on the 2025 amendment. Record the source and date. Open `references/india-state-statutes.md` as a starting point. Confirm every section, rule and article number used in this skill against that official text before relying on it.
 2. Classify the dispute: inclusion in the wakf list or register, eviction or encroachment claim, mutawalli or trustee management, alienation without sanction, or a scheme suit for a public trust.
 3. Map the forum: Waqf Tribunal, Waqf Board, Collector or designated officer (under the amended law), endowments authority, civil court with leave under section 92, or a writ. Check bars on civil courts.
 4. Check limitation for challenging a survey or listing, and whether the Limitation Act now applies to wakf claims under the amended law. Use `limitation-calculator`.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 5. Test the wakf or endowment claim against the record: dedication, user, grant, revenue entries and the survey process.
 6. Search for and read current Supreme Court and High Court authority. Tag anything unread `[verify]`.
 

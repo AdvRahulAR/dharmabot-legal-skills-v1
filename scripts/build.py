@@ -4,6 +4,8 @@
 Writes, for every skill in the registry:
   skills/<id>/skill.meta.yaml      jurisdiction, pack, language, status, ...
   skills/<id>/agents/openai.yaml   Codex / ChatGPT display metadata
+  skills/<id>/references/<file>    copies of shared/references files listed in shared_refs
+  skills/<id>/scripts/<file>       copies of shared/scripts files listed in shared_scripts
 and replaces the block between the CATALOGUE markers in README.md.
 
 Run from anywhere: python3 scripts/build.py   (needs PyYAML)
@@ -23,6 +25,8 @@ README = ROOT / "README.md"
 START, END = "<!-- CATALOGUE:START -->", "<!-- CATALOGUE:END -->"
 
 SHARED = ROOT / "shared" / "references"
+SHARED_SCRIPTS = ROOT / "shared" / "scripts"
+SCRIPT_MARKER = "# Generated copy of"
 JURISDICTION_LABEL = {
     "in": "India",
     "in-states": "India, State-aware",
@@ -90,6 +94,26 @@ def main():
         if refs.exists():
             for old in refs.iterdir():
                 if old.name not in wanted and old.read_text(encoding="utf-8").startswith("<!-- Generated copy"):
+                    old.unlink()
+        # Copy shared scripts the same way, so `scripts/<name>` resolves inside the skill.
+        scripts = folder / "scripts"
+        wanted = set(s.get("shared_scripts", []))
+        for name in sorted(wanted):
+            src = SHARED_SCRIPTS / name
+            if not src.exists():
+                sys.exit(f"{sid}: shared script {name} not found in shared/scripts/")
+            scripts.mkdir(exist_ok=True)
+            lines = src.read_text(encoding="utf-8").splitlines(keepends=True)
+            note = f"{SCRIPT_MARKER} shared/scripts/{name} by scripts/build.py. Edit the shared file, not this copy.\n"
+            # Keep the shebang first so the copy still runs directly.
+            if lines and lines[0].startswith("#!"):
+                lines.insert(1, note)
+            else:
+                lines.insert(0, note)
+            (scripts / name).write_text("".join(lines), encoding="utf-8")
+        if scripts.exists():
+            for old in scripts.glob("*.py"):
+                if old.name not in wanted and SCRIPT_MARKER in old.read_text(encoding="utf-8"):
                     old.unlink()
         rows.append(s)
 

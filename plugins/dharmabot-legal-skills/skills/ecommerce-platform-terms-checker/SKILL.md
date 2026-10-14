@@ -33,7 +33,7 @@ Also useful: product categories, grievance data, and CCPA notices received.
 ## Method
 
 1. Retrieve the current official text of the Consumer Protection Act, 2019, the E-Commerce Rules, the Dark Patterns Guidelines, the Legal Metrology (Packaged Commodities) Rules, relevant CCPA advisories, and the FDI Policy on e-commerce. Record version and date.
-2. E-Commerce Rules: entity details, grievance officer and its acknowledgement and redress periods, display of seller details, return, refund, exchange and warranty terms, country of origin, no manipulated prices, no fake reviews, no cancellation charges unless equally borne.
+2. E-Commerce Rules: entity details, grievance officer and its acknowledgement and redress periods, display of seller details, return, refund, exchange and warranty terms, country of origin, no manipulated prices, no fake reviews, no cancellation charges unless equally borne (these items paraphrase the Rules; confirm each against the official text).
 3. Dark patterns: walk through the journey against each listed pattern (for example false urgency, basket sneaking, confirm shaming, forced action, subscription traps, interface interference, drip pricing). Log each instance with a screenshot reference.
 4. Legal Metrology: mandatory declarations displayed for packaged goods on the platform.
 5. Product rules: BIS Quality Control Orders and sector rules for listed categories; hand food and labels to `food-product-labelling-compliance-checker`.

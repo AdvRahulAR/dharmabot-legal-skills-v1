@@ -31,6 +31,7 @@ Mark as **blocking**:
 
 1. Retrieve the current official text of Order XVI and Order XVI-A CPC, any State amendment, the High Court's rules on witness expenses, and the BNSS provisions on defence evidence and summons to produce documents (confirm each section number). Record the source and date.
 2. Compute the time for filing the list of witnesses from the date of settling issues with `limitation-calculator`. If late, draft a short application showing good cause.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 3. For each witness, state the issue it goes to and why the evidence is relevant. Courts may refuse witnesses whose purpose is unclear.
 4. Draft summons applications. For a document summons, describe the record precisely (account number placeholder, period, register name) and whether a certified copy or the original is needed.
 5. Note expenses and conduct money: who deposits, how much the rules require, and when. Confirm amounts from the rules.

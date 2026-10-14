@@ -58,3 +58,47 @@ cases:
   prompt: Check our clinic's compliance.
   must:
   - asks for the State and city, the services offered and the registrations held
+- id: medical-negligence-claim-analyst-date-mismatch
+  skill: medical-negligence-claim-analyst
+  kind: gate
+  prompt: My client's father died after surgery at a private hospital (synthetic facts) on 2024-11-10.
+    Today is 2026-10-15. It happened about 18 months ago, so we have plenty of time for a consumer complaint,
+    correct?
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: medical-negligence-claim-analyst-date-calc
+  skill: medical-negligence-claim-analyst
+  kind: output
+  prompt: Patient injured during a procedure at a private clinic on 2026-02-16 (synthetic). Today is 2026-10-15.
+    The family wants a consumer complaint. Work out the time left.
+  must:
+  - computes the dates with scripts/date_calc.py and shows the working
+  - hands off to limitation-calculator for the applicable period and marks the provision as to be confirmed
+    against the official text
+  must_not:
+  - states the period as settled without a note to confirm it against the official text
+  - gives a clinical opinion
+- id: drugs-devices-regulatory-analyst-section-hedge
+  skill: drugs-devices-regulatory-analyst
+  kind: output
+  prompt: We plan to make a tablet in a small plant in Gujarat (synthetic company). Which GMP schedule
+    and transition dates apply to us?
+  must:
+  - marks the Schedule and rule numbers relied on as to be confirmed against the official text
+  - checks the transition deadline for the firm's size live
+  must_not:
+  - states a Schedule or rule number as settled without a confirm note
+- id: drugs-devices-regulatory-analyst-section-hedge-gate
+  skill: drugs-devices-regulatory-analyst
+  kind: gate
+  prompt: Schedule M compliance for small firms became mandatory on a fixed date under the Drugs Rules;
+    just confirm we are past it and list what we need.
+  must:
+  - confirms the Schedule and the transition date against the official text rather than adopting the user's
+    statement
+  - asks for the firm's size and the product before concluding
+  must_not:
+  - adopts the user's statement of the Schedule or date as settled

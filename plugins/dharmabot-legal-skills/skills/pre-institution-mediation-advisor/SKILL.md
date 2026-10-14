@@ -31,12 +31,13 @@ Also useful: correspondence, limitation dates, and any contractual mediation or 
 
 ## Method
 
-1. Retrieve the current official text of the Commercial Courts Act, 2015 (section 12A and the specified-value provision), the Commercial Courts (Pre-Institution Mediation and Settlement) Rules, 2018 as amended, the Mediation Act, 2023 with its commencement notifications, and the Limitation Act, 1963. Record the version and date.
+1. Retrieve the current official text of the Commercial Courts Act, 2015 (section 12A and the specified-value provision), the Commercial Courts (Pre-Institution Mediation and Settlement) Rules, 2018 as amended, the Mediation Act, 2023 with its commencement notifications, and the Limitation Act, 1963. Record the version and date. Confirm every section, rule and article number used in this skill against that official text before relying on it.
 2. Check for an arbitration clause first. If one exists, the suit may be the wrong route; flag it.
 3. **Mandatory or not.** For example, Patil Automation (Supreme Court, 2022) treated section 12A as mandatory; confirm current treatment, its prospective effect and later authority.
 4. **Urgent relief test.** Courts look at whether the plaint genuinely contemplates urgent interim relief, judged from the plaintiff's standpoint, and reject attempts to dress up a money claim. Search for and read current authority. List the facts that do and do not support urgency. Do not invent urgency.
 5. **Application.** Draft the application to the District Legal Services Authority (or High Court Legal Services Committee where the High Court has original commercial jurisdiction) in the form required by the Rules: parties, addresses, nature of dispute, claim, and relief sought.
 6. **Timeline.** Record the believed period for completing the mediation and any extension by consent; confirm from the Rules. Note that the time spent is believed to be excluded from limitation; confirm and hand off computation to `limitation-calculator`.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 7. **Outcomes.** If settled, the settlement is reduced to writing and signed; hand off to `mediated-settlement-agreement-drafter`. If not, obtain the failure report, which must be filed with the plaint.
 
 ## Output

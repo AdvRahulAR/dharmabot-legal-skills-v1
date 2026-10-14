@@ -27,7 +27,7 @@ Also useful: the user manual, warnings and labels, any BIS or other certificatio
 
 ## Method
 
-1. Retrieve the current official text of Chapter VI and the definitions in the Consumer Protection Act, 2019, the Sale of Goods Act warranty provisions, the BIS Act and any applicable quality control order, and sector rules for the product. Record the version and date.
+1. Retrieve the current official text of Chapter VI (believed to be the product liability chapter; confirm against the official text) and the definitions in the Consumer Protection Act, 2019, the Sale of Goods Act warranty provisions, the BIS Act and any applicable quality control order, and sector rules for the product. Record the version and date.
 2. Map the supply chain: manufacturer, product service provider, product seller (including e-commerce entities where they act as sellers), importer.
 3. For each party, test the statutory grounds of liability against the facts: manufacturing defect, design defect, deviation from specifications, breach of express warranty, inadequate instructions or warnings, and the seller's own fault or control. Note the statutory exceptions (for example misuse, alteration, obvious danger, warnings to employers or expert users). Confirm the exact grounds from the text.
 4. Consider parallel claims: negligence in tort, breach of contract or warranty, and criminal liability where facts support it. Note forum choices.

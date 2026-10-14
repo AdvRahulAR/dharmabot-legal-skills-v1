@@ -37,6 +37,7 @@ Also useful: historical records, publications and archives proving reputation; p
 5. Prepare the consultative group documents and anticipate the examiner's questions.
 6. **Authorised users.** Draft one application per producer in the prescribed form, with the producer's statement and the applicant body's consent. Make a batch tracker for large groups.
 7. **Opposition.** Where needed, draft a notice of opposition or counter-statement with grounds and evidence; check the time limit with `limitation-calculator`.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 8. **Renewal and labels.** Calendar renewal; advise on correct use of the GI name and logo on packaging.
 
 ## Output

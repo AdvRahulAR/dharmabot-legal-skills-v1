@@ -38,7 +38,7 @@ Also useful: audited accounts, existing tax registrations, and grant agreement d
 3. Tax: provisional and regular registration for exemption, approval for donor deductions, and timelines for applying. Note conditions on application of income and accumulation.
 4. CSR-1 registration if the organisation will receive CSR funds.
 5. FCRA route: registration (needs a track record; confirm the current eligibility criteria) or prior permission for a specific grant from a specific donor.
-6. Account: foreign contribution must first be received in the designated FCRA account at the SBI New Delhi main branch; utilisation accounts may be opened separately.
+6. Account: foreign contribution must first be received in the designated FCRA account believed to be at the SBI New Delhi main branch (confirm against the current Act, rules and MHA notices [verify]); utilisation accounts may be opened separately.
 7. Utilisation: the administrative expense cap, the bar on transferring to other persons, no use for prohibited purposes, and separate books.
 8. Annual returns, intimation of changes in office bearers, and renewal timelines.
 9. Red flags that lead to refusal or cancellation: political links, adverse reports, unrelated activities, or diversion. Flag them clearly.

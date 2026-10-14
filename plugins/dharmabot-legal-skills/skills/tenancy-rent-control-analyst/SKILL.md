@@ -37,6 +37,7 @@ Also useful: an arrears schedule; notices exchanged; evidence of the ground reli
 3. Test applicability: area, type of premises, exemptions, date of tenancy, and whether a written agreement or registration with the rent authority is required.
 4. For each ground or remedy the facts may support, list its statutory conditions and any proviso protecting the tenant. Mark each condition supported, unsupported or disputed, with the evidence.
 5. For arrears, prepare a schedule. Check any requirement to deposit admitted arrears or ongoing rent during the case, and the consequence of default.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 6. Identify the forum (rent controller, rent authority, rent court, civil court), the appeal and revision route, and time limits. Use `limitation-calculator` for the arithmetic.
 7. Search for, read and cite current High Court and Supreme Court authority on the disputed points. Tag anything not read in full `[verify]`.
 8. Draft the petition or reply, pleading only facts supplied.

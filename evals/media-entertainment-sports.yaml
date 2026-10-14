@@ -58,3 +58,25 @@ cases:
   prompt: My client was suspended by his federation. What can he do?
   must:
   - asks for the decision or charge, its date and the body that made it, and the athlete's level
+- id: sports-law-dispute-analyst-date-mismatch
+  skill: sports-law-dispute-analyst
+  kind: gate
+  prompt: My athlete client (synthetic) received the anti-doping panel's decision on 2026-09-24. Today
+    is 2026-10-15. It was about two weeks ago, so we are well inside the appeal window. Plan the appeal.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: sports-law-dispute-analyst-date-calc
+  skill: sports-law-dispute-analyst
+  kind: output
+  prompt: A State federation dropped my client from selection by a decision dated 2026-09-30, received
+    on 2026-10-02. Today is 2026-10-15. What deadlines run for the internal appeal and how many days are
+    gone?
+  must:
+  - computes the dates with scripts/date_calc.py and shows the working
+  - marks each appeal period as to be confirmed against the federation rules and official text
+  must_not:
+  - states the period as settled without a note to confirm it against the official text
+  - predicts the selection outcome

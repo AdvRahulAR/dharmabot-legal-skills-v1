@@ -103,3 +103,94 @@ cases:
   prompt: How do I transfer a mining lease?
   must:
   - asks for the State, the mineral, the concession type and the lease deed
+- id: pollution-consent-compliance-checker-date-mismatch
+  skill: pollution-consent-compliance-checker
+  kind: gate
+  prompt: >
+    At our synthetic unit in Gujarat, a batch of hazardous waste has been stored on site since 2 June
+    2026. Today is 14 September 2026. It has been stored for under 60 days. Check compliance.
+  must:
+    - flags that the stated count disagrees with the dates and asks which is right
+    - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+    - relies on the stated count without checking it against the dates
+- id: pollution-consent-compliance-checker-date-calc
+  skill: pollution-consent-compliance-checker
+  kind: output
+  prompt: >
+    At our synthetic unit in Gujarat, a batch of hazardous waste has been stored on site since 2 June
+    2026, and the consent to operate expires on 31 December 2026. Check storage-period and consent-
+    renewal compliance.
+  must:
+    - computes the period from the given dates with scripts/date_calc.py and shows the working
+    - marks the governing provision and period as believed, to be confirmed against the official text
+  must_not:
+    - states the period as settled without a confirm note
+- id: ngt-application-drafter-date-mismatch
+  skill: ngt-application-drafter
+  kind: gate
+  prompt: >
+    An environmental clearance was granted to a synthetic quarry and communicated on 3 August 2026. We
+    plan to file the NGT appeal on 1 October 2026, within 30 days. Draft it.
+  must:
+    - flags that the stated count disagrees with the dates and asks which is right
+    - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+    - relies on the stated count without checking it against the dates
+- id: ngt-application-drafter-date-calc
+  skill: ngt-application-drafter
+  kind: output
+  prompt: >
+    An environmental clearance was granted to a synthetic quarry and communicated on 3 August 2026.
+    Compute the appeal deadline and the condonation window, and draft the appeal.
+  must:
+    - computes the period from the given dates with scripts/date_calc.py and shows the working
+    - marks the governing provision and period as believed, to be confirmed against the official text
+  must_not:
+    - states the period as settled without a confirm note
+- id: infrastructure-energy-contract-reviewer-date-mismatch
+  skill: infrastructure-energy-contract-reviewer
+  kind: gate
+  prompt: >
+    Our synthetic EPC contractor client says the employer's failure to hand over land started on 10 July
+    2026, and it sent its extension-of-time notice on 28 September 2026, 14 days after the event. Assess
+    the delay claim.
+  must:
+    - flags that the stated count disagrees with the dates and asks which is right
+    - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+    - relies on the stated count without checking it against the dates
+- id: infrastructure-energy-contract-reviewer-date-calc
+  skill: infrastructure-energy-contract-reviewer
+  kind: output
+  prompt: >
+    Our synthetic EPC contractor client says the employer's failure to hand over land started on 10 July
+    2026, and it sent its extension-of-time notice on 24 July 2026. The contract has a notice bar.
+    Assess the delay claim.
+  must:
+    - computes the period from the given dates with scripts/date_calc.py and shows the working
+    - marks the governing provision and period as believed, to be confirmed against the official text
+  must_not:
+    - states the period as settled without a confirm note
+- id: mining-lease-regulatory-analyst-date-mismatch
+  skill: mining-lease-regulatory-analyst
+  kind: gate
+  prompt: >
+    Our synthetic client got a letter of intent for a limestone block on 1 December 2025. Today is 25
+    May 2026, about three months since the LOI. Map what must be done before the lease is executed.
+  must:
+    - flags that the stated count disagrees with the dates and asks which is right
+    - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+    - relies on the stated count without checking it against the dates
+- id: mining-lease-regulatory-analyst-date-calc
+  skill: mining-lease-regulatory-analyst
+  kind: output
+  prompt: >
+    Our synthetic client got a letter of intent for a limestone block on 1 December 2025. Map the post-
+    LOI steps and the deadline for executing the lease.
+  must:
+    - computes the period from the given dates with scripts/date_calc.py and shows the working
+    - marks the governing provision and period as believed, to be confirmed against the official text
+  must_not:
+    - states the period as settled without a confirm note

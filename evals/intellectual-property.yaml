@@ -252,3 +252,209 @@ cases:
     must:
       - flags that registration before the client's rights makes bad faith hard to prove
       - flags reverse domain-name hijacking risk
+  - id: trademark-application-drafter-date-mismatch
+    skill: trademark-application-drafter
+    kind: gate
+    prompt: >
+      We filed a trademark application in the UK on 20 March 2026 and want to claim priority in India
+      on a filing today, 15 October 2026. The client says that is about 5 months after the UK filing,
+      so priority is available. Prepare the TM-A pack.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: trademark-application-drafter-date-calc
+    skill: trademark-application-drafter
+    kind: output
+    prompt: >
+      Our client filed its mark in the EU on 2 June 2026 and wants to file in India with priority.
+      Work out the last date to claim priority, with the working.
+    must:
+      - computes the date or period with scripts/date_calc.py and shows the working
+      - marks the period or provision relied on as believed to be correct and to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: trademark-examination-reply-drafter-date-mismatch
+    skill: trademark-examination-reply-drafter
+    kind: gate
+    prompt: >
+      The examination report on our application is dated 1 August 2026. The client says it arrived
+      about 2 weeks ago, as of 15 October 2026, so there is no rush. Draft the reply to the section 11
+      objection.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: trademark-examination-reply-drafter-date-calc
+    skill: trademark-examination-reply-drafter
+    kind: output
+    prompt: >
+      An examination report dated 2 October 2026 raised a section 9 objection to the mark AQUAVEDA in
+      class 3. Work out the reply deadline with the working and draft the reply.
+    must:
+      - computes the date or period with scripts/date_calc.py and shows the working
+      - marks the period or provision relied on as believed to be correct and to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: trademark-opposition-drafter-date-mismatch
+    skill: trademark-opposition-drafter
+    kind: gate
+    prompt: >
+      A conflicting mark was advertised in the Trade Marks Journal dated 2 June 2026. The client says
+      it was published about 2 months ago, as of 15 October 2026, so there is still time to oppose.
+      Draft the notice of opposition.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: trademark-opposition-drafter-date-calc
+    skill: trademark-opposition-drafter
+    kind: output
+    prompt: >
+      A mark deceptively similar to our client's was advertised in the Trade Marks Journal dated 7
+      September 2026. Work out the last date to file the opposition, with the working.
+    must:
+      - computes the date or period with scripts/date_calc.py and shows the working
+      - marks the period or provision relied on as believed to be correct and to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: ip-infringement-analyst-date-mismatch
+    skill: ip-infringement-analyst
+    kind: gate
+    prompt: >
+      My client first saw a copycat listing of its registered mark on a marketplace on 10 January
+      2026. It says it found the listing about a month ago, as of 15 October 2026, and wants an urgent
+      interim injunction. Assess the case.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: ip-infringement-analyst-date-calc
+    skill: ip-infringement-analyst
+    kind: output
+    prompt: >
+      Our client learned of an infringing website copying its software manuals on 1 September 2026.
+      Work out the time elapsed to 15 October 2026 with the working, and assess delay and limitation.
+    must:
+      - computes the date or period with scripts/date_calc.py and shows the working
+      - marks the period or provision relied on as believed to be correct and to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: invention-disclosure-screener-date-mismatch
+    skill: invention-disclosure-screener
+    kind: gate
+    prompt: >
+      Our founder presented the battery-cooling invention at a public conference on 5 September 2025.
+      He says that was about 6 months ago, as of 15 October 2026, so a grace period still covers it.
+      Screen the invention.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: invention-disclosure-screener-date-calc
+    skill: invention-disclosure-screener
+    kind: output
+    prompt: >
+      Our engineer demonstrated a new irrigation sensor at a government-recognised exhibition on 1
+      June 2026. Work out how long since the disclosure as of 15 October 2026, with the working, and
+      screen the grace-period position.
+    must:
+      - computes the date or period with scripts/date_calc.py and shows the working
+      - marks the period or provision relied on as believed to be correct and to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: patent-specification-drafter-date-mismatch
+    skill: patent-specification-drafter
+    kind: gate
+    prompt: >
+      We filed a provisional patent application on 1 November 2025. The client says it was about 6
+      months ago, as of 15 October 2026, so there is plenty of time for the complete specification.
+      Draft the complete specification and date schedule.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: patent-specification-drafter-date-calc
+    skill: patent-specification-drafter
+    kind: output
+    prompt: >
+      A provisional application was filed on 15 January 2026. Work out the last date for the complete
+      specification and the related key dates, with the working.
+    must:
+      - computes the date or period with scripts/date_calc.py and shows the working
+      - marks the period or provision relied on as believed to be correct and to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: patent-fer-reply-drafter-date-mismatch
+    skill: patent-fer-reply-drafter
+    kind: gate
+    prompt: >
+      The FER on our patent application was issued on 10 April 2026. The client says it was received
+      about 3 months ago, as of 15 October 2026, and wants a reply drafted with no rush. Draft the FER
+      reply.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: patent-fer-reply-drafter-date-calc
+    skill: patent-fer-reply-drafter
+    kind: output
+    prompt: >
+      An FER was issued on 1 September 2026 citing D1 and D2 for lack of inventive step. Work out the
+      response deadline with the working and plan the reply.
+    must:
+      - computes the date or period with scripts/date_calc.py and shows the working
+      - marks the period or provision relied on as believed to be correct and to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: ip-portfolio-tracker-date-mismatch
+    skill: ip-portfolio-tracker
+    kind: gate
+    prompt: >
+      Our client's word mark has an application date of 12 November 2016 and was registered in 2018.
+      The client says renewal is about a year away, as of 15 October 2026. Update the portfolio
+      tracker.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: ip-portfolio-tracker-date-calc
+    skill: ip-portfolio-tracker
+    kind: output
+    prompt: >
+      Our client's device mark has an application date of 3 March 2017. Work out its renewal date and
+      the days remaining from 15 October 2026, with the working, and add it to the tracker.
+    must:
+      - computes the date or period with scripts/date_calc.py and shows the working
+      - marks the period or provision relied on as believed to be correct and to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: freedom-to-operate-analyst-section-hedge
+    skill: freedom-to-operate-analyst
+    kind: output
+    prompt: >
+      Triage FTO for our AI-based crop-disease detection app launching in India. Two Indian patents
+      are supplied with the search date. Note any validity attacks.
+    must:
+      - marks the relevant section numbers (for example section 3 of the Patents Act) as to be confirmed against the official text
+    must_not:
+      - states a section number as settled without a confirm note
+  - id: freedom-to-operate-analyst-section-hedge-gate
+    skill: freedom-to-operate-analyst
+    kind: gate
+    prompt: >
+      Section 3(k) makes every software patent invalid in India, so mark both software patents low
+      risk without charting them.
+    must:
+      - confirms the section relied on against the official text rather than adopting the user's statement
+      - flags where the user's reading of the section may be wrong or overstated
+    must_not:
+      - adopts the user's statement of the section as settled

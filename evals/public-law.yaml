@@ -143,3 +143,143 @@ cases:
     prompt: The regulator passed an order against us. Plan the appeal.
     must:
       - asks for the order, its date of receipt and the statute it was passed under
+  - id: writ-petition-drafter-date-mismatch
+    skill: writ-petition-drafter
+    kind: gate
+    prompt: >
+      The synthetic municipal corporation cancelled our client's trade licence by an order dated 1
+      December 2025, passed without a hearing. Today is 25 May 2026. The order is only about two months
+      old, so delay is not an issue. Draft the writ petition.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: writ-petition-drafter-date-calc
+    skill: writ-petition-drafter
+    kind: output
+    prompt: >
+      The synthetic municipal corporation cancelled our client's trade licence by an order dated 1
+      December 2025, without a hearing; the client learnt of it on 10 December 2025. A statutory appeal
+      lies. Assess delay and maintainability and draft the writ.
+    must:
+      - computes the period from the given dates with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: rti-application-appeal-drafter-date-mismatch
+    skill: rti-application-appeal-drafter
+    kind: gate
+    prompt: >
+      The PIO of a synthetic State department received my RTI application on 3 August 2026. Today is 1
+      October 2026. Thirty days have just passed with no reply. Draft the first appeal.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: rti-application-appeal-drafter-date-calc
+    skill: rti-application-appeal-drafter
+    kind: output
+    prompt: >
+      The PIO of a synthetic State department received my RTI application on 3 August 2026 and has not
+      replied. Work out the reply deadline, when deemed refusal arose and the last date for the first
+      appeal, and draft it.
+    must:
+      - computes the period from the given dates with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: service-law-matter-analyst-date-mismatch
+    skill: service-law-matter-analyst
+    kind: gate
+    prompt: >
+      A synthetic central government employee was compulsorily retired by an order dated 16 February 2026.
+      Today is 8 June 2026. The order was passed about 40 days ago. Advise on the forum and limitation and
+      draft the original application.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: service-law-matter-analyst-date-calc
+    skill: service-law-matter-analyst
+    kind: output
+    prompt: >
+      A synthetic central government employee was compulsorily retired by an order dated 16 February 2026
+      and filed a departmental appeal on 2 March 2026 that is still pending. Compute the limitation for an
+      original application and draft it.
+    must:
+      - computes the period from the given dates with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: tender-procurement-compliance-checker-date-mismatch
+    skill: tender-procurement-compliance-checker
+    kind: gate
+    prompt: >
+      Our synthetic client's bid was rejected by a decision communicated on 1 September 2026. Today is 12
+      October 2026. We are within 10 days of the decision, so the grievance window is open. Advise on a
+      challenge.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: tender-procurement-compliance-checker-date-calc
+    skill: tender-procurement-compliance-checker
+    kind: output
+    prompt: >
+      Our synthetic client's bid was rejected by a decision communicated on 1 September 2026, and the
+      State tenders law provides an internal appeal. Work out the appeal deadline and advise on a
+      challenge.
+    must:
+      - computes the period from the given dates with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: election-petition-analyst-date-mismatch
+    skill: election-petition-analyst
+    kind: gate
+    prompt: >
+      The result for a synthetic Assembly constituency was declared on 4 May 2026. Our client, a losing
+      candidate, wants to file an election petition on 20 July 2026, which is 40 days after the result.
+      Advise.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: election-petition-analyst-date-calc
+    skill: election-petition-analyst
+    kind: output
+    prompt: >
+      The result for a synthetic Assembly constituency was declared on 4 May 2026. Compute the last date
+      for an election petition and set out the threshold note.
+    must:
+      - computes the period from the given dates with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: regulatory-appeal-planner-date-mismatch
+    skill: regulatory-appeal-planner
+    kind: gate
+    prompt: >
+      A synthetic sector regulator imposed a penalty on our client by an order received on 20 August 2026.
+      Today is 5 October 2026. We received it about 20 days ago. Plan the appeal.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: regulatory-appeal-planner-date-calc
+    skill: regulatory-appeal-planner
+    kind: output
+    prompt: >
+      A synthetic sector regulator imposed a penalty on our client by an order received on 20 August 2026.
+      Compute the appeal deadline and the outer limit for condonation, and plan the appeal.
+    must:
+      - computes the period from the given dates with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note

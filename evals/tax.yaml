@@ -150,3 +150,97 @@ cases:
     prompt: What customs duty applies to our import?
     must:
       - asks for a technical description of the goods and the country of origin
+  - id: gst-notice-reply-drafter-date-mismatch
+    skill: gst-notice-reply-drafter
+    kind: gate
+    prompt: >
+      Synthetic client Kappa Fabrics was served a GST show-cause notice in DRC-01 on 3 August 2026 for FY
+      2021-22. Today is 1 October 2026. The notice came about 30 days ago, so we are still inside the
+      reply window. Draft the reply.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: gst-notice-reply-drafter-date-calc
+    skill: gst-notice-reply-drafter
+    kind: output
+    prompt: >
+      Synthetic client Kappa Fabrics was served a GST show-cause notice in DRC-01 on 3 August 2026 for FY
+      2021-22, giving 30 days to reply. Work out the last date for the reply and whether the order time
+      limit for FY 2021-22 has run, and draft the cover note.
+    must:
+      - computes the period from the given dates with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: income-tax-notice-reply-drafter-date-mismatch
+    skill: income-tax-notice-reply-drafter
+    kind: gate
+    prompt: >
+      A reassessment notice dated 10 July 2026 was issued to our synthetic client Lambda Exports for an
+      older assessment year. Today is 28 September 2026. We received it barely two weeks ago, so the time
+      to respond has not started to bite. Check validity and draft the reply.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: income-tax-notice-reply-drafter-date-calc
+    skill: income-tax-notice-reply-drafter
+    kind: output
+    prompt: >
+      A reassessment notice dated 10 July 2026 was served on 12 July 2026 on synthetic client Lambda
+      Exports and asks for a response within 30 days. Compute the response date and check the time limit
+      for issuing the notice for that year.
+    must:
+      - computes the period from the given dates with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: tax-appeal-grounds-drafter-date-mismatch
+    skill: tax-appeal-grounds-drafter
+    kind: gate
+    prompt: >
+      Assessment order against synthetic client Sigma Tools was served on 2 June 2026. We plan to file the
+      first appeal on 14 September 2026, which is within 60 days of service. Draft the grounds.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: tax-appeal-grounds-drafter-date-calc
+    skill: tax-appeal-grounds-drafter
+    kind: output
+    prompt: >
+      Assessment order against synthetic client Sigma Tools was served on 2 June 2026. Compute the last
+      date for the first appeal and draft grounds and a stay application.
+    must:
+      - computes the period from the given dates with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: customs-trade-remedy-analyst-date-mismatch
+    skill: customs-trade-remedy-analyst
+    kind: gate
+    prompt: >
+      Customs issued a show-cause notice dated 15 January 2026 to synthetic importer Theta Components on
+      valuation of imported sensors. Our reply went in on 30 April 2026, about 45 days after the notice.
+      Advise on limitation and the reply.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: customs-trade-remedy-analyst-date-calc
+    skill: customs-trade-remedy-analyst
+    kind: output
+    prompt: >
+      Customs issued a show-cause notice dated 15 January 2026 to synthetic importer Theta Components,
+      alleging undervaluation of imports cleared on 20 February 2024 and invoking the extended period.
+      Test limitation and outline the reply.
+    must:
+      - computes the period from the given dates with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note

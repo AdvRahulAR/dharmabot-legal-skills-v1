@@ -30,6 +30,7 @@ Also useful: earlier correspondence, part-payments, acknowledgments, and the cli
 1. Retrieve the current official text of every provision relied on (Indian Contract Act, CPC, Limitation Act, any special statute) from India Code, and record the version and date.
 2. Analyse the facts: obligations, breach, amount due, interest basis (contractual rate first, otherwise flag that the rate needs a legal basis), and the dispute clause.
 3. Check limitation with `limitation-calculator`. Note whether an acknowledgment or part-payment extends time. Never imply a notice itself stops time running.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 4. For a demand notice, draft: parties and capacity of the advocate; brief facts; documents relied on; breach; amount with a computation table; a realistic compliance period; the remedies the client may pursue; and a without-prejudice settlement line only if instructed.
 5. For a reply, first produce a notice analysis table: allegation · documents · client's version · risk of admission · proposed response. Then draft para-wise replies. Deny specifically, avoid vague "denied in toto" lines, and reserve rights. Do not volunteer facts not needed.
 6. Calibrate tone. Firm and factual, no abuse, no exaggeration.

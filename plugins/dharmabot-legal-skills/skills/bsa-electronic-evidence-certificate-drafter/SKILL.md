@@ -17,7 +17,7 @@ Confirm the proceeding is before an Indian court or tribunal and note whether it
 
 ## Temporal gate
 
-The BSA came into force on 1 July 2024. If evidence is being produced in a proceeding that may still be governed by the Indian Evidence Act (section 65B), run `crpc-bnss-transition-analyst` or ask the advocate which statute the court applies, and draft under that statute.
+The BSA came into force on 1 July 2024. If evidence is being produced in a proceeding that may still be governed by the Indian Evidence Act (believed to be section 65B; confirm against the official text), run `crpc-bnss-transition-analyst` or ask the advocate which statute the court applies, and draft under that statute.
 
 ## Required inputs
 

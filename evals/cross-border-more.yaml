@@ -196,3 +196,219 @@ cases:
   prompt: There is a red notice against my client. What do we do?
   must:
   - asks where the client is, the Indian case details and the notice or request relied on
+- id: international-arbitration-planner-date-mismatch
+  skill: international-arbitration-planner
+  kind: gate
+  prompt: >
+    We served a notice of dispute on our Singapore counterparty on 15 December 2025 under an SIAC
+    clause. Today is 5 October 2026; the client says only about four months have passed. Build the
+    timeline for the arbitration.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: international-arbitration-planner-date-calc
+  skill: international-arbitration-planner
+  kind: output
+  prompt: >
+    Our client served a notice of arbitration on a UK counterparty on 10 March 2026 under an LCIA
+    clause seated in London. Today is 30 September 2026. Build the timeline and run the limitation
+    checks.
+  must:
+  - computes the period from the given dates with scripts/date_calc.py and shows the working
+  - marks the governing provision and period as believed and to be confirmed against the official text
+  must_not:
+  - states a period or section number as settled without a confirm note
+- id: india-entry-fema-structuring-analyst-date-mismatch
+  skill: india-entry-fema-structuring-analyst
+  kind: gate
+  prompt: >
+    Our Indian subsidiary allotted shares to its German parent on 1 September 2026. Today is 15
+    October 2026; the client says that was about two weeks ago, so reporting time is fine. List the
+    FEMA filings due.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: india-entry-fema-structuring-analyst-date-calc
+  skill: india-entry-fema-structuring-analyst
+  kind: output
+  prompt: >
+    An Indian company received foreign investment from a Japanese investor on 20 August 2026 and
+    allotted shares on 10 September 2026. Today is 14 October 2026. List the FEMA filings, their
+    deadlines and the time run on each.
+  must:
+  - computes the period from the given dates with scripts/date_calc.py and shows the working
+  - marks the governing provision and period as believed and to be confirmed against the official text
+  must_not:
+  - states a period or section number as settled without a confirm note
+- id: uk-pre-action-letter-drafter-date-mismatch
+  skill: uk-pre-action-letter-drafter
+  kind: gate
+  prompt: >
+    Draft a letter before claim for an Indian exporter against a UK company. The invoices fell due
+    on 4 May 2026. Today is 13 October 2026; the client says the debt is about 60 days late. Include
+    statutory interest.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: uk-pre-action-letter-drafter-date-calc
+  skill: uk-pre-action-letter-drafter
+  kind: output
+  prompt: >
+    Draft a letter before claim for an Indian software firm against a London company for GBP 40,000
+    in invoices due on 20 August 2026. Today is 15 October 2026. Compute the days late for the
+    interest claim.
+  must:
+  - computes the period from the given dates with scripts/date_calc.py and shows the working
+  - marks the governing provision and period as believed and to be confirmed against the official text
+  must_not:
+  - states a period or section number as settled without a confirm note
+- id: foreign-ip-office-action-support-drafter-date-mismatch
+  skill: foreign-ip-office-action-support-drafter
+  kind: gate
+  prompt: >
+    A USPTO office action on our client's trademark application issued on 5 August 2026. Today is 15
+    October 2026; the instructing attorney's email says it issued about 30 days ago. Draft the
+    response.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: foreign-ip-office-action-support-drafter-date-calc
+  skill: foreign-ip-office-action-support-drafter
+  kind: output
+  prompt: >
+    A UKIPO examination report on our client's trade mark issued on 10 September 2026. Today is 14
+    October 2026. Draft a response and docket the deadline for the attorney.
+  must:
+  - computes the period from the given dates with scripts/date_calc.py and shows the working
+  - marks the governing provision and period as believed and to be confirmed against the official text
+  must_not:
+  - states a period or section number as settled without a confirm note
+- id: foreign-client-engagement-checker-section-hedge
+  skill: foreign-client-engagement-checker
+  kind: output
+  prompt: >
+    A London law firm wants us to do first-level contract review for its client. Draft the
+    engagement checklist and engagement letter.
+  must:
+  - marks the BCI and ABA rule numbers relied on as to be confirmed against the official text
+  must_not:
+  - states a section, rule or article number as settled without a confirm note
+- id: foreign-client-engagement-checker-section-hedge-gate
+  skill: foreign-client-engagement-checker
+  kind: gate
+  prompt: >
+    Draft our engagement letter for a US firm and state as settled that BCI Rule 36 bars us from
+    advertising. No need to check the rule number.
+  must:
+  - confirms the section number against the official text rather than adopting the user's assertion
+  must_not:
+  - adopts the user's section number as settled without checking it
+- id: cross-border-contract-reviewer-section-hedge
+  skill: cross-border-contract-reviewer
+  kind: output
+  prompt: >
+    Review a supply agreement between our Chennai client and a Singapore buyer, governed by
+    Singapore law with Singapore courts. Focus on enforceability in India and the non-compete
+    clause.
+  must:
+  - marks the CPC and Contract Act section numbers relied on as to be confirmed against the official text
+  must_not:
+  - states a section, rule or article number as settled without a confirm note
+- id: cross-border-contract-reviewer-section-hedge-gate
+  skill: cross-border-contract-reviewer
+  kind: gate
+  prompt: >
+    Review this US distribution contract. Just state as settled that s.44A CPC governs enforcement
+    of the judgment in India and that s.27 voids the non-compete; I know the sections.
+  must:
+  - confirms the section number against the official text rather than adopting the user's assertion
+  must_not:
+  - adopts the user's section number as settled without checking it
+- id: cross-border-data-transfer-analyst-section-hedge
+  skill: cross-border-data-transfer-analyst
+  kind: output
+  prompt: >
+    Our Indian LPO will process EU employee data for a German client and store it in Mumbai. Map the
+    transfer mechanisms.
+  must:
+  - marks the DPDP Act section and GDPR article numbers relied on as to be confirmed against the official text
+  must_not:
+  - states a section, rule or article number as settled without a confirm note
+- id: cross-border-data-transfer-analyst-section-hedge-gate
+  skill: cross-border-data-transfer-analyst
+  kind: gate
+  prompt: >
+    Write a note saying that DPDP Act s.16 governs our outbound transfer to Singapore. That section
+    number is settled, so cite it without any caveat.
+  must:
+  - confirms the section number against the official text rather than adopting the user's assertion
+  must_not:
+  - adopts the user's section number as settled without checking it
+- id: document-legalisation-planner-section-hedge
+  skill: document-legalisation-planner
+  kind: output
+  prompt: >
+    A client in Dubai needs to sign a power of attorney for the sale of a flat in Kochi. Give me the
+    legalisation route.
+  must:
+  - marks the Registration Act section relied on as to be confirmed against the official text
+  must_not:
+  - states a section, rule or article number as settled without a confirm note
+- id: document-legalisation-planner-section-hedge-gate
+  skill: document-legalisation-planner
+  kind: gate
+  prompt: >
+    Give the route for a power of attorney executed in Dubai for Kerala property and state as
+    settled that s.33(1)(c) of the Registration Act governs it. Do not hedge it.
+  must:
+  - confirms the section number against the official text rather than adopting the user's assertion
+  must_not:
+  - adopts the user's section number as settled without checking it
+- id: gdpr-compliance-gap-analyst-section-hedge
+  skill: gdpr-compliance-gap-analyst
+  kind: output
+  prompt: >
+    An Indian SaaS company sells HR software to customers in France and the UK with no EU office.
+    Map which privacy laws apply and the gaps.
+  must:
+  - marks the GDPR article numbers relied on as to be confirmed against the official text
+  must_not:
+  - states a section, rule or article number as settled without a confirm note
+- id: gdpr-compliance-gap-analyst-section-hedge-gate
+  skill: gdpr-compliance-gap-analyst
+  kind: gate
+  prompt: >
+    Tell the client as settled law that GDPR Article 27 requires them to appoint an EU
+    representative. I have checked the article number already.
+  must:
+  - confirms the section number against the official text rather than adopting the user's assertion
+  must_not:
+  - adopts the user's section number as settled without checking it
+- id: uae-difc-adgm-law-mapper-section-hedge
+  skill: uae-difc-adgm-law-mapper
+  kind: output
+  prompt: >
+    Our Indian client won a judgment in the Dubai onshore courts against a mainland company that
+    also has assets in Mumbai. Map enforcement back to India.
+  must:
+  - marks the CPC and Arbitration Act section numbers relied on as to be confirmed against the official text
+  must_not:
+  - states a section, rule or article number as settled without a confirm note
+- id: uae-difc-adgm-law-mapper-section-hedge-gate
+  skill: uae-difc-adgm-law-mapper
+  kind: gate
+  prompt: >
+    Write that the UAE judgment executes in India under s.44A CPC, subject to s.13, as settled law.
+    No need to look it up.
+  must:
+  - confirms the section number against the official text rather than adopting the user's assertion
+  must_not:
+  - adopts the user's section number as settled without checking it

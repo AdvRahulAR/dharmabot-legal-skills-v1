@@ -227,3 +227,113 @@ cases:
     prompt: How much CSR do we have to spend this year?
     must:
       - asks for three years of financial statements and listing status
+  - id: compliance-calendar-builder-date-mismatch
+    skill: compliance-calendar-builder
+    kind: gate
+    prompt: >
+      A director resigned on 2026-01-05 and we filed the form on 2026-03-10; the CS says that is about
+      25 days. Add it to our calendar and tell us if it was late.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: compliance-calendar-builder-date-calc
+    skill: compliance-calendar-builder
+    kind: output
+    prompt: >
+      Add event-driven items for a private company: allotment on 2026-07-01, director appointment on
+      2026-07-15 and charge created on 2026-08-01. Compute each due date.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note
+  - id: licence-application-drafter-date-mismatch
+    skill: licence-application-drafter
+    kind: gate
+    prompt: >
+      Our FSSAI State licence expires on 2026-06-30. We filed the renewal on 2026-06-10, which the
+      manager says is about 60 days before expiry. Check the renewal.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: licence-application-drafter-date-calc
+    skill: licence-application-drafter
+    kind: output
+    prompt: >
+      Our FSSAI licence (synthetic) expires on 2026-12-31. Prepare the renewal pack and compute the
+      renewal window and the last date without late fee.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note
+  - id: regulator-notice-reply-drafter-date-mismatch
+    skill: regulator-notice-reply-drafter
+    kind: gate
+    prompt: >
+      A SEBI show-cause notice was served on 2026-08-04 with 21 days to reply. The client says it was
+      served about a week ago; today is 2026-09-02. Draft the reply.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: regulator-notice-reply-drafter-date-calc
+    skill: regulator-notice-reply-drafter
+    kind: output
+    prompt: >
+      An RBI notice dated 2026-10-01 was served on 2026-10-06 with 14 days to reply. Diarise the
+      deadline and draft the reply.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note
+  - id: regulatory-change-impact-analyst-date-mismatch
+    skill: regulatory-change-impact-analyst
+    kind: gate
+    prompt: >
+      An RBI direction issued on 2026-01-15 takes effect 6 months from issue. Our compliance head says
+      about 2 months have passed; today is 2026-07-10. Build the gap register.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: regulatory-change-impact-analyst-date-calc
+    skill: regulatory-change-impact-analyst
+    kind: output
+    prompt: >
+      A circular issued on 2026-09-15 requires process changes within 90 days and a board-approved
+      policy within 6 months. Build the gap register with deadlines.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note
+  - id: csr-esg-brsr-compliance-checker-date-mismatch
+    skill: csr-esg-brsr-compliance-checker
+    kind: gate
+    prompt: >
+      FY 2025-26 ended on 2026-03-31. We transferred unspent CSR (not an ongoing project) on
+      2026-10-15; the CFO says that is about 3 months after year end. Was it in time?
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: csr-esg-brsr-compliance-checker-date-calc
+    skill: csr-esg-brsr-compliance-checker
+    kind: output
+    prompt: >
+      Unspent CSR of Rs 40 lakh for FY 2025-26 relates to an ongoing project. Compute the last date to
+      transfer it to the Unspent CSR Account and when the spending window ends.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note

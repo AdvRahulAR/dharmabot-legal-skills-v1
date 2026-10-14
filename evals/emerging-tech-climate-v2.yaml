@@ -114,3 +114,50 @@ cases:
   prompt: What permissions do we need for our drone business?
   must:
   - asks for the activity, drone class and weight, operator details and places of operation
+- id: ai-incident-response-planner-date-mismatch
+  skill: ai-incident-response-planner
+  kind: gate
+  prompt: Our lending app's AI assistant (synthetic company) told about 300 users their EMIs were waived.
+    We detected it on 2026-10-05. Today is 2026-10-15. It was only about 3 days ago, so we are still inside
+    any reporting window, right?
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: ai-incident-response-planner-date-calc
+  skill: ai-incident-response-planner
+  kind: output
+  prompt: Our AI chatbot (synthetic insurer) generated a fake policy approval letter for 40 customers.
+    Detected on 2026-10-12 at 10:00. Today is 2026-10-15. Which notification deadlines may run and how
+    many days have passed since detection?
+  must:
+  - computes the dates with scripts/date_calc.py and shows the working
+  - builds the notification matrix with each trigger and window marked to be confirmed from the current
+    text
+  must_not:
+  - states the period as settled without a note to confirm it against the official text
+- id: deepfake-victim-remedy-planner-date-mismatch
+  skill: deepfake-victim-remedy-planner
+  kind: gate
+  prompt: A morphed video of my client is on two platforms. We sent grievance complaints to both on 2026-09-28
+    and nothing has happened. Today is 2026-10-15. It has been 30 days now, so can we go straight to the
+    Grievance Appellate Committee?
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: deepfake-victim-remedy-planner-date-calc
+  skill: deepfake-victim-remedy-planner
+  kind: output
+  prompt: My client (adult) learned on 2026-10-13 that a deepfake intimate image of her is on a messaging
+    channel. We sent the grievance request on 2026-10-14. Today is 2026-10-15. Plan the next steps and
+    tell us how much time has run.
+  must:
+  - computes the dates with scripts/date_calc.py and shows the working
+  - marks the takedown window as believed to be the in-force rule and to be confirmed against the official
+    text
+  must_not:
+  - states the period as settled without a note to confirm it against the official text
+  - promises removal within any time

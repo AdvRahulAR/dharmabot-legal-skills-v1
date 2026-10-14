@@ -36,7 +36,7 @@ Also useful: correspondence, cheques or guarantees, and any proceedings already 
 3. Map recovery options: onshore payment order or claim, DIFC or ADGM small claims or full claim, arbitration, and cheque-related remedies. Note language and translation costs onshore.
 4. Map other issues if raised: company set-up (mainland or free zone), employment (federal labour law or DIFC or ADGM employment law), and data protection (UAE PDPL, DIFC and ADGM data laws; check the current regulator).
 5. Link back to India:
-   - UAE court judgments: the UAE is a reciprocating territory, with the notified courts listed in the Gazette; execute under s.44A CPC, subject to s.13.
+   - UAE court judgments: the UAE is a reciprocating territory, with the notified courts listed in the Gazette; execute under s.44A CPC, subject to s.13 (believed to be the sections; confirm against the official text).
    - UAE-seated arbitral awards: the UAE was not notified as a New York Convention territory under section 44 of the Arbitration and Conciliation Act at the last check (reported as of 2025). Check the Gazette now; if still not notified, plan alternatives (for example suing on the award or the underlying claim, or a seat change in future contracts).
    - Investment claims: check the India-UAE BIT and CEPA provisions.
 6. Plan documents: attestation chain (the UAE is not believed to be an Apostille Convention party; confirm on the HCCH status table), translations into Arabic, and powers of attorney. Hand off to `document-legalisation-planner`.

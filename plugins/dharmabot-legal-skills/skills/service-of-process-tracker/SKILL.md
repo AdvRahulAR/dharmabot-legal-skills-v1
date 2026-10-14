@@ -36,6 +36,7 @@ Also useful: email addresses and phone numbers given in the pleadings, the clien
 4. Note where deemed service may apply (for example refusal, or postal service with correct address), and confirm the current rule and case law before relying on it. Tag unread authority `[verify]`.
 5. If ordinary service has genuinely failed, draft an application for substituted service with an affidavit of the attempts made and why the party is avoiding service. Propose the mode (paper publication in a named local newspaper, affixture, email, messaging service) that the court may accept.
 6. Track process fee, steps and deadlines set by the court. Hand dates to `matter-deadline-tracker`.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 
 ## Output
 

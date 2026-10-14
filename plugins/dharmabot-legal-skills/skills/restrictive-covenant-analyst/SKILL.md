@@ -27,7 +27,7 @@ Also useful: the exit date and manner of exit, any garden-leave pay, evidence of
 
 ## Method
 
-1. Retrieve the current official text of section 27 of the Indian Contract Act and its exception for the sale of goodwill. Record the version and date.
+1. Retrieve the current official text of section 27 of the Indian Contract Act and its exception for the sale of goodwill. Record the version and date. Confirm every section, rule and article number used in this skill against that official text before relying on it.
 2. Sort each clause into: in-term exclusivity, post-term non-compete, non-solicitation of clients, non-solicitation of employees, confidentiality, garden leave, and business-sale restraint.
 3. Apply the settled lines, after reading current authority:
    - in-term restraints are generally enforceable if reasonable (for example Niranjan Shankar Golikari v. Century Spinning, Supreme Court, 1967; confirm current treatment);

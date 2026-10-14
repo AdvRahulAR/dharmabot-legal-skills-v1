@@ -33,6 +33,7 @@ Also useful: the borrower's latest financials, related security documents, the l
 5. Check representations that are repeated each period and could create a default from facts outside the borrower's control.
 6. Check negative covenants against the borrower's business plan: further borrowing, dividends, change of control, asset disposals, and group restructuring.
 7. For a default analysis, take each alleged default, quote the clause, apply the facts, and record whether notice and cure steps were followed. Note any interaction with SARFAESI, IBC or wilful defaulter rules.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 8. Build a covenant tracker: covenant, test, frequency, data source, owner, next date, status.
 9. Search for and read current authority on any contested point (for example penalty and liquidated damages under the Contract Act, or MAC clauses). Tag anything not read in full `[verify]`.
 

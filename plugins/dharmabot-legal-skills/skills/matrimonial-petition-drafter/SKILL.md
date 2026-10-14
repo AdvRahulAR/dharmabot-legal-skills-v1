@@ -31,6 +31,7 @@ For a written statement, also the petition and its annexures.
 1. Retrieve the current official text of the governing Act, the Family Courts Act, 1984, the State Family Court rules and the High Court's rules for matrimonial petitions. Record the version and date.
 2. Fix the cause title, court and jurisdiction paragraph, citing the venue provision of the Act (confirm the number).
 3. Plead facts chronologically with dates, places and specific incidents. Cruelty needs instances, not adjectives. Desertion needs the date of separation, the intention to desert and the absence of reasonable cause.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 4. Add the statutory averments the Act requires (no collusion, no condonation, no unnecessary delay, no other proceeding, as applicable).
 5. Add interim prayers: maintenance pendente lite and litigation costs (hand off quantum to `maintenance-petition-drafter`), interim custody and visitation (see `child-custody-planner`), and residence or protection where facts support it.
 6. For a written statement: admit, deny or explain each paragraph; plead specific defences; add any counter-claim the Act allows.

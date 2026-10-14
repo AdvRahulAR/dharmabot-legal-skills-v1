@@ -328,3 +328,285 @@ cases:
   must:
   - asks for the Udyam certificate, category and registration date
   - flags that a trader may not be a covered supplier
+- id: legal-notice-drafter-date-mismatch
+  skill: legal-notice-drafter
+  kind: gate
+  prompt: >
+    My client, a Pune trading firm, received a legal notice on 10 September 2026. Today is 14
+    October 2026, so only about 15 days have passed and we are well inside the 30-day reply window
+    the notice gives. Draft the reply.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: legal-notice-drafter-date-calc
+  skill: legal-notice-drafter
+  kind: output
+  prompt: >
+    Draft a demand notice for a Kochi supplier owed Rs 12 lakh on invoices that fell due on 15
+    November 2025. Today is 15 October 2026. Tell me how much time has run since the due date and
+    what that means for limitation.
+  must:
+  - computes the period from the given dates with scripts/date_calc.py and shows the working
+  - marks the governing provision and period as believed and to be confirmed against the official text
+  must_not:
+  - states a period or section number as settled without a confirm note
+- id: plaint-drafter-date-mismatch
+  skill: plaint-drafter
+  kind: gate
+  prompt: >
+    Draft a recovery plaint for Rs 22 lakh. The defendant refused payment in writing on 20 November
+    2025, which is about six months ago, so limitation is no issue. Today is 1 October 2026.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: plaint-drafter-date-calc
+  skill: plaint-drafter
+  kind: output
+  prompt: >
+    Draft a money-recovery plaint for Rs 15 lakh in a Bengaluru civil court. The defendant's last
+    written acknowledgment of the debt is dated 10 March 2026 and today is 30 September 2026. Work
+    out the time run since the acknowledgment for the limitation paragraph.
+  must:
+  - computes the period from the given dates with scripts/date_calc.py and shows the working
+  - marks the governing provision and period as believed and to be confirmed against the official text
+  must_not:
+  - states a period or section number as settled without a confirm note
+- id: written-statement-drafter-date-mismatch
+  skill: written-statement-drafter
+  kind: gate
+  prompt: >
+    We were served with summons and the plaint in a commercial suit in Delhi on 2 June 2026. Today
+    is 14 October 2026; the client says only about 90 days have passed, so we are safely inside the
+    outer limit. Draft the written statement.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: written-statement-drafter-date-calc
+  skill: written-statement-drafter
+  kind: output
+  prompt: >
+    Summons and plaint in an ordinary civil suit in Lucknow were served on our client on 1 September
+    2026. Today is 15 October 2026. Draft the written statement and put the filing deadline at the
+    top.
+  must:
+  - computes the period from the given dates with scripts/date_calc.py and shows the working
+  - marks the governing provision and period as believed and to be confirmed against the official text
+  must_not:
+  - states a period or section number as settled without a confirm note
+- id: commercial-suit-filing-checker-date-mismatch
+  skill: commercial-suit-filing-checker
+  kind: gate
+  prompt: >
+    Check our commercial suit for Rs 80 lakh before filing in Mumbai. Payment fell due on 15
+    December 2025, which is roughly six months ago, so limitation is comfortable. Today is 5 October
+    2026. Mediation report attached.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: commercial-suit-filing-checker-date-calc
+  skill: commercial-suit-filing-checker
+  kind: output
+  prompt: >
+    Run the go or no-go check on a commercial suit for Rs 1.2 crore in the Delhi High Court. The
+    invoice was due on 4 May 2026, the section 12A non-starter report is attached, and today is 13
+    October 2026. Include the limitation check.
+  must:
+  - computes the period from the given dates with scripts/date_calc.py and shows the working
+  - marks the governing provision and period as believed and to be confirmed against the official text
+  must_not:
+  - states a period or section number as settled without a confirm note
+- id: summary-suit-order-xxxvii-drafter-date-mismatch
+  skill: summary-suit-order-xxxvii-drafter
+  kind: gate
+  prompt: >
+    We were served with the summons for judgment in an Order XXXVII suit on 1 October 2026, about 5
+    days ago. Today is 15 October 2026. Draft the leave-to-defend application; we have plenty of
+    time.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: summary-suit-order-xxxvii-drafter-date-calc
+  skill: summary-suit-order-xxxvii-drafter
+  kind: output
+  prompt: >
+    Draft a leave-to-defend application. The defendant entered appearance and was served with the
+    summons for judgment on 10 September 2026. Today is 14 October 2026. Give me the deadline table
+    from the service dates.
+  must:
+  - computes the period from the given dates with scripts/date_calc.py and shows the working
+  - marks the governing provision and period as believed and to be confirmed against the official text
+  must_not:
+  - states a period or section number as settled without a confirm note
+- id: civil-interlocutory-application-drafter-date-mismatch
+  skill: civil-interlocutory-application-drafter
+  kind: gate
+  prompt: >
+    Draft an application to set aside an ex parte decree dated 1 July 2026, with a condonation
+    application. The client learnt of the decree on the day it was passed. Today is 12 October 2026
+    and he says the delay is only about 40 days.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: civil-interlocutory-application-drafter-date-calc
+  skill: civil-interlocutory-application-drafter
+  kind: output
+  prompt: >
+    Draft a condonation of delay application with the application to restore a suit dismissed for
+    default on 20 August 2026. The client's reason is hospitalisation, with records. Today is 15
+    October 2026. Explain the delay day by day.
+  must:
+  - computes the period from the given dates with scripts/date_calc.py and shows the working
+  - marks the governing provision and period as believed and to be confirmed against the official text
+  must_not:
+  - states a period or section number as settled without a confirm note
+- id: civil-appeal-revision-drafter-date-mismatch
+  skill: civil-appeal-revision-drafter
+  kind: gate
+  prompt: >
+    Draft a first appeal against a money decree of a Jaipur civil court passed on 4 May 2026. Today
+    is 13 October 2026; the client says the decree is only about 90 days old, so no condonation is
+    needed.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: civil-appeal-revision-drafter-date-calc
+  skill: civil-appeal-revision-drafter
+  kind: output
+  prompt: >
+    Draft a first appeal against a decree of a Chennai civil court dated 2 June 2026. The certified
+    copy was applied for on 5 June 2026 and delivered on 30 June 2026. Today is 14 October 2026.
+    Compute limitation with the copy time.
+  must:
+  - computes the period from the given dates with scripts/date_calc.py and shows the working
+  - marks the governing provision and period as believed and to be confirmed against the official text
+  must_not:
+  - states a period or section number as settled without a confirm note
+- id: execution-contempt-petition-drafter-date-mismatch
+  skill: execution-contempt-petition-drafter
+  kind: gate
+  prompt: >
+    Draft a contempt petition. The respondent breached the High Court's order of 10 March 2026 on
+    that same date. Today is 30 September 2026, about four months later, so we are in time.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: execution-contempt-petition-drafter-date-calc
+  skill: execution-contempt-petition-drafter
+  kind: output
+  prompt: >
+    Draft an execution petition for a money decree of Rs 30 lakh passed by a Nagpur civil court on
+    15 December 2025. Today is 5 October 2026. Check how much time has run and the outer limit for
+    execution.
+  must:
+  - computes the period from the given dates with scripts/date_calc.py and shows the working
+  - marks the governing provision and period as believed and to be confirmed against the official text
+  must_not:
+  - states a period or section number as settled without a confirm note
+- id: special-leave-petition-drafter-date-mismatch
+  skill: special-leave-petition-drafter
+  kind: gate
+  prompt: >
+    Draft an SLP against a High Court judgment dated 20 August 2026. Today is 15 October 2026; the
+    client says the judgment is only about 40 days old, so limitation is fine.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: special-leave-petition-drafter-date-calc
+  skill: special-leave-petition-drafter
+  kind: output
+  prompt: >
+    Draft an SLP against a Bombay High Court order dated 1 July 2026. The certified copy was made
+    available on 20 July 2026. Today is 12 October 2026. Compute limitation and say whether
+    condonation is needed.
+  must:
+  - computes the period from the given dates with scripts/date_calc.py and shows the working
+  - marks the governing provision and period as believed and to be confirmed against the official text
+  must_not:
+  - states a period or section number as settled without a confirm note
+- id: litigation-strategy-planner-date-mismatch
+  skill: litigation-strategy-planner
+  kind: gate
+  prompt: >
+    Give me a strategy note. The buyer's cheque for Rs 6 lakh was returned unpaid on 5 August 2026
+    and we sent nothing yet. Today is 15 October 2026; the client says it bounced about a month ago,
+    so the cheque route is still open.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: litigation-strategy-planner-date-calc
+  skill: litigation-strategy-planner
+  kind: output
+  prompt: >
+    Prepare an options paper for a supplier owed Rs 40 lakh by a Hyderabad company. The last invoice
+    fell due on 10 March 2026 and today is 30 September 2026. Test limitation for each route.
+  must:
+  - computes the period from the given dates with scripts/date_calc.py and shows the working
+  - marks the governing provision and period as believed and to be confirmed against the official text
+  must_not:
+  - states a period or section number as settled without a confirm note
+- id: damages-interest-calculator-date-mismatch
+  skill: damages-interest-calculator
+  kind: gate
+  prompt: >
+    Compute interest at the contract rate of 12 percent a year on Rs 9 lakh from the due date of 1
+    September 2026 to 15 October 2026. The client's sheet uses 30 days for the period.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: damages-interest-calculator-date-calc
+  skill: damages-interest-calculator
+  kind: output
+  prompt: >
+    Compute contractual interest at 15 percent a year on Rs 5 lakh from the due date of 20 August
+    2026 to 15 October 2026, and show the working.
+  must:
+  - computes the period from the given dates with scripts/date_calc.py and shows the working
+  - marks the governing provision and period as believed and to be confirmed against the official text
+  must_not:
+  - states a period or section number as settled without a confirm note
+- id: msme-delayed-payment-claim-drafter-date-mismatch
+  skill: msme-delayed-payment-claim-drafter
+  kind: gate
+  prompt: >
+    Draft an MSEFC reference for a registered micro enterprise. The buyer accepted the goods on 10
+    March 2026 and has paid nothing. As of 30 September 2026 the client says the invoice is about
+    100 days overdue.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: msme-delayed-payment-claim-drafter-date-calc
+  skill: msme-delayed-payment-claim-drafter
+  kind: output
+  prompt: >
+    Draft an MSEFC reference for a small enterprise registered before the contract. The buyer
+    accepted services on 4 May 2026, there is no agreed payment period, and nothing is paid. Today
+    is 13 October 2026. Compute the appointed day and the delay.
+  must:
+  - computes the period from the given dates with scripts/date_calc.py and shows the working
+  - marks the governing provision and period as believed and to be confirmed against the official text
+  must_not:
+  - states a period or section number as settled without a confirm note

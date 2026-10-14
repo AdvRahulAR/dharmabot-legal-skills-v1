@@ -41,7 +41,7 @@ Also useful: the client's template or playbook, service levels wanted, IP expect
 8. **Risk.** Warranties, indemnities (IP infringement, data breach, third-party claims), liability cap and exclusions, insurance.
 9. **Term and exit.** Termination for convenience and breach, cure periods, transition assistance, and survival.
 10. **Disputes.** Escalation, then arbitration with a stated seat and rules, or courts. Check that the clause works under `arbitration-clause-reviewer` standards.
-11. **Boilerplate.** Non-solicit of staff (flag section 27 risk), assignment, subcontracting, force majeure, notices, counterparts and e-signature.
+11. **Boilerplate.** Non-solicit of staff (flag section 27 risk; believed to be the section, confirm against the official text), assignment, subcontracting, force majeure, notices, counterparts and e-signature.
 
 ## Output
 

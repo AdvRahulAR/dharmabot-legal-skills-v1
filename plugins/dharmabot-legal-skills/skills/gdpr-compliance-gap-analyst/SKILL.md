@@ -36,7 +36,7 @@ Also useful: privacy notices, cookie banner, DPAs, sub-processor list, records o
 
 1. Retrieve the current official text of the GDPR, the UK GDPR and Data Protection Act 2018 and PECR, the relevant US statutes and regulations, and current EDPB, ICO and state regulator guidance. Record versions and dates. Open `references/foreign-jurisdictions.md` for official sources and transfer notes.
 2. Decide applicability for each law with reasons. If outside scope, say why.
-3. For EU and UK: need for an Article 27 representative, records of processing, lawful basis per purpose (with a legitimate interests assessment where relied on), notices, cookie consent, data subject rights handling, processor terms, security, breach notification and DPIA triggers.
+3. For EU and UK: need for an Article 27 representative (believed to be the article; confirm against the official text), records of processing, lawful basis per purpose (with a legitimate interests assessment where relied on), notices, cookie consent, data subject rights handling, processor terms, security, breach notification and DPIA triggers.
 4. For transfers from the EU and UK to India: there is no adequacy decision for India; check SCCs, the UK IDTA or Addendum, and transfer impact assessments.
 5. For the US: state law notices, opt-outs for sale, sharing and targeted advertising, sensitive data consent, contracts with service providers, HIPAA business associate status, COPPA if children are involved.
 6. Compare against the client's documents and practices. Rate each gap.

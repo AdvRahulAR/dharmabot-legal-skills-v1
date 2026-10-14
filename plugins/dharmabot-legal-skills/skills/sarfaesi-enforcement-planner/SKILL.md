@@ -30,6 +30,7 @@ Also useful: account statements, valuation reports, any reply already sent, pend
 1. Retrieve the current official text of the SARFAESI Act, the Security Interest (Enforcement) Rules, the RBI prudential norms on NPA classification, and any notification on eligible lenders or minimum amounts. Record versions and dates. Section numbers below are for orientation; confirm each.
 2. Check the NPA classification against RBI norms and the account history. A wrong classification is a common defence.
 3. Test the demand notice (believed to be section 13(2)): amount, details of secured assets, service on all borrowers and guarantors, and the notice period.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 4. If the borrower replied, check whether the lender gave reasons for rejecting the objections within the time the Act requires (believed to be section 13(3A)).
 5. Test the possession notice and its publication, and any DM or CMM order (believed to be section 14) for jurisdiction, affidavit content and application of mind.
 6. Test valuation and the sale notice: the rule on the gap between notice and auction, reserve price, publication, and the borrower's right to redeem before sale. Confirm the current redemption position from recent Supreme Court authority.

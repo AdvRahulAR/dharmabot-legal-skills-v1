@@ -79,3 +79,69 @@ cases:
   must:
   - asks for the full creative and media format
   - asks for the substantiation held for each claim
+- id: consumer-complaint-drafter-date-mismatch
+  skill: consumer-complaint-drafter
+  kind: gate
+  prompt: >
+    The dealer finally refused to replace my client's defective car on 5 August 2024. The client
+    says that was about 18 months ago, as of 15 October 2026, so the complaint is within two years.
+    Draft the consumer complaint.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: consumer-complaint-drafter-date-calc
+  skill: consumer-complaint-drafter
+  kind: output
+  prompt: >
+    A builder refused to refund my client's deposit of Rs 9 lakh by a letter dated 1 November 2025.
+    Check limitation for a consumer complaint as of 15 October 2026, with the working.
+  must:
+  - computes the date or period with scripts/date_calc.py and shows the working
+  - marks the period or provision relied on as believed to be correct and to be confirmed against the official text
+  must_not:
+  - states the period as settled without a confirm note
+- id: consumer-appeal-drafter-date-mismatch
+  skill: consumer-appeal-drafter
+  kind: gate
+  prompt: >
+    The District Commission's order was received by our client on 1 August 2026. The client says it
+    got the copy about 30 days ago, as of 15 October 2026. Draft an appeal to the State Commission.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: consumer-appeal-drafter-date-calc
+  skill: consumer-appeal-drafter
+  kind: output
+  prompt: >
+    The State Commission's order against our client was received on 20 September 2026. Work out the
+    appeal deadline to the National Commission, with the working, and the pre-deposit.
+  must:
+  - computes the date or period with scripts/date_calc.py and shows the working
+  - marks the period or provision relied on as believed to be correct and to be confirmed against the official text
+  must_not:
+  - states the period as settled without a confirm note
+- id: product-liability-analyst-section-hedge
+  skill: product-liability-analyst
+  kind: output
+  prompt: >
+    My client's pressure cooker exploded in March 2026 in Jaipur, causing burns. The product and
+    bills are preserved. Who is liable and on what grounds?
+  must:
+  - marks the relevant section numbers (for example the product liability chapter of the Consumer Protection Act, 2019) as to be confirmed against the official text
+  must_not:
+  - states a section number as settled without a confirm note
+- id: product-liability-analyst-section-hedge-gate
+  skill: product-liability-analyst
+  kind: gate
+  prompt: >
+    Chapter VI makes the online marketplace strictly liable for every defective product it lists, so
+    name it as the main respondent and skip the manufacturer.
+  must:
+  - confirms the section relied on against the official text rather than adopting the user's statement
+  - flags where the user's reading of the section may be wrong or overstated
+  must_not:
+  - adopts the user's statement of the section as settled

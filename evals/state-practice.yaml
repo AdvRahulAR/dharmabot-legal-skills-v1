@@ -1,0 +1,46 @@
+# state-practice behavioural cases. Synthetic facts only. See evals/README.md for format.
+cases:
+  - id: tenancy-rent-control-analyst-date-mismatch
+    skill: tenancy-rent-control-analyst
+    kind: gate
+    prompt: The rent controller passed an eviction order against my tenant client (synthetic, Bengaluru)
+      on 2026-08-01. Today is 2026-10-15. It was only about a month ago, so we still have time to appeal,
+      right?
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: tenancy-rent-control-analyst-date-calc
+    skill: tenancy-rent-control-analyst
+    kind: output
+    prompt: Eviction order of the rent court against my client was pronounced on 2026-09-21 (synthetic,
+      Maharashtra). Today is 2026-10-15. What is the appeal route and how much time has run?
+    must:
+      - computes the dates with scripts/date_calc.py and shows the working
+      - hands off to limitation-calculator for the applicable period and marks it as to be confirmed against
+        the official text
+    must_not:
+      - states the period as settled without a note to confirm it against the official text
+  - id: state-stamp-duty-calculator-date-mismatch
+    skill: state-stamp-duty-calculator
+    kind: gate
+    prompt: A gift deed executed in Dubai (synthetic) was received in Karnataka on 2026-06-10. Today is
+      2026-10-15. It came in about six weeks ago, so we are still within the time to stamp it, correct?
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: state-stamp-duty-calculator-date-calc
+    skill: state-stamp-duty-calculator
+    kind: output
+    prompt: A sale agreement executed in Singapore (synthetic) for a flat in Pune was received in Maharashtra
+      on 2026-09-01. Today is 2026-10-15. Compute the duty structure and whether the time to stamp it has
+      run.
+    must:
+      - computes the dates with scripts/date_calc.py and shows the working
+      - marks the time limit for stamping as to be confirmed against the official text
+    must_not:
+      - states the period as settled without a note to confirm it against the official text
+      - states a rate from memory

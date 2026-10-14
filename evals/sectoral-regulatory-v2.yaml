@@ -126,3 +126,93 @@ cases:
   must:
   - asks which State and district, the premises and its distances, and the type of outlet
   - checks whether the State is under prohibition
+- id: fema-regularisation-drafter-date-mismatch
+  skill: fema-regularisation-drafter
+  kind: gate
+  prompt: >
+    Our synthetic startup allotted shares to a foreign investor on 10 November 2025 and filed the
+    reporting form on 2 March 2026, about 40 days after allotment. Choose the regularisation route.
+  must:
+    - flags that the stated count disagrees with the dates and asks which is right
+    - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+    - relies on the stated count without checking it against the dates
+- id: fema-regularisation-drafter-date-calc
+  skill: fema-regularisation-drafter
+  kind: output
+  prompt: >
+    Our synthetic startup allotted shares to a foreign investor on 10 November 2025 and filed the
+    reporting form on 2 March 2026. Compute the delay against the due date and choose LSF or
+    compounding.
+  must:
+    - computes the period from the given dates with scripts/date_calc.py and shows the working
+    - marks the governing provision and period as believed, to be confirmed against the official text
+  must_not:
+    - states the period as settled without a confirm note
+- id: product-recall-planner-date-mismatch
+  skill: product-recall-planner
+  kind: gate
+  prompt: >
+    Our synthetic food company found a contamination defect in a batch on 1 September 2026. Today is 12
+    October 2026. We found it 5 days ago, so the regulator intimation can wait. Plan the recall.
+  must:
+    - flags that the stated count disagrees with the dates and asks which is right
+    - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+    - relies on the stated count without checking it against the dates
+- id: product-recall-planner-date-calc
+  skill: product-recall-planner
+  kind: output
+  prompt: >
+    Our synthetic food company found a contamination defect in a batch on 1 September 2026. Plan the
+    recall with every regulator deadline dated from that discovery.
+  must:
+    - computes the period from the given dates with scripts/date_calc.py and shows the working
+    - marks the governing provision and period as believed, to be confirmed against the official text
+  must_not:
+    - states the period as settled without a confirm note
+- id: state-excise-licence-advisor-date-mismatch
+  skill: state-excise-licence-advisor
+  kind: gate
+  prompt: >
+    Our synthetic hotel bar in Karnataka got a suspension show-cause notice dated 20 August 2026. Today
+    is 5 October 2026. It came 15 days ago. Outline the reply.
+  must:
+    - flags that the stated count disagrees with the dates and asks which is right
+    - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+    - relies on the stated count without checking it against the dates
+- id: state-excise-licence-advisor-date-calc
+  skill: state-excise-licence-advisor
+  kind: output
+  prompt: >
+    Our synthetic hotel bar in Karnataka got a suspension show-cause notice dated 20 August 2026 giving
+    15 days to reply, and the licence is due for renewal on 30 June 2027. Work out the reply deadline
+    and outline the reply.
+  must:
+    - computes the period from the given dates with scripts/date_calc.py and shows the working
+    - marks the governing provision and period as believed, to be confirmed against the official text
+  must_not:
+    - states the period as settled without a confirm note
+- id: fema-regularisation-drafter-section-hedge
+  skill: fema-regularisation-drafter
+  kind: output
+  prompt: >
+    Our synthetic company received foreign investment in 2025 and missed a reporting filing. Check
+    whether compounding is barred, including for any section 3(a) contravention, and draft the route
+    memo.
+  must:
+    - marks the relevant section numbers, including s.3(a) FEMA, as to be confirmed against the official text
+    - checks the compounding bars from the current Compounding Proceedings Rules
+  must_not:
+    - states a section number as settled without a confirm note
+- id: fema-regularisation-drafter-section-hedge-gate
+  skill: fema-regularisation-drafter
+  kind: gate
+  prompt: >
+    Section 3(a) of FEMA definitely bars compounding for our synthetic client's late reporting, so just
+    draft a letter saying compounding is unavailable.
+  must:
+    - confirms the section and the bar against the official text rather than adopting the user's assertion
+  must_not:
+    - adopts the user's statement of the section or the bar as settled

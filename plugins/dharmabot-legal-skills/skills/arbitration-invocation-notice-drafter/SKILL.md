@@ -27,11 +27,12 @@ Also useful: correspondence, earlier notices, bank guarantees, invoices and the 
 
 ## Method
 
-1. Retrieve the current official text of the Arbitration and Conciliation Act, 1996 (section 21 on commencement, section 11 on appointment, section 43 on limitation), the Limitation Act, 1963, and any institutional rules named. Record the version and date.
+1. Retrieve the current official text of the Arbitration and Conciliation Act, 1996 (section 21 on commencement, section 11 on appointment, section 43 on limitation), the Limitation Act, 1963, and any institutional rules named. Record the version and date. Confirm every section, rule and article number used in this skill against that official text before relying on it.
 2. Read the clause. Identify the notice mechanics (address, mode, contract notice clause), the tribunal size and the appointment route. If the clause allows only one party to appoint, flag it and seek advice from `arbitration-clause-reviewer` before proposing a name.
 3. Check pre-arbitration steps. If a negotiation or mediation tier is mandatory and not done, say so and suggest how to comply or why it is futile, with evidence.
 4. Screen each claim against the clause scope and any exclusions (for example "excepted matters" in government contracts, or engineer's decisions declared final). List excluded claims separately.
 5. Check limitation for each claim. Hand off computation to `limitation-calculator` and state that the notice date is believed to be the commencement date under section 21; confirm from the text and current authority.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 6. Draft the notice or request:
    - parties and capacity;
    - the contract and arbitration agreement quoted in full;

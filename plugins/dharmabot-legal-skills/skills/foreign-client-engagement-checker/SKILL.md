@@ -55,6 +55,6 @@ Also useful: the foreign firm's standard outsourcing or vendor terms, data-prote
 
 ## Guardrails
 
-- Do not advertise or solicit, consistent with BCI Rule 36.
+- Do not advertise or solicit, consistent with BCI Rule 36 (believed to be the rule; confirm against the official text).
 - Do not agree to scope the Indian lawyer cannot lawfully perform.
 - Mark every tax and FEMA point to be confirmed with a chartered accountant where material.

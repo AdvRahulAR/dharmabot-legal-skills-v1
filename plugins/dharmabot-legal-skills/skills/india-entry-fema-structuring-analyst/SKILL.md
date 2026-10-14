@@ -46,6 +46,7 @@ Also useful: existing group structure, IP location, employees, and whether India
    - exit.
 4. **Pricing and instruments.** Apply the pricing guidelines (fair value methods) for issue and transfer of shares, and the rules for convertible notes and other instruments.
 5. **Reporting.** List the FEMA filings (for example on the RBI's FIRMS portal), the deadlines and the documents needed. Retrieve current forms and time limits.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 6. **Outbound (ODI).** For Indian residents or founders setting up abroad, check:
    - whether the investment is in a bona fide business;
    - the financial commitment limits;

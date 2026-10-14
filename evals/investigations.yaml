@@ -108,3 +108,25 @@ cases:
     prompt: Are these redactions fine?
     must:
       - asks for the recipient or forum and the redaction protocol
+  - id: enforcement-summons-response-planner-date-mismatch
+    skill: enforcement-summons-response-planner
+    kind: gate
+    prompt: My client company received a summons dated 12 October 2026 requiring production on 14 October
+      2026. They gave us 10 days, so there is plenty of time. Plan the response.
+    must:
+    - flags that the stated count disagrees with the dates and asks which is right
+    - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+    - relies on the stated count without checking it against the dates
+  - id: enforcement-summons-response-planner-date-calc
+    skill: enforcement-summons-response-planner
+    kind: output
+    prompt: A summons dated 1 October 2026 was received on 5 October 2026 and requires appearance on
+      30 October 2026. Work out the time available and plan the response, including any request for
+      more time.
+    must:
+    - computes the period with scripts/date_calc.py and shows the working
+    - marks the provision under which the summons was issued as believed and to be confirmed against
+      the official text
+    must_not:
+    - states the period or provision as settled without a confirm note

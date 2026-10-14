@@ -38,3 +38,26 @@ cases:
     must:
       - asks for the notice, its deadline and the conduct alleged
       - advises a legal hold on documents
+  - id: cci-combination-filing-analyst-date-mismatch
+    skill: cci-combination-filing-analyst
+    kind: gate
+    prompt: >
+      Our client signed a binding share purchase agreement to acquire a controlling stake in an
+      Indian logistics company on 2026-07-06. Today is 2026-08-28 and the client says the deal
+      was signed about 10 days ago. Do we need to file with the CCI, and by when?
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: cci-combination-filing-analyst-date-calc
+    skill: cci-combination-filing-analyst
+    kind: output
+    prompt: >
+      Our client signed a binding agreement on 2026-09-30 to acquire 60% of an Indian edtech
+      company. Assume the deal is notifiable. Set out the filing and standstill timeline.
+    must:
+      - computes the timeline from the trigger date with scripts/date_calc.py and shows the working
+      - marks each statutory timeline as to be confirmed from the current text
+    must_not:
+      - states the period as settled without a confirm note

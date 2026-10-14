@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+Fixes from live testing. Every legal point added is hedged or tagged [verify] and needs review by an enrolled advocate.
+
+- `bnss-bail-application-drafter` now runs a default-bail gate before drafting any grounds. The gate counts custody from the first remand order, takes the limit from BNSS s.187(3) (both limits are shown where the 60-day or 90-day reading is disputed), and computes the days with `date_calc.py`. If the limit has passed and no charge sheet has been filed, the output leads with a **DEFAULT BAIL MAY HAVE ACCRUED** flag and hands off to `undertrial-release-screener`. The first remand date, charge-sheet status and maximum punishment are now blocking inputs.
+- 137 skills that turn on a time period now compute it from the actual dates with `scripts/date_calc.py`. Where the user's stated count disagrees with the dates, they flag it and ask which is right.
+- `date_calc.py` has moved to `shared/scripts/`. The build now copies it into each skill that lists it under `shared_scripts`. A new `--to` option counts the days elapsed between two dates, both with and without the start day.
+- `foreign-judgment-award-enforcement-analyst` now has two separate tracks: A for foreign court judgments (s.44A and s.13 CPC) and B for foreign arbitral awards (Part II, the s.44 notified countries). It never uses one list to answer a question about the other.
+- Section numbers, thresholds and status claims that were stated as settled are now hedged across the skills.
+- 333 eval cases have been added (972 in total).
+
 ## 0.1.0 (2026-10-14), alpha
 
 First public release. Law as of 14 October 2026. Every skill was reviewed for legal accuracy after drafting; none has yet been signed off by an enrolled advocate.

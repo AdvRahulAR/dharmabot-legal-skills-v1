@@ -34,6 +34,7 @@ Also useful: the draft agreement for sale and allotment letter, brochures and ad
 5. Agreement for sale: compare with the State model and flag deviations; no more than the permitted advance before a registered agreement (confirm the percentage). Hand off detailed review to `builder-buyer-agreement-reviewer`.
 6. Pricing on carpet area as defined in the Act; no sale on super built-up area.
 7. Continuing duties: periodic updates on the Authority's website, annual audited accounts, structural defect liability, formation of the association, conveyance to allottees and the association, and extension of registration before expiry.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 8. Agents: registration of each agent and the promoter's duty to deal only with registered agents.
 9. Put recurring dates into a calendar with `compliance-calendar-builder`.
 

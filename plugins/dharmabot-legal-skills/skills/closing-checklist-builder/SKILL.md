@@ -26,6 +26,7 @@ Turn the transaction documents into one checklist that shows every action, owner
 
 1. Retrieve the current official forms and timelines for each regulatory step in the checklist (MCA forms, FEMA reporting through the RBI portal, CCI notice rules, State stamp rules). Record the version and date. Where the deal has no Indian element, record the equivalent source.
 2. Extract every obligation from the documents, by clause reference:
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
    - conditions precedent (by party, with long-stop date);
    - pre-signing deliverables;
    - closing deliverables from each party;

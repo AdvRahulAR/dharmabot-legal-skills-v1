@@ -35,8 +35,9 @@ Record the date of the agreement, the public announcement trigger and the acquis
    - creeping acquisition limit for holders already above that level, within a financial year, up to the maximum permissible non-public shareholding (confirm figures);
    - acquisition of control, irrespective of shareholding;
    - indirect acquisition, including whether it is "predominant" on the text's tests.
-4. Check exemptions under Regulation 10 (for example inter se transfers among promoters or qualifying parties, certain schemes, rights issues, buy-backs within limits). Note which are automatic with a report and which need a SEBI application under Regulation 11.
+4. Check exemptions under Regulation 10 (believed to be the regulation; confirm against the official text), for example inter se transfers among promoters or qualifying parties, certain schemes, rights issues, buy-backs within limits. Note which are automatic with a report and which need a SEBI application under Regulation 11 (believed to be the regulation; confirm against the official text).
 5. If triggered, outline: offer size, offer price parameters (negotiated price, volume-weighted averages, highest price paid), the public announcement, detailed public statement, draft letter of offer, escrow, and the timeline. Confirm every period from the text.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 6. List continual and event disclosures by the acquirer and the target, including encumbrance disclosures.
 7. Flag interaction with ICDR (preferential allotment), LODR, PIT (trading in UPSI during the deal) and CCI approval.
 

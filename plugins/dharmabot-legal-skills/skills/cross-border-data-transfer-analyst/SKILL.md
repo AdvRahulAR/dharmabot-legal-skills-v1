@@ -30,8 +30,8 @@ Also useful: existing agreements, any security certifications, and sector (banki
 1. Read `references/foreign-jurisdictions.md`, then retrieve the current official text of each law that applies. The DPDP Rules phase in over time, and the UAE PDPL's executive regulations may still be pending; confirm current status.
 2. Draw the data map: flow · data · from · to · purpose · law(s) triggered.
 3. For each flow, decide the mechanism:
-   - **India outbound:** DPDP Act s.16 (transfer is allowed unless the country is restricted by notification) plus any stricter sectoral rule (RBI, SEBI, IRDAI, telecom) and any DPDP Rules conditions in force.
-   - **EU to India:** India has no EU adequacy decision, so use the Standard Contractual Clauses (pick the right module), binding corporate rules, or a narrow Article 49 derogation. Add a transfer impact assessment.
+   - **India outbound:** DPDP Act s.16 (believed to be the section; confirm against the official text; transfer is allowed unless the country is restricted by notification) plus any stricter sectoral rule (RBI, SEBI, IRDAI, telecom) and any DPDP Rules conditions in force.
+   - **EU to India:** India has no EU adequacy decision, so use the Standard Contractual Clauses (pick the right module), binding corporate rules, or a narrow Article 49 derogation (believed to be the GDPR article; confirm against the official text). Add a transfer impact assessment.
    - **UK to India:** the UK IDTA or the UK Addendum to the EU SCCs, with a transfer risk assessment. Check how the Data (Use and Access) Act 2025 has changed the UK transfer test.
    - **UAE:** onshore PDPL; DIFC Data Protection Law 2020; ADGM Data Protection Regulations 2021. Identify which applies by where the entity is established, and check which federal authority now regulates onshore data protection.
    - **US:** identify sector laws (for example health or financial), State privacy laws, and any federal rule restricting bulk sensitive data transfers to countries of concern.

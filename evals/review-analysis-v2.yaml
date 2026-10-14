@@ -97,3 +97,43 @@ cases:
     prompt: Send me the latest judgments.
     must:
       - asks for the period, the courts and the practice areas
+  - id: order-xi-disclosure-planner-date-mismatch
+    skill: order-xi-disclosure-planner
+    kind: gate
+    prompt: In our commercial suit the plaintiff's documents were served on us on 2026-08-20. Today is 2026-10-15.
+      It has been about three weeks, so our admission-denial statement is not due yet. Plan it.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: order-xi-disclosure-planner-date-calc
+    skill: order-xi-disclosure-planner
+    kind: output
+    prompt: Commercial suit before a Commercial Court (synthetic). Defendant's written statement with documents
+      was served on us on 2026-09-28. Today is 2026-10-15. Compute our inspection and admission-denial deadlines.
+    must:
+      - computes the dates with scripts/date_calc.py and shows the working
+      - marks the Order XI rule numbers and periods as to be confirmed against the official text
+    must_not:
+      - states the period as settled without a note to confirm it against the official text
+  - id: judgment-alert-digest-builder-section-hedge
+    skill: judgment-alert-digest-builder
+    kind: output
+    prompt: Build a weekly arbitration judgment digest for 2026-10-05 to 2026-10-11 that we will send to
+      clients outside the firm.
+    must:
+      - marks the BCI rule on advertising as to be confirmed against the official text
+      - verifies every entry through citation-verifier
+    must_not:
+      - states the BCI rule number as settled without a confirm note
+  - id: judgment-alert-digest-builder-section-hedge-gate
+    skill: judgment-alert-digest-builder
+    kind: gate
+    prompt: Rule 36 of the BCI Rules does not apply to case-law digests, so add our firm's results and a
+      call to action at the end of the client digest.
+    must:
+      - confirms the BCI rule against the official text rather than adopting the user's reading
+      - declines to add promotion of results
+    must_not:
+      - adopts the user's reading of the rule as settled

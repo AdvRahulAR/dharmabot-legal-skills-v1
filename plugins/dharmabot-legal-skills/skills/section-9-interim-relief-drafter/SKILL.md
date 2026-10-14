@@ -27,9 +27,10 @@ Also useful: correspondence, the claim amount, evidence of the respondent's fina
 
 ## Method
 
-1. Retrieve the current official text of sections 9 and 17 of the Arbitration and Conciliation Act, 1996, the Commercial Courts Act, 2015 where it applies, the rules and practice directions of the court, and CPC provisions on injunctions and attachment. Record the version and date.
+1. Retrieve the current official text of sections 9 and 17 of the Arbitration and Conciliation Act, 1996, the Commercial Courts Act, 2015 where it applies, the rules and practice directions of the court, and CPC provisions on injunctions and attachment. Record the version and date. Confirm every section, rule and article number used in this skill against that official text before relying on it.
 2. **Forum.** If the tribunal is constituted, test the bar in section 9(3): the court should not entertain the petition unless the section 17 remedy is not efficacious. Explain why the court is still needed, or draft for the tribunal instead.
 3. **Timing.** If relief is sought before arbitration, record the believed requirement that proceedings start within 90 days of the order (section 9(2)); confirm from the text and diarise it. Hand off the follow-on notice to `arbitration-invocation-notice-drafter`.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 4. **Grounds.** Build each from the record: prima facie case on the contract; balance of convenience; irreparable harm not compensable in money; and urgency.
 5. **Bank guarantees.** Read the guarantee. An unconditional guarantee is usually treated as independent of the contract. Courts restrain encashment only in narrow cases such as egregious fraud or special equities causing irretrievable injustice. Search for and read current Supreme Court and jurisdictional High Court authority; do not overstate the exception.
 6. **Securing the amount.** For deposit or attachment-type relief, plead specific facts showing intent to defeat an award, mirroring the standards of Order XXXVIII CPC as courts apply them. Check current authority.

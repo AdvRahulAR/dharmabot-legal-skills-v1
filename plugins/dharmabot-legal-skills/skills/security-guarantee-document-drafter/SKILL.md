@@ -33,6 +33,7 @@ Also useful: board and shareholder resolutions, the company's charge register, d
 4. Draft each document: parties, recitals, secured obligations, charging clause, covenants, enforcement, power of attorney where needed, further assurance, and release.
 5. For guarantees, address co-extensive liability, continuing guarantee, waiver of surety defences on variation and time given to the principal debtor, revocation, and demand mechanics. Note that waivers may be read narrowly; search for and read current authority and tag it `[verify]` if not read in full.
 6. Prepare the perfection checklist: stamping (hand off to `state-stamp-duty-calculator`), registration within time where required, ROC charge filing (hand off to `roc-secretarial-compliance-checker`), CERSAI filing, depository pledge creation, and notices to debtors for receivables.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 7. Check priority against existing charges, statutory first charges and any intercreditor or pari passu arrangement.
 
 ## Output

@@ -54,3 +54,25 @@ cases:
     prompt: I lost some documents. Help me get them back.
     must:
       - asks for each document's type, date, issuer and how it was lost
+  - id: lost-document-reissue-planner-date-mismatch
+    skill: lost-document-reissue-planner
+    kind: gate
+    prompt: My client lodged a request for duplicate share certificates with an unlisted company (synthetic)
+      on 2026-07-01. Today is 2026-10-15. It has been about a month, so the company is not late yet, right?
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: lost-document-reissue-planner-date-calc
+    skill: lost-document-reissue-planner
+    kind: output
+    prompt: Client's share certificates in an unlisted company were destroyed in a flood; the request, indemnity
+      and affidavit reached the company on 2026-09-15. Today is 2026-10-15. Has the company's time to issue
+      duplicates run out?
+    must:
+      - computes the dates with scripts/date_calc.py and shows the working
+      - marks the time limit under the share capital rules as to be confirmed against the official text
+    must_not:
+      - states the period as settled without a note to confirm it against the official text
+      - invents document numbers or fees

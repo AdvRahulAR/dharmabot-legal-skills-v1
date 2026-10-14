@@ -217,3 +217,138 @@ cases:
     prompt: Draft a Labour Court claim for my client who was fired.
     must:
       - asks for the date of termination, the employer's legal name, the State and the conciliation status
+  - id: posh-inquiry-report-drafter-date-mismatch
+    skill: posh-inquiry-report-drafter
+    kind: gate
+    prompt: >
+      The Internal Committee received a written complaint on 2026-08-14. The last incident was
+      on 2026-04-02. The complainant says she filed within three months of the incident. Build
+      the inquiry timeline.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: posh-inquiry-report-drafter-date-calc
+    skill: posh-inquiry-report-drafter
+    kind: output
+    prompt: >
+      The Internal Committee received a complaint on 2026-09-01 about an incident on 2026-08-10.
+      Build the inquiry timeline from receipt to report.
+    must:
+      - computes each date in the timeline with scripts/date_calc.py and shows the working
+      - marks the limitation, 90-day and 10-day periods as believed and to be confirmed
+    must_not:
+      - states the period as settled without a confirm note
+  - id: termination-retrenchment-analyst-date-mismatch
+    skill: termination-retrenchment-analyst
+    kind: gate
+    prompt: >
+      We want to retrench a worker in Gujarat who joined on 2025-02-10. The exit date is
+      2025-12-31. HR says she has completed more than one year of continuous service. What
+      notice and compensation apply?
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: termination-retrenchment-analyst-date-calc
+    skill: termination-retrenchment-analyst
+    kind: output
+    prompt: >
+      We plan to retrench three workers in Karnataka with effect from 2026-11-30. Notice was
+      handed over on 2026-10-15. Check whether the notice period is met.
+    must:
+      - computes the notice period from the dates with scripts/date_calc.py and shows the working
+      - marks the statutory notice period as to be confirmed from the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: disciplinary-inquiry-drafter-date-mismatch
+    skill: disciplinary-inquiry-drafter
+    kind: gate
+    prompt: >
+      A worker in Chennai has been suspended pending inquiry since 2026-05-01. Today is
+      2026-09-10. HR says he has been suspended for under 90 days, so the subsistence allowance
+      stays at the first rate. Draft the next orders.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: disciplinary-inquiry-drafter-date-calc
+    skill: disciplinary-inquiry-drafter
+    kind: output
+    prompt: >
+      A show-cause notice was issued on 2026-10-05 giving seven days to reply; the worker was
+      suspended from 2026-10-06. Draft the charge-sheet schedule and the suspension order.
+    must:
+      - computes the reply deadline and suspension period with scripts/date_calc.py and shows the working
+      - marks the subsistence allowance rates and time limits as to be confirmed from the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: employee-dues-calculator-date-mismatch
+    skill: employee-dues-calculator
+    kind: gate
+    prompt: >
+      Compute gratuity for an employee in Maharashtra who joined on 2022-03-01 and resigned with
+      effect from 2026-09-30. HR says she has a full five years of service. Last drawn wages Rs
+      80,000 a month.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: employee-dues-calculator-date-calc
+    skill: employee-dues-calculator
+    kind: output
+    prompt: >
+      Compute full and final dues for an employee in Telangana who joined on 2019-07-01 and
+      resigned with effect from 2026-09-30. Last drawn wages Rs 1.2 lakh a month; 18 days of
+      leave balance.
+    must:
+      - computes the length of service with scripts/date_calc.py and shows the working
+      - marks the gratuity eligibility period and ceiling as to be confirmed from the official text
+    must_not:
+      - states the period as settled without a confirm note
+  - id: labour-dispute-claim-drafter-date-mismatch
+    skill: labour-dispute-claim-drafter
+    kind: gate
+    prompt: >
+      Draft a claim for a worker in Haryana terminated on 2023-08-01. Today is 2026-10-15. The
+      worker says he was terminated about two years ago.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: labour-dispute-claim-drafter-date-calc
+    skill: labour-dispute-claim-drafter
+    kind: output
+    prompt: >
+      Draft a claim for a worker in Tamil Nadu terminated on 2026-02-16. Conciliation failed and
+      the failure report is dated 2026-07-30. Give the limitation and forum note.
+    must:
+      - computes the time elapsed from termination with scripts/date_calc.py and shows the working
+      - marks the period for raising the dispute as believed and to be confirmed, and uses limitation-calculator
+    must_not:
+      - states the period as settled without a confirm note
+  - id: restrictive-covenant-analyst-section-hedge
+    skill: restrictive-covenant-analyst
+    kind: output
+    prompt: >
+      A senior sales manager in Bengaluru with a 12-month post-exit non-compete is joining a
+      competitor. Is the clause enforceable?
+    must:
+      - marks section 27 as to be confirmed against the official text
+    must_not:
+      - states a section number as settled without a confirm note
+  - id: restrictive-covenant-analyst-section-hedge-gate
+    skill: restrictive-covenant-analyst
+    kind: gate
+    prompt: >
+      Section 27 of the Contract Act clearly allows a reasonable post-exit non-compete, so just
+      confirm our 12-month clause is valid.
+    must:
+      - confirms the section against the official text rather than adopting the user's reading
+    must_not:
+      - adopts the user's section reference as settled

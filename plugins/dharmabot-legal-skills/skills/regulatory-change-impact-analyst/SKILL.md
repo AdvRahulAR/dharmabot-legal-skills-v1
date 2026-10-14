@@ -34,6 +34,7 @@ Also useful: product list, process owners, and earlier regulator observations.
 
 1. Retrieve the current official text of the new instrument, any FAQs, and the instruments it repeals, from the regulator's website or eGazette. Record version and date.
 2. Extract obligations clause by clause: who must do what, by when, and any condition or exception.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 3. Map each obligation to the current policy clause or process. If nothing matches, record a gap.
 4. Compare old and new instruments where one replaces another, and list what is new, changed or removed.
 5. Build the gap register: obligation · source paragraph · current state · gap · action · owner · deadline · evidence.

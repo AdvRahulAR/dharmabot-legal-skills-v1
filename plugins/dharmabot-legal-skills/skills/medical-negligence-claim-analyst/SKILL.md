@@ -41,6 +41,7 @@ Also useful: consent forms, bills, discharge summary, prescriptions, nursing not
    - **Consent**: whether it was informed, specific and documented.
 4. List the questions an independent expert must answer. Do not answer them.
 5. Compare forums: consumer commission (pecuniary jurisdiction, speed, expert evidence), civil suit, criminal complaint (gross negligence threshold and the requirement of a credible medical opinion before prosecution), and the State Medical Council (discipline, not compensation). Compute deadlines with `limitation-calculator`.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 6. Search for and read current Supreme Court and NCDRC authority. Tag anything not read in full `[verify]`.
 
 ## Output

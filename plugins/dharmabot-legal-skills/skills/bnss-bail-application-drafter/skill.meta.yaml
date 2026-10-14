@@ -12,6 +12,8 @@ status: draft
 reviewed_by: pending
 verified_on: null
 hands_off_to:
+- undertrial-release-screener
+- arrest-rights-advisor
 - court-pleading-formatter
 - regional-language-legal-drafter
 - citation-verifier

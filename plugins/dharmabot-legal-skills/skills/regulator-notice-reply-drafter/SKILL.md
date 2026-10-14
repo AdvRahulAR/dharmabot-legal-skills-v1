@@ -30,6 +30,7 @@ Also useful: past correspondence with the regulator, earlier inspection reports,
 
 1. Retrieve the current official text of the statute, regulations and circulars cited in the notice, and the regulator's procedure regulations (for example SEBI adjudication and settlement regulations, RBI compounding guidance). Record version and date.
 2. Diarise the reply deadline. If time is short, draft a request for inspection of documents and extension at once.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 3. List each allegation, the provision invoked, the evidence relied on, and documents not supplied.
 4. Preliminary objections: jurisdiction and power, limitation or unexplained delay, vagueness, non-supply of relied-upon documents, and prejudgment. Search for and read current authority before relying on any; tag anything not read in full `[verify]`.
 5. Merits: reply para by para with facts and documents. Admit only what is undisputed and necessary.

@@ -27,14 +27,15 @@ For a company drawer: the directors and officers in charge, and their roles. For
 
 ## Method
 
-1. Retrieve the current official text of NI Act ss.138 to 148, s.25 of the Payment and Settlement Systems Act, 2007, any Supreme Court practice directions on s.138 trials, and the relevant court's rules. Record source and date.
+1. Retrieve the current official text of NI Act ss.138 to 148, s.25 of the Payment and Settlement Systems Act, 2007 (believed to be the relevant sections; confirm each number against the official text), any Supreme Court practice directions on s.138 trials, and the relevant court's rules. Record source and date.
 2. Check the ingredients: legally enforceable debt, presentation within validity, dishonour for a covered reason, notice within the statutory period from receiving information of return (believed 30 days; confirm), failure to pay within the payment window (believed 15 days from receipt of notice; confirm).
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 3. Draft the notice: cheque details, return reason, demand for the cheque amount, addresses for all drawers and company officers, and modes of service with proof.
 4. Compute the complaint deadline (believed one month from the cause of action; confirm) and flag any delay needing condonation.
-5. For companies, plead the role of each director under s.141 specifically. Do not array non-executive or independent directors without material.
+5. For companies, plead the role of each director under s.141 (believed to be the section; confirm against the official text) specifically. Do not array non-executive or independent directors without material.
 6. Draft the complaint with the verification affidavit, list of documents and witness list. Note the court fee with `state-court-fee-calculator` where the State charges ad valorem.
-7. Draft an interim compensation application under s.143A and, at appeal, a deposit application under s.148, with the percentages confirmed from the text.
-8. Flag defences: security cheque, time-barred debt, no liability, material alteration, notice defects, stop-payment, and the presumption under s.139 and its rebuttal. Search for and read current authority; tag anything unread `[verify]`.
+7. Draft an interim compensation application under s.143A and, at appeal, a deposit application under s.148, with the section numbers and percentages confirmed from the official text.
+8. Flag defences: security cheque, time-barred debt, no liability, material alteration, notice defects, stop-payment, and the presumption under s.139 (believed to be the section; confirm against the official text) and its rebuttal. Search for and read current authority; tag anything unread `[verify]`.
 
 ## Output
 

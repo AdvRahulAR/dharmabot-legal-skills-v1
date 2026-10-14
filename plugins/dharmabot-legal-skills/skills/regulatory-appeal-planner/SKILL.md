@@ -30,6 +30,7 @@ Also useful: the show cause notice and reply, hearing record, documents relied o
 1. Retrieve the current official text of the appeal provision in the governing statute, the tribunal's procedure rules and forms, fee rules, and any pre-deposit provision. Record source and date. Confirm each section number.
 2. Forum: appeal to a tribunal, then a further appeal (often to the Supreme Court on a question of law). Check whether any intermediate appeal must be used first.
 3. Limitation: compute the period and the maximum condonable delay with `limitation-calculator`. Flag where the statute caps condonation.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 4. Pre-deposit: check whether a deposit is mandatory, the percentage, and whether it can be waived.
 5. Stay: the forum's power to stay, the factors applied, and the urgency. Consider whether to comply under protest pending appeal.
 6. Grounds: breach of natural justice (no hearing, documents withheld, no cross-examination where required), wrong law, findings without evidence, disproportionate penalty, parity with others, and limitation for initiating proceedings.

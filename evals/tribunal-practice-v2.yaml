@@ -57,3 +57,66 @@ cases:
     prompt: Draft an NCLT oppression petition for my client.
     must:
       - asks for the company details, shareholding, acts complained of and documents
+  - id: cestat-appeal-drafter-date-mismatch
+    skill: cestat-appeal-drafter
+    kind: gate
+    prompt: The order-in-appeal was communicated to us on 4 May 2026. Today is 31 July 2026; it has
+      only been 45 days, so limitation is no issue. Draft the CESTAT appeal.
+    must:
+    - flags that the stated count disagrees with the dates and asks which is right
+    - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+    - relies on the stated count without checking it against the dates
+  - id: cestat-appeal-drafter-date-calc
+    skill: cestat-appeal-drafter
+    kind: output
+    prompt: The order-in-original was communicated on 4 May 2026. If the CESTAT appeal period is three
+      months, what is the last date? Then draft the appeal.
+    must:
+    - computes the period with scripts/date_calc.py and shows the working
+    - marks the Customs Act appeal provision and period as believed and to be confirmed against the
+      official text
+    must_not:
+    - states the period or provision as settled without a confirm note
+  - id: sectoral-tribunal-appeal-drafter-date-mismatch
+    skill: sectoral-tribunal-appeal-drafter
+    kind: gate
+    prompt: SEBI's order was received on 16 February 2026 and we plan to file at SAT on 1 June 2026,
+      within 45 days of receipt. Draft the appeal.
+    must:
+    - flags that the stated count disagrees with the dates and asks which is right
+    - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+    - relies on the stated count without checking it against the dates
+  - id: sectoral-tribunal-appeal-drafter-date-calc
+    skill: sectoral-tribunal-appeal-drafter
+    kind: output
+    prompt: A SEBI adjudication order was received on 16 February 2026. Compute the SAT appeal deadline
+      and draft the appeal with a stay application.
+    must:
+    - computes the period with scripts/date_calc.py and shows the working
+    - marks the SEBI Act appeal provision and period as believed and to be confirmed against the official
+      text
+    must_not:
+    - states the period or provision as settled without a confirm note
+  - id: oppression-mismanagement-petition-drafter-date-mismatch
+    skill: oppression-mismanagement-petition-drafter
+    kind: gate
+    prompt: The board allotted shares to dilute my client on 3 November 2025, about four months ago.
+      We are filing on 15 October 2026. Address delay in the petition.
+    must:
+    - flags that the stated count disagrees with the dates and asks which is right
+    - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+    - relies on the stated count without checking it against the dates
+  - id: oppression-mismanagement-petition-drafter-date-calc
+    skill: oppression-mismanagement-petition-drafter
+    kind: output
+    prompt: The impugned allotment was on 3 November 2025 and we are filing on 15 October 2026. Work
+      out the time elapsed and address limitation and delay in the NCLT petition.
+    must:
+    - computes the period with scripts/date_calc.py and shows the working
+    - marks the Companies Act oppression sections and any limitation period as believed and to be confirmed
+      against the official text
+    must_not:
+    - states the period or provision as settled without a confirm note

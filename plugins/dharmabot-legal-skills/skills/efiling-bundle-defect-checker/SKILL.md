@@ -31,6 +31,7 @@ Also useful: the diary or filing number, the date of first filing, the court-fee
 3. Read each registry objection. Classify it: technical (fixable here), substantive (the advocate must decide), fee, or limitation and delay.
 4. Map each objection to the exact fix, the page affected and who does it. Do not alter the text of the pleading.
 5. Find the refiling deadline in the court's rules for curing defects, and flag if a delay in refiling needs a condonation application. Confirm the period from the rules; do not assume it.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 6. Hand court-fee objections to `state-court-fee-calculator` and cause-title or layout objections to `court-pleading-formatter`.
 7. Run a final pass on the corrected bundle: index against pagination, bookmarks open the right page, every annexure is referred to in the pleading, and affidavits are attested and dated.
 

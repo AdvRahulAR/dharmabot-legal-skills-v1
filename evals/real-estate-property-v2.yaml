@@ -18,3 +18,27 @@ cases:
     prompt: Our society is not giving NOC. What can we do?
     must:
       - asks for the State, society registration and bye-laws, and the facts of the refusal
+  - id: cooperative-society-dispute-analyst-date-mismatch
+    skill: cooperative-society-dispute-analyst
+    kind: gate
+    prompt: >
+      My client applied to a Mumbai housing society for transfer of membership on 1 June 2026. The
+      society has not replied. She says 45 days have passed, as of 15 October 2026, and wants to claim
+      deemed membership. Advise.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: cooperative-society-dispute-analyst-date-calc
+    skill: cooperative-society-dispute-analyst
+    kind: output
+    prompt: >
+      A member applied to a Pune housing society for an NOC on 1 August 2026 and the society has not
+      decided it. Work out how long it has been pending as of 15 October 2026, with the working, and
+      test the refusal.
+    must:
+      - computes the date or period with scripts/date_calc.py and shows the working
+      - marks the period or provision relied on as believed to be correct and to be confirmed against the official text
+    must_not:
+      - states the period as settled without a confirm note

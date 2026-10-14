@@ -19,7 +19,7 @@ Confirm the person is seeking services in India and identify the State and distr
 
 Mark as **blocking**: the State and district; the nature of the legal problem in one or two lines; and which eligibility category may apply.
 
-Ask gently, and only as needed, about the categories in section 12 of the Act. Retrieve the current wording and follow it; it is believed to cover:
+Ask gently, and only as needed, about the categories in section 12 of the Act (believed to be the section; confirm against the official text). Retrieve the current wording and follow it; it is believed to cover:
 
 - a member of a Scheduled Caste or Scheduled Tribe;
 - a victim of trafficking in human beings or begar (forced labour);

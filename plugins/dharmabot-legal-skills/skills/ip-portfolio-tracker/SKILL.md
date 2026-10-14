@@ -28,6 +28,7 @@ Also useful: licences, assignments, security interests, pending oppositions and 
 1. Retrieve the current status of each right from the official records (Trade Marks Registry, Patent Office, Design Office, Copyright Office), and the current Rules on renewal and annuity periods and fees. Record the date each record was checked.
 2. Build the tracker row for each right: type · number · mark or title · class or field · owner on record · status · filing and registration dates · next deadline · action.
 3. Compute deadlines from the official dates and the Rules: trademark renewals, patent annuities, statements of working, design renewals, and pending response or opposition deadlines. Confirm each period from the Rules and use `limitation-calculator` where helpful.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 4. Compare the owner on record with the actual owner. Flag gaps: rights in a founder's or former entity's name, unrecorded assignments, name changes after merger, and missing licences.
 5. Flag encumbrances and licences, and any rights at risk (non-use, lapsed, abandoned).
 6. Flag coverage gaps: core brands not filed in key classes, or unregistered logos.

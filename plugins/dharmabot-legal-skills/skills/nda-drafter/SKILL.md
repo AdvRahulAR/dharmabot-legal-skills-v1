@@ -31,7 +31,7 @@ Also useful: the client's template or playbook, the desired term, the counterpar
 
 ## Method
 
-1. Retrieve the current official text of the Indian Contract Act, 1872 (especially section 27 on restraint of trade), the Specific Relief Act, 1963 on injunctions, the DPDP Act, 2023 and Rules, and SEBI insider-trading rules if a listed company is involved. Record the version and date.
+1. Retrieve the current official text of the Indian Contract Act, 1872 (especially section 27 on restraint of trade, believed to be the section; confirm against the official text), the Specific Relief Act, 1963 on injunctions, the DPDP Act, 2023 and Rules, and SEBI insider-trading rules if a listed company is involved. Record the version and date.
 2. **Definition.** Cover information in any form, disclosed before or after signing, marked or reasonably understood as confidential. Avoid "all information" definitions that courts may find too vague.
 3. **Exclusions.** Public domain, prior possession, independent development, lawful receipt from a third party, and compelled disclosure with notice where lawful.
 4. **Use and disclosure.** Limit use to the purpose. Permit disclosure to representatives on a need-to-know basis, with the recipient liable for them.
@@ -39,7 +39,7 @@ Also useful: the client's template or playbook, the desired term, the counterpar
 6. **Return or destruction.** Allow retention of backup copies and copies required by law, still kept confidential.
 7. **Residuals.** Omit by default for the discloser; if the client is the recipient and wants one, draft it narrowly and flag the risk.
 8. **Personal data.** If shared, require processing only for the purpose, reasonable security safeguards, breach notice, and deletion. Hand off a full data processing agreement to `data-processing-agreement-reviewer` if needed.
-9. **Restraints.** Keep non-solicit and non-compete out of the NDA. If the client insists, flag that restraints beyond confidentiality may be void under section 27 and refer to `restrictive-covenant-analyst`.
+9. **Restraints.** Keep non-solicit and non-compete out of the NDA. If the client insists, flag that restraints beyond confidentiality may be void under section 27 (believed to be the section; confirm against the official text) and refer to `restrictive-covenant-analyst`.
 10. **Remedies and disputes.** Injunctive relief without proof of special damage (as an agreed acknowledgement, not a binding bar), governing law, and courts or arbitration. Check that any arbitration clause names a seat.
 11. **Boilerplate.** No licence or obligation to proceed, no warranty, notices, entire agreement, counterparts and electronic signature.
 

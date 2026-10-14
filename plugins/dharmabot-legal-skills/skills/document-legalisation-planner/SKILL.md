@@ -33,7 +33,7 @@ Also useful: the receiving authority's written requirements, deadlines, and the 
 3. **Foreign document for use in India.**
    - From an Apostille country: notarise and apostille there.
    - From the UAE: notarise, then UAE MOFA, then the Indian Mission.
-   - For a power of attorney or deed for Indian property or court use, check s.33(1)(c) of the Registration Act, 1908, which covers authentication of a power of attorney executed abroad (by a notary, court, judge, magistrate, or Indian consul or vice-consul), and the State stamp law's time limit to pay duty after the document arrives in India. Hand off to `state-stamp-duty-calculator`. Some States and sub-registrars have extra format requirements; check them.
+   - For a power of attorney or deed for Indian property or court use, check s.33(1)(c) of the Registration Act, 1908 (believed to be the provision; confirm against the official text), which covers authentication of a power of attorney executed abroad (by a notary, court, judge, magistrate, or Indian consul or vice-consul), and the State stamp law's time limit to pay duty after the document arrives in India. Hand off to `state-stamp-duty-calculator`. Some States and sub-registrars have extra format requirements; check them.
 4. **Translation:** where the receiving authority needs one, specify certified or sworn translation. Hand off checking to `legal-translation-verifier`.
 5. Give the order of steps, the expected documents at each step, and realistic points of failure (wrong signatory, missing State attestation, expired ID, inconsistent names).
 

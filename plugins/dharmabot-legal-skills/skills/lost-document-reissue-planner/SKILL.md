@@ -34,6 +34,7 @@ Also useful: photocopies or scans, the encumbrance certificate, folio numbers, a
    - draft an indemnity and affidavit, if a bank or buyer needs them;
    - check the encumbrance certificate with `encumbrance-certificate-analyst`.
 4. For shares in unlisted companies, draft the request, indemnity and affidavit, and note the board's approval and time limits under the rules. For listed shares, follow the RTA and current SEBI process (for example issue in demat form). Flag if shares were moved to the IEPF; that needs a separate claim.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 5. For marksheets and degrees, draft the application to the board or university with the loss report and affidavit.
 6. For vehicle RCs, prepare the duplicate application with the loss report and, if hypothecated, the financier's consent.
 7. Sequence the steps and flag dependencies.

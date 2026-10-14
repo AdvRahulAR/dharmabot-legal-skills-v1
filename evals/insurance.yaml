@@ -60,3 +60,50 @@ cases:
   must:
   - asks for the age, occupation and proof of income of the deceased, the dependants and the accident
     date and place
+- id: insurance-claim-repudiation-analyst-date-mismatch
+  skill: insurance-claim-repudiation-analyst
+  kind: gate
+  prompt: >
+    The health insurer repudiated my client's claim by a letter dated 10 January 2026. The client
+    says it was rejected about 6 months ago, as of 15 October 2026, and wants to go to the
+    Ombudsman. Analyse and choose the forum.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: insurance-claim-repudiation-analyst-date-calc
+  skill: insurance-claim-repudiation-analyst
+  kind: output
+  prompt: >
+    A health policy started on 1 April 2022 and was renewed without a break; the claim for a
+    hospitalisation on 5 August 2026 was repudiated for non-disclosure on 1 September 2026. Work out
+    how long the policy had run at the date of admission, and the Ombudsman deadline, with the
+    working.
+  must:
+  - computes the date or period with scripts/date_calc.py and shows the working
+  - marks the period or provision relied on as believed to be correct and to be confirmed against the official text
+  must_not:
+  - states the period as settled without a confirm note
+- id: mact-claim-petition-drafter-date-mismatch
+  skill: mact-claim-petition-drafter
+  kind: gate
+  prompt: >
+    My client was injured in a road accident on 2 February 2026. She says it happened about 4 months
+    ago, as of 15 October 2026, so the claim is within six months. Draft the MACT claim petition.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: mact-claim-petition-drafter-date-calc
+  skill: mact-claim-petition-drafter
+  kind: output
+  prompt: >
+    A fatal road accident occurred on 20 July 2026. Check the limitation for a MACT claim petition
+    as of 15 October 2026, with the working.
+  must:
+  - computes the date or period with scripts/date_calc.py and shows the working
+  - marks the period or provision relied on as believed to be correct and to be confirmed against the official text
+  must_not:
+  - states the period as settled without a confirm note

@@ -30,10 +30,11 @@ Also useful: correspondence, acknowledgements of debt, any dispute raised by the
 1. Retrieve the current official text of the Practice Direction on Pre-Action Conduct and Protocols, any specific protocol that may apply, the relevant CPR parts, and, for interest, the Late Payment of Commercial Debts (Interest) Act 1998 and current base rate. Record versions and dates. Open `references/foreign-jurisdictions.md` for UK sources and the India enforcement position.
 2. Choose the protocol. The Pre-Action Protocol for Debt Claims is believed to apply where the debtor is an individual (including a sole trader); for a company debtor, the general Practice Direction usually applies. The solicitor confirms.
 3. Draft the letter before claim: parties; the basis of the claim; a clear summary of facts; what is claimed and how it is calculated (principal, contractual or statutory interest, compensation); key documents enclosed or offered; a reasonable response period; the ADR invitation; and the consequences of non-response.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 4. For a response, address each allegation: admitted, denied with reasons, or not known, and list documents relied on.
 5. Draft any without-prejudice letter separately, clearly marked, so it is not mixed with open correspondence.
 6. Add a one-page claim summary for the solicitor: chronology, evidence, limitation (to be confirmed), likely defences, and enforcement options.
-7. Add an India note: the United Kingdom is a reciprocating territory, so an English superior court money judgment may be executed in India under s.44A CPC, subject to s.13 CPC. Hand off detail to `foreign-judgment-award-enforcement-analyst`.
+7. Add an India note: the United Kingdom is believed to be a reciprocating territory (confirm from the current Gazette notification [verify]), so an English superior court money judgment may be executed in India under s.44A CPC, subject to s.13 CPC (believed to be the sections; confirm against the official text). Hand off detail to `foreign-judgment-award-enforcement-analyst`.
 
 ## Output
 

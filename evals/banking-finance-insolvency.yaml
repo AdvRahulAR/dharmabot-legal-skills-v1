@@ -241,3 +241,252 @@ cases:
     must:
       - asks for exact pronouncement, upload and copy dates
       - flags that the appeal may be beyond the condonable period
+  - id: facility-agreement-reviewer-date-mismatch
+    skill: facility-agreement-reviewer
+    kind: gate
+    prompt: >
+      The lender sent a notice of covenant breach on 2026-03-02 with a 30-day cure period. Our client
+      cured on 2026-04-15, which the CFO says was about 30 days after the notice. Has an event of
+      default occurred?
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: facility-agreement-reviewer-date-calc
+    skill: facility-agreement-reviewer
+    kind: output
+    prompt: >
+      The lender served a notice of financial covenant breach on 2026-05-11 and the agreement gives a
+      30-day cure period. The borrower cured on 2026-06-12. Was the cure in time?
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note
+  - id: security-guarantee-document-drafter-date-mismatch
+    skill: security-guarantee-document-drafter
+    kind: gate
+    prompt: >
+      A company created a mortgage by deposit of title deeds on 2026-01-12 and filed the charge on
+      2026-03-30. The CS says it was filed about 25 days after creation. Prepare the perfection
+      checklist.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: security-guarantee-document-drafter-date-calc
+    skill: security-guarantee-document-drafter
+    kind: output
+    prompt: >
+      A company executed a hypothecation deed on 2026-08-04. Prepare the perfection checklist with
+      computed last dates for charge registration and CERSAI filing.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note
+  - id: sarfaesi-enforcement-planner-date-mismatch
+    skill: sarfaesi-enforcement-planner
+    kind: gate
+    prompt: >
+      The bank's demand notice was served on 2026-02-14 and it took symbolic possession on 2026-03-20.
+      The borrower says possession came about 70 days after the notice. What are the borrower's
+      options?
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: sarfaesi-enforcement-planner-date-calc
+    skill: sarfaesi-enforcement-planner
+    kind: output
+    prompt: >
+      Demand notice served on 2026-04-06; the borrower objected on 2026-05-01 and the bank has not
+      replied. A possession notice is threatened. Map the stages and deadlines.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note
+  - id: drt-application-drafter-date-mismatch
+    skill: drt-application-drafter
+    kind: gate
+    prompt: >
+      The bank took physical possession on 2026-06-02. We want to file a securitisation application;
+      the client says it has been about 20 days. Today is 2026-08-05.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: drt-application-drafter-date-calc
+    skill: drt-application-drafter
+    kind: output
+    prompt: >
+      The bank took possession on 2026-07-28 and published a sale notice on 2026-09-01. Draft a
+      securitisation application and compute limitation.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note
+  - id: one-time-settlement-proposal-drafter-date-mismatch
+    skill: one-time-settlement-proposal-drafter
+    kind: gate
+    prompt: >
+      The bank's wilful defaulter show-cause notice was received on 2026-04-03 with 15 days to reply.
+      Today is 2026-05-10 and the borrower says about 10 days have passed. Draft the reply.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: one-time-settlement-proposal-drafter-date-calc
+    skill: one-time-settlement-proposal-drafter
+    kind: output
+    prompt: >
+      A show-cause notice on fraud classification was received on 2026-09-07 with 21 days to reply.
+      Draft the reply and give the last date.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note
+  - id: ibc-application-drafter-date-mismatch
+    skill: ibc-application-drafter
+    kind: gate
+    prompt: >
+      Operational creditor: an invoice of Rs 18 lakh fell due on 2023-01-10 and is unpaid. We sent a
+      demand notice on 2026-04-01. The client says the default is about 2 years old. Draft the
+      application.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: ibc-application-drafter-date-calc
+    skill: ibc-application-drafter
+    kind: output
+    prompt: >
+      Financial creditor: default on 2024-03-15, acknowledgment in a balance sheet signed on
+      2025-09-30. Compute limitation for an application to be filed on 2026-10-20.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note
+  - id: cirp-ppirp-timeline-checker-date-mismatch
+    skill: cirp-ppirp-timeline-checker
+    kind: gate
+    prompt: >
+      The CIRP admission order was pronounced on 2025-11-03. The RP says the process has run about 120
+      days as of 2026-06-30. Check the timeline.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: cirp-ppirp-timeline-checker-date-calc
+    skill: cirp-ppirp-timeline-checker
+    kind: output
+    prompt: >
+      Admission order pronounced on 2026-03-02 and uploaded on 2026-03-05. Build the CIRP timeline
+      with computed dates.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note
+  - id: insolvency-claim-drafter-date-mismatch
+    skill: insolvency-claim-drafter
+    kind: gate
+    prompt: >
+      The public announcement was made on 2026-05-06. We are filing our claim on 2026-07-01; the
+      client says it has been about 3 weeks since the announcement. Prepare the claim.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: insolvency-claim-drafter-date-calc
+    skill: insolvency-claim-drafter
+    kind: output
+    prompt: >
+      Operational creditor claim: invoice of Rs 18 lakh due on 2025-11-20, contractual interest 12% a
+      year, insolvency commencement date 2026-04-15. Compute the claim with interest to the
+      commencement date.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note
+  - id: avoidance-transaction-analyst-date-mismatch
+    skill: avoidance-transaction-analyst
+    kind: gate
+    prompt: >
+      The insolvency commencement date is 2026-02-01. A payment to a related party was made on
+      2025-01-15; the RP says that is about 6 months before commencement. Screen it.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: avoidance-transaction-analyst-date-calc
+    skill: avoidance-transaction-analyst
+    kind: output
+    prompt: >
+      Insolvency commencement date 2026-06-10. Screen a transfer on 2025-11-01 to an unrelated
+      supplier and one on 2024-09-01 to a promoter's company. Compute the look-back windows.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note
+  - id: liquidation-waterfall-calculator-date-mismatch
+    skill: liquidation-waterfall-calculator
+    kind: gate
+    prompt: >
+      Liquidation commenced on 2026-03-01. Workmen's wages are unpaid from 2023-12-01; the liquidator
+      says that is about 12 months of dues before commencement. Run the waterfall on Rs 2 crore
+      available.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: liquidation-waterfall-calculator-date-calc
+    skill: liquidation-waterfall-calculator
+    kind: output
+    prompt: >
+      Liquidation commencement date 2026-05-15. Employees' salaries are unpaid from 2025-01-01. Rs 3
+      crore is available (synthetic claims attached). Compute which months fall within the priority
+      period and run the waterfall.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note
+  - id: nclt-nclat-appeal-drafter-date-mismatch
+    skill: nclt-nclat-appeal-drafter
+    kind: gate
+    prompt: >
+      The NCLT order was pronounced on 2026-07-01 and uploaded on 2026-07-03. We want to appeal under
+      the IBC; the client says about 15 days have passed. Today is 2026-08-20.
+    must:
+      - flags that the stated count disagrees with the dates and asks which is right
+      - computes the period with scripts/date_calc.py and shows the working
+    must_not:
+      - relies on the stated count without checking it against the dates
+  - id: nclt-nclat-appeal-drafter-date-calc
+    skill: nclt-nclat-appeal-drafter
+    kind: output
+    prompt: >
+      The NCLT admitted a petition by order pronounced on 2026-09-01; certified copy applied for on
+      2026-09-03 and received on 2026-09-12. Compute limitation for an NCLAT appeal.
+    must:
+      - computes each period with scripts/date_calc.py and shows the working
+      - marks the governing provision and period as believed, to be confirmed against the official text
+    must_not:
+      - states the period or deadline as settled without a confirm note

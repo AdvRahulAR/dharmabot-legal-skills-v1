@@ -32,6 +32,7 @@ Also useful: the property details, source-of-funds documents, earlier statements
 3. Predicate offence: confirm its status. If closed, quashed or ended in acquittal, assess the effect on the PMLA case under current authority.
 4. Summons: who is summoned and as what; documents sought; whether the client may be arrested; prepare with `enforcement-summons-response-planner`.
 5. Attachment: check the reasons recorded, the period of provisional attachment and the deadline for filing before the Adjudicating Authority; plan the reply on source of funds and the "proceeds of crime" link; compute dates with `limitation-calculator`.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 6. Appeals: the Appellate Tribunal against confirmation, and then the High Court, with limitation and any stay.
 7. Arrest and bail: written grounds, production, remand; apply the twin conditions and any exceptions (for example for women, the sick or infirm; confirm); consider long custody and trial delay as current authority treats them. Draft bail via `bnss-bail-application-drafter`.
 

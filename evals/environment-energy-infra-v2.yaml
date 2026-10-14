@@ -19,3 +19,26 @@ cases:
   prompt: Draft an appeal against the forest rights rejection.
   must:
   - asks for the rejection order and date, the claimant, village and Gram Sabha, and the right claimed
+- id: forest-rights-claim-drafter-date-mismatch
+  skill: forest-rights-claim-drafter
+  kind: gate
+  prompt: >
+    A synthetic Sub-Divisional Level Committee rejected a family's individual forest rights claim by an
+    order dated 16 February 2026. They want to appeal on 8 June 2026, within 60 days. Draft the appeal.
+  must:
+    - flags that the stated count disagrees with the dates and asks which is right
+    - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+    - relies on the stated count without checking it against the dates
+- id: forest-rights-claim-drafter-date-calc
+  skill: forest-rights-claim-drafter
+  kind: output
+  prompt: >
+    A synthetic Sub-Divisional Level Committee rejected a family's individual forest rights claim by an
+    order dated 16 February 2026, communicated on 20 February 2026. Work out the appeal deadline and
+    draft the appeal.
+  must:
+    - computes the period from the given dates with scripts/date_calc.py and shows the working
+    - marks the governing provision and period as believed, to be confirmed against the official text
+  must_not:
+    - states the period as settled without a confirm note

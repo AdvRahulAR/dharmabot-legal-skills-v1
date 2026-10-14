@@ -391,3 +391,130 @@ cases:
     must:
       - asks for the date and terms of the loan, any acknowledgment or part payment
       - flags if more than one article could apply instead of choosing
+
+  # --- default bail, date mismatch and enforcement tracks (fix/default-bail-and-dates) ---
+  - id: bail-default-bail-accrued
+    skill: bnss-bail-application-drafter
+    kind: output
+    prompt: >
+      Draft a regular bail application before the Sessions Court, Kozhikode. My client was
+      arrested on 3 August 2026 and first remanded to judicial custody on 4 August 2026 for
+      cheating under the BNS. Today is 15 October 2026. The charge sheet has not been filed.
+      FIR attached.
+    fixtures: [synthetic FIR text]
+    must:
+      - leads with a DEFAULT BAIL MAY HAVE ACCRUED flag above any draft
+      - counts custody from the first remand order and asks the user to confirm the start date
+      - computes the days with scripts/date_calc.py and shows the working, with and without the start day
+      - takes the limit from s.187(3) BNSS marked as believed and to be confirmed, with [verify]
+      - says the right is generally treated as lost once the charge sheet is filed, so apply immediately
+      - hands off to undertrial-release-screener
+      - hands off to pre-filing-verification-checker
+    must_not:
+      - drafts regular-bail grounds before running the default-bail gate
+      - states the 60-day or 90-day period as settled without a confirm note
+      - states that bail will be granted
+
+  - id: bail-default-bail-close
+    skill: bnss-bail-application-drafter
+    kind: output
+    prompt: >
+      Regular bail for an accused first remanded on 1 September 2026 for criminal breach of
+      trust; no charge sheet yet. Today is 15 October 2026. Magistrate's court, Pune.
+    must:
+      - runs the default-bail gate before drafting grounds
+      - states the date on which the custody limit will run out, computed with scripts/date_calc.py
+      - asks for the maximum punishment of each offence if it is not taken from the official text
+    must_not:
+      - raises the DEFAULT BAIL MAY HAVE ACCRUED flag when the limit has not passed
+
+  - id: bail-date-mismatch
+    skill: bnss-bail-application-drafter
+    kind: gate
+    prompt: >
+      My client has been in custody for 40 days. He was arrested and remanded on 3 August 2026
+      for cheating; today is 15 October 2026. Draft a regular bail application.
+    must:
+      - flags that 40 days disagrees with the dates, which give about 73 days
+      - asks which is right before relying on either
+      - asks whether the charge sheet has been filed
+    must_not:
+      - relies on the stated 40 days
+      - drafts regular-bail grounds without running the default-bail gate
+
+  - id: bail-default-gate-blocking-inputs
+    skill: bnss-bail-application-drafter
+    kind: gate
+    prompt: Draft regular bail for my client in judicial custody in Chennai for an NDPS offence. FIR attached.
+    must:
+      - asks for the date of the first remand order
+      - asks whether the charge sheet has been filed and when
+      - asks for the maximum punishment of each offence and checks whether the NDPS Act extends the period [verify]
+    must_not:
+      - assumes a custody start date
+
+  - id: enforcement-difc-judgment-track-a
+    skill: foreign-judgment-award-enforcement-analyst
+    kind: output
+    prompt: >
+      Our client has a money judgment of the DIFC Courts against a company in Bengaluru, for
+      unpaid invoices under a supply contract. How do we enforce it in India?
+    must:
+      - treats it as a foreign court judgment under track A only
+      - checks the s.44A CPC reciprocating-territory notification and that the DIFC Courts are covered, marked [verify]
+      - notes s.44A covers money decrees only, not taxes, fines or penalties [verify]
+      - tests the s.13 CPC exceptions
+    must_not:
+      - says the UAE not being a notified s.44 Arbitration Act seat affects enforcing the DIFC judgment
+      - applies Part II of the Arbitration and Conciliation Act to the judgment
+
+  - id: enforcement-dubai-award-track-b
+    skill: foreign-judgment-award-enforcement-analyst
+    kind: output
+    prompt: >
+      We won an arbitral award in an arbitration seated in Dubai against an Indian company with
+      assets in Mumbai. Can we enforce the award in India as a foreign award?
+    must:
+      - treats it as a foreign arbitral award under track B only
+      - checks the s.44 Arbitration and Conciliation Act notification list and notes the UAE was not notified at the last check [verify]
+      - explains the alternatives if the seat is not notified, analysing any seat-court judgment separately under track A
+    must_not:
+      - treats the UAE's s.44A CPC reciprocating-territory status as answering whether the award is enforceable under Part II
+
+  - id: enforcement-date-mismatch
+    skill: foreign-judgment-award-enforcement-analyst
+    kind: gate
+    prompt: >
+      The English High Court judgment against our Indian debtor was given on 14 July 2026, about
+      two months ago. Today is 15 October 2026. How long do we have to execute it in India?
+    must:
+      - flags that two months disagrees with the dates, which give about three months
+      - computes periods with scripts/date_calc.py and leaves the article to limitation-calculator
+    must_not:
+      - relies on the stated two months
+
+  - id: limitation-date-mismatch
+    skill: limitation-calculator
+    kind: gate
+    prompt: >
+      The decree was passed on 14 July 2026, so 60 days have gone by. Today is 15 October 2026.
+      Is the first appeal still in time?
+    must:
+      - flags that 60 days disagrees with the dates, which give 93 days excluding the start day
+      - asks which is right before relying on either
+      - shows the script's working
+    must_not:
+      - relies on the stated 60 days
+
+  - id: limitation-elapsed-to
+    skill: limitation-calculator
+    kind: output
+    prompt: >
+      Notice was received on 1 September 2026. How many days have passed as of 15 October 2026,
+      and when does a 60-day period from receipt end?
+    must:
+      - runs scripts/date_calc.py with --to and --period and pastes the working
+      - gives 44 days elapsed with the start day excluded and 31 October 2026 as the last day before any holiday adjustment
+      - says the date was not adjusted for holidays if no list was supplied
+    must_not:
+      - computes the dates by mental arithmetic without the script

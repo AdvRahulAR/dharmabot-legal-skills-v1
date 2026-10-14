@@ -31,6 +31,7 @@ The PIT Regulations have been amended often (including on trading plans and the 
 1. Retrieve the current official text of the PIT Regulations, their schedules and the current SEBI circulars and FAQs on PIT from sebi.gov.in. Record the version and date.
 2. Decide whether the information was UPSI at the trade date: price-sensitive, not generally available, and within the categories listed. Build a timeline: UPSI created, entered in the database, trading window closed, information published.
 3. Test the trade:
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
    - Was the window closed? Was pre-clearance required and obtained?
    - Was it under an approved, disclosed trading plan?
    - Is there a contra-trade within the prohibited period?
@@ -38,7 +39,7 @@ The PIT Regulations have been amended often (including on trading plans and the 
 4. Consider statutory defences the text allows (for example off-market inter se transfers between insiders in possession of the same UPSI, or a trading plan). Apply only those confirmed from the text.
 5. State the company's steps: inquiry under the code, disgorgement of contra-trade profit where the code provides, recording, and reporting violations to the stock exchanges in the prescribed format and time.
 6. For a leak, plan the inquiry: preserve devices and logs, interview in sequence, report to SEBI as the text requires. Hand a larger inquiry to `internal-investigation-planner`.
-7. For code drafting or review, check every mandatory element of Schedule A and Schedule B against the company's documents and list gaps.
+7. For code drafting or review, check every mandatory element of Schedule A and Schedule B (believed to be the schedules; confirm against the official text) against the company's documents and list gaps.
 8. Flag where the individual or company may need advice on SEBI settlement, the informant mechanism or adjudication; that needs separate counsel.
 
 ## Output

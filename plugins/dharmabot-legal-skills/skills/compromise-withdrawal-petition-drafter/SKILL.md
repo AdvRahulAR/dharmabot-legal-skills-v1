@@ -32,7 +32,7 @@ Mark as **blocking**:
 5. State whether the decree is to be in terms of the compromise, and list which terms form part of the decree.
 6. Check any refund of court fee on settlement under the State law and add a prayer if available.
 7. For withdrawal, distinguish abandonment from withdrawal with liberty. State the formal defect or sufficient ground. Warn of the bar on a fresh suit without liberty.
-8. Flag the Rule 3A bar on a separate suit to set aside a compromise decree, so the parties know challenges must go to the same court.
+8. Flag the Rule 3A bar (believed to be Order XXIII Rule 3A; confirm against the official text) on a separate suit to set aside a compromise decree, so the parties know challenges must go to the same court.
 
 ## Output
 

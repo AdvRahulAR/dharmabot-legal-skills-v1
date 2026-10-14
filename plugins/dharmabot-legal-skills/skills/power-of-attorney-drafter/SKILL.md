@@ -34,6 +34,7 @@ Also useful: the title documents for property, case numbers for litigation, bank
 5. Add revocation and ratification clauses. Note that a POA ends on the principal's death or incapacity unless it is coupled with an interest. Flag any request to make it irrevocable and check whether an interest really exists.
 6. Note that a POA is not a conveyance and a GPA-plus-agreement-plus-will does not transfer title (Suraj Lamp and Industries v. State of Haryana, Supreme Court, 2011; confirm current treatment).
 7. Execution plan: in India, notarisation or registration as the State and the use require; abroad, hand off to `document-legalisation-planner`. Hand off stamp figures to `state-stamp-duty-calculator`.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 
 ## Output
 

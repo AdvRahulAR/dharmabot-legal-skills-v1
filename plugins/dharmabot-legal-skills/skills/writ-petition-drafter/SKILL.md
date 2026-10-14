@@ -27,6 +27,7 @@ Also useful: representations made and replies, the governing statute and rules, 
 2. Maintainability: is the respondent State or performing a public function; is there locus; is the dispute mainly about facts that need evidence (unsuitable for writ); is it a contractual dispute with no public law element.
 3. Alternative remedy: identify it and test the exceptions recognised in Whirlpool Corporation v. Registrar of Trade Marks (Supreme Court, 1998), such as violation of natural justice, lack of jurisdiction or a challenge to vires. Confirm current treatment.
 4. Delay: compute time from the cause of action; explain any delay with dates. Use `limitation-calculator` where a statutory appeal period is relevant by analogy.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 5. Choose the writ: certiorari, mandamus, prohibition, habeas corpus or quo warranto, and the precise order sought.
 6. Grounds: illegality (no power, wrong law, irrelevant considerations), irrationality, procedural impropriety (no notice, no hearing, bias, no reasons), proportionality where rights are restricted, legitimate expectation, and discrimination under Article 14. Tie each ground to a document.
 7. Interim relief: prima facie case, balance of convenience, irreparable harm, and urgency for listing.

@@ -28,9 +28,10 @@ Also useful: the client's prior notice and reply, any interim relief needed, and
 
 ## Method
 
-1. Retrieve the current official text of the CPC (Order VI, VII, and the jurisdiction sections), the Commercial Courts Act and its schedule amendments to the CPC, the State court fees and suits valuation law, and the High Court's civil rules. Record the version and date.
+1. Retrieve the current official text of the CPC (Order VI, VII, and the jurisdiction sections), the Commercial Courts Act and its schedule amendments to the CPC, the State court fees and suits valuation law, and the High Court's civil rules. Record the version and date. Confirm every section, order and rule number used in this skill against that text.
 2. Fix jurisdiction in three parts: pecuniary (value against the court's limit as currently notified), territorial (defendant's residence or cause of action), and subject-matter (no statutory bar).
 3. Compute limitation from the right article with `limitation-calculator`. Plead acknowledgments or part-payments that extend time.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 4. Value the suit and compute court fee with `state-court-fee-calculator`. Quantify money claims and interest with `damages-interest-calculator`.
 5. Draft: cause title; numbered paragraphs of material facts (not evidence or law); cause of action and when it arose; jurisdiction; limitation; valuation and court fee; a statement that no other suit is pending on the same cause, if true; reliefs, each specific; verification.
 6. In a commercial suit, add the statement of truth, the documents disclosure affidavit and the s.12A mediation statement or the urgency case.

@@ -37,6 +37,7 @@ Also useful: the other side's likely arguments, the judge's or regulator's known
 3. Read as the judge:
    - is the relief clear and within jurisdiction;
    - is the cause of action and limitation shown;
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
    - are verification, statement of truth and affidavits in proper form;
    - is it too long, repetitive or argumentative where facts are needed.
 4. Read as a regulator, where relevant: disclosures, undertakings and representations that could be used against the client later.

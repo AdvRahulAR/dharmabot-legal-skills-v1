@@ -27,11 +27,18 @@ Also useful: the underlying contract, proof of service in the original proceedin
 
 ## Method
 
-1. Read `references/foreign-jurisdictions.md`.
-2. **Foreign court judgment in India.**
-   - **Reciprocating territory** (for example the UK, Singapore, the UAE): execution as if an Indian decree under s.44A CPC, by filing a certified copy in a District Court, subject to the exceptions in s.13 CPC. Retrieve the current notification and check that the specific court is covered.
+1. Read `references/foreign-jurisdictions.md`, then retrieve the current official text of the provisions used below and the current Gazette notifications. Every section number in this skill is believed to be correct but must be confirmed against the official text.
+2. **Classify the instrument, then use one track only.** Decide whether the client holds a foreign court judgment (track A) or a foreign arbitral award (track B). If the client holds both (for example an award and a seat-court judgment on it), analyse each in its own track and keep the conclusions separate. The s.44A CPC reciprocating-territory list and the s.44 Arbitration Act New York Convention notification list are different. Never use one to answer a question about the other.
+
+### A. Foreign court judgments (CPC s.44A / s.13)
+
+3. **Reciprocating-territory check (s.44A CPC list only).** Retrieve the current s.44A notifications and check that the specific court that gave the judgment is covered, not just the country.
+   - UAE courts, believed to include the DIFC Courts and ADGM Courts, were notified as a reciprocating territory under s.44A (believed January 2020) [verify]. Whether the UAE is a notified seat under s.44 of the Arbitration Act is irrelevant to a UAE court judgment.
+   - s.44A covers money decrees only, not sums payable for taxes, fines or penalties [verify]. Check that the judgment is for a sum of money of the kind covered.
+4. **Route.**
+   - **Reciprocating territory** (for example the UK, Singapore, the UAE): execution as if an Indian decree under s.44A CPC, by filing a certified copy in a District Court, subject to the exceptions in s.13 CPC (sections believed to be as stated; confirm against the official text).
    - **Not a reciprocating territory** (for example the US and EU member States): file a suit on the judgment, or on the original cause of action. The judgment is conclusive only if none of the s.13 exceptions applies.
-3. **Section 13 CPC tests.** Test each exception separately against the record, and look for presumptions under s.14:
+5. **Section 13 CPC tests.** Test each exception separately against the record, and look for presumptions under s.14 (both believed to be the sections; confirm against the official text):
    - competent jurisdiction;
    - decision on the merits (watch default judgments);
    - incorrect view of international law or refusal to recognise Indian law;
@@ -39,17 +46,27 @@ Also useful: the underlying contract, proof of service in the original proceedin
    - fraud;
    - breach of Indian law.
 
-   Search for and read current Supreme Court authority on each test that is in play.
-4. **Foreign arbitral award in India.**
-   - Is the seat in a country notified under s.44 of the Arbitration and Conciliation Act, 1996? If so, apply under Part II, in the High Court with jurisdiction, and test the s.48 grounds for refusal narrowly.
-   - If the seat is not notified (the UAE was not, at the last check), explain the alternatives: a seat-court judgment on the award enforced under s.44A, or a suit. Retrieve current notifications.
-5. **Indian judgment or award abroad.** Outline the likely route in the target country, mark every point for local counsel, and list the documents to prepare. These usually include certified and legalised copies (hand off to `document-legalisation-planner`), translations (hand off to `legal-translation-verifier`), proof of service, and proof of finality.
-6. **Limitation.** Compute the time for each route with `limitation-calculator`, after retrieving the applicable article and current authority.
-7. **Interim protection.** Consider attachment before judgment, or s.9 relief for foreign-seated international commercial arbitrations under the proviso to s.2(2), unless the parties excluded it. Check current authority where both parties are Indian.
+   Search for and read current Supreme Court authority on each test that is in play. Tag anything not read in full `[verify]`.
+6. **Limitation for track A.** Retrieve the applicable article for execution or for a suit on the judgment and current authority, and compute with `limitation-calculator`.
+
+### B. Foreign arbitral awards (Arbitration and Conciliation Act Part II, s.44 notified countries)
+
+7. **Notified-seat check (s.44 New York Convention list only).** Retrieve the current notifications under s.44 of the Arbitration and Conciliation Act, 1996 and check whether the seat of the arbitration is in a notified country. The s.44A CPC list says nothing about this.
+   - The UAE was not a notified s.44 seat at the last check [verify]. Retrieve the current notifications before relying on this.
+8. **Route.**
+   - **Notified seat:** apply under Part II, in the High Court with jurisdiction, and test the s.48 grounds for refusal narrowly (sections believed to be as stated; confirm against the official text).
+   - **Seat not notified:** explain the alternatives: a seat-court judgment on the award enforced under s.44A, or a suit [verify]. If a seat-court judgment is pursued, analyse that judgment separately under track A.
+9. **Limitation for track B.** Retrieve the applicable article and current authority on the time to apply for enforcement of a foreign award, and compute with `limitation-calculator`.
+
+### Common steps
+
+10. **Dates.** Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+11. **Indian judgment or award abroad.** Outline the likely route in the target country, mark every point for local counsel, and list the documents to prepare. These usually include certified and legalised copies (hand off to `document-legalisation-planner`), translations (hand off to `legal-translation-verifier`), proof of service, and proof of finality.
+12. **Interim protection.** Consider attachment before judgment, or s.9 relief for foreign-seated international commercial arbitrations under the proviso to s.2(2) (believed to be the provisions; confirm against the official text), unless the parties excluded it. Check current authority where both parties are Indian [verify].
 
 ## Output
 
-1. The recommended route, with reasons and alternatives.
+1. Which track applies (A, B or both, kept separate), and the recommended route, with reasons and alternatives.
 2. A defence table: ground · facts · assessment · evidence needed.
 3. Forum, documents, steps and timeline.
 4. Points for local counsel abroad.
@@ -57,5 +74,6 @@ Also useful: the underlying contract, proof of service in the original proceedin
 ## Guardrails
 
 - Confirm the reciprocating-territory and New York Convention lists from the Gazette before relying on them.
+- Never use the s.44A CPC reciprocating-territory list to answer a question about an arbitral award, or the s.44 Arbitration Act notification list to answer a question about a court judgment.
 - Never cite a judgment you have not read; tag uncertain authority `[verify]`.
 - Do not advise on foreign law as if qualified there.

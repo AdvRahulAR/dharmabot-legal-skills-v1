@@ -32,6 +32,7 @@ Also useful: market rate evidence, rental values for mesne profits, and mitigati
 3. For each head, state the legal basis and test it. Damages need a causal link, foreseeability and proof of loss; a stipulated sum is a ceiling, and actual loss or a genuine pre-estimate still matters (confirm current Supreme Court treatment). Show mitigation.
 4. Interest: use the contractual rate if there is one. Otherwise state which power the forum has to award interest and that the rate is discretionary; compute alternative scenarios at rates the advocate selects, never one asserted as the legal rate. For MSMED claims, compute compound interest with monthly rests at the multiple of the bank rate the Act sets, using the bank rate for each period, after confirming both from the official text.
 5. Separate pre-suit, pendente lite and future interest periods, and simple from compound.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 6. Show every calculation: amount × rate × days ÷ 365 (or the contract's convention), and running totals. Use a script or spreadsheet for long series and show the input table.
 7. Apply part-payments in the order the contract or law requires, and say which rule was used.
 8. List the evidence needed to prove each head.

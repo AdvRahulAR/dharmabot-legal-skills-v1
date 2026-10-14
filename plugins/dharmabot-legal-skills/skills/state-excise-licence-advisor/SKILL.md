@@ -33,6 +33,7 @@ Also useful: the hotel's star classification, building and fire approvals, trade
 4. List approvals needed before and after the licence: fire, building, trade, FSSAI, police or district collector reports.
 5. Set out fees, security deposit and duty structure from the current notification. Label any estimate.
 6. Renewals and transfers: deadlines, transfer fees, change of partners or directors, and change of premises.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 7. **Suspension or cancellation notice.** Identify the alleged breach and rule, the reply deadline (use `limitation-calculator`), the hearing right, and the appeal or revision authority. Outline the reply grounds.
 8. Search for and read current High Court authority on the State's rules; tag anything unread `[verify]`.
 

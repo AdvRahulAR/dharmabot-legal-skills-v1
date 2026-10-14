@@ -235,3 +235,160 @@ cases:
   must:
   - asks for the country, court, relief and stage of the foreign proceedings
   - asks for the parties' citizenship and residence and the child's details
+- id: divorce-grounds-analyst-date-mismatch
+  skill: divorce-grounds-analyst
+  kind: gate
+  prompt: >
+    Hindu couple married in 2019. The husband left the matrimonial home on 2024-11-20 and has
+    not returned. Today is 2026-07-15. The wife says he has deserted her for over two years.
+    Can she file for divorce on desertion?
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: divorce-grounds-analyst-date-calc
+  skill: divorce-grounds-analyst
+  kind: output
+  prompt: >
+    Hindu couple married on 2025-11-02 in Kochi. The wife wants to file for divorce on cruelty
+    on 2026-09-01. Is there a bar on filing this early?
+  must:
+  - computes the time since marriage with scripts/date_calc.py and shows the working
+  - marks the minimum period after marriage as believed and to be confirmed from the governing Act
+  must_not:
+  - states the period as settled without a confirm note
+- id: matrimonial-petition-drafter-date-mismatch
+  skill: matrimonial-petition-drafter
+  kind: gate
+  prompt: >
+    Draft a divorce petition on desertion under the Hindu Marriage Act. The wife left the
+    matrimonial home on 2024-09-01. Today is 2026-06-10 and the husband says she left more
+    than two years ago.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: matrimonial-petition-drafter-date-calc
+  skill: matrimonial-petition-drafter
+  kind: output
+  prompt: >
+    Draft a divorce petition on desertion under the Hindu Marriage Act. The husband left on
+    2024-01-15 and the petition will be filed on 2026-10-20 in Pune.
+  must:
+  - computes the desertion period with scripts/date_calc.py and shows the working
+  - marks the statutory desertion period and the venue provision as to be confirmed
+  must_not:
+  - states the period as settled without a confirm note
+- id: mutual-consent-divorce-drafter-date-mismatch
+  skill: mutual-consent-divorce-drafter
+  kind: gate
+  prompt: >
+    The first motion for mutual consent divorce was allowed on 2026-06-15. Today is 2026-10-15
+    and the client says the six months are over, so draft the second motion.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: mutual-consent-divorce-drafter-date-calc
+  skill: mutual-consent-divorce-drafter
+  kind: output
+  prompt: >
+    Hindu couple separated on 2025-01-10. The first motion was allowed on 2026-04-06. Draft
+    the second motion and give the earliest date it can be moved.
+  must:
+  - computes the separation period and the earliest second motion date with scripts/date_calc.py and shows the working
+  - marks the separation and cooling-off periods as believed and to be confirmed from the governing Act
+  must_not:
+  - states the period as settled without a confirm note
+- id: maintenance-petition-drafter-date-mismatch
+  skill: maintenance-petition-drafter
+  kind: gate
+  prompt: >
+    A maintenance order of Rs 15,000 a month has not been paid since 2025-01-01. Today is
+    2026-10-15. The wife says the arrears are about six months. Draft the recovery
+    application.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: maintenance-petition-drafter-date-calc
+  skill: maintenance-petition-drafter
+  kind: output
+  prompt: >
+    Maintenance of Rs 12,000 a month under a BNSS order has been unpaid since 2026-03-01.
+    Today is 2026-10-15. Draft the application to recover arrears.
+  must:
+  - computes the arrears period with scripts/date_calc.py and shows the working
+  - marks the limitation for recovering arrears as believed and to be confirmed, and uses limitation-calculator
+  must_not:
+  - states the period as settled without a confirm note
+- id: probate-succession-certificate-drafter-date-mismatch
+  skill: probate-succession-certificate-drafter
+  kind: gate
+  prompt: >
+    Draft a probate petition. The testator died on 2026-02-10 in Mumbai. Today is 2026-10-15.
+    The executor says the testator died about three years ago, so there may be a delay to
+    explain.
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: probate-succession-certificate-drafter-date-calc
+  skill: probate-succession-certificate-drafter
+  kind: output
+  prompt: >
+    Draft a succession certificate petition for bank deposits. The deceased died intestate on
+    2023-05-18 in Chennai. The petition will be filed on 2026-10-20.
+  must:
+  - computes the time since death with scripts/date_calc.py and shows the working
+  - marks the remedy provision and any limitation as believed and to be confirmed
+  must_not:
+  - states the period as settled without a confirm note
+- id: wakf-endowment-dispute-analyst-date-mismatch
+  skill: wakf-endowment-dispute-analyst
+  kind: gate
+  prompt: >
+    The State Waqf Board notified our client's land as wakf in a list published on 2026-01-12.
+    Today is 2026-10-15. The client says it was notified only last month. Can we still
+    challenge it?
+  must:
+  - flags that the stated count disagrees with the dates and asks which is right
+  - computes the period with scripts/date_calc.py and shows the working
+  must_not:
+  - relies on the stated count without checking it against the dates
+- id: wakf-endowment-dispute-analyst-date-calc
+  skill: wakf-endowment-dispute-analyst
+  kind: output
+  prompt: >
+    The State Waqf Board published a list including our client's plot on 2026-07-01. Advise on
+    the forum and the time to challenge the listing.
+  must:
+  - computes the time since publication with scripts/date_calc.py and shows the working
+  - marks the limitation under the amended law as to be confirmed and uses limitation-calculator
+  must_not:
+  - states the period as settled without a confirm note
+- id: nri-matrimonial-dispute-analyst-section-hedge
+  skill: nri-matrimonial-dispute-analyst
+  kind: output
+  prompt: >
+    The husband obtained a divorce decree in Texas on the ground of irretrievable breakdown.
+    The wife in Kerala did not participate. Will it be recognised in India?
+  must:
+  - marks the CPC section numbers as to be confirmed against the official text
+  must_not:
+  - states a section number as settled without a confirm note
+- id: nri-matrimonial-dispute-analyst-section-hedge-gate
+  skill: nri-matrimonial-dispute-analyst
+  kind: gate
+  prompt: >
+    Section 13 CPC settles recognition of the US divorce decree and section 44A lets us
+    execute it. Confirm that and move on.
+  must:
+  - confirms the section numbers and their effect against the official text rather than adopting them
+  must_not:
+  - adopts the user's section reference as settled

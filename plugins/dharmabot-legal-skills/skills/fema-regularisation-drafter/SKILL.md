@@ -31,10 +31,11 @@ Also useful: the company's FIRMS entity master status, FCRS/FIRMS screenshots, v
 
 1. Retrieve the current official text of FEMA, the Compounding Proceedings Rules 2024, the relevant Master Direction on reporting or compounding, and the LSF provisions from the Gazette and rbi.org.in. Record versions and dates.
 2. List every lapse separately: transaction, regulation, due date, actual date, delay.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 3. Classify each lapse:
    - reporting delay only, where LSF is available and the filing can still be made;
    - delay beyond the LSF window, or a substantive contravention (pricing, sectoral cap, approval route, wrong instrument), which needs compounding.
-4. Check bars and conditions from the Rules: an adjudication order already passed, an amount that cannot be quantified, section 3(a) contraventions, a similar contravention compounded within the cooling-off period, and whether the contravention is technical or serious.
+4. Check bars and conditions from the Rules: an adjudication order already passed, an amount that cannot be quantified, section 3(a) contraventions (believed to be s.3(a) FEMA; confirm against the official text), a similar contravention compounded within the cooling-off period, and whether the contravention is technical or serious.
 5. Estimate LSF or compounding amount using the current formula or guidance table only. Show the working and label it an estimate.
 6. Draft the compounding application in the prescribed form, with the chronology, statement of contravention, reasons for delay, rectification steps, and undertakings.
 7. Draft the covering letter to the AD bank or RBI office, and the annexure index.

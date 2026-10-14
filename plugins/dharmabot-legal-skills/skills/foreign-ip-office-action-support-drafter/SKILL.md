@@ -29,6 +29,7 @@ Also useful: evidence of use or acquired distinctiveness, coexistence agreements
 
 1. Retrieve the current official text of the office's procedure manual and rules (for example the TMEP or MPEP for the USPTO, the UKIPO manuals, EUIPO guidelines), and confirm the response period and extension rules. Record versions and dates. Open `references/foreign-jurisdictions.md` for official sources.
 2. Docket the deadline and any extension available; report it to the attorney for confirmation.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 3. List every ground in the action and plan a response to each. Do not skip formal objections.
 4. **Trademarks.** For confusion refusals, build arguments on marks, goods or services, channels, purchasers and coexistence, using the office's test as stated in its manual. For descriptiveness, argue suggestiveness or acquired distinctiveness with evidence. Consider amendments to the specification.
 5. **Patents.** Map each claim to the cited art, identify distinguishing features, propose amendments with support in the specification, and address clarity and support objections.

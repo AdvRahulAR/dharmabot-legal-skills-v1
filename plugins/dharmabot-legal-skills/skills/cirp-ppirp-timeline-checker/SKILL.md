@@ -34,6 +34,7 @@ Also useful: CoC minutes, the list of creditors, and pending applications.
 1. Retrieve the current official text of the IBC, the CIRP Regulations or PPIRP Regulations, and IBBI circulars on timelines and model timelines. Record versions and dates. Do not rely on remembered day counts.
 2. Fix the insolvency commencement date from the order, and note any dispute about it.
 3. Lay out each step with its regulation, the deadline computed from the commencement date, and the actual date.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 4. Apply the overall time limits and extensions (believed to be section 12; confirm), and exclusions granted by the NCLT or permitted by authority. Search for and read current authority on exclusion of time; tag unread authority `[verify]`.
 5. Flag missed or late steps, their effect, and cure options (for example an application to the NCLT).
 6. For the moratorium (believed to be section 14), test each affected proceeding or contract: suits and arbitrations against the debtor, enforcement of security, recovery of property, termination of essential supplies or licences, and set-off. Note the carve-outs and that the moratorium usually does not protect guarantors; confirm current law.

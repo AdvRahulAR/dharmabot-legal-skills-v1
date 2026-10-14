@@ -35,6 +35,7 @@ Also useful: the client's retention schedule, privacy policy, and earlier corres
 
 1. Retrieve the current official text of the DPDP Act, the DPDP Rules (rights and grievance rules) and each retention law relied on, for example the RBI KYC Master Direction, PMLA record-keeping rules, Income-tax and GST record rules and the Companies Act. Record version and date.
 2. Log the request and diarise the response period stated in the Rules or the client's published policy. The Rules are reported to set an outer limit for grievances; confirm it. For GDPR, the period is believed to be one month, extendable in some cases.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 3. Verify identity proportionately. Do not ask for more data than needed to verify.
 4. Classify each element of the request: access, correction, completion, updating, erasure, nomination, grievance, or withdrawal of consent.
 5. Access: prepare a summary of the personal data and processing activities, and the identities of other fiduciaries and processors it was shared with, as the Act requires.

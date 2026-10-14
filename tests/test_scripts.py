@@ -1,22 +1,27 @@
 """Unit tests for the bundled skill scripts. Run: python3 -m unittest discover tests"""
 
+import contextlib
 import datetime as dt
 import importlib.util
+import io
+import json
 import pathlib
 import unittest
 
-SKILLS = pathlib.Path(__file__).resolve().parent.parent / "plugins" / "dharmabot-legal-skills" / "skills"
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+SKILLS = ROOT / "plugins" / "dharmabot-legal-skills" / "skills"
+SHARED_SCRIPTS = ROOT / "shared" / "scripts"
 
 
-def load(name, rel):
-    spec = importlib.util.spec_from_file_location(name, SKILLS / rel)
+def load(name, path):
+    spec = importlib.util.spec_from_file_location(name, path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
 
 
-date_calc = load("date_calc", "limitation-calculator/scripts/date_calc.py")
-check_quote = load("check_quote", "citation-verifier/scripts/check_quote.py")
+date_calc = load("date_calc", SHARED_SCRIPTS / "date_calc.py")
+check_quote = load("check_quote", SKILLS / "citation-verifier" / "scripts" / "check_quote.py")
 D = dt.date
 
 
@@ -71,6 +76,53 @@ class DateCalcTests(unittest.TestCase):
     def test_bad_period(self):
         with self.assertRaises(ValueError):
             date_calc.parse_period("thirty days")
+
+    def test_elapsed_both_counts(self):
+        # Remand on 3 Aug 2026, counted to 15 Oct 2026: 73 days, or 74 with the start day.
+        r = date_calc.elapsed(D(2026, 8, 3), D(2026, 10, 15))
+        self.assertEqual(r["days_excluding_start"], 73)
+        self.assertEqual(r["days_including_start"], 74)
+
+    def test_elapsed_same_day(self):
+        r = date_calc.elapsed(D(2026, 8, 3), D(2026, 8, 3))
+        self.assertEqual((r["days_excluding_start"], r["days_including_start"]), (0, 1))
+
+    def test_elapsed_end_before_start(self):
+        with self.assertRaises(ValueError):
+            date_calc.elapsed(D(2026, 8, 3), D(2026, 8, 2))
+
+    def test_custody_limit_dates(self):
+        self.assertEqual(self.last(D(2026, 8, 3), "60d"), "2026-10-02")
+        self.assertEqual(self.last(D(2026, 8, 3), "60d", include_start=True), "2026-10-01")
+
+    def test_cli_needs_period_or_to(self):
+        with self.assertRaises(SystemExit):
+            date_calc.main(["--start", "2026-08-03"])
+
+    def test_cli_to_only(self):
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            date_calc.main(["--start", "2026-08-03", "--to", "2026-10-15", "--json"])
+        self.assertEqual(json.loads(buf.getvalue())["elapsed"]["days_excluding_start"], 73)
+
+    def test_cli_period_json_shape_unchanged(self):
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            date_calc.main(["--start", "2026-03-10", "--period", "90d", "--json"])
+        self.assertEqual(json.loads(buf.getvalue())["last_day"], "2026-06-08")
+
+
+class SharedScriptCopyTests(unittest.TestCase):
+    """Copies made by scripts/build.py must match shared/scripts apart from the generated-copy line."""
+
+    def test_copies_in_sync(self):
+        for shared in SHARED_SCRIPTS.glob("*.py"):
+            source = shared.read_text(encoding="utf-8").splitlines()
+            copies = list(SKILLS.glob(f"*/scripts/{shared.name}"))
+            self.assertTrue(copies, f"no skill bundles {shared.name}")
+            for copy in copies:
+                lines = [l for l in copy.read_text(encoding="utf-8").splitlines() if not l.startswith("# Generated copy of")]
+                self.assertEqual(lines, source, f"{copy} is stale; run scripts/build.py")
 
 
 class CheckQuoteTests(unittest.TestCase):

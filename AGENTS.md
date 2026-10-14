@@ -12,6 +12,6 @@ Afterwards, tell the user that the skills are drafts for review by an enrolled a
 
 ## If you are asked to change these skills
 
-- Edit `plugins/dharmabot-legal-skills/skills/<name>/SKILL.md` and `skill-registry.yaml`. Do not hand-edit `skill.meta.yaml`, `agents/openai.yaml` or `references/` copies of shared files: they are generated. Shared tables live in `shared/references/`.
+- Edit `plugins/dharmabot-legal-skills/skills/<name>/SKILL.md` and `skill-registry.yaml`. Do not hand-edit `skill.meta.yaml`, `agents/openai.yaml`, or the `references/` and `scripts/` copies of shared files: they are generated. Shared tables live in `shared/references/` and shared scripts (such as `date_calc.py`) in `shared/scripts/`.
 - Follow `CONTRIBUTING.md`, then run `python3 scripts/build.py`, `python3 scripts/validate.py` and `python3 -m unittest discover tests`. All must pass.
 - Do not add rates, fees or section numbers as settled facts, and do not add real client data.

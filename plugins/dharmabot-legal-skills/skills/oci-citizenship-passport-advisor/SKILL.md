@@ -35,6 +35,7 @@ Also useful: the OCI card or passport details (not to be stored), social media o
 3. Test the order: was a show-cause notice given, were reasons recorded, was the ground one the statute allows, and was the material disclosed? Note where reasons can be withheld in the public interest and how courts have treated that. Search for and read current authority, starting with Maneka Gandhi v Union of India (Supreme Court, 1978; confirm current treatment).
 4. Check limits on review. Courts give weight to the executive in citizenship and security matters; explain this plainly.
 5. Map remedies: a representation or review to the authority, a statutory appeal where one exists, and a writ petition in the High Court. Compute deadlines with `limitation-calculator`.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 6. For renunciation or surrender certificates, list documents and the consequences of late surrender.
 7. Draft the representation or appeal from the record only. Tag anything not read in full `[verify]`.
 

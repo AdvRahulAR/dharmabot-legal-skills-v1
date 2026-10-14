@@ -28,14 +28,15 @@ Also useful: nomination papers and scrutiny orders, Form 20 results, affidavits 
 ## Method
 
 1. Retrieve the current official text of the RPA, 1951 provisions on election petitions, grounds, corrupt practices, pleading and appeal, the Conduct of Election Rules, 1961, and the High Court's election petition rules. Record source and date.
-2. Grounds: map facts to a statutory ground. For improper rejection or acceptance, examine the nomination defect and whether it was substantial. For corrupt practices, identify each practice, the person who committed it, consent of the candidate or agent, and the material effect where required.
-3. Pleading: corrupt practices need full particulars (names, dates, places) and an affidavit in the prescribed form; non-compliance can lead to dismissal at the threshold. Build a particulars table.
-4. Parties: identify necessary parties under the Act; misjoinder or non-joinder can be fatal.
-5. Recount and inspection: plead specific material facts; courts do not order a recount on vague suspicion. Use the margin and Form 20 data.
-6. Relief: declaring the election void, declaring another candidate elected, or both, each with its own conditions.
-7. Appeal: identify the route to the Supreme Court and its time limit; confirm.
-8. Candidate disclosure: test non-disclosure in affidavits against current authority.
-9. Read authority before citing; tag anything unread `[verify]`.
+2. Limitation: record the date of declaration of the result and any other date relied on. Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
+3. Grounds: map facts to a statutory ground. For improper rejection or acceptance, examine the nomination defect and whether it was substantial. For corrupt practices, identify each practice, the person who committed it, consent of the candidate or agent, and the material effect where required.
+4. Pleading: corrupt practices need full particulars (names, dates, places) and an affidavit in the prescribed form; non-compliance can lead to dismissal at the threshold. Build a particulars table.
+5. Parties: identify necessary parties under the Act; misjoinder or non-joinder can be fatal.
+6. Recount and inspection: plead specific material facts; courts do not order a recount on vague suspicion. Use the margin and Form 20 data.
+7. Relief: declaring the election void, declaring another candidate elected, or both, each with its own conditions.
+8. Appeal: identify the route to the Supreme Court and its time limit; confirm.
+9. Candidate disclosure: test non-disclosure in affidavits against current authority.
+10. Read authority before citing; tag anything unread `[verify]`.
 
 ## Output
 

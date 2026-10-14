@@ -34,6 +34,7 @@ Also useful: the standing orders, any domestic inquiry record, and the worker's 
 
 1. Retrieve the current official text of the IR Code chapters on dispute resolution and recovery of money, the central or State rules, the forum's procedural rules and forms, and the EPF and ESI appeal provisions. Record the version and date.
 2. Check limitation and pre-conditions: the period for raising an individual dispute, conciliation and the option of approaching the Tribunal directly, and the time for recovery applications. Compute deadlines with `limitation-calculator`.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 3. Establish worker status and the "industry" question from the facts.
 4. For a worker: draft the claim with facts, illegality of termination (no inquiry, no notice or compensation, last-in-first-out breach, victimisation), and reliefs (reinstatement, continuity, back wages). Plead non-employment since termination only on instructions.
 5. For an employer: draft the written statement, preliminary objections (maintainability, limitation, non-worker status), and the case on merits, including any request to lead evidence on misconduct if no proper inquiry was held.

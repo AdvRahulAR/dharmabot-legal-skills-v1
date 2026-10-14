@@ -33,6 +33,7 @@ Also useful: board minutes, valuation reports, loan documents, and correspondenc
 
 1. Retrieve the current official text of the IBC avoidance provisions (believed to be sections 43 to 51 and 66; confirm), the regulations requiring the RP to form an opinion and file by set dates, and IBBI guidance. Record versions and dates.
 2. Fix the look-back periods from the commencement date. The Code sets a longer period for related parties than for others; confirm the periods from the text and compute them.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 3. Screen transactions for heads: preference to a creditor or surety for an antecedent debt; undervalue (gift or significantly less than value, not in the ordinary course); intent to defraud creditors; extortionate credit; and fraudulent or wrongful trading by those in charge.
 4. For each suspect transaction, record date, parties, amount, relationship, head, the ordinary-course or other exception, and the evidence held and missing.
 5. Separate weak suspicion from evidenced findings. Only evidenced findings go in the application.

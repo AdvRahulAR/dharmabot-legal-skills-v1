@@ -28,6 +28,7 @@ Mark as **blocking**:
 
 1. Retrieve the current official text of Order XXI and the execution sections of the CPC, the Limitation Act articles on execution, section 36 of the Arbitration Act, the Contempt of Courts Act and the relevant High Court rules. Record the version and date.
 2. Check limitation with `limitation-calculator`. Execution of a decree is subject to an outer limit (believed to be twelve years under the Limitation Act; confirm the article and its start date). Contempt has its own short limit (believed to be one year from the act; confirm).
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 3. Choose modes of execution in the order most likely to recover: attachment of bank accounts and debts (garnishee), attachment and sale of property, delivery of possession, and arrest and detention only where the law's conditions are met.
 4. Draft the execution application in the prescribed tabular form, with the schedule of property and the prayer for each mode.
 5. Plan for resistance: objections under the CPC execution provisions, third-party claims, and corporate debtors under moratorium. Check for any IBC moratorium before filing.

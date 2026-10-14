@@ -28,10 +28,11 @@ Also useful: status of foreign counterparts and their allowed claims, the invent
 
 1. Retrieve the current official text of the Patents Act and Rules, the Manual of Patent Office Practice and Procedure, the CRI Guidelines where relevant, and the application's file on the Patent Office website. Record the version and date.
 2. Compute the response deadline (reported as six months from the FER, extendable on request; confirm the period and extension rules). Use `limitation-calculator`. Flag urgency at the top.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 3. Build an objection table from the FER: number · objection · provision · response plan.
-4. **Amendments:** propose claim amendments by way of disclaimer, correction or explanation, within section 59. Check each amended claim has basis in the specification as filed; flag any amendment that adds matter or broadens scope.
+4. **Amendments:** propose claim amendments by way of disclaimer, correction or explanation, within section 59 (believed to be the section; confirm against the official text). Check each amended claim has basis in the specification as filed; flag any amendment that adds matter or broadens scope.
 5. **Novelty and inventive step:** map each claim feature against D1, D2 and others; identify differences; argue technical effect and why the skilled person would not combine the documents. Avoid admissions that may be used later.
-6. **Section 3 objections:** argue technical contribution (for 3(k)) or efficacy with data (for 3(d)), as the facts allow.
+6. **Section 3 objections** (section 3 and its clauses 3(k) and 3(d) are believed to be the right provisions; confirm each against the official text): argue technical contribution (for 3(k)) or efficacy with data (for 3(d)), as the facts allow.
 7. Address sufficiency, clarity, unity, and formal requirements (Form 3 updates, priority documents, proof of right, Form 1 corrections).
 8. Search for and read current authority supporting each legal argument. Tag anything not read in full `[verify]`.
 9. For a hearing, draft written submissions to follow within the period allowed. For a pre-grant opposition, draft a reply statement with evidence.

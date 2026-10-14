@@ -31,6 +31,7 @@ Also useful: screenshots, messages with the suspect, earlier complaints, and the
 1. Retrieve the current official text of the IT Rules as amended, relevant IT Act and BNS provisions, and the platform's grievance and reporting pages. Record versions and dates.
 2. **Today: evidence.** Capture each URL with date, time and full-page screenshot; record usernames and IDs; save message headers. Do not download or forward sexual content more than the record needs. Plan a certificate for electronic evidence under the BSA.
 3. **Today: takedown.** Send requests to each platform's grievance officer under the IT Rules, citing the category of content. Use in-app reporting too. Track acknowledgements and time.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 4. **Today: cyber complaint.** File on the National Cyber Crime Reporting Portal and note the acknowledgement. Hand the formal complaint to `cyber-crime-complaint-drafter`.
 5. **This week: escalation.** If the platform fails to act, escalate to the Grievance Appellate Committee and record the failure, which may affect safe harbour.
 6. **This week: civil relief.** Assess a suit for injunction (including against unknown persons), personality or privacy rights, and defamation. Hand the application to `interim-injunction-application-drafter`.

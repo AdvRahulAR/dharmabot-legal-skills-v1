@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
+# Generated copy of shared/scripts/date_calc.py by scripts/build.py. Edit the shared file, not this copy.
 """Deadline arithmetic for Indian limitation and procedural periods.
 
 Usage:
     python3 date_calc.py --start 2026-03-10 --period 90d
     python3 date_calc.py --start 2026-01-31 --period 1m --exclude 2026-02-02:2026-02-10 \
         --holidays holidays.txt --weekends-closed --json
+    python3 date_calc.py --start 2026-08-03 --to 2026-10-15
+    python3 date_calc.py --start 2026-08-03 --to 2026-10-15 --period 60d
 
 Rules applied (each can be checked against the working printed):
   * The day of the starting event is excluded by default, as section 12(1)
@@ -19,6 +22,11 @@ Rules applied (each can be checked against the working printed):
   * If the last day falls on a holiday in --holidays (or a weekend with
     --weekends-closed), it moves to the next day the court is open
     (section 4 of the Limitation Act, 1963).
+
+With --to, the script also counts the days elapsed from --start to --to,
+printed both ways (start day excluded and start day counted), so a stated
+count such as "40 days in custody" can be checked against the actual dates.
+It does not choose between the two counts.
 
 The script does not decide which period applies or when time starts. That
 is legal analysis for the advocate. Standard library only.
@@ -129,10 +137,28 @@ def compute(start, period, include_start=False, exclusions=(), holidays=(), week
     }
 
 
+def elapsed(start, end):
+    """Days from start to end, counted both ways. Neither count is chosen."""
+    if end < start:
+        raise ValueError(f"--to date {end.isoformat()} is before --start {start.isoformat()}")
+    excluding = (end - start).days
+    return {
+        "from": start.isoformat(),
+        "to": end.isoformat(),
+        "days_excluding_start": excluding,
+        "days_including_start": excluding + 1,
+        "working": [
+            f"From {start.isoformat()} to {end.isoformat()}: {excluding} day(s) with the start day excluded, "
+            f"{excluding + 1} day(s) with both the start day and the end day counted."
+        ],
+    }
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Limitation and deadline arithmetic")
     parser.add_argument("--start", required=True, help="date of starting event, YYYY-MM-DD")
-    parser.add_argument("--period", required=True, help="e.g. 30d, 3m, 1y")
+    parser.add_argument("--period", help="e.g. 30d, 3m, 1y (required unless --to is given)")
+    parser.add_argument("--to", help="count days elapsed from --start to this date, YYYY-MM-DD")
     parser.add_argument("--include-start", action="store_true", help="count the start day")
     parser.add_argument("--exclude", action="append", default=[], help="excluded span YYYY-MM-DD:YYYY-MM-DD (repeatable)")
     parser.add_argument("--holidays", help="file with one YYYY-MM-DD closed date per line")
@@ -143,6 +169,8 @@ def main(argv=None):
     )
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args(argv)
+    if not args.period and not args.to:
+        parser.error("give --period, --to, or both")
 
     holidays = []
     if args.holidays:
@@ -152,17 +180,27 @@ def main(argv=None):
                 if line:
                     holidays.append(parse_date(line))
 
-    result = compute(
-        parse_date(args.start),
-        args.period,
-        include_start=args.include_start,
-        exclusions=[parse_span(x) for x in args.exclude],
-        holidays=holidays,
-        weekends_closed=args.weekends_closed,
-    )
+    output = {}
+    if args.to:
+        output["elapsed"] = elapsed(parse_date(args.start), parse_date(args.to))
+    if args.period:
+        output["deadline"] = compute(
+            parse_date(args.start),
+            args.period,
+            include_start=args.include_start,
+            exclusions=[parse_span(x) for x in args.exclude],
+            holidays=holidays,
+            weekends_closed=args.weekends_closed,
+        )
     if args.json:
-        print(json.dumps(result, indent=2))
-    else:
+        # A deadline-only run keeps the original flat JSON shape.
+        print(json.dumps(output if args.to else output["deadline"], indent=2))
+        return 0
+    if args.to:
+        for step in output["elapsed"]["working"]:
+            print("- " + step)
+    if args.period:
+        result = output["deadline"]
         for step in result["working"]:
             print("- " + step)
         print(f"Last day: {result['last_day']} ({result['weekday']})")

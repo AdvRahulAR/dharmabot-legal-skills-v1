@@ -27,8 +27,9 @@ Also useful: the notice of arbitration and reply, earlier procedural orders, the
 
 ## Method
 
-1. Retrieve the current official text of the Arbitration and Conciliation Act, 1996 (including the provisions on pleadings, hearings, experts, the time limit for awards and the Fourth Schedule), the Indian Contract Act, 1872 provisions relied on, and any institutional rules. Record the version and date.
+1. Retrieve the current official text of the Arbitration and Conciliation Act, 1996 (including the provisions on pleadings, hearings, experts, the time limit for awards and the Fourth Schedule), the Indian Contract Act, 1872 provisions relied on, and any institutional rules. Record the version and date. Confirm every section, rule and article number used in this skill against that official text before relying on it.
 2. **Clock check.** Record the date the tribunal received notice of appointment. Pleadings are believed to be due within six months of that date, and the award within twelve months of completion of pleadings, extendable by consent for six months and then only by the court. Confirm each period from the text and diarise it. Note which institutional rules modify this.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 3. **Statement of claim.** Build from the contract outward:
    - parties, agreement and jurisdiction of the tribunal;
    - dated facts, cross-referenced to an exhibit list;

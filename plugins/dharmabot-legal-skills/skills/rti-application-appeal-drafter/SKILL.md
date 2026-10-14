@@ -32,6 +32,7 @@ Also useful: file numbers, dates, project names, and why the records matter (not
 3. Keep within any word or subject limits in the State rules; split requests if needed.
 4. Address the PIO correctly; include the fee and mode of payment; ask for inspection where volume is large.
 5. Time limits: compute the reply period (believed 30 days, shorter for life and liberty matters, longer when third parties are involved; confirm). Note deemed refusal. Use `limitation-calculator` for appeal deadlines.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 6. First appeal: list each point, the PIO's reply, and why it is wrong (exemption misapplied, no reasons, partial disclosure, delay, transfer not made).
 7. Exemptions: test each claimed exemption against its text and current authority; argue severability and public interest override where the Act allows.
 8. Second appeal or complaint: choose the remedy, and seek penalty and compensation where the Act permits.

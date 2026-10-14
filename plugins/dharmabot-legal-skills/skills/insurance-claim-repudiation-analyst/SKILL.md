@@ -34,6 +34,7 @@ Also useful: surveyor or investigator report, medical records, earlier grievance
 1. Retrieve the current official text of the Insurance Act, the Insurance Ombudsman Rules 2017 as amended, the IRDAI regulations and master circulars on policyholder protection and health insurance, and the policy wording filed with IRDAI. Record versions and dates.
 2. State the ground for repudiation in one line. Map it to the clause relied on.
 3. Test the ground:
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
    - **Non-disclosure.** Was the question asked in the proposal form? Was the fact material and known to the insured? Has the moratorium or look-back period for the policy type run? Retrieve the current period; do not state it from memory. For life policies, check the statutory bar on questioning a policy after a set period (believed to be section 45; confirm).
    - **Exclusion.** Is it clear, disclosed and applied correctly? Ambiguity is read against the insurer; search for current authority.
    - **Late intimation.** Was the delay explained, and did it prejudice the insurer?

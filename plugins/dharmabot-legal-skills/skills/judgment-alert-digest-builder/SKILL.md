@@ -44,5 +44,5 @@ Also useful: the audience (partners, clients, students), the house format, earli
 
 - Never include a judgment that has not been read and verified to exist at the official or licensed source.
 - No invented citations or links. If no neutral citation is assigned, say so.
-- Follow BCI Rule 36 limits if the digest goes outside the firm; no promotion of results.
+- Follow BCI Rule 36 (believed to be the rule; confirm against the official text) limits if the digest goes outside the firm; no promotion of results.
 - Full case notes go to `judgment-case-note-summariser`; regulatory circulars to `regulatory-change-impact-analyst`.

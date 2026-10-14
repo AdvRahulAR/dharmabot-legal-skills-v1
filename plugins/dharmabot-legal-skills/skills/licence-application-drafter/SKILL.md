@@ -37,6 +37,7 @@ Also useful: earlier licences, inspection reports, and any refusal or query from
 7. List common defects for this authority (for example unsigned pages, expired NOCs, a lease not in the applicant's name, unstamped or unregistered leases). Hand stamping questions to `state-stamp-duty-calculator`.
 8. Post-grant: list conditions, display duties, returns, inspections and the renewal date. Hand dates to `compliance-calendar-builder`.
 9. For renewals or amendments, check the timing window and late fees in the rules.
+   - Compute periods from the actual dates using `scripts/date_calc.py`. If the user's stated count disagrees with the dates, flag the discrepancy and ask which is right before relying on either. (`--start` with `--period` gives a last date; `--to` counts the days elapsed between two dates.)
 
 ## Output
 
