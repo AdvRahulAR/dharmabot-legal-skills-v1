@@ -19,7 +19,7 @@ Draft an ESOP scheme and its supporting documents that the company can lawfully 
 
 ## Temporal gate
 
-The Income-tax Act 2025 is reported to replace the Income-tax Act 1961 from 1 April 2026; check whether it is in force and from when. Apply the law in force on the grant, vesting, exercise and sale dates, and map renumbered provisions.
+The Income-tax Act, 2025 is in force from 1 April 2026 (CBDT press release, 1 April 2026), replacing the Income-tax Act, 1961 for tax years from then; the 1961 Act continues to govern earlier years. Apply the law in force on the grant, vesting, exercise and sale dates, and map renumbered provisions.
 
 ## Required inputs
 

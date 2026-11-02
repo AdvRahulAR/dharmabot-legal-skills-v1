@@ -64,7 +64,10 @@ def parse_period(text):
     m = _PERIOD_RE.match(text.strip())
     if not m:
         raise ValueError(f"period must look like 6h, 30d, 3m or 1y, got {text!r}")
-    return int(m.group(1)), m.group(2).lower()
+    amount = int(m.group(1))
+    if amount < 1:
+        raise ValueError(f"period must be at least 1, got {text!r}")
+    return amount, m.group(2).lower()
 
 
 def add_months(day, months):
@@ -144,6 +147,11 @@ def compute(start, period, include_start=False, exclusions=(), holidays=(), week
         )
     elif not closed and not weekends_closed:
         steps.append("No holiday list supplied: last day NOT checked against court holidays.")
+    if last.weekday() >= 5 and not weekends_closed:
+        steps.append(
+            f"WARNING: last day {last.isoformat()} is a {last.strftime('%A')}. Confirm whether the court sits "
+            "that day and whether a holiday rule applies to this period; it is not applied here."
+        )
 
     return {
         "start_event": start.isoformat(),
@@ -226,26 +234,31 @@ def main(argv=None):
     if not args.period and not args.to:
         parser.error("give --period, --to, or both")
 
-    holidays = []
-    if args.holidays:
-        with open(args.holidays, encoding="utf-8") as f:
-            for line in f:
-                line = line.split("#", 1)[0].strip()
-                if line:
-                    holidays.append(parse_date(line))
+    try:
+        holidays = []
+        if args.holidays:
+            with open(args.holidays, encoding="utf-8") as f:
+                for line in f:
+                    line = line.split("#", 1)[0].strip()
+                    if line:
+                        holidays.append(parse_date(line))
 
-    output = {}
-    if args.to:
-        output["elapsed"] = elapsed(parse_date(args.start), parse_date(args.to))
-    if args.period:
-        output["deadline"] = compute(
-            parse_date(args.start),
-            args.period,
-            include_start=args.include_start,
-            exclusions=[parse_span(x) for x in args.exclude],
-            holidays=holidays,
-            weekends_closed=args.weekends_closed,
-        )
+        output = {}
+        if args.to:
+            output["elapsed"] = elapsed(parse_date(args.start), parse_date(args.to))
+        if args.period:
+            output["deadline"] = compute(
+                parse_date(args.start),
+                args.period,
+                include_start=args.include_start,
+                exclusions=[parse_span(x) for x in args.exclude],
+                holidays=holidays,
+                weekends_closed=args.weekends_closed,
+            )
+    except (ValueError, OSError) as e:
+        # A clear one-line error, not a traceback: the output is pasted into legal work.
+        print(f"date_calc.py: error: {e}", file=sys.stderr)
+        return 2
     if args.json:
         # A deadline-only run keeps the original flat JSON shape.
         print(json.dumps(output if args.to else output["deadline"], indent=2))

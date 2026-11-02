@@ -17,7 +17,7 @@ Confirm an NCLT bench in India has admitted the process, and note whether it is 
 
 ## Temporal gate
 
-The CIRP Regulations are amended frequently. The Insolvency and Bankruptcy Code (Amendment) Act, 2026 is reported to have received assent on 6 April 2026, with provisions brought into force from 26 May 2026 by notification; confirm from the eGazette which provisions are in force and any transitional rule. It is reported to add a creditor-initiated process with its own timelines and to change withdrawal rules. Check which version applied on each step date.
+The CIRP Regulations are amended frequently. The Insolvency and Bankruptcy Code (Amendment) Act, 2026 received the President's assent on 6 April 2026; its provisions are being brought into force by notification in stages (the first reported from 26 May 2026), so confirm from the eGazette which provisions are in force on each step date and any transitional rule. It adds a creditor-initiated process with its own timelines and to change withdrawal rules. Check which version applied on each step date.
 
 ## Required inputs
 

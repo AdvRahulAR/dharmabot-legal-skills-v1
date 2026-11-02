@@ -18,7 +18,7 @@ Confirm the deployer or platform serves users in India, and identify its role: i
 ## Temporal gate
 
 - MeitY amended the IT Rules on synthetically generated information in 2026 (reported as notified 10 February 2026). Reports say several takedown windows were shortened. Confirm the in-force text and each window.
-- DPDP Rules, 2025 apply in phases (reported 13 November 2025, 13 November 2026 and 13 May 2027). If personal data is involved, record which phase applies on the incident date.
+- The DPDP Rules, 2025 (notified 13 November 2025) commence in phases: 13 November 2025, 13 November 2026 (consent managers) and 13 May 2027 (most data fiduciary duties). If personal data is involved, record which phase applies on the incident date.
 - Record the date and time the incident was detected; deadlines run from there.
 
 ## Required inputs

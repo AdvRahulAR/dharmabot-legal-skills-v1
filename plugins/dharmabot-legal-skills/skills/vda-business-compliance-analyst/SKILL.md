@@ -17,7 +17,7 @@ Identify where the business is incorporated, where its servers and team are, and
 
 ## Temporal gate
 
-- The Income-tax Act, 2025 is reported to apply from 1 April 2026, replacing the 1961 Act. For transactions before that date, use the 1961 Act; for later ones, use the 2025 Act. Map provisions with `income-tax-act-2025-concordance-mapper`.
+- The Income-tax Act, 2025 is in force from 1 April 2026 (CBDT press release of that date), replacing the 1961 Act. For transactions before that date, use the 1961 Act; for later ones, use the 2025 Act. Map provisions with `income-tax-act-2025-concordance-mapper`.
 - RBI, SEBI and the government have issued statements and consultation papers on crypto at different times. Record the date of each and check for any later policy or bill.
 - Check the current list of offshore entities FIU-IND has acted against.
 

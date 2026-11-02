@@ -17,7 +17,7 @@ Record each State or UT where workers are engaged. Several States have passed or
 
 ## Temporal gate
 
-The Code on Social Security is reported to be in force from 21 November 2025, with its gig and platform worker chapter dependent on schemes and notifications. State platform-worker laws have commenced on different dates, some by ordinance. Check whether each law and scheme is in force, and from when, before stating any obligation.
+The Code on Social Security, 2020 is in force from 21 November 2025 (with the other three Labour Codes), with its gig and platform worker chapter dependent on schemes and notifications. State platform-worker laws have commenced on different dates, some by ordinance. Check whether each law and scheme is in force, and from when, before stating any obligation.
 
 ## Required inputs
 

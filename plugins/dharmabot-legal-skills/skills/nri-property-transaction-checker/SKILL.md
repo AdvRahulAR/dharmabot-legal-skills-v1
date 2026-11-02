@@ -17,7 +17,7 @@ Indian law governs the property and the FEMA position. Record the State where th
 
 ## Temporal gate
 
-Record the dates of acquisition, inheritance, sale and payment. The Income-tax Act, 2025 is reported to apply from 1 April 2026; check which tax law governs each payment, and the holding period for capital gains.
+Record the dates of acquisition, inheritance, sale and payment. The Income-tax Act, 2025 is in force from 1 April 2026 (CBDT press release of that date), with the 1961 Act governing earlier years; check which tax law governs each payment, and the holding period for capital gains.
 
 ## Required inputs
 

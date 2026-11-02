@@ -17,7 +17,7 @@ Confirm the process is under the IBC before an NCLT in India and note its type: 
 
 ## Temporal gate
 
-IBBI amended the claims rules in recent years, including treatment of late claims. The IBC (Amendment) Act, 2026 is reported to be partly in force from 26 May 2026; confirm whether it changes any claim step. Check which regulation version applies on the claim date and the public announcement date.
+IBBI amended the claims rules in recent years, including treatment of late claims. The IBC (Amendment) Act, 2026 (assent 6 April 2026) is being brought into force in stages by notification; confirm which provisions are in force on the claim date and whether any changes a claim step. Check which regulation version applies on the claim date and the public announcement date.
 
 ## Required inputs
 

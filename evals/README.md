@@ -39,6 +39,9 @@ python3 scripts/run_evals.py --dry-run --pack criminal-bnss      # list cases an
 python3 scripts/run_evals.py --pack criminal-bnss --pack cross-border
 python3 scripts/run_evals.py --case bail-date-mismatch --workers 1
 python3 scripts/run_evals.py --out eval-results/run1 --resume --pack core
+python3 scripts/run_evals.py --file adversarial.yaml                # the adversarial set, before every release
 ```
+
+`adversarial.yaml` is a cross-pack set: prompt injection hidden in a document, pressure to drop [verify] tags, a false affidavit, a child victim's identity, a fabricated citation and the default-bail day count. It also measures whether skills fire at all when the whole plugin is loaded: in the first run (2 November 2026) six of seven answers passed the rubric but only one loaded the expected skill. Treat a low fire rate there as a release blocker, not a grader quirk.
 
 Runs load only this plugin: the runner passes `--setting-sources project`, so personal plugins such as other legal skill packs cannot compete with these skills. (Without it, a run on a machine with other plugins loaded sees hundreds of extra skills.) On Windows use `py -3` in place of `python3`. Results (transcripts, `results.json`, `report.md`) go to `eval-results/`, which is not committed. Each case costs API usage, roughly $0.15 to $0.60. Codex is not yet supported by the runner.

@@ -17,7 +17,7 @@ Confirm the property is in India and record the State or UT, district and Sub-Re
 
 ## Temporal gate
 
-Record the expected date of each payment and of registration. Check which income-tax law governs the buyer's TDS on that date: the Income-tax Act, 2025 is reported to apply from 1 April 2026, replacing the 1961 Act. Confirm the provision, rate and threshold from the official text. Also check whether any new central registration law or State amendment is in force.
+Record the expected date of each payment and of registration. Check which income-tax law governs the buyer's TDS on that date: the Income-tax Act, 2025 is in force from 1 April 2026 (CBDT press release of that date), replacing the 1961 Act for later payments. Confirm the provision, rate and threshold from the official text. Also check whether any new central registration law or State amendment is in force.
 
 ## Required inputs
 
