@@ -20,7 +20,7 @@ Recommend the instrument that fits the round and the investor mix, explain how i
 ## Temporal gate
 
 - The tax on share premium received by unlisted companies (often called angel tax) was reported to have been withdrawn by the Finance (No. 2) Act 2024; confirm and record from which year.
-- The Income-tax Act 2025 is reported to apply from 1 April 2026; check whether it is in force and map the provisions.
+- The Income-tax Act, 2025 is in force from 1 April 2026 (CBDT press release, 1 April 2026), replacing the Income-tax Act, 1961 for tax years from then; the 1961 Act continues to govern earlier years. Map renumbered provisions with `income-tax-act-2025-concordance-mapper`.
 - Check recent changes to the Deposits Rules and the FEMA convertible note conditions.
 
 ## Required inputs

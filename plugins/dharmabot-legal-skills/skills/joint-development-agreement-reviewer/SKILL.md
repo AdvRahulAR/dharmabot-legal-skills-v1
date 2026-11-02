@@ -17,7 +17,7 @@ Record the State or UT and the city or planning authority. Several States charge
 
 ## Temporal gate
 
-Note the dates of signing, approval and completion. Capital gains timing for JDAs has specific provisions; the Income-tax Act, 2025 is reported to apply from 1 April 2026. Check which law governs each event and confirm the provision from the official text with a tax adviser.
+Note the dates of signing, approval and completion. Capital gains timing for JDAs has specific provisions; the Income-tax Act, 2025 is in force from 1 April 2026 (CBDT press release of that date), with the 1961 Act governing earlier years. Check which law governs each event and confirm the provision from the official text with a tax adviser.
 
 ## Required inputs
 

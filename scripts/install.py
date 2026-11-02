@@ -126,6 +126,9 @@ def main(argv=None, home=None):
         return 2
 
     chosen = select(skills, set(args.pack))
+    if not args.pack:
+        print(f"Warning: installing all {len(chosen)} skills. Agents pick skills far less reliably with the full "
+              "collection loaded; prefer --pack (see --list-packs), always including core and ai-practice-safeguards.")
     for dest in targets:
         n = install(chosen, dest)
         print(f"Installed {n} skill(s) into {dest}")

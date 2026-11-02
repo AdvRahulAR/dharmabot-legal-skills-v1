@@ -114,6 +114,16 @@ Copy [`templates/dharmabot-profile.md`](templates/dharmabot-profile.md) into you
   <img src="docs/images/install.png" alt="One repository, three agents: install commands for Claude Code, OpenAI Codex and Google Antigravity." width="100%">
 </p>
 
+> **Install packs, not the whole collection.** In our stress test (November 2026), with all 318 skills installed the agent answered six of seven test prompts from general knowledge without loading any skill; with one 21-skill pack installed, the same prompt loaded the right skill at once. The agent sees every skill's description at the start of a session, and 318 of them crowd each other out. Start with `core`, `ai-practice-safeguards` and the two or three packs you use daily:
+>
+> ```bash
+> git clone https://github.com/AdvRahulAR/dharmabot-legal-skills-v1
+> cd dharmabot-legal-skills-v1
+> python3 scripts/install.py --all --pack core --pack ai-practice-safeguards --pack court-craft --pack criminal-bnss
+> ```
+>
+> `python3 scripts/install.py --list-packs` shows the pack ids. The plugin-marketplace commands below install all 318 skills; use them only if you want everything, and prefer `install.py --pack` otherwise.
+
 ### Claude Code
 
 ```text
@@ -156,7 +166,7 @@ For one project only, use `python3 scripts/install.py --project /path/to/project
 python3 scripts/install.py --all --pack court-craft --pack civil-litigation --pack ai-practice-safeguards --pack core
 ```
 
-With all 318 skills installed, some agents shorten skill descriptions to fit them in, which makes it harder to pick the right skill. Always include `core` and `ai-practice-safeguards`.
+With all 318 skills installed, agents shorten or skip skill descriptions to fit them in, and in our tests mostly stopped loading skills at all (see the note at the top of this section). Always include `core` and `ai-practice-safeguards`. If you must name a skill the agent is not picking up, say so in the prompt: "Use the bnss-bail-application-drafter skill."
 
 ## Using the skills
 

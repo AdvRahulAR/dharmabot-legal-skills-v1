@@ -17,7 +17,7 @@ Confirm the deceased's religion, last residence and where the assets are. Identi
 
 ## Temporal gate
 
-Probate was compulsory for certain wills under section 213 read with section 57 of the 1925 Act (believed to be the sections; confirm against the official text). The Repealing and Amending Act, 2025 (assent reported as 20 December 2025) is reported to have omitted section 213. Confirm the commencement date and current authority on pending proceedings, and check whether banks, registrars or societies still ask for probate in practice.
+Probate was compulsory for certain wills under section 213 read with section 57 of the 1925 Act (believed to be the sections; confirm against the official text). The Repealing and Amending Act, 2025 (assent 20 December 2025) omitted section 213, so probate is no longer compulsory for wills that fell under it. Whether the omission reaches proceedings pending on that date is unsettled (omission versus repeal under s.6 of the General Clauses Act); check current authority on pending proceedings, and check whether banks, registrars or societies still ask for probate in practice.
 
 ## Required inputs
 

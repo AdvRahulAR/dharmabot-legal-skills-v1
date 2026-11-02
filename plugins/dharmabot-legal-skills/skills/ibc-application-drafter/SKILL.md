@@ -17,7 +17,7 @@ Confirm the debtor is a corporate person (or a personal guarantor to one) regist
 
 ## Temporal gate
 
-The IBC and its regulations are amended often. The Insolvency and Bankruptcy Code (Amendment) Act, 2026 is reported to have received assent on 6 April 2026, with provisions brought into force from 26 May 2026 by notification; confirm from the eGazette which provisions are in force and any transitional rule. It is reported to change admission timelines, withdrawal under section 12A (believed to be the section; confirm against the official text) and to add a creditor-initiated insolvency route. Check which amendments, notifications and forms are in force on the filing date. Also check the default threshold in force on the date of default, since it has changed before.
+The IBC and its regulations are amended often. The Insolvency and Bankruptcy Code (Amendment) Act, 2026 received the President's assent on 6 April 2026; its provisions are being brought into force by notification in stages (the first reported from 26 May 2026), so confirm from the eGazette which provisions are in force on the filing date and any transitional rule. It changes admission timelines, withdrawal under section 12A (believed to be the section; confirm against the official text) and to add a creditor-initiated insolvency route. Check which amendments, notifications and forms are in force on the filing date. Also check the default threshold in force on the date of default, since it has changed before.
 
 ## Required inputs
 
@@ -40,7 +40,7 @@ Also useful: information utility records, the debtor's master data, earlier reco
 5. Draft the demand notice (or invoice route) and track service and the debtor's reply period.
 6. Draft the application in the prescribed form, with the default record (from an information utility where available), the proposed IRP's consent, and fee proof.
 7. Personal guarantor: check Part III provisions in force, the interim moratorium, and the resolution professional's report stage.
-8. For an eligible financial creditor, compare the NCLT application with the creditor-initiated route reported to be added by the 2026 amendment; confirm eligibility from the official text.
+8. For an eligible financial creditor, compare the NCLT application with the creditor-initiated route added by the 2026 amendment; confirm eligibility from the official text.
 9. Flag when the creditor seeks recovery against a solvent debtor, since the NCLT may treat this as misuse and costs may follow. Suggest alternatives where better.
 10. Search for and read current authority; tag unread authority `[verify]`.
 

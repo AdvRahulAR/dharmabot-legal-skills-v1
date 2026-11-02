@@ -17,7 +17,7 @@ Confirm the employees work in India and record the State or UT of each establish
 
 ## Temporal gate
 
-The IR Code is reported to be in force from 21 November 2025, replacing the Industrial Disputes Act. Apply the IR Code to terminations effected on or after commencement. If notice was given, or the exit started, before that date, map which law applies and check the savings provisions.
+The Industrial Relations Code, 2020 is in force from 21 November 2025 (with the other three Labour Codes), replacing the Industrial Disputes Act. Apply the IR Code to terminations effected on or after commencement. If notice was given, or the exit started, before that date, map which law applies and check the savings provisions.
 
 ## Required inputs
 

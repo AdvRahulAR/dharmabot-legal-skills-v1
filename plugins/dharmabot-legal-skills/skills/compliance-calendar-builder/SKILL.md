@@ -18,8 +18,8 @@ List every recurring and triggered obligation the entity actually has, with a da
 
 ## Temporal gate
 
-- The four Labour Codes were reported brought into force on 21 November 2025, with Central and State rules following. Check which State rules are notified, and whether older labour returns still apply in transition.
-- The Income-tax Act, 2025 was reported to apply from 1 April 2026. Use its forms and due dates for periods it governs and the 1961 Act for earlier ones; confirm.
+- The four Labour Codes came into force on 21 November 2025 (Ministry of Labour notifications of that date), replacing the earlier central labour laws. Central and State rules have followed in stages. Check which State rules are notified, and whether older labour returns still apply in transition.
+- The Income-tax Act, 2025 is in force from 1 April 2026 (CBDT press release, 1 April 2026), replacing the Income-tax Act, 1961 for tax years from then; the 1961 Act continues to govern earlier years. Use its forms and due dates for periods it governs and the 1961 Act for earlier ones.
 - Due dates are often extended by circular. Mark each date "statutory" or "as extended by [circular, date]".
 
 ## Required inputs

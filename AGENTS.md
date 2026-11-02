@@ -4,6 +4,8 @@ This repository contains Dharmabot Legal Skills: Agent Skills (`SKILL.md` folder
 
 ## If you are asked to install these skills
 
+Prefer installing packs, not all 318 skills: with the full collection loaded, agents mostly answer without loading any skill. Ask which areas the user practises in, then run `python3 scripts/install.py --list-packs` and install `core`, `ai-practice-safeguards` and their packs with `--pack`. Use the plugin-marketplace route below only if the user wants everything.
+
 - **Claude Code:** run `claude plugin marketplace add AdvRahulAR/dharmabot-legal-skills-v1`, then `claude plugin install dharmabot-legal-skills@dharmabot`. Tell the user to start a new session or run `/reload-plugins`.
 - **Codex:** run `codex plugin marketplace add AdvRahulAR/dharmabot-legal-skills-v1`, then `codex plugin add dharmabot-legal-skills@dharmabot`. Alternatively clone the repo and run `python3 scripts/install.py --codex` (`py -3` on Windows).
 - **Antigravity:** clone the repo and run `python3 scripts/install.py --antigravity` (`py -3` on Windows), or `--project <dir>` for one workspace.

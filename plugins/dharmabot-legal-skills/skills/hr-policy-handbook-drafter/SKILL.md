@@ -17,7 +17,7 @@ List every State or UT where the employer has staff. Leave, holidays, working ho
 
 ## Temporal gate
 
-The Labour Codes are reported to be in force from 21 November 2025, with central and State rules notified in stages. Check the current position on standing orders, leave and working hours under the Codes and each State's rules before drafting. Note where old State rules may still apply in transition.
+The four Labour Codes are in force from 21 November 2025, with central and State rules notified in stages. Check the current position on standing orders, leave and working hours under the Codes and each State's rules before drafting. Note where old State rules may still apply in transition.
 
 ## Required inputs
 

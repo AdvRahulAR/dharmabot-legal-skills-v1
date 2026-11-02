@@ -17,7 +17,7 @@ Identify the State or UT, the appropriate government (Central or State) for the 
 
 ## Temporal gate
 
-The IR Code is reported to be in force from 21 November 2025. If the termination, dues or dispute arose before that date, check the savings provisions and whether the Industrial Disputes Act route, or a pending reference, continues. Record the dates of termination, demand and conciliation.
+The Industrial Relations Code, 2020 is in force from 21 November 2025 (with the other three Labour Codes). If the termination, dues or dispute arose before that date, check the savings provisions and whether the Industrial Disputes Act route, or a pending reference, continues. Record the dates of termination, demand and conciliation.
 
 ## Required inputs
 

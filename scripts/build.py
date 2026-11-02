@@ -160,4 +160,16 @@ def main():
 
 
 if __name__ == "__main__":
+    import argparse
+    import subprocess
+
+    ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
+    ap.add_argument("--check", action="store_true",
+                    help="rebuild, then exit 1 if any generated file changed (for CI and pre-commit)")
+    opts = ap.parse_args()
     main()
+    if opts.check:
+        diff = subprocess.run(["git", "-C", str(ROOT), "diff", "--quiet", "--", "plugins", "docs/CATALOGUE.md", "README.md"])
+        if diff.returncode:
+            sys.exit("generated files were out of date; commit the rebuilt files")
+        print("generated files are up to date")

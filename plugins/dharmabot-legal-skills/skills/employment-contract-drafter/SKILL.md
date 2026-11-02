@@ -17,7 +17,7 @@ Confirm the employee works in India and record the State or UT and the city of t
 
 ## Temporal gate
 
-The four Labour Codes are reported to have come into force on 21 November 2025, replacing the earlier central labour laws. Central and State rules have followed in stages. Check whether the State's rules under each Code are notified, and from when, before relying on any threshold.
+The four Labour Codes came into force on 21 November 2025 (Ministry of Labour notifications of that date), replacing the earlier central labour laws. Central and State rules have followed in stages. Check whether the State's rules under each Code are notified, and from when, before relying on any threshold.
 
 ## Required inputs
 

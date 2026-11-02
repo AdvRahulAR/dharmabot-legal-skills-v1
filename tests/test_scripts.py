@@ -95,6 +95,38 @@ class DateCalcTests(unittest.TestCase):
         self.assertEqual(self.last(D(2026, 8, 3), "60d"), "2026-10-02")
         self.assertEqual(self.last(D(2026, 8, 3), "60d", include_start=True), "2026-10-01")
 
+    def test_zero_or_negative_period_rejected(self):
+        for bad in ("0d", "0m", "-5d"):
+            with self.assertRaises(ValueError, msg=bad):
+                date_calc.parse_period(bad)
+
+    def test_weekend_last_day_warns_without_holiday_rule(self):
+        # 30 days from 1 Oct 2026 (start excluded) ends Saturday 31 Oct 2026.
+        r = date_calc.compute(D(2026, 10, 1), "30d")
+        self.assertEqual(r["last_day"], "2026-10-31")
+        self.assertTrue(any("WARNING" in s and "Saturday" in s for s in r["working"]))
+        # No warning on a weekday.
+        r = date_calc.compute(D(2026, 10, 1), "29d")
+        self.assertFalse(any("WARNING" in s for s in r["working"]))
+
+    def test_default_bail_remand_day_included(self):
+        # Kapil Wadhawan: remand day counts. First remand 5 Aug 2026, 60 days -> last day 3 Oct 2026.
+        self.assertEqual(self.last(D(2026, 8, 5), "60d", include_start=True), "2026-10-03")
+
+    def test_cli_bad_date_is_clean_error(self):
+        err = io.StringIO()
+        with contextlib.redirect_stderr(err):
+            code = date_calc.main(["--start", "2026-13-01", "--period", "1d"])
+        self.assertEqual(code, 2)
+        self.assertIn("date_calc.py: error:", err.getvalue())
+
+    def test_cli_reversed_range_is_clean_error(self):
+        err = io.StringIO()
+        with contextlib.redirect_stderr(err):
+            code = date_calc.main(["--start", "2026-03-01", "--to", "2026-01-01"])
+        self.assertEqual(code, 2)
+        self.assertIn("before --start", err.getvalue())
+
     def test_cli_needs_period_or_to(self):
         with self.assertRaises(SystemExit):
             date_calc.main(["--start", "2026-08-03"])

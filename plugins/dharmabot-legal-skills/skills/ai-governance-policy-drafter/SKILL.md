@@ -21,7 +21,7 @@ Give the organisation a usable AI policy and a light governance process that fit
 
 - IT Rules on synthetically generated information: reported notified 10 February 2026, in force 20 February 2026. Confirm.
 - India's AI governance guidelines (reported released by MeitY in November 2025) are not binding law; say so.
-- DPDP Rules are phased (most duties reported from 13 May 2027). Align the policy now and record dates.
+- The DPDP Rules, 2025 (notified 13 November 2025) commence in phases: 13 November 2025, 13 November 2026 (consent managers) and 13 May 2027 (most data fiduciary duties). Align the policy now and record dates.
 
 ## Required inputs
 
